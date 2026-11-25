@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>山东省考 7 天精准提分冲刺复盘讲义（2027 省考适用）</title>
+  <title>山东省考 7 天精准提分冲刺主控总纲（第二版）</title>
   <link rel="stylesheet" href="assets/katex/katex/katex.min.css" />
   <style>
 :root {
@@ -20,99 +20,128 @@
   --cyan: #0891b2; --cyan-bg: #ecfeff;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
 body {
   margin: 0;
   font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.75;
-  font-size: 15.2px;
+  line-height: 1.78;
+  font-size: 15.3px;
+  max-width: 100%;
+  overflow-x: clip;
   -webkit-print-color-adjust: exact !important;
   print-color-adjust: exact !important;
 }
-.layout { display: flex; min-height: 100vh; }
+.layout { display: flex; min-height: 100vh; width: 100%; }
 .sidebar {
-  width: 290px;
+  width: 292px;
   background: #0f172a;
   color: #e2e8f0;
   position: fixed;
   top: 0; left: 0; bottom: 0;
   overflow-y: auto;
-  padding: 20px 16px 40px;
-  z-index: 200;
+  padding: 18px 15px 44px;
+  z-index: 260;
   transition: transform 0.25s ease;
 }
-.sidebar-title { font-size: 17px; font-weight: 800; color: #ffffff; margin: 0 0 4px; letter-spacing: 0.4px; }
-.sidebar-sub { font-size: 12px; color: #94a3b8; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #1e293b; }
-.progress-box { background: #1e293b; border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; font-size: 12.5px; }
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.5); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.sidebar-title { font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 0 0 3px; letter-spacing: 0.3px; }
+.sidebar-sub { font-size: 11.8px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b; }
+.progress-box { background: #1e293b; border-radius: 8px; padding: 9px 11px; margin-bottom: 11px; font-size: 12.5px; }
 .progress-bar-wrap { background: #334155; height: 7px; border-radius: 99px; margin-top: 6px; overflow: hidden; }
 .progress-bar-fill { background: linear-gradient(90deg, #10b981, #38bdf8); height: 100%; width: 0%; transition: width 0.25s; }
-.btn-row { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.btn-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
 .btn {
-  flex: 1; min-width: 80px; border: none; border-radius: 6px; padding: 7px 8px;
+  flex: 1 1 88px; min-height: 34px; border: none; border-radius: 6px; padding: 6px 8px;
   font-size: 12px; font-weight: 700; cursor: pointer; background: #2563eb; color: #fff;
-  text-align: center; text-decoration: none; display: inline-block;
+  text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
 }
 .btn.secondary { background: #334155; }
 .btn.emerald { background: #059669; }
-.btn:hover { opacity: 0.9; }
-.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 14px 0 6px 6px; letter-spacing: 0.8px; }
+.btn.slate { background: #475569; }
+.btn:hover { opacity: 0.92; }
+.mod-switcher {
+  width: 100%; margin: 2px 0 10px; padding: 7px 9px; border-radius: 7px;
+  background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 12.5px; font-weight: 700; cursor: pointer;
+}
+.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 13px 0 6px 5px; letter-spacing: 0.6px; }
 .nav-item {
-  display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 7px;
-  color: #cbd5e1; text-decoration: none; font-size: 13px; margin-bottom: 3px; transition: background 0.15s;
+  display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px;
+  color: #cbd5e1; text-decoration: none; font-size: 12.8px; margin-bottom: 3px; transition: background 0.15s;
 }
 .nav-item:hover { background: #1e293b; color: #fff; }
-.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; }
-.nav-item .nav-text { flex: 1; line-height: 1.35; }
-.mobile-toggle {
-  display: none; position: fixed; bottom: 18px; right: 18px; z-index: 300;
-  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
-  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
-}
-.main { margin-left: 290px; flex: 1; padding: 30px 36px 80px; max-width: 1040px; }
+.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; width: 15px; height: 15px; }
+.nav-item .nav-text { flex: 1; line-height: 1.38; }
+
+.main { margin-left: 292px; flex: 1; min-width: 0; width: 100%; padding: 28px 34px 88px; max-width: 1060px; }
 .cover-banner {
   background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0e7490 100%);
-  color: #fff; border-radius: 16px; padding: 32px 34px; margin-bottom: 24px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+  color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
 }
-.cover-banner h1 { margin: 0 0 10px; font-size: 27px; line-height: 1.3; }
-.cover-banner p { margin: 0 0 14px; color: #dbeafe; font-size: 14.8px; }
-.cover-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-.cover-pill { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); padding: 4px 12px; border-radius: 99px; font-size: 12.5px; font-weight: 600; }
-.cover-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.cover-banner.theme-red { background: linear-gradient(135deg, #1e1b4b 0%, #991b1b 55%, #b45309 100%); }
+.cover-banner.theme-amber { background: linear-gradient(135deg, #0f172a 0%, #92400e 55%, #b45309 100%); }
+.cover-banner.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 55%, #2563eb 100%); }
+.cover-banner.theme-green { background: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0e7490 100%); }
+.cover-banner.theme-cyan { background: linear-gradient(135deg, #0f172a 0%, #0e7490 55%, #0284c7 100%); }
+.cover-eyebrow {
+  display: inline-block; font-size: 11.8px; font-weight: 800; padding: 3px 11px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 10px;
+}
+.cover-banner h1 { margin: 0 0 8px; font-size: 25px; line-height: 1.3; }
+.cover-banner p { margin: 0 0 12px; color: #e0f2fe; font-size: 14.5px; }
+.cover-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.cover-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); padding: 3px 11px; border-radius: 99px; font-size: 12.2px; font-weight: 600; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
 .cover-btn {
-  display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
   font-size: 13px; font-weight: 700; text-decoration: none; color: #fff; background: rgba(16,185,129,0.92);
 }
-.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35); }
-.cover-toc { background: #ffffff; border: 1px solid var(--border); border-radius: 14px; padding: 20px 26px; margin-bottom: 24px; }
-.cover-toc h2 { margin-top: 4px; }
-.cover-toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: 13.5px; }
-.cover-toc-item { padding: 7px 11px; background: #f8fafc; border-left: 3px solid #2563eb; border-radius: 4px; }
-.cover-toc-item a { color: #0f172a; text-decoration: none; font-weight: 700; }
-.cover-toc-item a:hover { color: #2563eb; }
+.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34); }
+.cover-btn:hover { opacity: 0.92; }
+
+/* Hub 7-module directory grid */
+.mod-dir-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0 8px; }
+.mod-dir-card {
+  background: #ffffff; border: 1px solid var(--border); border-left: 5px solid var(--blue);
+  border-radius: 12px; padding: 15px 17px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); transition: transform 0.14s, box-shadow 0.14s;
+}
+.mod-dir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+.mod-dir-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.mod-dir-badge { font-size: 11px; font-weight: 800; color: #fff; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.mod-dir-card h3 { margin: 0 0 6px; font-size: 16px; color: #0f172a; }
+.mod-dir-card p { margin: 0 0 11px; font-size: 13.2px; color: #475569; line-height: 1.58; }
+.mod-dir-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 13px; border-radius: 8px; background: #0f172a; color: #fff;
+  text-decoration: none; font-size: 13px; font-weight: 700; min-height: 38px;
+}
+.mod-dir-link:hover { opacity: 0.92; }
+
 .day-section {
   background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-  padding: 26px 30px; margin-bottom: 28px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  padding: 25px 28px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 16px;
 }
-.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 12px; margin-bottom: 18px; }
-.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 12px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-.tag-prep { background: #475569; }
-.tag-shenlun { background: #dc2626; }
-.tag-pol { background: #b91c1c; }
-.tag-ability { background: #0284c7; }
-.tag-predict { background: #7c3aed; }
-.tag-sprint { background: #059669; }
-.day-title { margin: 4px 0 6px; font-size: 22px; color: #0f172a; }
+.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 11px; margin-bottom: 16px; }
+.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 11.8px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.day-title { margin: 4px 0 5px; font-size: 21px; color: #0f172a; line-height: 1.32; }
 .day-meta { font-size: 13.5px; color: var(--muted); }
-h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; page-break-after: avoid; }
-h3 { font-size: 15.5px; color: #1e3a8a; margin: 14px 0 8px; break-after: avoid; page-break-after: avoid; }
-p { margin: 8px 0; }
+
+h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; }
+h3 { font-size: 15.5px; color: #1e3a8a; margin: 16px 0 8px; break-after: avoid; }
+p { margin: 8px 0; overflow-wrap: break-word; }
 ul, ol { margin: 6px 0 10px; padding-left: 22px; }
-li { margin-bottom: 5px; }
+li { margin-bottom: 5px; overflow-wrap: break-word; }
+
 .card { border-radius: 10px; padding: 14px 18px; margin: 14px 0; border-left: 5px solid; break-inside: avoid; }
-.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 7px; }
+.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
 .card-intuition { background: var(--green-bg); border-color: var(--green); }
 .card-intuition .card-title { color: #065f46; }
 .card-formula { background: var(--blue-bg); border-color: var(--blue); }
@@ -125,776 +154,467 @@ li { margin-bottom: 5px; }
 .card-example .card-title { color: #92400e; }
 .card-quiz { background: var(--cyan-bg); border-color: var(--cyan); }
 .card-quiz .card-title { color: #155e75; }
+
+.q-box {
+  background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #d97706;
+  border-radius: 10px; padding: 15px 18px; margin: 16px 0; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 800; color: #92400e; font-size: 14.2px; }
+.q-stem { background: #fffbeb; border-radius: 7px; padding: 10px 13px; margin: 8px 0 10px; font-size: 14.4px; line-height: 1.72; color: #1e293b; }
+.q-opts { margin: 6px 0 10px; padding-left: 6px; list-style: none; font-size: 14px; color: #334155; }
+.q-opts li { margin-bottom: 4px; }
+
 .hl-yellow { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #713f12; }
 .hl-pink { background: #fecdd3; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #881337; }
 .hl-blue { background: #bfdbfe; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1e3a8a; }
-.badge-must { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 4px; vertical-align: middle; }
-.badge-high { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 4px; vertical-align: middle; }
-.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 4px; vertical-align: middle; }
-.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 4px; vertical-align: middle; }
+.badge-p0 { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p1 { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p2 { display: inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+
 .src-tag {
   display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569;
-  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace; margin-left: 4px;
+  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace;
+}
+.net-tag {
+  display: inline-block; background: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;
+  font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
 }
 .missing-tag {
   display: inline-block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
   font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
 }
 .template-box {
-  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 16px;
-  font-size: 13.8px; line-height: 1.72; margin: 10px 0;
+  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 15px;
+  font-size: 13.8px; line-height: 1.75; margin: 10px 0;
 }
-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0; font-size: 13.5px; }
 thead { display: table-header-group; }
 tr { break-inside: avoid; }
 th { background: #1e293b; color: #ffffff; text-align: left; padding: 8px 10px; font-weight: 700; }
-td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; }
+td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; overflow-wrap: break-word; }
 tr:nth-child(even) td { background: #f8fafc; }
-.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; break-inside: avoid; }
-svg { max-width: 100%; height: auto; }
-details.sol { margin-top: 8px; background: rgba(255,255,255,0.88); border: 1px dashed #0891b2; border-radius: 6px; padding: 6px 12px; }
-details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-size: 13.5px; }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; break-inside: avoid; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+
+/* Default CLOSED collapsible derivation blocks */
+details.sol {
+  margin-top: 8px; background: #f8fafc; border: 1.5px dashed #0891b2; border-radius: 8px; padding: 8px 13px;
+}
+details.sol[open] { background: #f0fdfa; border-style: solid; }
+details.sol > summary {
+  cursor: pointer; font-weight: 800; color: #0e7490; font-size: 13.5px; user-select: none; list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+details.sol > summary::before { content: "▶"; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+details.sol[open] > summary::before { transform: rotate(90deg); }
+details.sol > summary::-webkit-details-marker { display: none; }
+.sol-body { margin-top: 9px; padding-top: 8px; border-top: 1px solid #bae6fd; font-size: 14px; line-height: 1.72; color: #1e293b; }
+
 .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
 .day-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; break-inside: avoid; }
-.day-col h4 { margin: 0 0 8px; font-size: 14px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+.day-col h4 { margin: 0 0 8px; font-size: 14.5px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
 
-@media screen and (max-width: 900px) {
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.open { transform: translateX(0); }
-  .mobile-toggle { display: block; }
-  .main { margin-left: 0; padding: 16px 14px 80px; }
-  .cover-toc-grid, .day-grid { grid-template-columns: 1fr; }
-  .day-section { padding: 18px 16px; }
+.sub-footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  margin-top: 28px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px;
 }
-@media print {
-  .cover-banner { padding: 22px 26px !important; margin-bottom: 14px !important; }
-  .cover-toc { padding: 14px 18px !important; margin-bottom: 0 !important; }
-  .cover-toc-grid { gap: 6px 12px !important; font-size: 12.2px !important; }
-  .cover-toc-item { padding: 5px 9px !important; }
-  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
-  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
-  .sidebar, .mobile-toggle, .cover-actions { display: none !important; }
-  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
-  .day-section { border: none; box-shadow: none; padding: 0; margin: 0; page-break-before: always; }
-  .cover-toc { page-break-after: always; }
-  details.sol { border-style: solid; }
-  details.sol > summary { display: none; }
+.sub-footer-nav a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px; border-radius: 8px;
+  background: #0f172a; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; min-height: 40px;
 }
+.sub-footer-nav a.alt { background: #2563eb; }
+.sub-footer-nav a:hover { opacity: 0.92; }
 
-/* === Responsive Multi-Device Refinement === */
-html, body { max-width: 100%; overflow-x: clip; }
-.layout { width: 100%; }
-.main { min-width: 0; width: 100%; }
-section.day-section { scroll-margin-top: 16px; }
-.sidebar { z-index: 260; }
-.sidebar-backdrop {
-  display: none; position: fixed; inset: 0;
-  background: rgba(15, 23, 42, 0.48); z-index: 240; backdrop-filter: blur(1px);
+.mobile-toggle {
+  display: none; align-items: center; gap: 6px; position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
+  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
 }
-.sidebar-backdrop.show { display: block; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 34px; }
-.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
-.table-wrap > table { margin: 0; }
-th, td { overflow-wrap: break-word; }
-.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
-.svg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.mobile-toggle { align-items: center; gap: 6px; z-index: 300; }
 .back-to-top {
-  display: none; align-items: center; justify-content: center;
-  position: fixed; bottom: 66px; right: 18px; z-index: 290;
-  background: rgba(15, 23, 42, 0.88); color: #fff;
-  border: 1px solid rgba(148, 163, 184, 0.45); border-radius: 99px;
-  padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  display: none; align-items: center; justify-content: center; position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px; padding: 8px 13px; font-size: 12.5px; font-weight: 700;
   box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
 }
 .back-to-top.show { display: inline-flex; }
+
 @media screen and (min-width: 961px) and (max-width: 1200px) {
-  .sidebar { width: 260px; }
-  .main { margin-left: 260px; padding: 24px 24px 72px; }
+  .sidebar { width: 256px; }
+  .main { margin-left: 256px; padding: 22px 22px 76px; }
 }
 @media screen and (max-width: 960px) {
-  .sidebar { transform: translateX(-100%); width: min(84vw, 300px); }
+  .sidebar { transform: translateX(-100%); width: min(84vw, 305px); }
   .sidebar.open { transform: translateX(0); }
   .mobile-toggle { display: inline-flex; }
-  .main { margin-left: 0; padding: 18px 16px 92px; max-width: 100%; }
-  .cover-toc-grid, .day-grid { grid-template-columns: 1fr; }
-  .day-section { padding: 20px 18px; }
+  .main { margin-left: 0; padding: 16px 16px 92px; max-width: 100%; }
+  .mod-dir-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 18px 16px; }
 }
 @media screen and (max-width: 600px) {
-  body { font-size: 14.6px; line-height: 1.72; }
+  body { font-size: 14.7px; line-height: 1.72; }
   .main { padding: 12px 10px 92px; }
-  .cover-banner { padding: 20px 16px; border-radius: 12px; margin-bottom: 16px; }
-  .cover-banner h1 { font-size: 21px; }
-  .cover-banner p { font-size: 14px; }
-  .cover-toc { padding: 16px 14px; border-radius: 12px; margin-bottom: 16px; }
-  .day-section { padding: 16px 13px; border-radius: 12px; margin-bottom: 18px; }
-  .day-title { font-size: 19px; }
-  .card { padding: 12px 13px; margin: 12px 0; }
-  table { font-size: 12.8px; }
+  .cover-banner { padding: 19px 15px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 20.5px; }
+  .cover-banner p { font-size: 13.8px; }
+  .day-section { padding: 15px 13px; border-radius: 12px; margin-bottom: 16px; }
+  .day-title { font-size: 18.5px; }
+  h2 { font-size: 16.2px; }
+  h3 { font-size: 14.8px; }
+  .card, .q-box { padding: 12px 13px; }
+  table { font-size: 12.6px; }
   th, td { padding: 6px 8px; }
   .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
   .back-to-top { bottom: 62px; right: 14px; }
 }
 @media print {
-  .sidebar-backdrop, .back-to-top { display: none !important; }
+  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
+  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions, .sub-footer-nav { display: none !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
   .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+  .day-section { border: none; box-shadow: none; padding: 0; margin: 0 0 18px; }
+  details.sol { border-style: solid; }
 }
-
 </style>
 </head>
 <body>
-
 <div class="sidebar-backdrop" onclick="closeSidebar()"></div>
-<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开目录或打卡">☰ 目录 / 打卡</button>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开或关闭目录">☰ 目录 / 打卡</button>
 <button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
 <div class="layout">
   <aside class="sidebar">
-    <div class="sidebar-title">山东省考 7 天冲刺讲义</div>
-    <div class="sidebar-sub">行测 65→75+ · 申论B卷 60→70+ 精准提分版</div>
+    <div class="sidebar-title">山东省考 V2 主控总纲</div>
+    <div class="sidebar-sub">行测6模块 + 申论B卷单列 · 认知科学版</div>
     <div class="progress-box">
-      <div>冲刺模块打卡：<strong id="progText">0 / 12</strong></div>
+      <div>本页学习打卡：<strong id="progText">0 / 5</strong></div>
       <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progFill"></div></div>
     </div>
     <div class="btn-row">
-      <button class="btn" onclick="toggleAllSol()">收起/展开解析</button>
-      <button class="btn secondary" onclick="window.print()">打印 / 存PDF</button>
+      <button class="btn" id="toggleSolBtn" onclick="toggleAllSol()">👁 展开全部解析</button>
+      <button class="btn secondary" onclick="window.print()">🖨 打印页面</button>
     </div>
-    <div class="btn-row">
-      <a class="btn emerald" href="山东省考7天冲刺精准提分讲义.pdf" download>⬇ 下载排版 PDF 版</a>
-      <a class="btn secondary" href="index.html">🏠 返回总导航</a>
-    </div>
-
-    <div class="nav-group-label">一 · 考情白皮书与 2027 预测</div>
-    <a class="nav-item" href="#sec01"><input type="checkbox" data-sec="sec01" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01｜3分钟战略地图与真题全量分布</span></a>
-    <a class="nav-item" href="#sec02"><input type="checkbox" data-sec="sec02" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02｜B级防坑 / C级止损与省情法律</span></a>
-    <a class="nav-item" href="#sec03"><input type="checkbox" data-sec="sec03" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">03｜今年(2026.12.6笔试)重磅押题预测</span></a>
-
-    <div class="nav-group-label">二 · 行测四大痛点母题精讲</div>
-    <a class="nav-item" href="#sec04"><input type="checkbox" data-sec="sec04" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">04｜S级·政治理论4秒排雷与6条新提法</span></a>
-    <a class="nav-item" href="#sec05"><input type="checkbox" data-sec="sec05" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">05｜A级·选词99题高频词表与4大呼应</span></a>
-    <a class="nav-item" href="#sec06"><input type="checkbox" data-sec="sec06" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">06｜A级·数量4类送分母题与弃题红线</span></a>
-    <a class="nav-item" href="#sec07"><input type="checkbox" data-sec="sec07" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">07｜B级·片段/判断/资料速查防错表</span></a>
-
-    <div class="nav-group-label">三 · 申论 B 卷零基础速成包</div>
-    <a class="nav-item" href="#sec08"><input type="checkbox" data-sec="sec08" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">08｜B卷规律与Q1概括/Q2理解踩点</span></a>
-    <a class="nav-item" href="#sec09"><input type="checkbox" data-sec="sec09" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">09｜Q3应用文：信息专报/案例摘要模板</span></a>
-    <a class="nav-item" href="#sec10"><input type="checkbox" data-sec="sec10" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">10｜Q4大作文：零跑题偷分论点与押题库</span></a>
-
-    <div class="nav-group-label">四 · 7 天弹性冲刺落地清单</div>
-    <a class="nav-item" href="#sec11"><input type="checkbox" data-sec="sec11" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">11｜Day 1–Day 7 逐日靶向刷题日程</span></a>
-    <a class="nav-item" href="#sec12"><input type="checkbox" data-sec="sec12" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">12｜4天极限版 & 5天紧凑版切换表</span></a>
+    <div class="btn-row"><a class="btn emerald" href="index.html">🌐 返回学习中心首页</a></div>
+    <select class="mod-switcher" aria-label="快速切换省考模块页面" onchange="if(this.value)location.href=this.value;"><option value="山东省考7天冲刺精准提分讲义.html" selected>主控｜省考总纲与7天认知日程</option><option value="sd_01_政治理论详讲.html">01｜政治理论｜政策映射与2027预测</option><option value="sd_02_常识判断详讲.html">02｜常识判断｜重→轻概率与新法</option><option value="sd_03_言语理解详讲.html">03｜言语理解｜花生十三法+高频词</option><option value="sd_04_数量关系详讲.html">04｜数量关系｜必拿母题与极限模型</option><option value="sd_05_判断推理详讲.html">05｜判断推理｜图推/定义/类比/逻辑</option><option value="sd_06_资料分析详讲.html">06｜资料分析｜415/假设分配/盐水</option><option value="sd_07_申论B卷详讲.html">07｜申论 B 卷｜踩点/公文/单字作文</option></select>
+    <div class="nav-group-label">主控全局导航</div><a class="nav-item" href="#sec-dir"><input type="checkbox" data-sec="sec-dir" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01｜七大模块直达目录</span></a><a class="nav-item" href="#sec-data"><input type="checkbox" data-sec="sec-data" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02｜考情演变与样本诚实声明</span></a><a class="nav-item" href="#sec-pol-ck"><input type="checkbox" data-sec="sec-pol-ck" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">03｜政治/常识概率总图</span></a><a class="nav-item" href="#sec-methods"><input type="checkbox" data-sec="sec-methods" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">04｜花生十三法与申论总诀</span></a><a class="nav-item" href="#sec-plan"><input type="checkbox" data-sec="sec-plan" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">05｜7天认知防遗忘日程</span></a>
   </aside>
-
   <main class="main">
-    <div class="cover-banner">
-      <h1>山东省考 7 天精准提分冲刺复盘讲义</h1>
-      <p>基于工作区 2017–2026 共 17 套独立真题（行测 950 题有效样本 + 申论 B 卷 8 套全量文本）大数据提炼 · 聚焦行测 65→75+ / 申论 60→70+ · 含 2027 省考（2026.12.6 笔试）最新预测</p>
-      <div class="cover-pills">
-        <span class="cover-pill">🟢 绿卡：3分钟结论与踩点公式</span>
-        <span class="cover-pill">🔵 蓝卡：高频词/母题模型/省情法条</span>
-        <span class="cover-pill">🔴 红卡：考场避坑与弃题红线</span>
-        <span class="cover-pill">🟣 紫卡：申论公文与作文万能模板</span>
-        <span class="cover-pill">🟠 橙卡：真题母题推导精讲</span>
-        <span class="cover-pill">💎 青卡：2027 考前高频押题</span>
-      </div>
-      <div class="cover-actions">
-        <a class="cover-btn" href="山东省考7天冲刺精准提分讲义.pdf" download>⬇ 下载精美排版 PDF 版</a>
-        <a class="cover-btn ghost" href="#sec11">📅 直达 Day 1–7 执行清单</a>
-        <a class="cover-btn ghost" href="index.html">🏠 学习资料总导航</a>
-      </div>
-    </div>
+    
+<div class="cover-banner">
+  <span class="cover-eyebrow">🎯 山东省考第二版（2027 省考 · 2026 年 12 月 6 日笔试适用）</span>
+  <h1>山东省考 7 天精准提分主控总纲（行测六大模块 + 申论 B 卷单列）</h1>
+  <p>基于工作区 2017–2026 共 17 套真题全量拆解 + 2025–2026 权威政策新法联网实证校准 · 行测严格采用<strong>花生十三实战解题法</strong> · 申论 B 卷零基础踩点重构 · 全部解析默认折叠盲测，兼顾人脑记忆与艾宾浩斯间隔复习规律</p>
+  <div class="cover-pills">
+    <span class="cover-pill">🟢 P0 底层直觉与抢分骨架</span>
+    <span class="cover-pill">🔴 政策 ↔ 真题时间窗口推演</span>
+    <span class="cover-pill">🟣 花生十三四大模块解法</span>
+    <span class="cover-pill">🧠 默认折叠盲测 + 隔日回炉</span>
+  </div>
+  <div class="cover-actions">
+    <a class="cover-btn" href="sd_01_政治理论详讲.html">🔥 直达 01 政治理论详讲</a>
+    <a class="cover-btn" href="sd_07_申论B卷详讲.html">✍ 直达 07 申论 B 卷单列</a>
+    <a class="cover-btn ghost" href="#sec-dir">🧭 七大模块总目录</a>
+    <a class="cover-btn ghost" href="index.html">🌐 返回学习中心</a>
+  </div>
+</div>
 
-    <div class="cover-toc">
-      <h2>全书 12 节提分作战地图（按 ROI 投资回报率严格排序）</h2>
-      <div class="cover-toc-grid">
-        <div class="cover-toc-item"><a href="#sec01">01｜3分钟战略地图与真题全量分布</a><br><span style="color:#64748b;font-size:12px;">样本口径声明 · 120题/180分钟考制演化</span></div>
-        <div class="cover-toc-item"><a href="#sec02">02｜B级防坑 / C级止损与省情法律</a><br><span style="color:#64748b;font-size:12px;">资料四大陷阱 · 山东省情密码 · 高频4部法</span></div>
-        <div class="cover-toc-item"><a href="#sec03">03｜今年(2026.12.6)重磅押题预测</a><br><span style="color:#64748b;font-size:12px;">二十届五中全会 · 新质生产力 · 山东10.3万亿</span></div>
-        <div class="cover-toc-item"><a href="#sec04">04｜S级·政治理论4秒排雷与6条新提法</a><br><span style="color:#64748b;font-size:12px;">几项正确破题法 · 4大设错套路 · 考前必背</span></div>
-        <div class="cover-toc-item"><a href="#sec05">05｜A级·选词99题高频词表与4大呼应</a><br><span style="color:#64748b;font-size:12px;">复现成语辨析 · 解释/转折/并列/搭配秒杀</span></div>
-        <div class="cover-toc-item"><a href="#sec06">06｜A级·数量4类送分母题与弃题红线</a><br><span style="color:#64748b;font-size:12px;">工程/方程利润/最不利/反面概率 · 1分钟拿下</span></div>
-        <div class="cover-toc-item"><a href="#sec07">07｜B级·片段/判断/资料速查防错表</a><br><span style="color:#64748b;font-size:12px;">尾句对策 · 矛盾推理 · 汇率/双轴/百分点坑</span></div>
-        <div class="cover-toc-item"><a href="#sec08">08｜申论B卷规律与Q1概括/Q2理解踩点</a><br><span style="color:#64748b;font-size:12px;">2024/2026同构解密 · 250/300字高分范例</span></div>
-        <div class="cover-toc-item"><a href="#sec09">09｜Q3应用文：信息专报/案例摘要模板</a><br><span style="color:#64748b;font-size:12px;">400字万能骨架 · 预付宝与滨海模式范文</span></div>
-        <div class="cover-toc-item"><a href="#sec10">10｜Q4大作文：零跑题偷分论点与押题库</a><br><span style="color:#64748b;font-size:12px;">“桥”“坐标”破题法 · 五段式与4大押题金句</span></div>
-        <div class="cover-toc-item"><a href="#sec11">11｜Day 1–Day 7 逐日靶向刷题日程</a><br><span style="color:#64748b;font-size:12px;">行测弱项+申论实操精确到年份与题号</span></div>
-        <div class="cover-toc-item"><a href="#sec12">12｜4天极限版 & 5天紧凑版切换表</a><br><span style="color:#64748b;font-size:12px;">时间骤紧时的S级保留与取舍规则</span></div>
-      </div>
-    </div>
 
-<!-- ======================== SECTION 01 ======================== -->
-<section class="day-section" id="sec01">
+<!-- ============ SECTION 1: 模块化目录墙 ============ -->
+<section class="day-section" id="sec-dir">
   <div class="day-header">
-    <span class="day-tag tag-prep">第一篇 · 考情大数据白皮书</span>
-    <h1 class="day-title">01｜3 分钟战略地图与 17 套真题全景分布</h1>
-    <div class="day-meta">统计样本：2017–2025 行测 9 套（去重后 950 道有效题干）+ 2018–2024/2026 申论 B 卷 8 套</div>
+    <span class="day-tag" style="background:#0f172a">主控目录｜七大专题页直达</span>
+    <h1 class="day-title">01｜山东省考七大知识模块直达目录（点击进入对应详讲区）</h1>
+    <div class="day-meta">行测 6 大模块独立拆解 + 申论 B 卷单独成册；主文件仅留全局战略、精炼速览骨架与认知日程，彻底告别“一锅炖看不完”</div>
   </div>
 
   <div class="card card-intuition">
-    <div class="card-title">🟢 3 分钟速览结论（行测 65→75+ / 申论 60→70+ 核心路线）</div>
+    <div class="card-title">🧠 给大脑减负的“主-子双层阅读法则”（按认知科学设计）</div>
+    <p>人脑短期工作记忆一次只能稳稳装下 <strong>3–5 个核心组块</strong>，指望“通读一遍百科全书就上考场”注定一做题就忘。因此第二版采用<strong>双层认知架构</strong>：<br>
+    1. <strong>主文件（本页）只管“导航 + 骨架 + 每天学什么/回炉什么”</strong>——3 分钟看懂考情、时间分配与概率排序；<br>
+    2. <strong>7 个独立专题页负责“深挖 + 盲测 + 防混对比”</strong>——点击下方任意模块即可进入详细推导；<br>
+    3. <strong>全部真题推导解析已修复为默认关闭（折叠）</strong>：先逼大脑自己动笔想 30 秒，再点开看花生十三秒杀步骤，记忆留存率比直接看答案高 3 倍以上！</p>
+  </div>
+
+  <div class="mod-dir-grid">
+    <article class="mod-dir-card" style="border-left-color:#dc2626"><div><div class="mod-dir-head"><strong>模块 01</strong><span class="mod-dir-badge" style="background:#dc2626">S级抢分</span></div><h3>政治理论｜政策映射与2027预测</h3><p>含 2017–2025 真题与政策发文时间窗口实证图、6 大设错原型、2027 考前按概率 P0→P2 排好序的完整政策库（二十届五中全会/新质生产力意见/省委十二届十二次全会/十五五/APEC/和平宣言）与 12+ 道盲测真题。</p></div><a class="mod-dir-link" style="background:#dc2626" href="sd_01_政治理论详讲.html">📖 进入专题详讲页 →</a></article><article class="mod-dir-card" style="border-left-color:#d97706"><div><div class="mod-dir-head"><strong>模块 02</strong><span class="mod-dir-badge" style="background:#d97706">分级止损</span></div><h3>常识判断｜重→轻概率与新法</h3><p>破除传统死背，按 2020–2025 实证概率从高到低 1–10 名排序：P0 锁定《生态环境法典》《新治安管理处罚法》《检察公益诉讼法》《民营经济促进法》等 7 部新法，附 2026 诺奖/中巴航天/超算与医学/文学/经济详析。</p></div><a class="mod-dir-link" style="background:#d97706" href="sd_02_常识判断详讲.html">📖 进入专题详讲页 →</a></article><article class="mod-dir-card" style="border-left-color:#2563eb"><div><div class="mod-dir-head"><strong>模块 03</strong><span class="mod-dir-badge" style="background:#2563eb">A级提效</span></div><h3>言语理解｜花生十三法+高频词</h3><p>引入花生十三逻辑填空“语境呼应+选项分组捆绑排除法”与中心理解“五大行文脉络+主题词+对策优先”，配 99 题高频复现词辨析矩阵与 9 道完整真题逐项排雷（解析默认折叠）。</p></div><a class="mod-dir-link" style="background:#2563eb" href="sd_03_言语理解详讲.html">📖 进入专题详讲页 →</a></article><article class="mod-dir-card" style="border-left-color:#7c3aed"><div><div class="mod-dir-head"><strong>模块 04</strong><span class="mod-dir-badge" style="background:#7c3aed">A级狙击</span></div><h3>数量关系｜必拿母题与极限模型</h3><p>践行花生十三“有选择狙击”：聚焦工程赋值、等额本金/利润十字交叉、整除余数极值、独立概率、立体几何切割及联网补全的 2023 Q42 甲状腺素稳态极限模型，附明确弃题红线。</p></div><a class="mod-dir-link" style="background:#7c3aed" href="sd_04_数量关系详讲.html">📖 进入专题详讲页 →</a></article><article class="mod-dir-card" style="border-left-color:#0284c7"><div><div class="mod-dir-head"><strong>模块 05</strong><span class="mod-dir-badge" style="background:#0284c7">B级稳分</span></div><h3>判断推理｜图推/定义/类比/逻辑</h3><p>系统落实花生十三图推特征识别/对称细化/笔画奇点/三不沾口诀、定义六要素、类比二级辨析，以及逻辑翻译（逆否/德摩根/肯德基原则）、搭桥拆桥、基数削弱、5人条件矩阵全步推演。</p></div><a class="mod-dir-link" style="background:#0284c7" href="sd_05_判断推理详讲.html">📖 进入专题详讲页 →</a></article><article class="mod-dir-card" style="border-left-color:#0891b2"><div><div class="mod-dir-head"><strong>模块 06</strong><span class="mod-dir-badge" style="background:#0891b2">B+速算</span></div><h3>资料分析｜415/假设分配/盐水</h3><p>手把手演示花生十三 ABRX 四量体系、415 份数法（含 t=n-1 误差修正）、假设分配树、盐水混合线段法、乘积与比值增长率、两期比重差，附 2024–2025 三组完整材料真题步步拆解。</p></div><a class="mod-dir-link" style="background:#0891b2" href="sd_06_资料分析详讲.html">📖 进入专题详讲页 →</a></article><article class="mod-dir-card" style="border-left-color:#059669"><div><div class="mod-dir-head"><strong>模块 07</strong><span class="mod-dir-badge" style="background:#059669">S级单列</span></div><h3>申论 B 卷｜踩点/公文/单字作文</h3><p>单独成册，覆盖 2018–2026 连续 9 届 B 卷演进（含联网核查补齐的 2025 申论 B 卷 4 题）。零基础拆解 Q1 概括、Q2 词句理解、Q3 六类短公文 400 字模板与 Q4 单字大作文“材料借壳立意”。</p></div><a class="mod-dir-link" style="background:#059669" href="sd_07_申论B卷详讲.html">📖 进入专题详讲页 →</a></article>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: 考情实证与诚实边界 ============ -->
+<section class="day-section" id="sec-data">
+  <div class="day-header">
+    <span class="day-tag" style="background:#475569">第一部分｜考情全景与样本校准</span>
+    <h1 class="day-title">02｜2017–2026 真题全量演化、今年笔试节点与样本诚实声明</h1>
+    <div class="day-meta">经本地 17 份 PDF 原文抽取 + 公开官方信息联网交叉校验后的客观基线</div>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">📌 2027 年度山东省考核心考务基线与行测做题节拍</div>
     <ul>
-      <li><strong>考制已全面回归大卷深水区</strong>：行测自 2024 年恢复 <span class="hl-yellow">120 题</span>，2025 年首次独立单列 <strong>“政治理论”</strong>；申论 B 卷自 2024 年回归 <span class="hl-yellow">180 分钟 4 题</span>（概括 + 词句理解 + 400 字短应用文 + 1000–1200 字单字主题大作文）。</li>
-      <li><strong>7 天最大 ROI 在 S 级双核</strong>：① <strong>申论 B 卷（60→70+）</strong>此前未系统复习，套用结构模板+材料原词踩点涨分最快；② <strong>政治理论（S 级）</strong>实质已占前 20 题的 70%，吃透 4 秒排雷法即可抢分。</li>
-      <li><strong>A 级精准提效 + C 级止损</strong>：选词紧抓 91.9% 的解释呼应规律与高频复现成语；数量放最后只做 4 类 1 分钟送分母题；常规历史百科<strong>直接止损放弃</strong>。</li>
+      <li><strong>官方时间节点</strong><span class="net-tag">联网核查·官方公告</span>：2027 年度山东省考网上报名 2026-11-06 至 11-09，<strong>公共科目笔试为 2026 年 12 月 6 日</strong>（上午 9:00–11:00 行测 120 题；下午 14:00–17:00 申论 B 卷 180 分钟；开考 15 分钟后禁止入场）。行测继续<strong>单设“政治理论”模块</strong>。</li>
+      <li><strong>行测 65→75+ 黄金做题顺序（120 分钟死线）</strong>：
+        <ol>
+          <li><strong>开场 12–14 分钟</strong>：<code>01 政治理论</code>（8–10 题，政策口诀排雷） + <code>02 常识判断</code>（10–12 题，P0 新法省情稳拿，低频纯百科 5 秒猜选不纠结）。</li>
+          <li><strong>黄金大脑 60 分钟</strong>：<code>03 言语理解</code>（30 题 / ≤28 分钟） → <code>05 判断推理</code>（40 题 / ≤32 分钟，单道图推卡壳 45 秒先跳后回看）。</li>
+          <li><strong>稳收阵地 26 分钟</strong>：<code>06 资料分析</code>（20 题 / ≤26 分钟，单篇卡死 6.5 分钟，花生十三 415+假设分配秒算）。</li>
+          <li><strong>收尾狙击 15 分钟</strong>：<code>04 数量关系</code>（10 题，花 12 分钟只做 4–5 道固定送分母题，其余全蒙 B 或 C） + <strong>3 分钟涂卡核对</strong>。</li>
+        </ol>
+      </li>
     </ul>
   </div>
 
-  <div class="card card-trap">
-    <div class="card-title">🔴 统计口径与样本缺失客观声明</div>
-    <p><strong>行测样本：</strong>去重跳过 <code>2025...(1).pdf</code>，跳过 2022 年第 8–9 题及 2025 年第 32、62、66、91–93、99–100 题共 10 道征集占位题（另 2023 Q42 选项部分缺失），有效题干样本 <strong>950 题</strong>。</p>
-    <p><strong>缺失显式标注：</strong>2026 年行测、2017 年申论、2025 年申论、申论 A 卷/C 卷 <span class="missing-tag">【样本缺失：当前文件夹不含该资料，暂不做推断】</span>。原卷均不含官方答案，所有解析与答案均基于题干及材料推导得出。</p>
-  </div>
+  <h3>一、工作区 2017–2026 真题样本清单与联网补齐核查声明</h3>
+  <div class="table-wrap"><table>
+    <thead>
+      <tr><th>考试年份(真实日期)</th><th>行测样本(9套实有)</th><th>申论 B 卷样本(8套本地+1套联网)</th><th>缺失/补齐与核查诚实说明</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2017 (2017-04-22)</td><td>120题（Q31–50常识含政治1）</td><td><span class="missing-tag">本地缺失 2017 申论</span></td><td>本地无 2017 申论 PDF，仅统计行测 120 题。</td></tr>
+      <tr><td>2018 (2018-04-21)</td><td>120题（Q41首次嵌入山东新旧动能）</td><td>180分钟 4 题（“在深海里练就游泳能力”）</td><td>完整收录。</td></tr>
+      <tr><td>2019 (2019-04-20)</td><td>120题（注意 Q31–45 为15题常识）</td><td>180分钟 4 题（“‘民生’跟着‘民声’走”）</td><td>校正旧版统计口径：2019 常识为 15 题，Q46起即数量。</td></tr>
+      <tr><td>2020 (2020-07-19)</td><td>90题（疫情推迟，政治/常识移至卷首）</td><td>120分钟 3 题（调研报告提纲 + 凡益之道）</td><td>完整收录。</td></tr>
+      <tr><td>2021 (2020-12-19)</td><td>90题（Q1–10常识，含2道政经）</td><td>120分钟 3 题（发言提纲 + 治国犹如栽树）</td><td>完整收录。</td></tr>
+      <tr><td>2022 (2021-12-19)</td><td>88题实有（Q8–Q9 征集占位）</td><td>120分钟 3 题（整改方案提纲 + 把准脉开准方）</td><td>Q8–Q9 联网交叉检索亦无可靠原题，严格留空不编造；跳重(1).pdf。</td></tr>
+      <tr><td>2023 (2023-02-25)</td><td>90题（Q42 选项缺 A/C/D）</td><td>120分钟 3 题（共富公司政务信息 + 自胜）</td><td><span class="net-tag">联网补全 Q42</span> 已核实“每8小时60mg甲状腺素片”完整题干及40–100mg稳态推导。</td></tr>
+      <tr><td>2024 (2023-12-10)</td><td>120题回归（Q1–20 常识占10题政/省）</td><td>180分钟 4 题（案例摘要 + 单字作文“桥”）</td><td>完整收录，确立大卷回归定式。</td></tr>
+      <tr><td>2025 (2024-12-08)</td><td>112题实有（首次单列政治理论 Q1–8）</td><td><span class="net-tag">联网还原</span> 180分钟4题（海洋/水美则鱼肥/口袋公园交流提纲/长效）</td><td><span class="net-tag">联网核查</span> 本地缺 2025 申论已据教研还原四题框架；行测缺 Q32/62/66/91–93/99–100 经核无可靠对应原题，不编造；Q104 缺失图数据已据邮政公报补全为 0.8 个百分点。</td></tr>
+      <tr><td>2026 (2025-12-07)</td><td><span class="net-tag">联网参考</span>（含政治理论改革开放5句原题等回忆要点）</td><td>180分钟 4 题（预付宝信息专报 + “坐标”）</td><td>本地完整保留 2026 申论 B 卷；行测缺整套 PDF，仅引用经多源核实的政治理论回忆真题。</td></tr>
+    </tbody>
+  </table></div>
 
   <div class="svg-wrap">
-    <svg viewBox="0 0 760 155" width="730">
-      <rect x="8" y="10" width="744" height="135" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
-      <text x="24" y="34" font-size="14" font-weight="800" fill="#0f172a">考场黄金时间刻度尺（行测 120 分钟目标 75+ | 申论 B 卷 180 分钟目标 70+）</text>
-      <!-- Xingce bar -->
-      <text x="24" y="62" font-size="12" font-weight="700" fill="#1e3a8a">行测 120m</text>
-      <rect x="105" y="46" width="64" height="24" rx="4" fill="#dc2626"/><text x="137" y="62" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">政+常 12m</text>
-      <rect x="172" y="46" width="148" height="24" rx="4" fill="#2563eb"/><text x="246" y="62" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">言语30题 28m</text>
-      <rect x="323" y="46" width="170" height="24" rx="4" fill="#0891b2"/><text x="408" y="62" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">判断40题 32m</text>
-      <rect x="496" y="46" width="138" height="24" rx="4" fill="#059669"/><text x="565" y="62" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">资料20题 26m</text>
-      <rect x="637" y="46" width="75" height="24" rx="4" fill="#d97706"/><text x="674" y="62" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">数量4题12m</text>
-      <rect x="715" y="46" width="26" height="24" rx="4" fill="#475569"/><text x="728" y="62" font-size="9.5" fill="#fff" text-anchor="middle" font-weight="700">涂</text>
-      <!-- Shenlun bar -->
-      <text x="24" y="106" font-size="12" font-weight="700" fill="#991b1b">申论 180m</text>
-      <rect x="105" y="90" width="35" height="24" rx="4" fill="#475569"/><text x="122" y="106" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">审5m</text>
-      <rect x="143" y="90" width="90" height="24" rx="4" fill="#059669"/><text x="188" y="106" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">Q1 概括 25m</text>
-      <rect x="236" y="90" width="106" height="24" rx="4" fill="#0284c7"/><text x="289" y="106" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">Q2 理解 30m</text>
-      <rect x="345" y="90" width="142" height="24" rx="4" fill="#7c3aed"/><text x="416" y="106" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">Q3 应用文专报 40m</text>
-      <rect x="490" y="90" width="215" height="24" rx="4" fill="#dc2626"/><text x="597" y="106" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="700">Q4 大作文(含5m提纲) 70m</text>
-      <rect x="708" y="90" width="33" height="24" rx="4" fill="#64748b"/><text x="724" y="106" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">查10m</text>
-      <text x="24" y="135" font-size="11.5" fill="#475569">💡 铁律：行测单题卡壳超 45 秒立刻跳过；申论小题写完一题再读下一题对应材料，不一次性通读全部材料浪费时间！</text>
+    <svg viewBox="0 0 760 150" width="730">
+      <rect x="0" y="0" width="760" height="150" rx="10" fill="#f8fafc"/>
+      <text x="380" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">山东真题命题重心实证跃迁图（基于 2017–2025 卷首20题真实构成比例）</text>
+      <text x="20" y="55" font-size="12" font-weight="bold" fill="#475569">2017–2018 联考期</text>
+      <rect x="160" y="42" width="30" height="20" rx="3" fill="#dc2626"/><rect x="192" y="42" width="165" height="20" rx="3" fill="#d97706"/><rect x="359" y="42" width="380" height="20" rx="3" fill="#94a3b8"/>
+      <text x="275" y="56" text-anchor="middle" font-size="11" fill="#fff">法律27.5%</text><text x="549" y="56" text-anchor="middle" font-size="11" fill="#fff">文史百科67.5%（政治省情仅5%）</text>
+      <text x="20" y="88" font-size="12" font-weight="bold" fill="#475569">2024 回归120题</text>
+      <rect x="160" y="75" width="290" height="20" rx="3" fill="#dc2626"/><rect x="452" y="75" width="58" height="20" rx="3" fill="#d97706"/><rect x="512" y="75" width="227" height="20" rx="3" fill="#94a3b8"/>
+      <text x="305" y="89" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">政治+山东大政 50% (10题)</text><text x="481" y="89" text-anchor="middle" font-size="10" fill="#fff">法10%</text><text x="625" y="89" text-anchor="middle" font-size="11" fill="#fff">科史经 40% (8题)</text>
+      <text x="20" y="121" font-size="12" font-weight="bold" fill="#0f172a">2025 单列政治后</text>
+      <rect x="160" y="108" width="348" height="20" rx="3" fill="#b91c1c"/><rect x="510" y="108" width="58" height="20" rx="3" fill="#d97706"/><rect x="570" y="108" width="169" height="20" rx="3" fill="#64748b"/>
+      <text x="334" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">政治理论+山东大政 60% (12/20题)</text><text x="539" y="122" text-anchor="middle" font-size="10" fill="#fff">法10%</text><text x="654" y="122" text-anchor="middle" font-size="11" fill="#fff">科/经/文 30%</text>
+      <text x="380" y="143" text-anchor="middle" font-size="11" fill="#64748b">结论：纯百科从 67.5% 断崖缩水至 20% 以内，政治理论+新法+山东大政合计已占卷首 70%！</text>
     </svg>
   </div>
-
-  <h2>一、 2017–2025 行测 9 套真题模块结构演进（按真题实际归属校对）</h2>
-  <div class="table-wrap"><table>
-    <thead><tr><th>年份</th><th>有效/总题</th><th>政治理论</th><th>常识判断</th><th>言语(选词/片段/语句)</th><th>数量</th><th>判断(图/定/类/逻)</th><th>资料分析</th></tr></thead>
-    <tbody>
-      <tr><td><strong>2017–2019 联考期</strong></td><td>各 120(120)</td><td>并入常识</td><td>20（Q31–50）</td><td>30（选词10–11 / 片段11–15 / 语句4–9）</td><td>10</td><td>40（10/10/10/10）</td><td>20</td></tr>
-      <tr><td><strong>2020–2023 缩题期</strong></td><td>各 90（2022有效88）</td><td>并入常识</td><td>10（Q1–10）</td><td>25（选词10–14 / 片段7–12 / 语句3–5）</td><td>10</td><td>30（5/5/10/10）</td><td>15</td></tr>
-      <tr><td><strong>2024 回归大卷</strong></td><td>120(120)</td><td>并入常识</td><td>20（Q1–20）</td><td>30（10 / 14 / 6）</td><td>10</td><td>40（10/10/10/10）</td><td>20</td></tr>
-      <tr><td><strong>2025 最新考纲</strong></td><td>120(112)</td><td><span class="badge-must">单列 8 题</span></td><td>12（含Q9–10省情大政）</td><td>30（11 / 14 / 4 / 缺1）</td><td>10</td><td>40（含缺6题）</td><td>20（含缺1题）</td></tr>
-    </tbody>
-  </table></div>
 </section>
 
-<!-- ======================== SECTION 02 ======================== -->
-<section class="day-section" id="sec02">
+<!-- ============ SECTION 3: 政治与常识主控浓缩骨架 ============ -->
+<section class="day-section" id="sec-pol-ck">
   <div class="day-header">
-    <span class="day-tag tag-ability">第一篇 · B级保底与C级止损</span>
-    <h1 class="day-title">02｜B 级模块四大陷阱与 C 级省情法律止损清单</h1>
-    <div class="day-meta">资料分析高频坑点实证 + 138 道常识全量拆解后仅保留的省情密码与高频法律</div>
+    <span class="day-tag" style="background:#dc2626">第二部分｜主文件精炼速览（附详细专题跳转）</span>
+    <h1 class="day-title">03｜政治理论 &amp; 常识判断：概率排雷总图与 2027 靶向重点</h1>
+    <div class="day-meta">主文件帮你 3 分钟掌握命题窗口律与高概率名单；具体政策原文拆解、6 年真题全析与易篡改点见独立详情页</div>
   </div>
 
   <div class="card card-trap">
-    <div class="card-title">🔴 资料分析（9 套 164 题）最阴险 4 大坑位（考前必扫）</div>
-    <ol>
-      <li><strong>表注汇率/单位坑</strong> <span class="src-tag">2025行测｜第107题</span>：表内“外商投资企业注册资本 1647.88 亿元”，表注写“按 1:7.0 汇率折算为人民币”，问“多少亿美元”故意设选项 <code>B.1648</code> 钓不看表注的考生（正解 $1647.88/7 \approx 235.4$，选 D）。</li>
-      <li><strong>“比值增速”偷换“比重差百分点”</strong> <span class="src-tag">2025行测｜第106题</span>：问城镇化率<strong>同比增速</strong>公式，B 项给 <code>现期比重 − 基期比重</code>（这是百分点变化量！），A 项 <code>(现期比重/基期比重) - 100%</code> 才是增速。</li>
-      <li><strong>双坐标轴视觉误导</strong> <span class="src-tag">2025行测｜第101–104题</span>：左轴全国快递（0–1500亿件）与右轴省内快递（0–80亿件）刻度完全不同，求比重极差必须逐年算除法（$70.7/1320.7 - 28.9/635.2 \approx 5.35\%-4.55\% = 0.8$ 个百分点）。</li>
-      <li><strong>时间合并（1–2月）与缺失月</strong> <span class="src-tag">2025行测｜第111–113题</span>：<code>2024年1–2月</code> 合并柱子为 7452 万吨，算月均须除以 2；Q113 B 项出现图表中根本未给前月数据的 <code>2022年11月</code>（直接排除）。</li>
-    </ol>
+    <div class="card-title">🔴 核心命题铁律：考前 0.6–6.5 个月政策窗口（截止至考前 18 天！）</div>
+    <p>统计 2020–2025 真实开考日与政策发文日差值：<span class="hl-yellow">85% 以上真题落在考前 0.6–6.5 个月热区</span>，最晚可压线到<strong>考前 19–24 天</strong>（如 `2024 Q5` 考 19 天前发布会；`2025 Q17` 考 21 天前“梦想号”入列；`2025 Q8` 考 24 天前智库联盟）！<br>
+    反推本次 <strong>2026 年 12 月 6 日</strong> 考试：<strong>2026 年 6 月至 11 月下旬</strong>出台的中央全会、国务院文件、全国人大新法、山东省委全会与主场外交正是靶心核心！</p>
   </div>
 
-  <div class="card card-intuition">
-    <div class="card-title">🟢 C 级主动止损决策（9 套 138 道政治+常识占比拆解）</div>
-    <p>全量统计：<strong>法律 51 题（37.0%）</strong>、<strong>政治/中央大政 27 题（19.6%）</strong>、<strong>山东省情 17 题（12.3%）</strong>，三者合占近 <strong>70%</strong>！而文史地（14 题）与生活科技百科（27 题）极零碎，<strong>最后 7 天彻底放弃历史/诗词/生物百科，只背下面两张表！</strong></p>
-  </div>
-
-  <h2>一、 9 套真题反复考查的“山东省情密码”</h2>
+  <h3>一、政治理论 2027 考点按概率由高到低速览表（详情点击跳转 <a href="sd_01_政治理论详讲.html">01 政治理论详讲页 →</a>）</h3>
   <div class="table-wrap"><table>
-    <thead><tr><th>省情维度</th><th>真实真题出处</th><th>考前必熟记核心提法</th></tr></thead>
+    <thead>
+      <tr><th>概率分级</th><th>今年权威政策/会议节点（已联网核实）</th><th>核心防错锚点（命题人最易偷换处）</th><th>跳转详讲</th></tr>
+    </thead>
     <tbody>
-      <tr><td><strong>总定位使命</strong></td><td><span class="src-tag">2019 Q32</span> <span class="src-tag">2023 Q2</span> <span class="src-tag">2025 Q9</span></td><td>2024年5月视察山东赋予 <strong>“走在前、挑大梁”</strong> 重大使命（改革开放勇争先、粮食安全、科技创新与产业创新融合、新时代文化使命）。</td></tr>
-      <tr><td><strong>区域与交通</strong></td><td><span class="src-tag">2018 Q41</span> <span class="src-tag">2020 Q2</span> <span class="src-tag">2021 Q2</span> <span class="src-tag">2024 Q4</span></td><td>新旧动能转换“三核”：<strong>济南、青岛、烟台</strong>；“一群两心三圈”：半岛城市群、济青两中心、<strong>省会/胶东/鲁南</strong>三大经济圈；交通强国“四纵五横沿黄达海”。</td></tr>
-      <tr><td><strong>黄河与绿碳</strong></td><td><span class="src-tag">2022 Q2</span> <span class="src-tag">2023 Q3</span> <span class="src-tag">2025 Q4</span></td><td><strong>黄河口湿地保护</strong>、山东 <strong>4 处引黄灌溉区入选数字孪生灌区试点全国第一</strong>；煤电“三改联动”、青岛/烟台港沿海 LNG 接收站。</td></tr>
-      <tr><td><strong>海洋重器</strong></td><td><span class="src-tag">2024 Q7</span></td><td><strong>“国信1号”</strong>（全球首艘10万吨级智慧渔业养殖工船）、<strong>“蓝鲸1号”</strong>（半潜式钻井平台）、<strong>“深蓝1号”</strong>（深海智能养殖装备）；<em>注意：“深海1号”才属超深水大气田，非“耕海1号”。</em></td></tr>
-      <tr><td><strong>政务与红色</strong></td><td><span class="src-tag">2024 Q5, Q6</span> <span class="src-tag">2019 Q39</span> <span class="src-tag">2022 Q6</span></td><td>“三大行动”（爱山东平台、96178 企业家号码、齐鲁码）；6 条红色线路（大青山、胶东乳娘等）；大汶口/龙山文化遗址。</td></tr>
+      <tr>
+        <td><span class="badge-p0">P0 · 90%</span></td>
+        <td><strong>党的二十届五中全会</strong><br><code>2026.10.26–29</code>（考前38天）</td>
+        <td>① 文件：《持之以恒推进<strong>全面从严治党</strong>若干重大问题的决定》（防混四中全会《十五五建议》）；② 周期率两个答案：<strong>人民监督政府 + 自我革命</strong>；③ 决定<strong>二十一大 2027 年下半年</strong>召开（防改成上半年）。</td>
+        <td><a href="sd_01_政治理论详讲.html#pol-p0-1">查看原文与真题映射 →</a></td>
+      </tr>
+      <tr>
+        <td><span class="badge-p0">P0 · 88%</span></td>
+        <td><strong>《关于发展新质生产力的意见》</strong><br><code>2026.10.09</code>（考前58天）</td>
+        <td>① 核心标志：<strong>全要素生产率大幅提升</strong>（防改成劳动生产率）；② 16 字原则：<strong>创新主导、改革为要、因地制宜、先立后破</strong>；③ 底线：<strong>不能脱实向虚、贪大求全、搞泡沫化/空心化</strong>。</td>
+        <td><a href="sd_01_政治理论详讲.html#pol-p0-2">查看19项任务拆解 →</a></td>
+      </tr>
+      <tr>
+        <td><span class="badge-p0">P0 · 88%</span></td>
+        <td><strong>山东省委十二届十二次全会</strong> <code>2026.11.19–20</code> &amp; <strong>2026 山东大政</strong></td>
+        <td>① 审议贯彻五中全会全面从严治党《意见》与省第十三次党代会《决议》；② 2025 山东 GDP <strong>10.3 万亿（+5.5%）</strong>全国第3北方第1；③ 山东<strong>“AI消费+”/海洋 Token 工厂/美丽中国省域先行区/零碳工厂</strong>。</td>
+        <td><a href="sd_01_政治理论详讲.html#pol-p0-3">查看山东高频考法 →</a></td>
+      </tr>
+      <tr>
+        <td><span class="badge-p1">P1 · 75%</span></td>
+        <td><strong>2026 全国两会《政府工作报告》&amp; 十五五纲要</strong>（<code>2026.3.5</code>） + <strong>中央经济工作会议</strong>（<code>2025.12</code>）</td>
+        <td>① 十五五 20 项指标：研发投入年均 <strong>&gt;7%</strong>、数字经济核心产业占 GDP <strong>12.5%</strong>、单位 GDP 二氧化碳排放累计降 <strong>17%</strong>；② 宏观组合：<strong>更加积极财政 + 适度宽松货币</strong>；③ 首要任务：<strong>建设强大国内市场</strong>；2025.12 会议新概括<strong>“五个必须”</strong>（防与 2024“五个必须统筹”混搭）。</td>
+        <td><a href="sd_01_政治理论详讲.html#pol-p1-4">查看指标清单 →</a></td>
+      </tr>
+      <tr>
+        <td><span class="badge-p1">P1 · 70%</span></td>
+        <td><strong>2026.11 深圳 APEC &amp;《中俄美元首和平宣言》</strong> + <strong>中央一号文件</strong>（<code>2026.2.3</code>）</td>
+        <td>① APEC《深圳展望》搭建亚太共同体<strong>“四梁八柱”（经贸/联通/创新/发展）</strong>；② 中俄美首次三边会晤重申<strong>“核战争打不赢也打不得”</strong>；③ 一号文件：粮食产量稳在 <strong>1.4 万亿斤左右</strong>。</td>
+        <td><a href="sd_01_政治理论详讲.html#pol-p1-5">查看外交与三农 →</a></td>
+      </tr>
+      <tr>
+        <td><span class="badge-p2">P2 · 50%</span></td>
+        <td><strong>建党 105 周年 / 长征胜利 90 周年 / 孙中山诞辰 160 周年</strong> + <strong>2026 尼山论坛</strong> + 马哲对比</td>
+        <td>长征大会（2026.10.22）；孙中山大会（2026.11.12）；尼山论坛主题<strong>“文明·秩序·公理”</strong>；马哲必分清“社会基本矛盾才是根本动力”“AI 只是模仿性趋近无自我意识”。</td>
+        <td><a href="sd_01_政治理论详讲.html#pol-p2-7">查看哲学与周年 →</a></td>
+      </tr>
     </tbody>
   </table></div>
 
-  <div class="card card-formula">
-    <div class="card-title">🔵 高频 4 部必背法律规则（9 套占 51 题的核心）</div>
-    <ul>
-      <li><strong>《公务员法》</strong> <span class="src-tag">2020 Q3</span> <span class="src-tag">2023 Q6</span> <span class="src-tag">2024 Q11</span>：受处分期间（警告6/记过12/记大过18/降撤24月）<strong>不得晋升职务职级级别</strong>；连续两年不称职予以<strong>辞退</strong>。</li>
-      <li><strong>《民法典》侵权</strong> <span class="src-tag">2022 Q3</span> <span class="src-tag">2023 Q4</span>：环境污染实行<strong>无过错责任+因果关系倒置</strong>（未超标排污也需担责）；高空抛物能证明自己不在场<strong>不承担补偿责任</strong>；未牵绳宠物伤人即使被挑逗也<strong>不能免责</strong>（只能减轻）。</li>
-      <li><strong>《保守国家秘密法》</strong> <span class="src-tag">2025 Q15</span>：省级可定绝/机/秘密级；<strong>设区的市级只能定机密、秘密级，无权定绝密级</strong>；县级以上纳入国民经济和社会发展规划与预算。</li>
-      <li><strong>《突发事件应对法》</strong> <span class="src-tag">2025 Q16</span>：信息发布必须统一、准确、及时，<strong>不能对灾害现场随意进行“网络实时直播”</strong>。</li>
-    </ul>
-  </div>
+  <h3>二、常识判断（法律+非法律）2027 重→轻排序速览（详情点击 <a href="sd_02_常识判断详讲.html">02 常识判断详讲页 →</a>）</h3>
+  <ul>
+    <li><strong><span class="badge-p0">第一顺位 P0</span> 2025–2026 新施行核心法律（每年必考 1 题以上新法 + 《公务员法》/《民法典》1 题）</strong>：重点锁定 <strong>《生态环境法典》（2026.8.15施行，五编 1242 条）</strong>、<strong>新《治安管理处罚法》（2026.1.1施行，第19条正当防卫/无人机黑飞/未成年人拘留/高空抛物）</strong>、<strong>《检察公益诉讼法》（2026.11.6通过）</strong>、<strong>《民族团结进步促进法》（2026.7.1施行）</strong>、<strong>《增值税法》（2026.1.1施行）</strong>、<strong>《民营经济促进法》（2025.5.20施行）</strong>、<strong>新《仲裁法》（2026.3.1施行）</strong>。</li>
+    <li><strong><span class="badge-p1">第二顺位 P1</span> 非法律高概率前 6 名（基于 2020–2025 实证）</strong>：① <strong>医学急救与诊断设备（83%）</strong> → ② <strong>传统文化书画文物（67%）</strong> → ③ <strong>文学诗词名著（67%）</strong> → ④ <strong>政策关联财政/新词（近两年 100%）</strong> → ⑤ <strong>党史时间轴（50%）</strong> → ⑥ <strong>2026 诺贝尔三大科学奖 &amp; 中国航天中巴联合飞行 / 灵晟超算（近两年急升）</strong>。</li>
+    <li><strong><span class="badge-skip">第三顺位 止损区</span></strong>：生僻古代人物（17%）、纯自然地理（17%）考前放弃死背。</li>
+  </ul>
 </section>
 
-<!-- ======================== SECTION 03 ======================== -->
-<section class="day-section" id="sec03">
+<!-- ============ SECTION 4: 行测4模块+申论方法论总纲 ============ -->
+<section class="day-section" id="sec-methods">
   <div class="day-header">
-    <span class="day-tag tag-predict">第一篇 · 2027 山东省考（2026.12.6 笔试）押题预测</span>
-    <h1 class="day-title">03｜结合真题演变与 2026 最新时政省情的今年考试预测</h1>
-    <div class="day-meta">按“考前1年内中央全会 + 山东最新会议 + 当年新施行法律”命题规律精准锁定</div>
-  </div>
-
-  <div class="card card-quiz">
-    <div class="card-title">💎 预测 1：政治理论（大概率 8–10 题）4 大必背新提法</div>
-    <ol>
-      <li><strong>党的二十届五中全会（2026年10月26–29日）</strong>：审议通过《中共中央关于持之以恒推进全面从严治党若干重大问题的决定》，决定 <strong>2027 年下半年召开党的二十一大</strong>。</li>
-      <li><strong>山东省委十二届十二次全会（2026年11月19–20日刚闭幕！）</strong>：强调 <strong>“增强党性是全面从严治党的根本性任务”</strong>，关键在<strong>从严治吏</strong>（树立正确用人导向与正确政绩观），“三不腐”一体推进，高质量党建保障“十五五”及“走在前、挑大梁”。</li>
-      <li><strong>《关于发展新质生产力的意见》（2026年10月印发）</strong>：以 <span class="hl-yellow">全要素生产率大幅提升</span> 为核心标志；方法论坚持 <strong>因地制宜、先立后破</strong>（严禁泡沫化）；全面实施 <strong>“人工智能+”行动</strong>打造智能经济新形态；纵深推进全国统一大市场，综合整治 <strong>“内卷式”竞争</strong>。</li>
-      <li><strong>2026 年“十五五”开局与山东最新硬指标</strong>：宏观取向为<strong>更加积极的财政政策 + 适度宽松的货币政策</strong>，把<strong>建设强大国内市场（提振消费专项行动）</strong>放重点任务首位；2025 年山东 GDP 达 <span class="hl-pink">10.3 万亿元（+5.5%）</span>，成<strong>全国第 3、北方第 1 个破 10 万亿省份</strong>；被明确为<strong>“美丽中国省域先行区”</strong>，拥有全部 <strong>41 个工业大类</strong>，推进 10 个绿电产业园与全国首个<strong>海洋 Token 工厂</strong>、“琅琊”海洋大模型 2.0。</li>
-    </ol>
-  </div>
-
-  <div class="card card-quiz">
-    <div class="card-title">💎 预测 2：紧扣“1 年内新施行法律必考”铁律的 3 部新法</div>
-    <ul>
-      <li><strong>新修订《治安管理处罚法》（2026.1.1 施行）</strong>：<strong>新增正当防卫制度</strong>（为免受正在进行的不法侵害采取制止行为造成损害不受处罚，厘清“互殴”与防卫边界）；将无人机“黑飞”、高空抛物、不拴绳遛犬、噪声扰民细化纳入处罚。</li>
-      <li><strong>《增值税法》及《实施条例》（2026.1.1 施行）</strong>：我国第一大税种完成立法，落实“税收法定”与“保护纳税人合法权益”；小规模纳税人标准（年应税销售额未超 500 万元）。</li>
-      <li><strong>《民营经济促进法》（2025.5.20 施行）</strong>：我国首部专门关于民营经济的基础性法律，“两个毫不动摇”入法，规定平等法律地位与公平竞争，严查违规异地执法与趋利性执法。</li>
-    </ul>
-  </div>
-
-  <div class="card card-quiz">
-    <div class="card-title">💎 预测 3：申论 B 卷延续“180 分钟 4 题制”三大热点切口</div>
-    <ul>
-      <li><strong>Q1 概括/Q3 短应用文</strong>：高度聚焦 <strong>① “人工智能+制造”赋能传统产业/海洋强省转型；② 涉企执法“瘦身”与营商环境优化；③ “一老一小”/新就业群体权益与“AI消费+”提振消费新场景</strong>。</li>
-      <li><strong>Q2 理解/Q4 抽象主题大作文</strong>：极大概率延续 <strong>2 字抽象词</strong>（继 2024“桥”、2026“坐标”之后，关注如“向新”“破壁”“刻度”“韧性”“融通”等），紧扣材料主题即可 100% 不跑题。</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ======================== SECTION 04 ======================== -->
-<section class="day-section" id="sec04">
-  <div class="day-header">
-    <span class="day-tag tag-pol">第二篇 · S 级核心抢分</span>
-    <h1 class="day-title">04｜行测·政治理论“4 秒排雷口诀”与母题精讲</h1>
-    <div class="day-meta">2025 年单列“政治理论”且“正确的有几项”题型占半壁江山，掌握排错规律即可秒杀</div>
-  </div>
-
-  <div class="card card-trick">
-    <div class="card-title">🟣 政治理论 4 秒排除干扰项口诀</div>
-    <ol>
-      <li><strong>一抓张冠李戴</strong>：政协职责（求同存异）混入人大制度（2025 Q2）；亚投行宗旨混入金砖银行（2025 Q8）；国安体系混入法治体系（2025 Q3）；山西“一泓清水”安到宁夏头上（2025 Q4）。</li>
-      <li><strong>二抓主次颠倒</strong>：把“预防为主”改成“救援为主”（2025 Q6）；把“供给侧”改成“需求侧”（2025 Q13）；把“重要力量”改成“根本动力/永恒条件”（2025 Q12）。</li>
-      <li><strong>三抓节点编造</strong>：牢记改革标准时间轴 <strong>2029（建国80周年）→ 2035（基本实现现代化）→ 本世纪中叶（强国强省）</strong>，出现生僻周年（如“建党120周年”）必假（2025 Q10）。</li>
-      <li><strong>四抓省情正反</strong>：夸山东拿“全国第一/首创”的成就项通常为真（如 4 处引黄数字孪生灌区试点全国第一），错误常在外省成果归属或定义概念上做手脚。</li>
-    </ol>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 真题母题精讲 1：目录级张冠李戴 <span class="src-tag">2025年行测｜第3题</span></div>
-    <p>党的二十届三中全会决定提出“完善中国特色社会主义法治体系”。下列属于完善中国特色社会主义法治体系的有几项？<br>
-    ①深化立法领域改革 ②深入推进依法行政 ③健全公正执法司法体制机制 ④完善推进法治社会建设机制 ⑤完善国家安全法治体系<br>
-    A.2项 &nbsp; B.3项 &nbsp; C.4项 &nbsp; D.5项</p>
-    <details class="sol" open><summary>点击展开推导解析</summary>
-      <p><strong>推导答案：C（4 项）</strong>。三中全会《决定》第九部分“完善中国特色社会主义法治体系”包含前 4 项及“加强涉外法治建设”；而 <strong>⑤ 完善国家安全法治体系</strong> 属于第十三部分“推进国家安全体系和能力现代化”，属于跨章节混入！</p>
-    </details>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 真题母题精讲 2：主次概念偷换 <span class="src-tag">2025年行测｜第6题</span></div>
-    <p>关于公共安全治理，下列说法正确的有几项？<br>
-    ①应急救援是完善公共安全治理体制的首要环节 ②坚持安全第一、救援为主 ③健全重大突发公共事件处置保障体系，完善大安全大应急框架 ④完善安全生产风险排查整治和责任倒查机制 ⑤加强网络安全体制建设……<br>
-    A.2项 &nbsp; B.3项 &nbsp; C.4项 &nbsp; D.5项</p>
-    <details class="sol" open><summary>点击展开推导解析</summary>
-      <p><strong>推导答案：B（3 项）</strong>。公共安全治理第一道防线是<strong>预防</strong>，基本方针是“安全第一、<strong>预防为主</strong>”，把“预防”偷换成“救援”导致 ①② 均错误！③④⑤ 正确。</p>
-    </details>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 真题母题精讲 3：山东时间节点核验 <span class="src-tag">2025年行测｜第10题</span></div>
-    <p>山东省提出进一步全面深化改革的目标，下列表述正确的是：①到二〇二九年……取得决定性成果 ②到二〇三五年……基本实现治理体系和治理能力现代化 ③到建党一百二十周年，全面实现山东经济社会高质量发展 ④到本世纪中叶，全面建成新时代社会主义现代化强省<br>
-    A.①②③ &nbsp; B.②③④ &nbsp; C.①②④ &nbsp; D.①③④</p>
-    <details class="sol" open><summary>点击展开推导解析</summary>
-      <p><strong>推导答案：C（①②④）</strong>。③“建党一百二十周年”系强行编造的时间节点，直接排除含 ③ 选项秒选 C！</p>
-    </details>
-  </div>
-</section>
-
-<!-- ======================== SECTION 05 ======================== -->
-<section class="day-section" id="sec05">
-  <div class="day-header">
-    <span class="day-tag tag-ability">第二篇 · A 级精准提效</span>
-    <h1 class="day-title">05｜行测·选词填空 99 题高频词库与 4 大语境呼应</h1>
-    <div class="day-meta">全量统计 9 套共 99 道选词题：91.9% 含解释/因果标志、75.8% 含并列/递进标志、53.5% 含转折标志</div>
-  </div>
-
-  <h2>一、 9 套真题最高频复现词/成语辨析速查表（直接背诵）</h2>
-  <div class="table-wrap"><table>
-    <thead><tr><th>高频词组（出现频次）</th><th>真实真题出处</th><th>考场一锤定音辨析法</th></tr></thead>
-    <tbody>
-      <tr><td><strong>因噎废食</strong>(3) / <strong>视而不见</strong>(2) / <strong>熟视无睹</strong>(2) / <strong>一叶障目</strong>(2)</td><td><span class="src-tag">2020 Q11</span> <span class="src-tag">2021 Q11</span> <span class="src-tag">2023 Q16</span> <span class="src-tag">2019 Q10</span></td><td><strong>因噎废食</strong>＝怕出问题就彻底不干；<strong>视而不见/熟视无睹</strong>＝看到了装没看见/习以为常不管（监管失职）。</td></tr>
-      <tr><td><strong>相得益彰</strong>(3) / <strong>相辅相成</strong>(2) / <strong>珠联璧合</strong>(2) / <strong>并行不悖</strong>(2)</td><td><span class="src-tag">2018 Q5</span> <span class="src-tag">2021 Q18</span> <span class="src-tag">2025 Q29,30</span> <span class="src-tag">2020 Q12</span></td><td><strong>相得益彰</strong>＝相互配合优点更显（自然与人文景观）；<strong>相辅相成</strong>＝互相补充缺一不可；<strong>并行不悖</strong>＝同时进行不冲突。</td></tr>
-      <tr><td><strong>精益求精</strong>(3) / <strong>循序渐进</strong>(2) / <strong>急功近利</strong>(2)</td><td><span class="src-tag">2017 Q7</span> <span class="src-tag">2021 Q11,12</span> <span class="src-tag">2022 Q12,19</span> <span class="src-tag">2025 Q25</span></td><td><strong>急功近利</strong>常作为“不能……必须深耕细作/久久为功”的反义照应；<strong>循序渐进</strong>重步骤渐进；<strong>精益求精</strong>重好上加好。</td></tr>
-      <tr><td><strong>空中楼阁</strong>(2) / <strong>纸上谈兵</strong>(2)</td><td><span class="src-tag">2020 Q13</span> <span class="src-tag">2024 Q23</span></td><td>看到<strong>“根基不稳/基础不牢”直接锁死“空中楼阁”</strong>；“纸上谈兵”强调脱离实践空谈理论。</td></tr>
-      <tr><td><strong>革故鼎新</strong>(3) / <strong>一脉相承</strong>(2) / <strong>薪火相传</strong> / <strong>推陈出新</strong></td><td><span class="src-tag">2018 Q6,9</span> <span class="src-tag">2022 Q13</span> <span class="src-tag">2024 Q29,30</span></td><td><strong>一脉相承</strong>可搭“传说、民俗、家训”等文化延续；“口耳相传”不搭民俗家训；<strong>革故鼎新/推陈出新</strong>重破旧立新。</td></tr>
-      <tr><td><strong>屡禁不止</strong>(2) / <strong>层出不穷</strong>(2) / <strong>趋之若鹜</strong>(2)</td><td><span class="src-tag">2020 Q15</span> <span class="src-tag">2022 Q15</span> <span class="src-tag">2017 Q10</span></td><td><strong>屡禁不止</strong>专搭盗版/违法乱象；<strong>层出不穷</strong>中性指接连出现；<strong>趋之若鹜</strong>贬义指盲目追逐。</td></tr>
-      <tr><td><strong>实词热词：基底/根基/支撑/托举/发轫/反馈/模糊</strong></td><td><span class="src-tag">2023 Q22</span> <span class="src-tag">2024 Q26</span> <span class="src-tag">2025 Q21,22</span></td><td><strong>发轫</strong>＝开端起源；传统制造业配<strong>基底/不可或缺</strong>；AI 提供情感<strong>反馈</strong>、底线不能<strong>模糊</strong>；耐心资本重<strong>稳定性/托举</strong>。</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 语境呼应实战精讲 1（解释说明 + 搭配秒杀）<span class="src-tag">2024年行测｜第23题</span></div>
-    <p>不筑牢药品的安全底线，<strong>安全根基不稳</strong>，再多的创新也是______。……才能有效______药品安全形势的总体稳定。<br>
-    A.纸上谈兵 保障 &nbsp; B.徒劳无功 提升 &nbsp; C.空中楼阁 维护 &nbsp; D.本末倒置 控制</p>
-    <details class="sol" open><summary>点击展开秒杀步骤</summary>
-      <p><strong>推导答案：C</strong>。前句出现“安全根基不稳”直接解释对应“空中楼阁”；第二空宾语为“总体稳定”，只能搭配“维护稳定”（不能“提升稳定”），一步锁死 C。</p>
-    </details>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 语境呼应实战精讲 2（转折反向照应）<span class="src-tag">2022年行测｜第12题</span></div>
-    <p>人才工作<strong>不能______，必须深耕细作</strong>，向深处用情，既要有“千金市马骨”的______，也要有“千年等一回”的耐心。<br>
-    A.浅尝辄止 热情 &nbsp; B.粗枝大叶 决心 &nbsp; C.急功近利 诚意 &nbsp; D.好高骛远 智慧</p>
-    <details class="sol" open><summary>点击展开秒杀步骤</summary>
-      <p><strong>推导答案：C</strong>。“不能……必须深耕细作”+“千年等一回的耐心”反向锁定 <strong>急功近利</strong>；“千金市马骨”典故直接对应招贤的<strong>诚意</strong>。</p>
-    </details>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 语境呼应实战精讲 3（突破口固定搭配）<span class="src-tag">2025年行测｜第25题</span></div>
-    <p>减重不是秤上的数字游戏，而是一种______的健康生活方式。……不仅能更好地控制体重，也能让精神面貌______。<br>
-    A.行之有效 光彩夺目 &nbsp; B.立竿见影 与众不同 &nbsp; C.细水长流 焕然一新 &nbsp; D.循序渐进 改头换面</p>
-    <details class="sol" open><summary>点击展开秒杀步骤</summary>
-      <p><strong>推导答案：C</strong>。先看第二空“精神面貌”只能固定搭配 <strong>“焕然一新”</strong>（“改头换面”含贬义，“光彩夺目”多饰风光），第一空“细水长流”反照前文求快的“数字游戏”，10 秒锁定 C！</p>
-    </details>
-  </div>
-</section>
-
-<!-- ======================== SECTION 06 ======================== -->
-<section class="day-section" id="sec06">
-  <div class="day-header">
-    <span class="day-tag tag-ability">第二篇 · A 级精准提效</span>
-    <h1 class="day-title">06｜行测·数量关系“4 类 1 分钟送分母题”+ 弃题红线</h1>
-    <div class="day-meta">基于 9 套 90 道数量题统计：最后 12 分钟稳拿 4–5 道固定套路题，其余统一蒙 B 或 C</div>
-  </div>
-
-  <div class="card card-formula">
-    <div class="card-title">🔵 母题 1：赋值法工程问题（近 4 届考 3 次，40 秒稳拿）</div>
-    <p><strong>口诀：</strong>给时间赋公倍数总量；给效率比直接设小整数；给两组合作方案直接列等式消元求效率比。</p>
-    <p><strong>真题演练</strong> <span class="src-tag">2025年行测｜第53题</span>：张先做 5 天、李再做 9 天完工；若张做 7 天、李做 6 天也完工。现张李合做 3 天后张离开，李还需几天？</p>
-    <details class="sol" open><summary>点击展开 30 秒秒杀算式</summary>
-      <p><strong>推导答案：D（9 天）</strong>。由 $5\text{张}+9\text{李}=7\text{张}+6\text{李} \Rightarrow 2\text{张}=3\text{李}$，赋 $\text{张}=3,\text{李}=2$，总量 $=5\times3+9\times2=33$。合做 3 天完成 $3\times(3+2)=15$，剩 $18$，李独做 $18/2=9$ 天。</p>
-    </details>
-  </div>
-
-  <div class="card card-formula">
-    <div class="card-title">🔵 母题 2：和差倍比方程与利润/十字交叉（占比 34%，50 秒稳拿）</div>
-    <p><strong>真题演练 A（方程消元）</strong> <span class="src-tag">2024年行测｜第53题</span>：6 人共筹资 110 万元，投资额有 10 万、20 万、30 万三种，投 10 万的比 20 万多 2 人，问投 30 万有几人？</p>
-    <details class="sol" open><summary>点击展开 30 秒秒杀算式</summary>
-      <p><strong>推导答案：A（2 人）</strong>。设 20 万 $x$ 人、30 万 $y$ 人，则 $(x+2)+x+y=6 \Rightarrow 2x+y=4$；金额 $10(x+2)+20x+30y=110 \Rightarrow x+y=3$。相减得 $x=1 \Rightarrow y=2$。</p>
-    </details>
-    <p><strong>真题演练 B（打折利润）</strong> <span class="src-tag">2025年行测｜第56题</span>：288 元购进 120 支康乃馨，期望利润 50%，售出 75% 后打折促销，总利润为期望的 85%，打了几折？</p>
-    <details class="sol" open><summary>点击展开 45 秒秒杀算式</summary>
-      <p><strong>推导答案：C（8 折）</strong>。单支成本 $2.4$ 元，定价 $3.6$ 元（单支利润 $1.2$ 元，总期望 $144$ 元）。实际赚 $144\times0.85=122.4$ 元，前 90 支赚 $108$ 元，余 30 支赚 $14.4$ 元（单支赚 $0.48$ 元），折后价 $2.88$ 元，$2.88/3.6=0.8$。</p>
-    </details>
-    <p><strong>真题演练 C（十字交叉秒杀）</strong> <span class="src-tag">2022年行测｜第37题</span>：甲乙两公司共 96 人，甲均分比乙高 1.2 分，比总均分高 0.5 分，甲比乙人数如何？</p>
-    <details class="sol" open><summary>点击展开 20 秒秒杀算式</summary>
-      <p><strong>推导答案：C（多 10 人以上）</strong>。总均分比乙高 $1.2-0.5=0.7$，故甲:乙人数 $=0.7:0.5=7:5$（共 12 份 $=96$ 人），甲比乙多 2 份 $=16$ 人。</p>
-    </details>
-  </div>
-
-  <div class="card card-formula">
-    <div class="card-title">🔵 母题 3：最不利构造 / 和定最值 / 抢票问题（30 秒送分）</div>
-    <p><strong>真题演练 A（最不利构造）</strong> <span class="src-tag">2023年行测｜第38题</span>：50 苹果、5 香蕉、30 橘子、50 梨，至少取几次肯定拿出 10 个相同水果？</p>
-    <details class="sol" open><summary>点击展开 15 秒算式</summary>
-      <p><strong>推导答案：C（33 次）</strong>。每种最多差 1 个（不足 9 个全拿）：$9+5+9+9+1=33$。</p>
-    </details>
-    <p><strong>真题演练 B（和定最值构造）</strong> <span class="src-tag">2025年行测｜第57题</span>：40 余名志愿者，分 4 组缺 1 人，分 5 组缺 2 人；若分 3 组且各不相同，最多与最少至少差几人？</p>
-    <details class="sol" open><summary>点击展开 40 秒算式</summary>
-      <p><strong>推导答案：A（3 人）</strong>。$N+2$ 为 5 的倍数且 $N\in(40,49)\Rightarrow N+2=45 \Rightarrow N=43$（验算 $43+1=44$ 整除 4）。$43/3=14\cdots1 \Rightarrow$ 紧挨互异数列 $(13,14,16)$，差 $16-13=3$。</p>
-    </details>
-    <p><strong>真题演练 C（确保当选票数）</strong> <span class="src-tag">2022年行测｜第39题</span>：共 89 票已投 58 票（甲 34、乙 9、丙 15），甲确保当选至少还需再得几票？</p>
-    <details class="sol" open><summary>点击展开 25 秒算式</summary>
-      <p><strong>推导答案：D（7 票）</strong>。只盯最大威胁丙（15 票），余 31 票全分给甲和丙（共 $34+15+31=80$ 票），甲至少要 $80/2+1=41$ 票，还需 $41-34=7$ 票。</p>
-    </details>
-  </div>
-
-  <div class="card card-formula">
-    <div class="card-title">🔵 母题 4：“正难则反”概率与分步排列（2024–2025 连考）</div>
-    <p><strong>真题演练 A（至少一个反算）</strong> <span class="src-tag">2024年行测｜第51题</span>（原卷分数图片已还原核验）：山东手造 8 个展厅任选 3 个，叶雕和皮影至少一个被选中的概率？选项：A.$\frac{5}{14}$ &nbsp; B.$\frac{15}{28}$ &nbsp; C.$\frac{9}{14}$ &nbsp; D.$\frac{19}{28}$</p>
-    <details class="sol" open><summary>点击展开 25 秒算式</summary>
-      <p><strong>推导答案：C（$\frac{9}{14}$）</strong>。$$P = 1 - \frac{C_6^3}{C_8^3} = 1 - \frac{20}{56} = 1 - \frac{5}{14} = \frac{9}{14}$$（注意 A 项 $\frac{5}{14}$ 是忘记用 1 减的陷阱！）。</p>
-    </details>
-    <p><strong>真题演练 B（至少 3 册成功）</strong> <span class="src-tag">2025年行测｜第59题</span>：4 册古籍数字化每册成功率 90%，至少 3 册成功的概率？</p>
-    <details class="sol" open><summary>点击展开 30 秒算式</summary>
-      <p><strong>推导答案：C（94.77%）</strong>。$$P = C_4^3 \times 0.9^3 \times 0.1 + 0.9^4 = 4 \times 0.0729 + 0.6561 = 0.2916 + 0.6561 = 94.77\%$$</p>
-    </details>
-    <p><strong>真题演练 C（分步排列）</strong> <span class="src-tag">2025年行测｜第54题</span>：前 4 名排 3–6 道，5–6 名排 7–8 道，后 2 名排 1–2 道，共几种排法？</p>
-    <details class="sol" open><summary>点击展开 10 秒算式</summary>
-      <p><strong>推导答案：C（96 种）</strong>。$A_4^4 \times A_2^2 \times A_2^2 = 24 \times 2 \times 2 = 96$。</p>
-    </details>
-  </div>
-
-  <div class="card card-trap">
-    <div class="card-title">🔴 直接放弃红线清单（看到以下题型 5 秒内果断跳过蒙选！）</div>
-    <ul>
-      <li><strong>扇形/圆弧与正方形交叠几何 & 立体圆锥覆盖</strong> <span class="src-tag">2025 Q60</span> <span class="src-tag">2021 Q41</span></li>
-      <li><strong>多段往返变速追及/分段震荡行程</strong> <span class="src-tag">2024 Q56, Q60</span> <span class="src-tag">2018 Q53</span>（特例：唯独“提前放学接送模型”<span class="src-tag">2023 Q36</span> 提前到家 10 分钟 $\Rightarrow$ 单程少 5 分 $\Rightarrow$ 步行 $30-5=25$ 分可 20 秒秒杀！）</li>
-      <li><strong>旋转对称分类排列与递推代谢浓度</strong> <span class="src-tag">2020 Q44</span> <span class="src-tag">2021 Q44</span> <span class="src-tag">2022 Q44</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ======================== SECTION 07 ======================== -->
-<section class="day-section" id="sec07">
-  <div class="day-header">
-    <span class="day-tag tag-ability">第二篇 · B 级保底防错速查</span>
-    <h1 class="day-title">07｜片段阅读 / 判断推理 / 资料分析速查防错表</h1>
-    <div class="day-meta">点到为止、守住基本盘：防止会做的题因踩坑丢失 4–6 分</div>
-  </div>
-
-  <div class="table-wrap"><table>
-    <thead><tr><th>模块</th><th>考前 1 分钟保底防坑铁律</th><th>真题出处与实战验证</th></tr></thead>
-    <tbody>
-      <tr><td><strong>片段阅读</strong></td><td>① 尾句出现“因此/关键在于/……是……的关键一招”，主旨必含该对策；<br>② 多例并列列举时，答案必选<strong>总括全覆盖项</strong>，忌只选单例子。</td><td><span class="src-tag">2024 Q50</span>（关键一招）<br><span class="src-tag">2025 Q33</span>（三例归于“变革和开放是常态”）</td></tr>
-      <tr><td><strong>语句排序</strong></td><td>① <code>但是/然而/因此/至于/这种</code> 不作首句；<br>② 抓年代顺序与“总起句→推广而言/这是……”指代捆绑。</td><td><span class="src-tag">2025 Q48</span>（⑤总起→②推广而言）<br><span class="src-tag">2023 Q35</span>（②总→③朝廷→①侨姓→⑥旧族）</td></tr>
-      <tr><td><strong>定义/类比</strong></td><td>圈出 <strong>主体+手段+目的</strong> 要素；多定义只看题干问的那一个；类比必先拆成语语法结构（偏正/并列/动宾）。</td><td><span class="src-tag">2025 Q71</span>（高效+环保）<br><span class="src-tag">2024 Q71</span>（雪球抽样→吸毒者）</td></tr>
-      <tr><td><strong>逻辑判断</strong></td><td>① 削弱加强先圈<strong>论点</strong>（“认为/指出”后），无关背景直接杀；<br>② 真假推理优先找<strong>矛盾关系</strong>（欧洲 vs 南美必有一假，其余全真）。</td><td><span class="src-tag">2023 Q66</span>（法国冠军→非南美国家）<br><span class="src-tag">2025 Q95</span>（B 项偏离“系统能否防止”）</td></tr>
-      <tr><td><strong>资料分析</strong></td><td>① 先扫表注与双轴刻度；② 区分<strong>同比增速（%）</strong>与<strong>百分点差</strong>；③ 综合分析从 D/C 倒着验证省时间；④ 善用 99% 混合增长率秒杀。</td><td><span class="src-tag">2025 Q106–107</span> <span class="src-tag">2025 Q109</span>（民营占 99%，增速≈合计 3.3%）</td></tr>
-    </tbody>
-  </table></div>
-</section>
-
-<!-- ======================== SECTION 08 ======================== -->
-<section class="day-section" id="sec08">
-  <div class="day-header">
-    <span class="day-tag tag-shenlun">第三篇 · S 级申论 B 卷零基础速成</span>
-    <h1 class="day-title">08｜B 卷 8 套命题规律与 Q1 概括 / Q2 理解踩点公式</h1>
-    <div class="day-meta">2024 与 2026 同构：180 分钟 4 题（15+20+25+40 分）｜高浓度嵌入山东本土案例</div>
-  </div>
-
-  <h2>一、 8 套山东申论 B 卷命题演进全表</h2>
-  <div class="table-wrap"><table>
-    <thead><tr><th>年份</th><th>时限</th><th>Q1（概括/分析）</th><th>Q2 / Q3（理解与公文）</th><th>压轴大作文</th></tr></thead>
-    <tbody>
-      <tr><td><strong>2018</strong></td><td>180m</td><td>概括问题(15分/200字)</td><td>Q2:原因(250字) / Q3:对策(450字)</td><td>“在深海里练就游泳能力”</td></tr>
-      <tr><td><strong>2019</strong></td><td>180m</td><td>概括经验(15分/250字)</td><td>Q2:问题(300字) / Q3:理解“A市速度”</td><td>“‘民生’跟着‘民声’走”</td></tr>
-      <tr><td><strong>2020</strong></td><td>120m</td><td>谈认识“直播带货”(20分/350字)</td><td>Q2: <strong>调研报告提纲</strong>(30分/450字)</td><td>“凡益之道，与时偕行”</td></tr>
-      <tr><td><strong>2021</strong></td><td>120m</td><td>总结举措“头雁工程”(20分/350字)</td><td>Q2: <strong>发言提纲</strong>(30分/500字)</td><td>“治国犹如栽树，本根不摇则枝叶茂荣”</td></tr>
-      <tr><td><strong>2022</strong></td><td>120m</td><td>总结经验(20分/300字)</td><td>Q2: <strong>整改方案提纲</strong>(30分/600字)</td><td>“把准脉，开准方”</td></tr>
-      <tr><td><strong>2023</strong></td><td>120m</td><td>归纳经验(20分/300字)</td><td>Q2: <strong>政务信息“共富公司”</strong>(30分/600字)</td><td>“常青之道，贵在自胜”</td></tr>
-      <tr><td><strong>2024</strong></td><td><strong>180m</strong></td><td>概述“好品山东”好在哪(15分/250字)</td><td>Q2:理解“只此青绿/只有青绿”(300字)<br>Q3: <strong>案例摘要“滨海模式”</strong>(400字)</td><td><strong>“桥”</strong>（1000–1200字）</td></tr>
-      <tr><td><strong>2026</strong></td><td><strong>180m</strong></td><td>归纳县域经济特色做法(15分/250字)</td><td>Q2:理解“法与时转则治”(300字)<br>Q3: <strong>信息专报“预付宝”</strong>(400字)</td><td><strong>“坐标”</strong>（1000–1200字）</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="card card-intuition">
-    <div class="card-title">🟢 Q1（15分/250字）零基础踩点公式：原词动宾压缩法</div>
-    <p><strong>动作：</strong>① 只读指定材料（1个县/企案例常对应 1 条得分点）；② 圈出引号概念词（如<code>“产业+电商”</code><code>“强港、兴产、活城”</code>）与动作词（联合/出台/打造/搭建）；③ 按 <strong>“总括词：具体做法+简短成效”</strong> 分写 4–6 条，卡在 220–245 字！</p>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 Q1 真题实战示范：S 省县域经济高质量发展特色做法 <span class="src-tag">2026年申论B卷｜第一题 & 材料1</span></div>
-    <details class="sol" open><summary>点击查看材料映射与 238 字高分示范</summary>
-      <p><strong>1.错位布局：</strong>找准县域坐标，串珠成链推动特色差异化发展。<br>
-      <strong>2.科创赋能传统产业：</strong>政校联动共建研发中心、引进高端团队，构建全链条研发体系推进产品技术升级。<br>
-      <strong>3.扶持民企集群发展：</strong>出台上市补助、融资等政策建立梯次培育格局，优化审批、政务及配套服务营造良好环境，培育优势产业集群。<br>
-      <strong>4.“产业+电商”促跨越：</strong>发展农村电商打通产销连接，推动特色农产品与小商品销售，带动创业就业。<br>
-      <strong>5.延链与影旅融合：</strong>依托土特产深加工提升附加值，同时打造沉浸式影旅新地标。<br>
-      <strong>6.做强港口开放：</strong>发挥临港优势融入国家枢纽，开展港城联动招商与供应链金融服务，强化要素保障。</p>
-    </details>
-  </div>
-
-  <div class="card card-trick">
-    <div class="card-title">🟣 Q2（20分/300字）划线句子理解“三步万能卡位”</div>
-    <p><strong>结构：</strong>① <strong>表层释义（40字）</strong>点明辩证关系 → ② <strong>拆解支撑（200字）</strong>按句意分拆或按材料镜头分 3–4 点填入原词 → ③ <strong>对策落脚（50字）</strong>收尾。</p>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 Q2 真题实战示范：“法与时转则治，治与世宜则有功”理解 <span class="src-tag">2026年申论B卷｜第二题 & 材料3</span></div>
-    <details class="sol" open><summary>点击查看材料4大镜头拆解与 285 字示范</summary>
-      <p>这句话意为法治建设和治理方式必须顺应时代变化与现实需求而不断调整完善，方能取得实效、护航高质量发展。具体体现在：<br>
-      1.<strong>立法回应新业态：</strong>针对外卖员等新就业群体权益痛点，地方出台专项规定明确各方职责并搭建多方协同保障网。<br>
-      2.<strong>执法顺应企业减负需求：</strong>借鉴海关 AEO 制度开展工业信用分级分类监管，“免申即享+告知承诺”并动态调整，实现执法“瘦身”与监管温度统一。<br>
-      3.<strong>司法护航科技创新：</strong>行政与司法联动打击恶意专利诉讼，提供“授权+确权+维权”全链条保护，增强企业法治自信。<br>
-      4.<strong>普法紧贴群众生活：</strong>借力热门文创与沉浸式“花式”载体，变枯燥说教为生动传播。未来需持续与时俱进推进科学立法、严格执法、公正司法与全民普法。</p>
-    </details>
-  </div>
-</section>
-
-<!-- ======================== SECTION 09 ======================== -->
-<section class="day-section" id="sec09">
-  <div class="day-header">
-    <span class="day-tag tag-shenlun">第三篇 · S 级核心抢分</span>
-    <h1 class="day-title">09｜B 卷 Q3 公文/应用文直接背诵模板库（25 分/400 字）</h1>
-    <div class="day-meta">近 6 届 B 卷 100% 考应用文，且 2023–2026 高度集中于“信息专报 / 政务信息 / 案例摘要”</div>
-  </div>
-
-  <div class="card card-trick">
-    <div class="card-title">🟣 模板 1：信息专报 / 政务信息 / 案例摘要（400 字黄金骨架，直接照背！）</div>
-    <div class="template-box">
-      <strong>[居中标题]</strong> 关于 [某地/某主题] 创新“[模式名称]”的情况专报（或典型案例摘要）<br>
-      <strong>[导语·60字]</strong> 近年来，[某领域]存在[材料痛点]。为破除困局，[某地/某局]创新推出“[模式名称]”，截至目前[核心成效数据]，取得显著成效。<br>
-      <strong>[主体·260字，分3–4条用“动宾短语小标题”领起]</strong><br>
-      <strong>一、[搭建平台/统筹规划]。</strong> [具体主体+动作]。<br>
-      <strong>二、[核心机制创新]。</strong> [运行规则/资金监管/分级分类]。<br>
-      <strong>三、[双向赋能/共建共享]。</strong> [融资授信/志愿自治/服务激励]。<br>
-      <strong>四、[法治制度兜底]。</strong> [指导意见/地方立法/长效监管]。<br>
-      <strong>[结语·60字]</strong> 该模式实现了[多赢局面/社会经济效益统一]，为[某领域高质量发展]提供了可复制推广的实践样本。
-    </div>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 信息专报满分示范：J 市创新“预付宝”监管模式 <span class="src-tag">2026年申论B卷｜第三题 & 材料4</span></div>
-    <details class="sol" open><summary>点击查看 400 字标准作答示范</summary>
-      <p style="text-align:center;"><strong>关于 J 市创新“预付宝”监管模式优化消费环境的信息专报</strong></p>
-      <p>为破除预付式消费资金风险与商家恶意跑路困局，J 市联合金融机构与平台全国首创“信托式”预付监管模式——“预付宝”。上线以来已入驻商家 1.8 万余家，覆盖多消费领域。主要做法如下：<br>
-      <strong>一、一站便捷运营。</strong>依托现有主流支付平台实现商家开通、用户购卡、消费及退卡一站式办理，降低使用门槛。<br>
-      <strong>二、信托透明监管。</strong>消费者预付资金 100% 进入信托监管账户，实行“消费一笔、进账一笔”，全程可溯、账本明晰、支持随时或闭店退款，保障资金安全。<br>
-      <strong>三、信用融资双赋能。</strong>联合银行为入驻商家提供活期优惠利率、低息快贷、免息数字信用卡等金融支持，配套入驻补贴与“放心卡”标识牌，引导商家主动诚信。<br>
-      <strong>四、法规市场共治。</strong>同步出台指导意见并推进地方立法，构建“平台+法规+市场”三位一体体系，激活“良币驱逐劣币”生态。<br>
-      该模式实现消费者敢消费、商家愿经营、市场更繁荣的多赢局面，建议予以经验推广。</p>
-    </details>
-  </div>
-
-  <div class="card card-example">
-    <div class="card-title">🟠 案例摘要满分示范：S 市“滨海模式” <span class="src-tag">2024年申论B卷｜第三题 & 材料4</span></div>
-    <details class="sol" open><summary>点击查看 400 字标准作答示范</summary>
-      <p style="text-align:center;"><strong>以“绣花功夫”促有序规范：S 市城市摊点治理“滨海模式”案例摘要</strong></p>
-      <p>针对夜市扰民与流动菜农占道经营“一禁就反弹、不禁就混乱”难题，S 市滨海新区坚持监管有力与执法有据，将早夜市“零乱经营”打造成“活力经济”的“滨海模式”。<br>
-      <strong>一、科学统筹规划，疏堵结合定空间。</strong>深入摸排周边地域、摊贩数量与群众需求，联合多部门会商论证，利用空地扩增夜市并分批科学设点，兼顾烟火气与秩序感。<br>
-      <strong>二、优化执法服务，精细管理暖民心。</strong>增派执法力量加强巡查劝导，打击价格违法；配套建设移动公厕、协调商家开放公厕并加强保洁与食品检验，保障便利与安全。<br>
-      <strong>三、引导共治共享，激发内生治理力。</strong>党建引领动员社区居民组建志愿服务队维持秩序；推行摊主分组自治推选小组长协调卫生秩序，街头艺人自觉按时静音。<br>
-      目前该区已设 8 处便民摊点群，健全全方位便民管理体系，既稳住菜农“生计出路”，又守好居民“菜篮子”与居住秩序，实现共建共治共享。</p>
-    </details>
-  </div>
-
-  <div class="card card-formula">
-    <div class="card-title">🔵 备选模板 2 & 3：提纲类 & 整改方案类</div>
-    <ul>
-      <li><strong>调研报告提纲 / 发言提纲</strong> <span class="src-tag">2020 Q2</span> <span class="src-tag">2021 Q2</span>：标题 +（发言稿加<code>尊敬的各位领导、同仁：</code>）+ 开篇背景 + 3–4 条<strong>小标题+具体动作与成效</strong>（切忌只写空洞小标题！）+ 启示展望（发言稿加<code>谢谢大家！</code>）。</li>
-      <li><strong>整改方案提纲“五要素”</strong> <span class="src-tag">2022 Q2</span>：① 问题清单/背景 → ② 工作目标原则 → ③ 分项销号措施（生态/设备/台账/培训）→ ④ 责任分工与时限 → ⑤ 督查问责与验收长效机制。</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ======================== SECTION 10 ======================== -->
-<section class="day-section" id="sec10">
-  <div class="day-header">
-    <span class="day-tag tag-shenlun">第三篇 · S 级大作文保命法则</span>
-    <h1 class="day-title">10｜B 卷大作文“绝不跑题”偷分论点法与 2027 押题库</h1>
-    <div class="day-meta">破解 2024“桥” / 2026“坐标”单字隐喻型命题，零基础保底二类上（28–32/40 分）</div>
-  </div>
-
-  <div class="card card-intuition">
-    <div class="card-title">🟢 唯一不跑题铁律：3 个分论点全部直接“偷”材料 1–4 主题！</div>
-    <p>遇到“桥”“坐标”这种单字主题，<strong>严禁脱离材料编空洞分论点！</strong> 山东 B 卷 4–5 则材料本身就是命题意图的完整骨架：</p>
-    <ul>
-      <li><strong>2026《坐标》拆解</strong> <span class="src-tag">2026年申论B卷｜第四题</span>：材料1（县域错位发展）→ <strong>立足禀赋找准发展坐标</strong>；材料2（商业航天精准预判）→ <strong>顺应趋势锚定创新坐标</strong>；材料3+4（法治瘦身+预付宝监管）→ <strong>聚焦关切校准治理坐标</strong>；材料5直接给出总论点原话：<em>“着眼‘全局之所需’观照一域，立足‘一域之所能’服务全局”</em>！</li>
-      <li><strong>2024《桥》拆解</strong> <span class="src-tag">2024年申论B卷｜第四题</span>：材料1（好品山东）→ <strong>品质与创新筑就产业升级“支撑之桥”</strong>；材料2+3（寿光种业+东梁村两山转化）→ <strong>科技与生态架起强农富民“致富之桥”</strong>；材料4（滨海模式）→ <strong>精准治理架通民生福祉“连心之桥”</strong>。</li>
-    </ul>
-  </div>
-
-  <div class="card card-trick">
-    <div class="card-title">🟣 零基础可直接背诵的“五段三分式”骨架（1100 字）</div>
-    <div class="template-box">
-      <strong>标题：</strong> 找准时代[主题词] 勇担强省使命（标题务必嵌入主题词！）<br>
-      <strong>第1段（引题+总论点，140字）：</strong> [引用材料首尾意象/名言] + 正值“十五五”开局与高质量发展关键期…… + <strong>总论点：</strong>唯有在全局大势中[紧扣主题词]，把准方向、实干笃行，方能行稳致远。<br>
-      <strong>第2段（分论点1·产业/创新，250字）：</strong> [分论点句含主题词] + [道理论证] + [材料案例浓缩改写：如G县橡胶研发/万华化学破冰/东虹航天/好品山东] + [回扣句]。<br>
-      <strong>第3段（分论点2·治理/法治/服务，250字）：</strong> [分论点句含主题词] + [道理论证] + [材料案例浓缩改写：如J市预付宝/Y区AEO减负/滨海模式/W市社区基金] + [回扣句]。<br>
-      <strong>第4段（分论点3·民生/生态/文化，250字）：</strong> [分论点句含主题词] + [道理论证] + [材料案例浓缩改写：如东梁村“两山”转化/寿光中国种/头雁工程] + [回扣句]。<br>
-      <strong>第5段（本土收尾升华，140字）：</strong> 总结三层逻辑 + 立足山东：“当前，齐鲁大地正迈上经济总量十万亿新台阶，锚定‘走在前、挑大梁’重大使命，让我们[再度点题]，在‘十五五’新征程上书写高质量发展与人民幸福的崭新答卷！”
-    </div>
-  </div>
-
-  <div class="card card-quiz">
-    <div class="card-title">💎 2027 省考申论 B 卷 4 大高频押题金句（考前必背）</div>
-    <ul>
-      <li><strong>新质生产力与 AI+</strong>：“山东拥有全部 41 个工业大类的完备底座，推进传统产业‘老树发新枝’与新兴产业‘新枝成大树’同频共振，全面实施‘人工智能+制造’与海洋智能转型，加快形成以全要素生产率提升为核心标志的新质生产力。”</li>
-      <li><strong>营商环境与扩内需</strong>：“好的营商环境就像阳光、水和空气。从涉企执法‘瘦身’、破除‘内卷式’竞争，到信托式预付监管与‘AI消费+’场景开放，唯有把制度规则立在前、把精准服务送上门，才能让经营主体敢干、消费者敢花、市场真活。”</li>
-      <li><strong>基层善治与民生温度</strong>：“基层是国家治理的神经末梢。坚持‘民生跟着民声走’，把党的组织优势转化为服务效能，以‘绣花功夫’解决好新就业群体权益保障、‘一老一小’等群众急难愁盼，让每一项政策都带着烟火气、落到心坎上。”</li>
-      <li><strong>美丽中国省域先行区</strong>：“护牢生态‘红线’，端稳绿色‘饭碗’。立足山东绿电产业园、新型能源体系与黄河流域生态保护协同实践，算好经济账与长远账，让齐鲁大地‘含绿量’持续转化为发展‘含金量’。”</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ======================== SECTION 11 ======================== -->
-<section class="day-section" id="sec11">
-  <div class="day-header">
-    <span class="day-tag tag-sprint">第四篇 · 7 天精准冲刺日程</span>
-    <h1 class="day-title">11｜Day 1 – Day 7 逐日靶向刷题与申论实操清单</h1>
-    <div class="day-meta">紧扣 2026 年 12 月 6 日笔试时间窗口 · 每天行测弱项动作 + 申论实操动作精确到年份与题号</div>
+    <span class="day-tag" style="background:#2563eb">第三部分｜花生十三行测方法论 + 申论 B 卷速览</span>
+    <h1 class="day-title">04｜四大提分模块（花生十三体系）&amp; 申论 B 卷核心总诀</h1>
+    <div class="day-meta">先记总公式与考场判断标准；全套真题盲测练习（默认折叠）请点各模块按钮进入专项页逐题啃透</div>
   </div>
 
   <div class="day-grid">
     <div class="day-col">
-      <h4>📅 Day 1｜S 级破冰：政治理论排雷 + 申论 Q1 概括（4.5h）</h4>
-      <p><strong>行测（1.5h）：</strong>熟记 04 节 4 秒口诀；限时 12m 做 <code>2025行测 Q1–14</code> + 8m 做 <code>2024行测 Q1–10</code>，逐题标出张冠李戴/节点编造陷阱。</p>
-      <p><strong>申论（3.0h）：</strong>25m 手写 <code>2026申论B卷 Q1</code>（县域经济，250字），再 25m 手写 <code>2024申论B卷 Q1</code>（好品山东，250字），红笔对比 08 节示范补齐引号关键词。</p>
-      <p><span class="badge-easy">验收</span> 小题不再写空话，压缩成 4–6 条动宾短语。</p>
+      <h4>💬 03 言语理解（花生十三法 · 30题 ≤28m）</h4>
+      <ul>
+        <li><strong>逻辑填空</strong>：先看转折/解释/并列呼应，再用<strong>选项分组捆绑排除</strong>（两正两反先砍半），紧盯轻重与固定搭配。</li>
+        <li><strong>中心理解</strong>：认准五大结构（总分/分总/转折/因果/并列），无主题词直接排，有明确对策优先选对策。</li>
+        <li><strong>语句排序</strong>：禁发散词做首句，抓指代词/时间轴/话题一致捆绑秒杀。<br><a href="sd_03_言语理解详讲.html">→ 进入言语详讲与9道盲测真题</a></li>
+      </ul>
     </div>
     <div class="day-col">
-      <h4>📅 Day 2｜S 级核心：Q2 理解 + Q3 专报模板固化（5.0h）</h4>
-      <p><strong>行测（1.5h）：</strong>默写 03 节 2027 必背 6 条新提法与年份轴；刷 <code>2023行测 Q1–5</code> + <code>2022行测 Q1–2</code>。</p>
-      <p><strong>申论（3.5h）：</strong>默写 09 节“信息专报 400 字骨架”；限时手写 <code>2026申论B卷 Q2(30m)+Q3(40m)</code>；加练 <code>2023申论B卷 Q2</code> 政务信息列出 4 个小标题。</p>
-      <p><span class="badge-easy">验收</span> 不看模板 3 分钟搭出 400 字专报结构。</p>
+      <h4>🧮 04 数量关系（花生十三精准狙击 · 12m拿4–5分）</h4>
+      <ul>
+        <li><strong>四大快刀</strong>：代入排除、数字奇偶/3和5整除特性、直接设未知数方程、特值（工程赋公倍/效率比赋整数）。</li>
+        <li><strong>必抢 6 类</strong>：工程协作、利润十字交叉、等额本金、整除余数极值、独立概率、涂色公式 $6(n-2)^2$，加药代稳态。</li>
+        <li><strong>红线</strong>：多阶段变速复杂行程/复杂动点几何直接跳过，绝不恋战。<br><a href="sd_04_数量关系详讲.html">→ 进入数量详讲与步步推导</a></li>
+      </ul>
     </div>
     <div class="day-col">
-      <h4>📅 Day 3｜S 级攻坚：申论大作文手写 + 选词（5.0h）</h4>
-      <p><strong>行测（1.5h）：</strong>背熟 05 节高频复现词表；18m 刷完 <code>2025行测 Q21–31</code>（跳Q32）+ <code>2024行测 Q21–30</code>，每空强制圈出转折/并列/解释标志。</p>
-      <p><strong>申论（3.5h）：</strong>30m 快拆 <code>2021/2022/2023申论B卷</code> 大作文提纲；70m 方格纸完整手写 <code>2026申论B卷 Q4《坐标》</code>（1100字，用材料5总论点+山东收尾）。</p>
-      <p><span class="badge-easy">验收</span> 70 分钟内写满 1050–1150 字且紧扣材料。</p>
+      <h4>🧩 05 判断推理（花生十三框架 · 40题 ≤32m）</h4>
+      <ul>
+        <li><strong>图推</strong>：特征图切入 → 对称细分（轴数/方向/过线点） → 笔画数 $\text{奇点}/2$ → “三不沾”退回部分数与宏观差异；45秒不过先跳。</li>
+        <li><strong>定义/类比</strong>：抓“在工作中”主体与目的要件；类比“先横后纵二级辨析”。</li>
+        <li><strong>逻辑</strong>：翻译逆否+德摩根+肯德基原则；加强削弱首选搭桥/拆桥/无A无B/基数陷阱。<br><a href="sd_05_判断推理详讲.html">→ 进入判断详讲与10题矩阵示范</a></li>
+      </ul>
     </div>
     <div class="day-col">
-      <h4>📅 Day 4｜A 级提效：数量 4 类母题 + 二次加练（4.5h）</h4>
-      <p><strong>行测（3.0h）：</strong>吃透 06 节 4 类母题与弃题红线；每题倒计时 60s 刷 <code>2025 Q52–54,56–57,59</code>（跳Q60）、<code>2024 Q51–54,57</code>（跳56,60）、<code>2023 Q36,38</code>、<code>2022 Q37,39</code>、<code>2020 Q36,38,45</code>；12m 加刷 <code>2023选词 Q11–23,25</code>。</p>
-      <p><strong>申论（1.5h）：</strong>限时完成 <code>2024申论B卷 Q2(30m)+Q3“滨海模式”(40m)</code>，对照 09 节自评；复盘 <code>2022整改提纲</code> 五要素。</p>
-      <p><span class="badge-easy">验收</span> 4 类数量母题正确率 ≥80%，5 秒放弃红线题。</p>
+      <h4>📊 06 资料分析（花生十三 ABRX · 20题 ≤26m）</h4>
+      <ul>
+        <li><strong>415 份数法 + 修正</strong>：$R \approx \frac{1}{n}$ 时 $A:X:B=n:1:(n+1)$；差值较大时用 $X_{\text{修}}=X_1[1+R_{\text{差}}(n-1)]$。</li>
+        <li><strong>假设分配树</strong>：$R \le 10\%$ 最快，零头按 $20\%\to\div6, 25\%\to\div5, 33\%\to\div4, 50\%\to\div3$ 口算分摊。</li>
+        <li><strong>盐水与比值增速</strong>：混合增速“居中偏量大”；比值增速 $\frac{a-b}{1+b}$；两期比重差绝对值 $&lt;|a-b|$。<br><a href="sd_06_资料分析详讲.html">→ 进入资料详讲与3套全真题手算</a></li>
+      </ul>
     </div>
-    <div class="day-col">
-      <h4>📅 Day 5｜B 级防坑 + C 级省情新法背诵（4.5h）</h4>
-      <p><strong>行测（3.5h）：</strong>26m 限时刷 <code>2025资料 Q101–120</code> + 13m 复盘 <code>2024资料 Q101–110</code>（死盯表注/双轴/百分点）；25m 刷 <code>2025片段 Q33–50</code> 与 <code>逻辑 Q94–98</code>；30m 速背省情密码+三大新法（其余百科一律不看）。</p>
-      <p><strong>申论（1.0h）：</strong>熟背 10 节 4 大押题金句，列 1 份 <code>2024《桥》</code> 5 分钟提纲，背熟首尾万能段。</p>
-      <p><span class="badge-easy">验收</span> 资料 20 题控制在 26 分钟内，错题 ≤2 道。</p>
-    </div>
-    <div class="day-col">
-      <h4>📅 Day 6｜全真模考实战与节奏固化（5.5–6.0h）</h4>
-      <p><strong>上午行测（2.5h）：</strong>9:00–11:00 严格 120m 全真模拟 <code>2024行测整卷</code>（或 90m 节奏模拟 <code>2023行测</code>），强制按顶部时间刻度推进，最后 12m 数量做完母题全蒙 B/C，复盘非能力失误。</p>
-      <p><strong>下午申论（3.0–3.5h）：</strong>14:00–17:00 严格 180m 手写 <code>2024或2019申论B卷</code> 全套 4 题，检验第 3 小时书写耐力与字数卡线。</p>
-      <p><span class="badge-easy">验收</span> 120m+180m 全部顺利收卷，绝不留大片空白。</p>
-    </div>
+  </div>
+
+  <div class="card card-intuition">
+    <div class="card-title">✍ 07 申论 B 卷单列（占总分 50%｜当前 60→70+ 最大翻盘引擎）<a href="sd_07_申论B卷详讲.html" style="margin-left:auto;color:#065f46;font-size:13px;">进入申论 B 卷详讲页 →</a></div>
+    <p>2024–2026 连续锁定 <strong>180 分钟 4 题制式（15 + 20 + 25 + 40）</strong>：① Q1（250字做法概括）＝ <strong>“动宾短语 + 材料高频词”分类合并</strong>；② Q2（300字词句理解）＝ <strong>表层语义 + 材料分镜头实证 + 深层制度指向</strong>；③ Q3（400字政务信息/案例摘要/提纲）＝ <strong>去落款留标题与三大板块（痛点→做法→成效）</strong>；④ Q4（1000–1200字单字主题大作文如“桥”“坐标”）＝ <strong>严禁自由发挥，直接从材料 2 与材料 5 偷出 3 个分论点写五段三分式！</strong></p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: 人脑认知规律 7 天日程 ============ -->
+<section class="day-section" id="sec-plan">
+  <div class="day-header">
+    <span class="day-tag" style="background:#059669">第四部分｜结合人脑认知规律的 7 天执行清单</span>
+    <h1 class="day-title">05｜7 天认知科学冲刺日程（理解组块 + 折叠盲测 + 艾宾浩斯间隔回炉）</h1>
+    <div class="day-meta">拒绝“当天死背当晚全忘”：每天固定设置「昨日 10 分钟空白回忆检测 + 今日 P0 新学 + 睡前 3 分钟锚点闭合」</div>
   </div>
 
   <div class="card card-quiz">
-    <div class="card-title">💎 📅 Day 7｜考前降噪：押题语料背诵 + 错题清零 + 物品清单（3.0h）</div>
-    <p><strong>严禁再刷偏难新题！</strong> ① 上午 1.5h 只过政治理论 6 条新提法、选词高频词表、数量 4 类公式、资料四大坑与前 6 天非能力错题；② 下午 1.5h 默背 400 字信息专报骨架 + 大作文 4 大押题金句（10.3 万亿/美丽中国省域先行区/人工智能+/海洋 Token 工厂/新就业群体/二十届五中全会）；③ 备齐准考证、2B 铅笔、多支 0.5mm 黑色签字笔、机械手表，早睡。</p>
+    <div class="card-title">🔁 人脑防遗忘三条执行铁律</div>
+    <ol>
+      <li><strong>严禁一眼看穿答案</strong>：做各专题页例题时，严禁一上来点击“展开全部解析”；必须拿草稿纸写出自己的选项或 3 个申论要点，再点开折叠校验。</li>
+      <li><strong>“三明治间隔复现”</strong>：Day $k$ 学习的新卡片，分别在 <strong>Day $k+1$ 早晨（10 分钟）</strong> 与 <strong>Day $k+3$ 晚间（5 分钟）</strong> 进行“看标题背口诀”回炉，只重看折叠卡里记不住的那 20%。</li>
+      <li><strong>每天 S 级双核打底</strong>：无论哪一天，至少安排 <strong>60 分钟申论手写动笔</strong>，防止考场第 3 小时手酸卡壳。</li>
+    </ol>
+  </div>
+
+  <div class="day-grid">
+    <div class="day-col">
+      <h4>📅 Day 1｜S 级破冰：政治时间窗规律 + 申论 Q1 踩点（3.5–4.0h）</h4>
+      <ul>
+        <li><strong>上午 行测（1.5h）</strong>：通读 <a href="sd_01_政治理论详讲.html">01 政治理论</a> 的“6 大设错原型” + 死磕 P0 三大模块（二十届五中全会、新质生产力意见、山东省委全会），完成页内盲测题。</li>
+        <li><strong>下午 申论（2.0h）</strong>：进入 <a href="sd_07_申论B卷详讲.html">07 申论 B 卷</a>，对照 2026 Q1《县域经济》与 2024 Q1《好品山东》手写 250 字概括并比对采分点。</li>
+        <li><strong>睡前 10m</strong>：不看页面，手写默背 3 条 P0 政策核心词（全要素生产率 / 全面从严治党决定 / 二十一大时间）。</li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <h4>📅 Day 2｜隔日回炉 + 新法常委 + 申论 Q2/Q3（4.0h）</h4>
+      <ul>
+        <li><strong><span class="badge-p0">回炉 10m</span></strong>：重测 Day 1 政治错题 + 口述 Q1 概括三步。</li>
+        <li><strong>上午 行测（1.5h）</strong>：进入 <a href="sd_02_常识判断详讲.html">02 常识判断</a>，只啃 P0《生态环境法典》五编、《新治安管理处罚法》正当防卫/黑飞/未成年拘留、《检察公益诉讼法》《民营经济促进法》及《公务员法》处分期。</li>
+        <li><strong>下午 申论（2.0h）</strong>：手写 2026 Q2“法与时转则治” + 背熟 Q3《信息专报/案例摘要》400 字格式并在格子纸限时 25 分钟默写 2026“预付宝”。</li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <h4>📅 Day 3｜双日强攻：花生十三资料速算 + 申论单字大作文（4.5h）</h4>
+      <ul>
+        <li><strong><span class="badge-p0">回炉 15m</span></strong>：闭眼复现新法触发考点 + 专报 400 字三段式结构。</li>
+        <li><strong>上午 行测（2.0h）</strong>：精研 <a href="sd_06_资料分析详讲.html">06 资料分析</a>，动手用 415 份数法、假设分配树、比值增速和盐水法手算完成页内 2024–2025 全部 13 道真题（严禁口头跳过运算）。</li>
+        <li><strong>下午 申论（2.5h）</strong>：攻克 <a href="sd_07_申论B卷详讲.html#sl-q4">申论 Q4 大作文</a>，实战演练从 2026《坐标》或 2024《桥》原材料中 3 分钟偷出 3 个分论点，全篇手写 1100 字。</li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <h4>📅 Day 4｜Day1复现 + 花生十三言语分组 + 判断推理（4.0h）</h4>
+      <ul>
+        <li><strong><span class="badge-p0">D+3 回炉 15m</span></strong>：盲测 01 政治理论页末自检卡 + 重做资料分析错题。</li>
+        <li><strong>上午（2.0h）</strong>：进入 <a href="sd_03_言语理解详讲.html">03 言语理解</a>，掌握“选项分组捆绑+五结构”并盲测全部 9 道真题。</li>
+        <li><strong>下午（2.0h）</strong>：进入 <a href="sd_05_判断推理详讲.html">05 判断推理</a>，手绘翻译推理逆否链与 2024 Q100 信息匹配矩阵，完成 10 道真题盲测。</li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <h4>📅 Day 5｜数量狙击母题 + 常识 P1 科技文化热点收口（3.5–4.0h）</h4>
+      <ul>
+        <li><strong><span class="badge-p0">回炉 15m</span></strong>：复现言语高频易混词 10 组 + 资料四大公式。</li>
+        <li><strong>上午（2.0h）</strong>：进入 <a href="sd_04_数量关系详讲.html">04 数量关系</a>，只练 6 类可 1 分钟拿分母题（含 2023 Q42 甲状腺素极限模型），亲手建立 45 秒/题止损条件反射。</li>
+        <li><strong>下午（1.5h）</strong>：过一遍 02 常识 Rank 1–6（医学急救/2026诺奖/中巴航天/灵晟超算/长征90周年）+ 01 政治 P1 专题（两会十五五、APEC 深圳、和平宣言）。</li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <h4>📅 Day 6｜全真节奏实战套卷模拟（5.5h）</h4>
+      <ul>
+        <li><strong>上午 9:00–11:00（120m 严苛计时）</strong>：用工作区 <code>2024年行测</code> 整卷按“12m政常 → 28m言语 → 32m判断 → 26m资料 → 12m数量+蒙B/C → 3m涂卡”跑通全程节奏！</li>
+        <li><strong>下午 14:00–17:00（180m 严苛计时）</strong>：手写 <code>2024或2026申论B卷</code> 全套 4 题，测试 3 小时书写耐力与格子字数精确卡线（误差 ≤20字）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card card-example">
+    <div class="card-title">📅 Day 7｜考前降噪闭合：艾宾浩斯终极清零 &amp; 4/5 天压缩切换（3.0h）</div>
+    <ul>
+      <li><strong>Day 7 必做（严禁再刷陌生难题！）</strong>：① 上午 1.5h 在 7 个专题页点开所有错题/盲测卡过一遍 P0 口诀（政治二十届五中全会/新质生产力、新法三巨头、花生十三 ABRX 公式与数量 6 母题）；② 下午 1.5h 默背申论 400 字专报/摘要骨架及 2027 押题四维度金句；③ 检查准考证、2B铅笔、多支 0.5mm 签字笔、指针机械表。</li>
+      <li><strong>如果临时只剩 4–5 天（弹性压缩法则）</strong>：严格按照 <strong>“保 P0、抓花生十三速算与申论模板、弃冷门百科与高难数量”</strong> 缩编 —— <span class="hl-blue">5 天版</span>：Day 1(政治+申论Q1) → Day 2(新法+申论Q2/Q3) → Day 3(资料+申论Q4全手写) → Day 4(言语+判断+数量6母题) → Day 5(2024全真模考+回炉收口)；<span class="hl-pink">4 天极限版</span>：直接砍掉 2022 前旧题与低频常识 Rank 7–10，只做近两届真题盲测 + 申论 Q3/Q4 手写 + 资料 415/假设分配 + 政治新法 P0。</li>
+    </ul>
   </div>
 </section>
 
-<!-- ======================== SECTION 12 ======================== -->
-<section class="day-section" id="sec12">
-  <div class="day-header">
-    <span class="day-tag tag-sprint">第四篇 · 弹性压缩切换</span>
-    <h1 class="day-title">12｜4 天极限压缩版 & 5 天紧凑版切换指南</h1>
-    <div class="day-meta">若实际复习天数临时缩水，按本表保留 S 级不可删减动作</div>
-  </div>
-
-  <div class="table-wrap"><table>
-    <thead><tr><th>压缩版本</th><th>天次合并策略（保 S 级、抓 A 级、快过 B/C）</th><th>被精简/舍弃部分</th></tr></thead>
-    <tbody>
-      <tr><td><strong>5 天紧凑版</strong></td><td>• <strong>Day 1</strong>＝原 Day 1（政治+申论Q1）<br>• <strong>Day 2</strong>＝原 Day 2（申论Q2+Q3模板）<br>• <strong>Day 3</strong>＝原 Day 3（选词+申论大作文全手写）<br>• <strong>Day 4</strong>＝原 Day 4+5（数量4类母题+资料坑+省情新法）<br>• <strong>Day 5</strong>＝原 Day 6 行测模考 + 原 Day 7 押题背诵（申论改为 30m 拆 2024 提纲）</td><td>砍掉 2020–2023 重复刷题与第二套 180m 整套申论手写。</td></tr>
-      <tr><td><strong>4 天极限版</strong></td><td>• <strong>Day 1</strong>：政治排除法 + 2026 申论 B 卷 Q1–Q3 手写复盘<br>• <strong>Day 2</strong>：选词高频词表 + 2026 申论 Q4《坐标》全手写 + 2024 案例摘要提纲<br>• <strong>Day 3</strong>：数量 4 类母题 + 2025 资料防坑 + 省情与 3 部新法<br>• <strong>Day 4</strong>：上午 2024 行测限时跑通节奏 + 下午背诵 2027 政治/申论押题金句</td><td>放弃所有 2022 以前旧题及常规常识百科，100% 押宝近两届最新结构。</td></tr>
-    </tbody>
-  </table></div>
-</section>
 
   </main>
 </div>
 
-
 <script defer src="assets/katex/katex/katex.min.js"></script>
 <script defer src="assets/katex/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
 <script>
-const STORAGE_KEY = 'sd_gongkao_7d_v1';
+const STORAGE_KEY = 'sd_v2_hub';
 function saveCheck() {
   const boxes = document.querySelectorAll('.nav-item input[type="checkbox"]');
   const state = {};
   let done = 0;
   boxes.forEach(b => { state[b.dataset.sec] = b.checked; if (b.checked) done++; });
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
-  document.getElementById('progText').textContent = done + ' / ' + boxes.length;
-  document.getElementById('progFill').style.width = Math.round(done * 100 / boxes.length) + '%';
+  const pt = document.getElementById('progText');
+  const pf = document.getElementById('progFill');
+  if (pt) pt.textContent = done + ' / ' + boxes.length;
+  if (pf && boxes.length) pf.style.width = Math.round(done * 100 / boxes.length) + '%';
 }
 function loadCheck() {
   try {
@@ -905,18 +625,17 @@ function loadCheck() {
   } catch (e) {}
   saveCheck();
 }
-let allOpen = true;
+// Requirement #7: NEVER open details.sol on initial load; stay collapsed by default until user clicks!
+let allSolExpanded = false;
 function toggleAllSol() {
-  allOpen = !allOpen;
-  document.querySelectorAll('details.sol').forEach(d => d.open = allOpen);
+  allSolExpanded = !allSolExpanded;
+  document.querySelectorAll('details.sol').forEach(d => d.open = allSolExpanded);
+  const btn = document.getElementById('toggleSolBtn');
+  if (btn) btn.textContent = allSolExpanded ? '🙈 收起全部解析' : '👁 展开全部解析';
 }
-document.querySelectorAll('details.sol').forEach(d => d.open = true);
 window.addEventListener('beforeprint', () => {
   document.querySelectorAll('details.sol').forEach(d => d.open = true);
 });
-loadCheck();
-
-
 function toggleSidebar() {
   const sb = document.querySelector('.sidebar');
   const bd = document.querySelector('.sidebar-backdrop');
@@ -931,17 +650,13 @@ function closeSidebar() {
   if (bd) bd.classList.remove('show');
 }
 document.querySelectorAll('.sidebar .nav-item').forEach(a => {
-  a.addEventListener('click', () => {
-    if (window.innerWidth <= 960) closeSidebar();
-  });
+  a.addEventListener('click', () => { if (window.innerWidth <= 960) closeSidebar(); });
 });
 const topBtn = document.getElementById('backToTopBtn');
 if (topBtn) {
-  window.addEventListener('scroll', () => {
-    topBtn.classList.toggle('show', window.scrollY > 420);
-  }, { passive: true });
+  window.addEventListener('scroll', () => { topBtn.classList.toggle('show', window.scrollY > 420); }, { passive: true });
 }
-
+loadCheck();
 </script>
 
 </body>

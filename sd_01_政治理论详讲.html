@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01｜政治理论详讲：政策映射与 2027 概率全库</title>
+  <link rel="stylesheet" href="assets/katex/katex/katex.min.css" />
+  <style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --blue: #2563eb; --blue-bg: #eff6ff;
+  --green: #059669; --green-bg: #ecfdf5;
+  --red: #dc2626; --red-bg: #fef2f2;
+  --purple: #7c3aed; --purple-bg: #f5f3ff;
+  --amber: #d97706; --amber-bg: #fffbeb;
+  --cyan: #0891b2; --cyan-bg: #ecfeff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 15.3px;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+.layout { display: flex; min-height: 100vh; width: 100%; }
+.sidebar {
+  width: 292px;
+  background: #0f172a;
+  color: #e2e8f0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  padding: 18px 15px 44px;
+  z-index: 260;
+  transition: transform 0.25s ease;
+}
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.5); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.sidebar-title { font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 0 0 3px; letter-spacing: 0.3px; }
+.sidebar-sub { font-size: 11.8px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b; }
+.progress-box { background: #1e293b; border-radius: 8px; padding: 9px 11px; margin-bottom: 11px; font-size: 12.5px; }
+.progress-bar-wrap { background: #334155; height: 7px; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+.progress-bar-fill { background: linear-gradient(90deg, #10b981, #38bdf8); height: 100%; width: 0%; transition: width 0.25s; }
+.btn-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.btn {
+  flex: 1 1 88px; min-height: 34px; border: none; border-radius: 6px; padding: 6px 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer; background: #2563eb; color: #fff;
+  text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+}
+.btn.secondary { background: #334155; }
+.btn.emerald { background: #059669; }
+.btn.slate { background: #475569; }
+.btn:hover { opacity: 0.92; }
+.mod-switcher {
+  width: 100%; margin: 2px 0 10px; padding: 7px 9px; border-radius: 7px;
+  background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 12.5px; font-weight: 700; cursor: pointer;
+}
+.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 13px 0 6px 5px; letter-spacing: 0.6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px;
+  color: #cbd5e1; text-decoration: none; font-size: 12.8px; margin-bottom: 3px; transition: background 0.15s;
+}
+.nav-item:hover { background: #1e293b; color: #fff; }
+.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; width: 15px; height: 15px; }
+.nav-item .nav-text { flex: 1; line-height: 1.38; }
+
+.main { margin-left: 292px; flex: 1; min-width: 0; width: 100%; padding: 28px 34px 88px; max-width: 1060px; }
+.cover-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0e7490 100%);
+  color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+.cover-banner.theme-red { background: linear-gradient(135deg, #1e1b4b 0%, #991b1b 55%, #b45309 100%); }
+.cover-banner.theme-amber { background: linear-gradient(135deg, #0f172a 0%, #92400e 55%, #b45309 100%); }
+.cover-banner.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 55%, #2563eb 100%); }
+.cover-banner.theme-green { background: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0e7490 100%); }
+.cover-banner.theme-cyan { background: linear-gradient(135deg, #0f172a 0%, #0e7490 55%, #0284c7 100%); }
+.cover-eyebrow {
+  display: inline-block; font-size: 11.8px; font-weight: 800; padding: 3px 11px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 10px;
+}
+.cover-banner h1 { margin: 0 0 8px; font-size: 25px; line-height: 1.3; }
+.cover-banner p { margin: 0 0 12px; color: #e0f2fe; font-size: 14.5px; }
+.cover-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.cover-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); padding: 3px 11px; border-radius: 99px; font-size: 12.2px; font-weight: 600; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.cover-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-decoration: none; color: #fff; background: rgba(16,185,129,0.92);
+}
+.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34); }
+.cover-btn:hover { opacity: 0.92; }
+
+/* Hub 7-module directory grid */
+.mod-dir-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0 8px; }
+.mod-dir-card {
+  background: #ffffff; border: 1px solid var(--border); border-left: 5px solid var(--blue);
+  border-radius: 12px; padding: 15px 17px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); transition: transform 0.14s, box-shadow 0.14s;
+}
+.mod-dir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+.mod-dir-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.mod-dir-badge { font-size: 11px; font-weight: 800; color: #fff; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.mod-dir-card h3 { margin: 0 0 6px; font-size: 16px; color: #0f172a; }
+.mod-dir-card p { margin: 0 0 11px; font-size: 13.2px; color: #475569; line-height: 1.58; }
+.mod-dir-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 13px; border-radius: 8px; background: #0f172a; color: #fff;
+  text-decoration: none; font-size: 13px; font-weight: 700; min-height: 38px;
+}
+.mod-dir-link:hover { opacity: 0.92; }
+
+.day-section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 25px 28px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 16px;
+}
+.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 11px; margin-bottom: 16px; }
+.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 11.8px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.day-title { margin: 4px 0 5px; font-size: 21px; color: #0f172a; line-height: 1.32; }
+.day-meta { font-size: 13.5px; color: var(--muted); }
+
+h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; }
+h3 { font-size: 15.5px; color: #1e3a8a; margin: 16px 0 8px; break-after: avoid; }
+p { margin: 8px 0; overflow-wrap: break-word; }
+ul, ol { margin: 6px 0 10px; padding-left: 22px; }
+li { margin-bottom: 5px; overflow-wrap: break-word; }
+
+.card { border-radius: 10px; padding: 14px 18px; margin: 14px 0; border-left: 5px solid; break-inside: avoid; }
+.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.card-intuition { background: var(--green-bg); border-color: var(--green); }
+.card-intuition .card-title { color: #065f46; }
+.card-formula { background: var(--blue-bg); border-color: var(--blue); }
+.card-formula .card-title { color: #1e40af; }
+.card-trap { background: var(--red-bg); border-color: var(--red); }
+.card-trap .card-title { color: #991b1b; }
+.card-trick { background: var(--purple-bg); border-color: var(--purple); }
+.card-trick .card-title { color: #5b21b6; }
+.card-example { background: var(--amber-bg); border-color: var(--amber); }
+.card-example .card-title { color: #92400e; }
+.card-quiz { background: var(--cyan-bg); border-color: var(--cyan); }
+.card-quiz .card-title { color: #155e75; }
+
+.q-box {
+  background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #d97706;
+  border-radius: 10px; padding: 15px 18px; margin: 16px 0; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 800; color: #92400e; font-size: 14.2px; }
+.q-stem { background: #fffbeb; border-radius: 7px; padding: 10px 13px; margin: 8px 0 10px; font-size: 14.4px; line-height: 1.72; color: #1e293b; }
+.q-opts { margin: 6px 0 10px; padding-left: 6px; list-style: none; font-size: 14px; color: #334155; }
+.q-opts li { margin-bottom: 4px; }
+
+.hl-yellow { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #713f12; }
+.hl-pink { background: #fecdd3; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #881337; }
+.hl-blue { background: #bfdbfe; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1e3a8a; }
+.badge-p0 { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p1 { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p2 { display: inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+
+.src-tag {
+  display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569;
+  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace;
+}
+.net-tag {
+  display: inline-block; background: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;
+  font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+}
+.missing-tag {
+  display: inline-block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+}
+.template-box {
+  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 15px;
+  font-size: 13.8px; line-height: 1.75; margin: 10px 0;
+}
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0; font-size: 13.5px; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: #1e293b; color: #ffffff; text-align: left; padding: 8px 10px; font-weight: 700; }
+td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; overflow-wrap: break-word; }
+tr:nth-child(even) td { background: #f8fafc; }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; break-inside: avoid; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+
+/* Default CLOSED collapsible derivation blocks */
+details.sol {
+  margin-top: 8px; background: #f8fafc; border: 1.5px dashed #0891b2; border-radius: 8px; padding: 8px 13px;
+}
+details.sol[open] { background: #f0fdfa; border-style: solid; }
+details.sol > summary {
+  cursor: pointer; font-weight: 800; color: #0e7490; font-size: 13.5px; user-select: none; list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+details.sol > summary::before { content: "▶"; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+details.sol[open] > summary::before { transform: rotate(90deg); }
+details.sol > summary::-webkit-details-marker { display: none; }
+.sol-body { margin-top: 9px; padding-top: 8px; border-top: 1px solid #bae6fd; font-size: 14px; line-height: 1.72; color: #1e293b; }
+
+.day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.day-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; break-inside: avoid; }
+.day-col h4 { margin: 0 0 8px; font-size: 14.5px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+
+.sub-footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  margin-top: 28px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px;
+}
+.sub-footer-nav a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px; border-radius: 8px;
+  background: #0f172a; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; min-height: 40px;
+}
+.sub-footer-nav a.alt { background: #2563eb; }
+.sub-footer-nav a:hover { opacity: 0.92; }
+
+.mobile-toggle {
+  display: none; align-items: center; gap: 6px; position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
+  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
+}
+.back-to-top {
+  display: none; align-items: center; justify-content: center; position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px; padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 256px; }
+  .main { margin-left: 256px; padding: 22px 22px 76px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 305px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 16px 16px 92px; max-width: 100%; }
+  .mod-dir-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 18px 16px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.7px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 19px 15px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 20.5px; }
+  .cover-banner p { font-size: 13.8px; }
+  .day-section { padding: 15px 13px; border-radius: 12px; margin-bottom: 16px; }
+  .day-title { font-size: 18.5px; }
+  h2 { font-size: 16.2px; }
+  h3 { font-size: 14.8px; }
+  .card, .q-box { padding: 12px 13px; }
+  table { font-size: 12.6px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
+  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions, .sub-footer-nav { display: none !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+  .day-section { border: none; box-shadow: none; padding: 0; margin: 0 0 18px; }
+  details.sol { border-style: solid; }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开或关闭目录">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">01｜政治理论详讲</div>
+    <div class="sidebar-sub">S级核心抢分 · 真题↔政策实证推演</div>
+    <div class="progress-box">
+      <div>本页学习打卡：<strong id="progText">0 / 7</strong></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progFill"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="toggleSolBtn" onclick="toggleAllSol()">👁 展开全部解析</button>
+      <button class="btn secondary" onclick="window.print()">🖨 打印页面</button>
+    </div>
+    <div class="btn-row"><a class="btn emerald" href="山东省考7天冲刺精准提分讲义.html">📘 省考总纲</a><a class="btn slate" href="index.html">🌐 学习中心</a></div>
+    <select class="mod-switcher" aria-label="快速切换省考模块页面" onchange="if(this.value)location.href=this.value;"><option value="山东省考7天冲刺精准提分讲义.html">主控｜省考总纲与7天认知日程</option><option value="sd_01_政治理论详讲.html" selected>01｜政治理论｜政策映射与2027预测</option><option value="sd_02_常识判断详讲.html">02｜常识判断｜重→轻概率与新法</option><option value="sd_03_言语理解详讲.html">03｜言语理解｜花生十三法+高频词</option><option value="sd_04_数量关系详讲.html">04｜数量关系｜必拿母题与极限模型</option><option value="sd_05_判断推理详讲.html">05｜判断推理｜图推/定义/类比/逻辑</option><option value="sd_06_资料分析详讲.html">06｜资料分析｜415/假设分配/盐水</option><option value="sd_07_申论B卷详讲.html">07｜申论 B 卷｜踩点/公文/单字作文</option></select>
+    <div class="nav-group-label">一 · 真题↔政策映射规律</div><a class="nav-item" href="#pol-law"><input type="checkbox" data-sec="pol-law" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01｜时间窗口律与6大设错原型</span></a><div class="nav-group-label">二 · 2027 按概率分级全库</div><a class="nav-item" href="#pol-p0-1"><input type="checkbox" data-sec="pol-p0-1" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02｜P0：二十届五中全会（38天）</span></a><a class="nav-item" href="#pol-p0-2"><input type="checkbox" data-sec="pol-p0-2" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">03｜P0：《发展新质生产力意见》</span></a><a class="nav-item" href="#pol-p0-3"><input type="checkbox" data-sec="pol-p0-3" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">04｜P0：省委十二届十二次全会与省情</span></a><a class="nav-item" href="#pol-p1-4"><input type="checkbox" data-sec="pol-p1-4" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">05｜P1–P2：两会/APEC/三农/周年/马哲</span></a><div class="nav-group-label">三 · 盲测训练与记忆闭合</div><a class="nav-item" href="#pol-quiz"><input type="checkbox" data-sec="pol-quiz" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">06｜10道真题全步盲测拆解</span></a><a class="nav-item" href="#pol-mem"><input type="checkbox" data-sec="pol-mem" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">07｜认知提取自检 5 问</span></a>
+  </aside>
+  <main class="main">
+    
+<div class="cover-banner theme-red">
+  <span class="cover-eyebrow">模块 01｜S 级核心抢分（近两年占卷首 50%–60%）</span>
+  <h1>政治理论详讲：真题 ↔ 政策映射律与 2027 概率预测全库</h1>
+  <p>彻底摒弃“背一大堆新闻通稿”，先用 2022–2025 真实真题反推出题人改写中央/山东文件的 6 条铁律与时间滞后窗口，再将今年（2025.12–2026.11）全部官方核实政策按 P0→P2 考试概率精确分级</p>
+  <div class="cover-pills">
+    <span class="cover-pill">⏱ 窗口律：考前 0.6–6.5 月极热</span>
+    <span class="cover-pill">🎯 截止线：考前 18–24 天压线入卷</span>
+    <span class="cover-pill">🛡 100% 官方信源联网校准</span>
+  </div>
+  <div class="cover-actions">
+    <a class="cover-btn ghost" href="山东省考7天冲刺精准提分讲义.html">📘 返回省考总纲目录</a>
+    <a class="cover-btn ghost" href="sd_02_常识判断详讲.html">下一模块：02 常识判断 →</a>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: 政策-真题关系推演 ============ -->
+<section class="day-section" id="pol-law">
+  <div class="day-header">
+    <span class="day-tag" style="background:#dc2626">第一篇｜以史推今的硬核规律</span>
+    <h1 class="day-title">01｜历年真题与当年政策文件关系推演（时间窗口 &amp; 6 大设错原型）</h1>
+    <div class="day-meta">统计基于工作区 2017–2025 共 9 套行测全量政治/大政题 + 联网核查 2026 记忆真题</div>
+  </div>
+
+  <div class="card card-intuition">
+    <div class="card-title">💡 人脑认知第一步：先懂命题人“在哪天、抓什么、怎么改错”</div>
+    <p>别把政治理论当成无边大海！把过去 4 年（2022–2025 届）每一道考中央与山东大政的真题发布日和政策原文日一减，规律惊人地一致：<br>
+    1. <strong>黄金极热窗口（考前 1–6.5 个月）</strong>：85% 以上大政真题选自开考前 1–6 个月内的中央全会公报、国家级意见与省委重要会议/领导人讲话；<br>
+    2. <strong>最晚压线红线（考前 18–24 天）</strong>：<code>2024 Q5</code> 考 2023.11.21 省政府新闻办发布会（<strong>考前 19 天</strong>）；<code>2025 Q17</code> 考 2024.11.17 梦想号入列（<strong>考前 21 天</strong>）；<code>2025 Q8</code> 考 2024.11.14 全球南方智库联盟（<strong>考前 24 天</strong>）！说明<strong>只要在 11 月下旬前官宣的重大节点，全部来得及进 12 月 6 日考卷！</strong></p>
+  </div>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 760 170" width="730">
+      <rect x="0" y="0" width="760" height="170" rx="10" fill="#f8fafc"/>
+      <text x="380" y="24" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">山东政治理论“政策发文 → 开考入卷”时间滞后窗口实证尺（倒推至考前天数/月数）</text>
+      <line x1="50" y1="88" x2="710" y2="88" stroke="#334155" stroke-width="3"/>
+      <rect x="70" y="72" width="490" height="32" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+      <rect x="560" y="72" width="130" height="32" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+      <text x="315" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#991b1b">🔥 极热命题窗（考前 1–6.5 个月：占比 85%+）</text>
+      <text x="625" y="92" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#92400e">⚡ 压线热点(18–24天)</text>
+      <circle cx="110" cy="88" r="5" fill="#dc2626"/><text x="110" y="124" text-anchor="middle" font-size="10.5" fill="#1e293b">2024.5 视察山东</text><text x="110" y="138" text-anchor="middle" font-size="10" fill="#64748b">6.5月→2025 Q9</text>
+      <circle cx="240" cy="88" r="5" fill="#dc2626"/><text x="240" y="124" text-anchor="middle" font-size="10.5" fill="#1e293b">三中全会/绿色意见</text><text x="240" y="138" text-anchor="middle" font-size="10" fill="#64748b">4–4.7月→2025 Q1/3/6/7</text>
+      <circle cx="385" cy="88" r="5" fill="#dc2626"/><text x="385" y="124" text-anchor="middle" font-size="10.5" fill="#1e293b">中央金融工作会议</text><text x="385" y="138" text-anchor="middle" font-size="10" fill="#64748b">40天→2024 Q9</text>
+      <circle cx="495" cy="88" r="5" fill="#dc2626"/><text x="495" y="124" text-anchor="middle" font-size="10.5" fill="#1e293b">全国宣文会/十九届六中</text><text x="495" y="138" text-anchor="middle" font-size="10" fill="#64748b">1.3–2.1月→Q1</text>
+      <circle cx="625" cy="88" r="5" fill="#d97706"/><text x="625" y="124" text-anchor="middle" font-size="10.5" fill="#b45309">2023.11.21 鲁通码</text><text x="625" y="138" text-anchor="middle" font-size="10" fill="#b45309">19天→2024 Q5</text>
+      <circle cx="710" cy="88" r="6" fill="#0f172a"/><text x="710" y="60" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f172a">开考日(12.6)</text>
+      <text x="380" y="159" text-anchor="middle" font-size="11" fill="#059669">→ 映射到今年：2026.7–11 月全会/《新质生产力意见》/《和平宣言》/APEC深圳/山东省委全会 全部正中靶心！</text>
+    </svg>
+  </div>
+
+  <h3>二、2022–2026 政策原文 ↔ 山东真题实证映射对照表（全部可查）</h3>
+  <div class="table-wrap"><table>
+    <thead>
+      <tr><th>年份(开考日)</th><th>真题出处</th><th>触发该题的当年真实政策/会议(发文日)</th><th>滞后窗口</th><th>命题人实际挖坑手法（直接背诵原型）</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2022 (2021-12-19)</td><td><code>[2022 | Q1]</code></td><td>十九届六中全会《百年决议》(2021-11-11)</td><td>1.3个月</td><td><strong>主语张冠李戴</strong>：把“敢于斗争”偷换成“理想信念”，把“人民向往”偷换成“开拓创新”。</td></tr>
+      <tr><td>2022 (2021-12-19)</td><td><code>[2022 | Q2]</code></td><td>总书记东营/济南黄河座谈会(2021-10-20)</td><td>2.0个月</td><td><strong>省域对调</strong>：把“建设黄河流域先行区”从<strong>宁夏</strong>移花接木到河南头上去。</td></tr>
+      <tr><td>2023 (2023-02-25)</td><td><code>[2023 | Q1]</code></td><td>党的二十大报告(2022-10-16)</td><td>4.3个月</td><td><strong>5项全对设疑</strong>：连续摆 5 条原文核心论断（A.2项 B.3项 C.4项 D.5项），专吓不敢全选者。</td></tr>
+      <tr><td>2023 (2023-02-25)</td><td><code>[2023 | Q2]</code></td><td>2023 山东省政府工作报告(2023-01-13)</td><td>43天</td><td><strong>官方序号混入真实干扰项</strong>：三大标志性成果中混入“②乡村振兴”作伪项。</td></tr>
+      <tr><td>2023 (2023-02-25)</td><td><code>[2023 | Q3]</code></td><td>《山东绿色低碳先行区三年计划》(2022-12-20)</td><td>2.2个月</td><td><strong>一字反义替换</strong>：把原文<code>稳步发展“省外来电”</code>改成“省内供电”。</td></tr>
+      <tr><td>2024 (2023-12-10)</td><td><code>[2024 | Q1/Q3]</code></td><td>全国宣文会(10-08) / 政治局第九次学习(10-27)</td><td>44天–2.1月</td><td>Q1 全对 5 项；Q3 编造伪政治词<code>“各民族自信和独立”</code>。</td></tr>
+      <tr><td>2024 (2023-12-10)</td><td><code>[2024 | Q4/Q5]</code></td><td>综合立体交通网纲要 / 三大行动发布会(2023-11-21)</td><td><strong>19天!</strong></td><td>Q4 轴向对调（<code>四横五纵</code>→四纵五横）；Q5 山东品牌偷换（<code>鲁通码</code>→齐鲁码）。</td></tr>
+      <tr><td>2024 (2023-12-10)</td><td><code>[2024 | Q9/Q12]</code></td><td>中央金融工作会(10-31) / 干部教育规划(10-16)</td><td>40–55天</td><td>Q9 资金投向偷换（创新制造绿色小微→居民消费）；Q12 二字反义（<code>分类</code>建设→统一建设）。</td></tr>
+      <tr><td>2025 (2024-12-08)</td><td><code>[2025 | Q1/3/6/7/8]</code></td><td>二十届三中全会(7-18) / 全面绿色转型意见(7-31) / 智库联盟(11-14)</td><td><strong>24天–4.7月</strong></td><td>Q3 目录越界（国安法治属第13部分非第9部分）；Q6 主次反转（预防为主→救援为主）；Q8 国际组织宗旨互换（亚投行混入金砖银行）。</td></tr>
+      <tr><td>2025 (2024-12-08)</td><td><code>[2025 | Q4/9/10]</code></td><td>兰州黄河会(9-12) / 考察山东(5-24) / 省委十二届七次全会(8-24)</td><td>2.9–6.5月</td><td>Q4 宁夏↔山西工程对调；Q10 编造假时间节点<code>“建党一百二十周年”</code>。</td></tr>
+      <tr><td>2026 <span class="net-tag">联网参考</span></td><td><code>[2026 | 回忆]</code></td><td>全面深化改革历次讲话+二十届三中全会决定</td><td>—</td><td>再次考“正确的有几项？”（5句全对），以及“人民为中心/调查研究/系统思维/数据要素分配”。</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card card-trap">
+    <div class="card-title">🚨 山东政治理论“6 大命题设错铁律”（背完考场能直接猜中 70%！）</div>
+    <ol>
+      <li><strong>一抓“省域/地名对调”</strong>：凡涉及黄河沿线省工程、山东周边省成就，优先核对“是不是把邻省（山西/宁夏/河南）安到了对方头上”。</li>
+      <li><strong>二抓“1–2 字正反/轴向/词性颠倒”</strong>：<code>省外↔省内</code>、<code>分类↔统一</code>、<code>预防↔救援</code>、<code>供给侧↔需求侧</code>、<code>四横五纵↔四纵五横</code>、<code>鲁通码↔齐鲁码</code>、<code>先立后破↔先破后立</code>。</li>
+      <li><strong>三抓“时间里程碑编造”</strong>：标准年份只有 <strong>2029（建国80周年）→ 2030（十五五收官/碳达峰）→ 2035（基本实现现代化）→ 本世纪中叶（强国/强省）</strong> + 特定大会如 <strong>2027 年下半年（二十一大）</strong>。凡出现生僻“2025年/建党120周年/2027年上半年”等字眼，一律高度怀疑造假！</li>
+      <li><strong>四抓“机构职责/国际组织串门”</strong>：政协“求同存异”不能塞进人大；国安法治不能混入法治体系章节；亚投行宗旨不能塞进金砖银行。</li>
+      <li><strong>五抓“山东硬核成就保真法则”</strong>：题干专门列出山东“全国第一 / 首创 / 10.3 万亿 / 领先”的正面选项，只要不搞错装备名称（记住“深海1号”在南海非山东，“耕海1号”是海洋牧场），大概率为真。</li>
+      <li><strong>六抓“‘正确的有几项’全对心理博弈”</strong>：2023 Q1、2024 Q1、2025 Q1、2026 回忆版全部出现“①–⑤ 原话组合全对（5项）”，只要找不到任何一条上述 1–5 类的硬伤改写，敢于选全对！</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: P0 级极高概率预测（85%+） ============ -->
+<section class="day-section" id="pol-p0-1">
+  <div class="day-header">
+    <span class="day-tag" style="background:#dc2626">第二篇｜2027 考前概率 P0（85%+ 必背核心）</span>
+    <h1 class="day-title">02｜P0 靶心 1：党的二十届五中全会（2026.10.26–29，考前 38 天！）</h1>
+    <div class="day-meta">参照 2022 Q1(38天前六中全会)、2023 Q1(二十大)、2025 Q1/Q3(三中全会)，十月中央全会 100% 为卷首第一顺位热点</div>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">📘 官方权威公报完整核心口径 <span class="net-tag">联网核查·新华社/共产党员网</span></div>
+    <ul>
+      <li><strong>会议规格与人数</strong>：2026 年 10 月 26 日至 29 日在北京举行；出席中央委员 <strong>162 人</strong>，候补中央委员 <strong>117 人</strong>；中央政治局主持，习近平发表重要讲话；增选<strong>张升民</strong>为中央政治局委员。</li>
+      <li><strong>核心审议文件</strong>：<strong>《中共中央关于持之以恒推进全面从严治党若干重大问题的决定》</strong>（<span class="hl-pink">极其注意区分：</span><strong>二十届四中全会 [2025.10.20–23]</strong> 审议的是《十五五规划建议》，<strong>五中全会 [2026.10]</strong> 聚焦的是<strong>全面从严治党</strong>！）。</li>
+      <li><strong>回顾与评价</strong>：充分肯定四中全会以来中央政治局工作——深入开展<strong>树立和践行正确政绩观学习教育</strong>，隆重庆祝<strong>中国共产党成立 105 周年</strong>，推动<strong>“十四五”圆满收官、“十五五”开局良好</strong>。</li>
+      <li><strong>历史周期率“两个答案”必背原文</strong>：全会强调党在长期实践中找到了<strong>“让人民来监督政府”</strong>（第一个答案，毛泽东窑洞对）和<strong>“自我革命”</strong>（第二个答案，习近平新时代）两个跳出治乱兴衰历史周期率的答案，确保党永远不变质、不变色、不变味。</li>
+      <li><strong>重要政治安排</strong>：全会决定，<strong>中国共产党第二十一次全国代表大会（二十一大）于 2027 年下半年在北京召开</strong>。</li>
+    </ul>
+  </div>
+
+  <div class="card card-trap">
+    <div class="card-title">⚠️ 五中全会高频设错预测（人脑对比防坑卡）</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>命题维度</th><th>正确原意（记牢）</th><th>极可能被改成错项的套路</th></tr></thead>
+        <tbody>
+          <tr><td>全会文件主题</td><td>二十届<strong>五中</strong>全会（2026.10）：《持之以恒推进<strong>全面从严治党</strong>若干重大问题的决定》</td><td>故意混写成二十届<strong>四中</strong>全会，或把《制定十五五规划建议》安给五中全会。</td></tr>
+          <tr><td>二十一大时间</td><td><strong>2027 年下半年</strong>在北京召开</td><td>偷改为“2027 年上半年”或“2028 年下半年”（时间节点型必查）。</td></tr>
+          <tr><td>学习教育主题</td><td>树立和践行<strong>正确政绩观</strong>学习教育</td><td>替换成过去年份的主题（如把“党纪学习教育”或“八项规定”混作本次全会专述的“二十大以来”年度最新提法，需看清语境对应）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="day-section" id="pol-p0-2">
+  <div class="day-header">
+    <span class="day-tag" style="background:#dc2626">第二篇｜2027 考前概率 P0（88% 经济新政必考）</span>
+    <h1 class="day-title">03｜P0 靶心 2：《关于发展新质生产力的意见》（2026.10.9，考前 58 天！）</h1>
+    <div class="day-meta">参照 2025 Q7 考 4 个月前印发的《全面绿色转型意见》，2026 年 10 月中办/国务院级别重磅《意见》大概率直接考原理归类题或底线辨析</div>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">📘 顶层设计原文全要素拆解 <span class="net-tag">联网核查·新华社/教育部/发改委</span></div>
+    <ul>
+      <li><strong>印发主体与日期</strong>：中共中央、国务院印发，2026 年 10 月 9 日新华社受权发布，指导“十五五”时期高质量发展。</li>
+      <li><strong>核心标志（必背单选点！）</strong>：以科技创新为引领，以<strong>全要素生产率大幅提升为核心标志</strong>。</li>
+      <li><strong>“十六字”基本原则</strong>：<strong>创新主导、改革为要、因地制宜、先立后破</strong>，坚持高技术、高效能、高质量。</li>
+      <li><strong>统筹处理“四对关系”</strong>：政府和市场、质态和业态、改革和发展、自主和开放（并统筹发展和安全）。</li>
+      <li><strong>5 大方面 19 项重点任务</strong>：① 大力推进<strong>科技创新</strong>（原创性颠覆性创新、企业主体地位）；② <strong>科技创新和产业创新深度融合</strong>（改造传统/培育新兴/布局未来产业，实数融合、<strong>全面实施“人工智能+”行动</strong>）；③ <strong>发展方式创新</strong>（绿色低碳循环+能源革命）；④ <strong>体制机制创新</strong>（全球配置先进生产要素、金融创新）；⑤ <strong>人才工作机制创新</strong>。</li>
+      <li><strong>划出的纪律底线与实践红线（极易出负向选择题！）</strong>：明确提出“<span class="hl-pink">不能脱实向虚、贪大求全、搞泡沫化，不能出现产业空心化或产业断层现象，不能盲目求新、顾此失彼</span>”；严禁借发展新质生产力之名违规滥用政策、一哄而上盲目投资。</li>
+    </ul>
+  </div>
+</section>
+
+<section class="day-section" id="pol-p0-3">
+  <div class="day-header">
+    <span class="day-tag" style="background:#b91c1c">第二篇｜2027 考前概率 P0（88% 山东本土独占）</span>
+    <h1 class="day-title">04｜P0 靶心 3：山东省委十二届十二次全会（2026.11.19–20）&amp; 2026 山东重磅省情</h1>
+    <div class="day-meta">参照 2024 Q5(19天)、2023 Q2(43天)、2025 Q9/10，11 月 20 日刚闭幕的省委全会 + 山东突破 10 万亿 GDP 几乎必出 1–2 道本土题</div>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">🌊 2026 山东大政必考四大核心版块 <span class="net-tag">联网核查·大众日报/山东省政府网</span></div>
+    <ol>
+      <li><strong>山东省委十二届十二次全会（2026.11.19–20 济南，省委书记林武讲话）</strong>：
+        <ul>
+          <li>审议通过 2 份核心文件：<strong>《中共山东省委关于深入学习贯彻党的二十届五中全会精神持之以恒推进全面从严治党的意见》</strong>、<strong>《关于召开中国共产党山东省第十三次代表大会的决议》</strong>。</li>
+          <li>队伍导向：以政治建设为统领，树立<strong>重实干、重实绩、重担当</strong>用人导向，一体推进“三不腐”，锚定“走在前、挑大梁”。</li>
+        </ul>
+      </li>
+      <li><strong>2026 年山东省政府工作报告（2026.1.27 周乃翔省长）硬核数据</strong>：
+        <ul>
+          <li><strong>经济总量历史跨越</strong>：2025 年山东 GDP 达 <strong>103197.5 亿元（约 10.3 万亿元，增长 5.5%）</strong>——成为<span class="hl-yellow">全国第三个、北方第一个 GDP 突破 10 万亿元大关的省份</span>！（“十四五”年均增 5.9%，人均从 7.34 万升至 10.26 万元）。</li>
+          <li><strong>农林牧渔总产值</strong>：超 <strong>1.3 万亿元，稳居全国首位</strong>；2026 年预期目标：GDP 增长 <strong>5% 以上</strong>、一般公共预算收入增 2%、城镇新增就业 <strong>110 万人以上</strong>。</li>
+        </ul>
+      </li>
+      <li><strong>2026 山东“AI+”、海洋与促消费专项成果</strong>：
+        <ul>
+          <li><strong>全国首个海洋智能要素平台——“海洋 Token 工厂”</strong>（2026 海洋合作发展论坛在青岛发布，山东移动+海大+国实科技联合推进）：不涉虚拟货币，把<strong>数据、算力、算法</strong>标准化封装为 Token 供给海洋预警/航线/渔业，打通人工智能+海洋制造业。</li>
+          <li><strong>《“AI消费+”场景开放计划》</strong>（2026.6 省政府与商务部主办）：聚焦智慧养老/家政/文旅等六大领域 + <strong>8 类地方自主以旧换新</strong>（扫地机器人、洗地机、智能马桶、助行外骨骼机器人等）。</li>
+        </ul>
+      </li>
+      <li><strong>美丽中国省域先行区 &amp; 新型能源体系</strong>：印发《山东省美丽中国先行区建设实施方案》（2027 年走在全国前列、2030 年基本建成）、《山东省零碳工厂建设实施方案（试行）》（鲁工信绿发〔2026〕206 号）及《新型能源体系建设“十五五”规划》（构建 <strong>500 千伏“六横六纵”环网</strong>、打造东部沿海清洁能源发展高地）。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: P1/P2 分级热点库 ============ -->
+<section class="day-section" id="pol-p1-4">
+  <div class="day-header">
+    <span class="day-tag" style="background:#d97706">第二篇｜P1 高概率（60%–85%）与 P2 重要延展</span>
+    <h1 class="day-title">05｜P1 两会“十五五”纲要/中央经济工作会议/APEC 深圳/一号文件 + P2 周年与马哲</h1>
+    <div class="day-meta">按概率梯度记忆：先把核心数字与防混淆点挂上脑图钩子，再看真题排雷</div>
+  </div>
+
+  <div class="card card-formula" id="pol-p1-5">
+    <div class="card-title">📊 P1-1：2026《政府工作报告》&amp; “十五五”规划纲要 &amp; 中央经济工作会议</div>
+    <ul>
+      <li><strong>十五五规划（2026–2030）核心硬指标（共 20 项）</strong>：全社会研发经费投入年均增长 <strong>7% 以上</strong>；数字经济核心产业增加值占 GDP 比重达到 <strong>12.5%</strong>；单位 GDP 二氧化碳排放<strong>累计降低 17%</strong>；2035 年人均 GDP 比 2020 年翻一番；民生福祉占 <strong>7 项指标</strong>，粮食能源安全占 <strong>2 项指标</strong>。</li>
+      <li><strong>2026 宏观政策与十大重点任务</strong>：财政<strong>更加积极</strong> + 货币<strong>适度宽松</strong>；重点任务第 1 位为<strong>建设强大国内市场（提振消费专项行动）</strong>；第 2 位加快培育壮大新动能（智能经济新形态）；统筹整治重点领域风险。</li>
+      <li><strong>2025.12.10–11 中央经济工作会议关键辨析（防跨年混搭！）</strong>：2025 年 12 月会议总结的新规律认识为<strong>“五个必须”</strong>（充分挖掘经济潜能 / 政策支持与改革创新并举 / 既“放得活”又“管得好” / 投资于物与投资于人紧密结合 / 苦练内功应对挑战）并部署<strong>八大重点任务</strong>（首项坚持内需主导）；<em>注意区分</em>：2024 年 12 月会议才提“五个必须统筹”和“九大任务”！</li>
+    </ul>
+  </div>
+
+  <div class="card card-trick">
+    <div class="card-title">🌍 P1-2：2026 年 11 月深圳主场外交双星 &amp; 2026 中央一号文件</div>
+    <ul>
+      <li><strong>APEC 第三十三次领导人非正式会议（2026.11.19 深圳，考前 17 天！）</strong>：习近平发表《建设亚太共同体，续写“亚太奇迹”新篇章》，提出 4 点主张（和衷共济/开放融通/开拓创新/包容发展）；携手搭建亚太共同体<strong>“四梁八柱”（强化经贸支柱、升级联通支柱[硬联通/软联通/心联通]、打造创新支柱、夯实发展支柱）</strong>；中方出资 <strong>2000 万美元</strong> 并设立<strong>亚太共同体研究中心</strong>；通过《2026年APEC领导人宣言》与<strong>“深圳展望”</strong>。</li>
+      <li><strong>中俄美三国最高领导人深圳首次三边会晤（2026.11.19）</strong>：发表<strong>《中俄美元首和平宣言》</strong>，涵盖四大共识（推动联合国改革与有效履职 / 增加精炼石油产品供应保障能源稳定 / 尊重国家同意原则与官员豁免、反对国际刑事法院滥用管辖权 / 重申<strong>“核战争打不赢也打不得”</strong>）。</li>
+      <li><strong>2026 中央一号文件（2026.2.3）</strong>：“十五五”首个三农文件《关于锚定农业农村现代化扎实推进乡村全面振兴的意见》——以学习运用<strong>“千万工程”</strong>经验为引领，粮食产量稳定在 <strong>1.4 万亿斤左右</strong>，实施常态化精准帮扶，确保不发生规模性返贫。</li>
+    </ul>
+  </div>
+
+  <div class="card card-intuition" id="pol-p2-7">
+    <div class="card-title">🕯 P2：2026 三大纪念讲话 + 尼山论坛 + 马哲必分红线</div>
+    <ul>
+      <li><strong>三大纪念大会</strong>：① <strong>庆祝建党 105 周年（2026.7.1）</strong>颁授“七一勋章”；② <strong>纪念红军长征胜利 90 周年大会（2026.10.22）</strong>弘扬伟大长征精神、走好新的长征路；③ <strong>纪念孙中山先生诞辰 160 周年大会（2026.11.12）</strong>。</li>
+      <li><strong>2026 尼山世界文明论坛（2026.9.28–29 曲阜）</strong>：主题<strong>“文明·秩序·公理”</strong>，发布《2026尼山世界文明论坛共识》。</li>
+      <li><strong>马哲“绝对不犯低级错”三条线</strong>：
+        <ol>
+          <li><code>社会基本矛盾</code>才是历史发展的<strong>根本动力</strong>（科技只是“重要力量”，不是“根本动力”或“永恒条件”，见 <code>2025 Q12</code>）；</li>
+          <li><code>人工智能</code>只是对人类思维的<strong>模仿性趋近</strong>（无生物脑与自我意识，不能等同或取代人类意识能动性，见 <code>2024 Q14</code>）；</li>
+          <li><code>先试点后推广</code>（自贸区/先行区）体现<strong>普遍性寓于特殊性之中</strong>，认识顺序是“特殊→普遍→特殊”（见 <code>2024 Q2</code>）。</li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: 真题默认折叠盲测营 ============ -->
+<section class="day-section" id="pol-quiz">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0891b2">第三篇｜盲测训练营（解析全部默认折叠）</span>
+    <h1 class="day-title">06｜10 道山东政治理论典型真题全步盲测拆解（先做再点开）</h1>
+    <div class="day-meta">严格遵循认知提取练习原则：所有参考结论与排雷依据均已默认隐藏，独立判断完再点击展开校验</div>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 1｜综合全对型防怀疑训练</span> <span class="src-tag">2026 省考回忆（2025.12.7）· 联网核查</span></div>
+    <div class="q-stem">习近平总书记围绕全面深化改革开放做了一系列重要论述，正确的有几项？<br>
+    ①改革开放必须勇于解放思想，但解放思想是有方向、有立场、有原则的，因而改革开放也是有方向、有立场、有原则的<br>
+    ②改革开放是当代中国大踏步赶上时代的重要法宝，是决定中国式现代化成败的关键一招<br>
+    ③我们提出进行全面深化改革，就是要适应我国社会基本矛盾运动的变化来推进社会发展<br>
+    ④全面深化改革开放，要围绕构建高水平社会主义市场经济体制，深化要素市场化改革，建设高标准市场体系<br>
+    ⑤全党必须自觉把改革摆在更加突出位置，紧紧围绕推进中国式现代化进一步全面深化改革</div>
+    <ul class="q-opts"><li>A. 2项 &nbsp;&nbsp; B. 3项 &nbsp;&nbsp; C. 4项 &nbsp;&nbsp; D. 5项</li></ul>
+    <details class="sol"><summary>👉 先自己判断“几项对”，再点击展开完整溯源排雷</summary><div class="sol-body">
+      <p><strong>推导答案：D（5项全对）</strong>（同时出现在本地 <code>2025 Q1</code> 与联网核查 2026 回忆库）。</p>
+      <ul>
+        <li><strong>排雷动作</strong>：逐条扫一遍 6 大设错点——无地名省域互换、无“反而/只能”反义词、无生僻年份、无主次颠倒。</li>
+        <li><strong>精确出处</strong>：① 出自 2012.12.31 政治局第二次集体学习；② 出自 2023.12.26 纪念毛泽东诞辰 130 周年讲话；③ 出自 2013.12.3 政治局第十一次集体学习；④ 出自 2024.3.5 参加江苏代表团审议；⑤ 出自 2024.7 二十届三中全会《决定》。遇到全真无硬伤的组合题，要敢选 D！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 2｜机构职能张冠李戴</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q2</span></div>
+    <div class="q-stem">习近平总书记强调，要在新时代新征程坚持好、完善好、运行好人民代表大会制度……关于人民代表大会制度，下列表述正确的是：<br>
+    ①《中国人民政治协商会议共同纲领》庄严宣告新中国实行人民代表大会制度<br>
+    ②第一届全国人民代表大会第一次会议通过《中华人民共和国宪法》，标志着人民代表大会制度正式建立<br>
+    ③人民代表大会制度具有促进全国各族人民大团结，实现求同存异、聚同化异的显著优势<br>
+    ④要用好宪法赋予人大的监督权，实行正确监督、有效监督、依法监督</div>
+    <ul class="q-opts"><li>A. ①②④ &nbsp;&nbsp; B. ②③④ &nbsp;&nbsp; C. ①③④ &nbsp;&nbsp; D. ①②③</li></ul>
+    <details class="sol"><summary>👉 点击展开“人大 vs 政协”机构边界拆解</summary><div class="sol-body">
+      <p><strong>推导答案：A（①②④）</strong>。</p>
+      <ul>
+        <li><strong>核心抓手</strong>：命题人利用考前 2.8 个月（2024.9.14 全国人大成立70周年大会 &amp; 2024.9.20 政协成立75周年大会相隔仅 6 天！）强行串台。</li>
+        <li><strong>③ 错误</strong>：“促进全国各族人民大团结，实现<strong>求同存异、聚同化异</strong>”是<strong>人民政协</strong>的显著优势，绝非人民代表大会制度！</li>
+        <li><strong>①②④ 正确</strong>：1949《共同纲领》第 12 条确实宣告实行人大制度（①对），1954 一届全国人大一次会议正式建立（②对），“正确监督、有效监督、依法监督”为原文（④对）。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 3｜章节目录级越界</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q3</span></div>
+    <div class="q-stem">党的二十届三中全会《决定》提到，完善中国特色社会主义法治体系。下列属于完善中国特色社会主义法治体系的有几项？<br>
+    ①深化立法领域改革 &nbsp; ②深入推进依法行政 &nbsp; ③健全公正执法司法体制机制 &nbsp; ④完善推进法治社会建设机制 &nbsp; ⑤完善国家安全法治体系</div>
+    <ul class="q-opts"><li>A. 2项 &nbsp;&nbsp; B. 3项 &nbsp;&nbsp; C. 4项 &nbsp;&nbsp; D. 5项</li></ul>
+    <details class="sol"><summary>👉 点击展开《决定》第九部分 vs 第十三部分排雷</summary><div class="sol-body">
+      <p><strong>推导答案：C（4项）</strong>。</p>
+      <ul>
+        <li>《决定》第九部分“完善中国特色社会主义法治体系”共 5 条（第32–36条）：①立法、②依法行政、③公正执法司法、④法治社会、⑤<strong>加强涉外法治建设</strong>。</li>
+        <li>而<strong>“完善国家安全法治体系”属于第十三部分“推进国家安全体系和能力现代化”（第50条）</strong>，属“目录跨章节移花接木”，剔除 ⑤ 后剩 4 项。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 4｜经典“省域对调”真题</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q4</span></div>
+    <div class="q-stem">关于习近平总书记在黄河流域生态保护和高质量发展座谈会上的论述及地方实践，下列表述正确的是：<br>
+    ①河套地区条件得天独厚，大力发展高效农业和节水产业，不能搞大水漫灌<br>
+    ②山东为黄河水资源调度装上智慧大脑，有4处引黄灌溉区入选全国数字孪生灌区试点，数量居全国第一<br>
+    ③宁夏实施“一泓清水入黄河”工程<br>
+    ④山西分3年从四川购入1500万立方米黄河用水权，这是全国首例跨省区水权交易案例</div>
+    <ul class="q-opts"><li>A. ①② &nbsp;&nbsp; B. ③④ &nbsp;&nbsp; C. ①③ &nbsp;&nbsp; D. ②④</li></ul>
+    <details class="sol"><summary>👉 点击展开“山西 ↔ 宁夏”对调抓手与保真规律</summary><div class="sol-body">
+      <p><strong>推导答案：A（①②）</strong>。</p>
+      <ul>
+        <li><strong>③ 错</strong>：“一泓清水入黄河”工程主体是<strong>山西</strong>，不是宁夏；</li>
+        <li><strong>④ 错</strong>：2023 年底从四川阿坝购买 1500 万方黄河用水权的是<strong>宁夏</strong>（宁东能源化工基地），不是山西；</li>
+        <li><strong>①② 对</strong>：② 精准对应山东本地“全国第一”数字化治黄实绩，符合“真题夸山东成绩通常为真”。（同类对调真题见 <code>2022 Q2</code> 把宁夏先行区塞给河南）。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 5｜主次概念“1词偷换”</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q6</span></div>
+    <div class="q-stem">关于公共安全治理，下列说法正确的有几项？<br>
+    ①应急救援是完善公共安全治理体制的首要环节，要把损失减少到最小<br>
+    ②坚持安全第一、救援为主，不断完善公共安全治理机制<br>
+    ③健全重大突发公共事件处置保障体系，完善大安全大应急框架下应急指挥机制<br>
+    ④完善安全生产风险排查整治和责任倒查机制，加强制度化常态化安全监管<br>
+    ⑤加强网络安全体制建设，完善网络空间治理法律法规，筑牢网络安全“防火墙”</div>
+    <ul class="q-opts"><li>A. 2项 &nbsp;&nbsp; B. 3项 &nbsp;&nbsp; C. 4项 &nbsp;&nbsp; D. 5项</li></ul>
+    <details class="sol"><summary>👉 点击展开“救援 ↔ 预防”偷换拆解</summary><div class="sol-body">
+      <p><strong>推导答案：B（3项：①错②错，③④⑤对）</strong>。</p>
+      <ul>
+        <li>①② 同源设错：我国公共安全核心方针一直是<strong>“安全第一、预防为主”</strong>，事前预防与风险排查才是首要环节，“救援为主 / 应急救援是首要环节”违反常识及二十届三中全会《决定》第51条原意。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 6｜原则对应案例题（对标今年《新质生产力意见》）</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q7</span></div>
+    <div class="q-stem">2024年7月《关于加快经济社会发展全面绿色转型的意见》提出坚持全面转型、协同转型、创新转型和安全转型。下列能够体现“协同转型”原则的是：</div>
+    <ul class="q-opts">
+      <li>A. 某电气公司研发自主知识产权装备确保首个碳中和电弧炉炼钢完成</li>
+      <li>B. 中国风电、光伏产品出口到200多个国家和地区</li>
+      <li>C. 加快研制新能源汽车、光伏、锂电池等“新三样”产品碳足迹国家标准</li>
+      <li>D. 开展多层次试点，统筹推进工业、能源、交通运输、城乡建设、农业等重点领域减污降碳</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开四原则与案例一一对应法</summary><div class="sol-body">
+      <p><strong>推导答案：D</strong>。</p>
+      <ul>
+        <li>看字面+原文定义即可：“协同” = <strong>多区域、多领域、多行业统筹配合</strong>，D 中“统筹推进工业、能源、交通、城乡、农业等重点领域”100% 对应协同转型；</li>
+        <li>排除：A（自主研发装备）属<strong>创新转型</strong>；B（产品出口）属绿色贸易合作；C（制定“新三样”标准）属标准体系与产业绿色基础工作，非跨领域协同推进。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 7｜时间里程碑编造 &amp; 山东全定位</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q9 &amp; Q10</span></div>
+    <div class="q-stem"><strong>Q10：</strong>山东省提出进一步全面深化改革的目标，下列表述正确的是：<br>
+    ①到二〇二九年，在重要领域和关键环节改革上取得决定性成果，推动山东改革走在全国前列<br>
+    ②到二〇三五年，新时代社会主义现代化强省各方面制度更加完善，基本实现治理体系和治理能力现代化<br>
+    ③到建党一百二十周年，全面实现山东经济社会高质量发展<br>
+    ④到本世纪中叶，全面建成新时代社会主义现代化强省</div>
+    <ul class="q-opts"><li>A. ①②③ &nbsp;&nbsp; B. ②③④ &nbsp;&nbsp; C. ①②④ &nbsp;&nbsp; D. ①③④</li></ul>
+    <details class="sol"><summary>👉 点击展开“里程碑时间尺”秒杀技巧</summary><div class="sol-body">
+      <p><strong>推导答案：C（①②④）</strong>。</p>
+      <ul>
+        <li><strong>铁律验证</strong>：中央及各省全面深化改革目标永远锚定三个国家大刻度：<strong>2029年（建国80周年完成改革任务）→ 2035年（基本实现现代化）→ 本世纪中叶（全面建成强国/强省）</strong>。</li>
+        <li>③ 凭空捏造“建党一百二十周年（2041年）”直接排掉含③的 A/B/D，5 秒锁定 C！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 8｜19 天极限压线 &amp; 山东品牌偷换</span> <span class="src-tag">2024年山东省考《行测》.pdf | 2024 | Q5</span></div>
+    <div class="q-stem">2023年11月，山东省深入开展机关运转、政企沟通、数字政府建设提速提效“三大行动”。下列说法错误的是：</div>
+    <ul class="q-opts">
+      <li>A. 简化会议议程，严格把控会议时间，会议一般不超过90分钟</li>
+      <li>B. 开通企业家直通省长公开号码96178，多渠道收集企业诉求</li>
+      <li>C. 在“爱山东”政务服务平台设立“企业家诉求专区”</li>
+      <li>D. 将全省各级各部门500多类码融合成“齐鲁码”</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开本土数字品牌排雷</summary><div class="sol-body">
+      <p><strong>推导答案：D</strong>。</p>
+      <ul>
+        <li>山东统一政务亮证码叫<strong>“鲁通码”</strong>（取“齐鲁通”之意），绝非“齐鲁码”！（A 90分钟开会限额、B 96178 热线、C “爱山东”均完全准确）。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 9｜哲学边界与古诗映射</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q11 &amp; Q12</span></div>
+    <div class="q-stem"><strong>Q11：</strong>“守正创新”深刻揭示了变与不变、继承与发展的辩证统一，下列与守正创新蕴含哲理相同的是：A.旋岚偃岳而常静，江河竞注而不流 &nbsp; B.试玉要烧三日满，辨材须待七年期 &nbsp; C.却是平流无石处，时时闻说有沉沦 &nbsp; D.新竹高于旧竹枝，全凭老干为扶持<br>
+    <strong>Q12：</strong>千米以下低空空域未来充满无限可能。这表明：A.科学技术是推动社会文明进步的重要力量 &nbsp; B.科学技术是推动社会历史发展的根本动力 &nbsp; C.科学技术是推动社会生存和发展的永恒条件 &nbsp; D.科技应用于生产周期正日趋缩短</div>
+    <details class="sol"><summary>👉 点击展开马哲“精准定位与夸张词识别”</summary><div class="sol-body">
+      <p><strong>Q11 答案：D ｜ Q12 答案：A</strong>。</p>
+      <ul>
+        <li><strong>Q11</strong>：“老干扶持”（守正继承）+“新竹高于旧竹”（创新发展）= 辩证否定观 <strong>D</strong>；A 否定绝对运动（形而上学不变论）；B 实践检验真理/时间量变质变；C 居安思危矛盾转化。</li>
+        <li><strong>Q12</strong>：看到“根本动力”“永恒条件”立刻警铃大作——社会历史发展的<strong>根本动力</strong>只能是社会基本矛盾（生产力与生产关系、经济基础与上层建筑），物质资料生产才是人类生存发展的<strong>永恒条件</strong>，故 B/C 属刻意拔高偷换，选平实准确的 <strong>A</strong>！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 10｜政策关键词“需求↔供给”一词反转</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q13</span></div>
+    <div class="q-stem">党的二十届三中全会提出“积极推进首发经济”。下列关于首发经济说法错误的是（ ）。（注：B 项表述为“首发经济是‘需求侧’积极适应消费趋势的产物”）</div>
+    <details class="sol"><summary>👉 点击展开经济新词“供/需两侧”辨析</summary><div class="sol-body">
+      <p><strong>推导结论：B 错误</strong>。首发经济（首次发布新产品/新业态/新模式/首店）是企业与产业在<strong>供给侧</strong>主动创新、以高质量新供给满足并创造个性化消费需求的产物，故意写成“需求侧”属于标准反义偷换！（可类比推理备考 2026 山东“AI消费+”同样强调供需协同与场景创新）。</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: 艾宾浩斯睡前盲测卡 ============ -->
+<section class="day-section" id="pol-mem">
+  <div class="day-header">
+    <span class="day-tag" style="background:#059669">第四篇｜认知科学闭环：隔日 3 分钟盲测卡片</span>
+    <h1 class="day-title">07｜睡前与次日必做的 5 个主动回忆问题（不看前文自己答出再点开）</h1>
+    <div class="day-meta">利用“主动提取效应”把政策考点真正焊死在长期记忆区</div>
+  </div>
+  <div class="card card-quiz">
+    <div class="card-title">🧠 闭眼自检 5 问（答不出来立刻回翻对应卡片！）</div>
+    <ol>
+      <li>党的二十届五中全会审议通过的《决定》核心主题是什么？它和四中全会有什么区别？二十一大何时召开？</li>
+      <li>《关于发展新质生产力的意见》（2026.10.9）规定的“核心标志”是哪 7 个字？“十六字原则”和三条底线红线是什么？</li>
+      <li>2026 年 11 月 19–20 日山东省委十二届十二次全会做了哪两件事？2025 山东 GDP 与农林牧渔产值各在什么位置？</li>
+      <li>“十五五”纲要里数字经济占 GDP 比重、研发年均增速、单位 GDP 碳排放累计降幅分别是多少？</li>
+      <li>APEC 深圳会议搭了哪“四梁八柱”？中俄美《和平宣言》四点里核领域重申了哪句著名论断？</li>
+    </ol>
+    <details class="sol"><summary>👁 答完后再点开核对关键词标准</summary><div class="sol-body">
+      1. 五中全会（2026.10.26–29）：《持之以恒推进<strong>全面从严治党</strong>若干重大问题的决定》，区别四中全会《十五五规划建议》；决定<strong>2027 年下半年</strong>召开二十一大。<br>
+      2. 核心标志：<strong>全要素生产率大幅提升</strong>；十六字：<strong>创新主导、改革为要、因地制宜、先立后破</strong>；红线：不能脱实向虚、贪大求全、搞泡沫化/空心化断层。<br>
+      3. 省委全会：贯彻五中全会推进全面从严治党《意见》 + 决定召开省第十三次党代会《决议》；2025 GDP <strong>10.3 万亿（+5.5%）</strong>全国第三北方第一，农林牧渔超 1.3 万亿全国第一。<br>
+      4. 十五五指标：数字经济核心产业 <strong>12.5%</strong>、研发年均 <strong>&gt;7%</strong>、二氧化碳排放累计降 <strong>17%</strong>。<br>
+      5. APEC 四梁八柱：<strong>经贸、联通（硬/软/心）、创新、发展</strong>；中俄美核共识：<strong>“核战争打不赢也打不得”</strong>。
+    </div></details>
+  </div>
+</section>
+
+<div class="sub-footer-nav"><a href="山东省考7天冲刺精准提分讲义.html">📘 返回山东省考总纲目录</a><a class="alt" href="sd_02_常识判断详讲.html">下一模块：02 常识判断 →</a></div>
+  </main>
+</div>
+
+<script defer src="assets/katex/katex/katex.min.js"></script>
+<script defer src="assets/katex/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script>
+const STORAGE_KEY = 'sd_v2_m01';
+function saveCheck() {
+  const boxes = document.querySelectorAll('.nav-item input[type="checkbox"]');
+  const state = {};
+  let done = 0;
+  boxes.forEach(b => { state[b.dataset.sec] = b.checked; if (b.checked) done++; });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  const pt = document.getElementById('progText');
+  const pf = document.getElementById('progFill');
+  if (pt) pt.textContent = done + ' / ' + boxes.length;
+  if (pf && boxes.length) pf.style.width = Math.round(done * 100 / boxes.length) + '%';
+}
+function loadCheck() {
+  try {
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('.nav-item input[type="checkbox"]').forEach(b => {
+      if (state[b.dataset.sec]) b.checked = true;
+    });
+  } catch (e) {}
+  saveCheck();
+}
+// Requirement #7: NEVER open details.sol on initial load; stay collapsed by default until user clicks!
+let allSolExpanded = false;
+function toggleAllSol() {
+  allSolExpanded = !allSolExpanded;
+  document.querySelectorAll('details.sol').forEach(d => d.open = allSolExpanded);
+  const btn = document.getElementById('toggleSolBtn');
+  if (btn) btn.textContent = allSolExpanded ? '🙈 收起全部解析' : '👁 展开全部解析';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('details.sol').forEach(d => d.open = true);
+});
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => { if (window.innerWidth <= 960) closeSidebar(); });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => { topBtn.classList.toggle('show', window.scrollY > 420); }, { passive: true });
+}
+loadCheck();
+</script>
+
+</body>
+</html>

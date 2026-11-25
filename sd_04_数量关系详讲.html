@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>04｜数量关系详讲：花生十三快刀与6类必拿母题</title>
+  <link rel="stylesheet" href="assets/katex/katex/katex.min.css" />
+  <style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --blue: #2563eb; --blue-bg: #eff6ff;
+  --green: #059669; --green-bg: #ecfdf5;
+  --red: #dc2626; --red-bg: #fef2f2;
+  --purple: #7c3aed; --purple-bg: #f5f3ff;
+  --amber: #d97706; --amber-bg: #fffbeb;
+  --cyan: #0891b2; --cyan-bg: #ecfeff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 15.3px;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+.layout { display: flex; min-height: 100vh; width: 100%; }
+.sidebar {
+  width: 292px;
+  background: #0f172a;
+  color: #e2e8f0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  padding: 18px 15px 44px;
+  z-index: 260;
+  transition: transform 0.25s ease;
+}
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.5); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.sidebar-title { font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 0 0 3px; letter-spacing: 0.3px; }
+.sidebar-sub { font-size: 11.8px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b; }
+.progress-box { background: #1e293b; border-radius: 8px; padding: 9px 11px; margin-bottom: 11px; font-size: 12.5px; }
+.progress-bar-wrap { background: #334155; height: 7px; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+.progress-bar-fill { background: linear-gradient(90deg, #10b981, #38bdf8); height: 100%; width: 0%; transition: width 0.25s; }
+.btn-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.btn {
+  flex: 1 1 88px; min-height: 34px; border: none; border-radius: 6px; padding: 6px 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer; background: #2563eb; color: #fff;
+  text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+}
+.btn.secondary { background: #334155; }
+.btn.emerald { background: #059669; }
+.btn.slate { background: #475569; }
+.btn:hover { opacity: 0.92; }
+.mod-switcher {
+  width: 100%; margin: 2px 0 10px; padding: 7px 9px; border-radius: 7px;
+  background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 12.5px; font-weight: 700; cursor: pointer;
+}
+.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 13px 0 6px 5px; letter-spacing: 0.6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px;
+  color: #cbd5e1; text-decoration: none; font-size: 12.8px; margin-bottom: 3px; transition: background 0.15s;
+}
+.nav-item:hover { background: #1e293b; color: #fff; }
+.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; width: 15px; height: 15px; }
+.nav-item .nav-text { flex: 1; line-height: 1.38; }
+
+.main { margin-left: 292px; flex: 1; min-width: 0; width: 100%; padding: 28px 34px 88px; max-width: 1060px; }
+.cover-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0e7490 100%);
+  color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+.cover-banner.theme-red { background: linear-gradient(135deg, #1e1b4b 0%, #991b1b 55%, #b45309 100%); }
+.cover-banner.theme-amber { background: linear-gradient(135deg, #0f172a 0%, #92400e 55%, #b45309 100%); }
+.cover-banner.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 55%, #2563eb 100%); }
+.cover-banner.theme-green { background: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0e7490 100%); }
+.cover-banner.theme-cyan { background: linear-gradient(135deg, #0f172a 0%, #0e7490 55%, #0284c7 100%); }
+.cover-eyebrow {
+  display: inline-block; font-size: 11.8px; font-weight: 800; padding: 3px 11px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 10px;
+}
+.cover-banner h1 { margin: 0 0 8px; font-size: 25px; line-height: 1.3; }
+.cover-banner p { margin: 0 0 12px; color: #e0f2fe; font-size: 14.5px; }
+.cover-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.cover-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); padding: 3px 11px; border-radius: 99px; font-size: 12.2px; font-weight: 600; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.cover-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-decoration: none; color: #fff; background: rgba(16,185,129,0.92);
+}
+.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34); }
+.cover-btn:hover { opacity: 0.92; }
+
+/* Hub 7-module directory grid */
+.mod-dir-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0 8px; }
+.mod-dir-card {
+  background: #ffffff; border: 1px solid var(--border); border-left: 5px solid var(--blue);
+  border-radius: 12px; padding: 15px 17px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); transition: transform 0.14s, box-shadow 0.14s;
+}
+.mod-dir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+.mod-dir-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.mod-dir-badge { font-size: 11px; font-weight: 800; color: #fff; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.mod-dir-card h3 { margin: 0 0 6px; font-size: 16px; color: #0f172a; }
+.mod-dir-card p { margin: 0 0 11px; font-size: 13.2px; color: #475569; line-height: 1.58; }
+.mod-dir-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 13px; border-radius: 8px; background: #0f172a; color: #fff;
+  text-decoration: none; font-size: 13px; font-weight: 700; min-height: 38px;
+}
+.mod-dir-link:hover { opacity: 0.92; }
+
+.day-section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 25px 28px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 16px;
+}
+.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 11px; margin-bottom: 16px; }
+.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 11.8px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.day-title { margin: 4px 0 5px; font-size: 21px; color: #0f172a; line-height: 1.32; }
+.day-meta { font-size: 13.5px; color: var(--muted); }
+
+h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; }
+h3 { font-size: 15.5px; color: #1e3a8a; margin: 16px 0 8px; break-after: avoid; }
+p { margin: 8px 0; overflow-wrap: break-word; }
+ul, ol { margin: 6px 0 10px; padding-left: 22px; }
+li { margin-bottom: 5px; overflow-wrap: break-word; }
+
+.card { border-radius: 10px; padding: 14px 18px; margin: 14px 0; border-left: 5px solid; break-inside: avoid; }
+.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.card-intuition { background: var(--green-bg); border-color: var(--green); }
+.card-intuition .card-title { color: #065f46; }
+.card-formula { background: var(--blue-bg); border-color: var(--blue); }
+.card-formula .card-title { color: #1e40af; }
+.card-trap { background: var(--red-bg); border-color: var(--red); }
+.card-trap .card-title { color: #991b1b; }
+.card-trick { background: var(--purple-bg); border-color: var(--purple); }
+.card-trick .card-title { color: #5b21b6; }
+.card-example { background: var(--amber-bg); border-color: var(--amber); }
+.card-example .card-title { color: #92400e; }
+.card-quiz { background: var(--cyan-bg); border-color: var(--cyan); }
+.card-quiz .card-title { color: #155e75; }
+
+.q-box {
+  background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #d97706;
+  border-radius: 10px; padding: 15px 18px; margin: 16px 0; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 800; color: #92400e; font-size: 14.2px; }
+.q-stem { background: #fffbeb; border-radius: 7px; padding: 10px 13px; margin: 8px 0 10px; font-size: 14.4px; line-height: 1.72; color: #1e293b; }
+.q-opts { margin: 6px 0 10px; padding-left: 6px; list-style: none; font-size: 14px; color: #334155; }
+.q-opts li { margin-bottom: 4px; }
+
+.hl-yellow { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #713f12; }
+.hl-pink { background: #fecdd3; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #881337; }
+.hl-blue { background: #bfdbfe; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1e3a8a; }
+.badge-p0 { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p1 { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p2 { display: inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+
+.src-tag {
+  display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569;
+  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace;
+}
+.net-tag {
+  display: inline-block; background: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;
+  font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+}
+.missing-tag {
+  display: inline-block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+}
+.template-box {
+  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 15px;
+  font-size: 13.8px; line-height: 1.75; margin: 10px 0;
+}
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0; font-size: 13.5px; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: #1e293b; color: #ffffff; text-align: left; padding: 8px 10px; font-weight: 700; }
+td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; overflow-wrap: break-word; }
+tr:nth-child(even) td { background: #f8fafc; }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; break-inside: avoid; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+
+/* Default CLOSED collapsible derivation blocks */
+details.sol {
+  margin-top: 8px; background: #f8fafc; border: 1.5px dashed #0891b2; border-radius: 8px; padding: 8px 13px;
+}
+details.sol[open] { background: #f0fdfa; border-style: solid; }
+details.sol > summary {
+  cursor: pointer; font-weight: 800; color: #0e7490; font-size: 13.5px; user-select: none; list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+details.sol > summary::before { content: "▶"; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+details.sol[open] > summary::before { transform: rotate(90deg); }
+details.sol > summary::-webkit-details-marker { display: none; }
+.sol-body { margin-top: 9px; padding-top: 8px; border-top: 1px solid #bae6fd; font-size: 14px; line-height: 1.72; color: #1e293b; }
+
+.day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.day-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; break-inside: avoid; }
+.day-col h4 { margin: 0 0 8px; font-size: 14.5px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+
+.sub-footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  margin-top: 28px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px;
+}
+.sub-footer-nav a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px; border-radius: 8px;
+  background: #0f172a; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; min-height: 40px;
+}
+.sub-footer-nav a.alt { background: #2563eb; }
+.sub-footer-nav a:hover { opacity: 0.92; }
+
+.mobile-toggle {
+  display: none; align-items: center; gap: 6px; position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
+  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
+}
+.back-to-top {
+  display: none; align-items: center; justify-content: center; position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px; padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 256px; }
+  .main { margin-left: 256px; padding: 22px 22px 76px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 305px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 16px 16px 92px; max-width: 100%; }
+  .mod-dir-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 18px 16px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.7px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 19px 15px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 20.5px; }
+  .cover-banner p { font-size: 13.8px; }
+  .day-section { padding: 15px 13px; border-radius: 12px; margin-bottom: 16px; }
+  .day-title { font-size: 18.5px; }
+  h2 { font-size: 16.2px; }
+  h3 { font-size: 14.8px; }
+  .card, .q-box { padding: 12px 13px; }
+  table { font-size: 12.6px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
+  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions, .sub-footer-nav { display: none !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+  .day-section { border: none; box-shadow: none; padding: 0; margin: 0 0 18px; }
+  details.sol { border-style: solid; }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开或关闭目录">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">04｜数量关系详讲</div>
+    <div class="sidebar-sub">A级精准狙击 · 12分钟挑对4–5题</div>
+    <div class="progress-box">
+      <div>本页学习打卡：<strong id="progText">0 / 2</strong></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progFill"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="toggleSolBtn" onclick="toggleAllSol()">👁 展开全部解析</button>
+      <button class="btn secondary" onclick="window.print()">🖨 打印页面</button>
+    </div>
+    <div class="btn-row"><a class="btn emerald" href="山东省考7天冲刺精准提分讲义.html">📘 省考总纲</a><a class="btn slate" href="index.html">🌐 学习中心</a></div>
+    <select class="mod-switcher" aria-label="快速切换省考模块页面" onchange="if(this.value)location.href=this.value;"><option value="山东省考7天冲刺精准提分讲义.html">主控｜省考总纲与7天认知日程</option><option value="sd_01_政治理论详讲.html">01｜政治理论｜政策映射与2027预测</option><option value="sd_02_常识判断详讲.html">02｜常识判断｜重→轻概率与新法</option><option value="sd_03_言语理解详讲.html">03｜言语理解｜花生十三法+高频词</option><option value="sd_04_数量关系详讲.html" selected>04｜数量关系｜必拿母题与极限模型</option><option value="sd_05_判断推理详讲.html">05｜判断推理｜图推/定义/类比/逻辑</option><option value="sd_06_资料分析详讲.html">06｜资料分析｜415/假设分配/盐水</option><option value="sd_07_申论B卷详讲.html">07｜申论 B 卷｜踩点/公文/单字作文</option></select>
+    <div class="nav-group-label">一 · 狙击战略与4快刀</div><a class="nav-item" href="#sl-strat"><input type="checkbox" data-sec="sl-strat" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01｜12分钟拿5.5分策略 & 弃题红线</span></a><div class="nav-group-label">二 · 6类母题手算盲测</div><a class="nav-item" href="#sl-quiz"><input type="checkbox" data-sec="sl-quiz" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02｜7道真题详析（含Q42极限模型）</span></a>
+  </aside>
+  <main class="main">
+    
+<div class="cover-banner theme-purple">
+  <span class="cover-eyebrow">模块 04｜A 级精准狙击（10 题，放考场最后 12–15 分钟做 4–5 题 + 蒙 B/C）</span>
+  <h1>数量关系详讲：花生十三“4 大快刀”与 6 类 1 分钟必拿送分母题</h1>
+  <p>基于 2017–2025 共 9 套 90 题全量分布统计：拒绝无脑死磕 10 题！先用花生十三“代入/奇偶整除/方程/特值”扫清前 4–5 道固定套路题（含联网补齐验证的 2023 Q42 甲状腺素稳态极限题），剩余耗时硬骨头 1 秒全蒙同一选项</p>
+  <div class="cover-pills">
+    <span class="cover-pill">🔧 工程/利润/方程占55%+</span>
+    <span class="cover-pill">💊 含2023 Q42补齐稳态极限精讲</span>
+    <span class="cover-pill">⛔ 明确3类考场秒跳红线</span>
+  </div>
+  <div class="cover-actions">
+    <a class="cover-btn ghost" href="sd_03_言语理解详讲.html">← 上一模块：03 言语理解</a>
+    <a class="cover-btn ghost" href="山东省考7天冲刺精准提分讲义.html">📘 返回省考总纲</a>
+    <a class="cover-btn ghost" href="sd_05_判断推理详讲.html">下一模块：05 判断推理 →</a>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: 花生十三数量体系与弃题红线 ============ -->
+<section class="day-section" id="sl-strat">
+  <div class="day-header">
+    <span class="day-tag" style="background:#7c3aed">第一篇｜认知决策：狙击 50% 必拿分</span>
+    <h1 class="day-title">01｜考场 ROI 战略 &amp; 花生十三“4 大解题快刀”</h1>
+    <div class="day-meta">统计基于 9 套行测 90 题：和差倍比/方程 22.2%、行程 18.9%、最值构造 13.3%、经济利润 12.2%、概率 7.8%、几何 7.8%、工程 6.7%、排列 6.7%</div>
+  </div>
+
+  <div class="card card-intuition">
+    <div class="card-title">💡 为什么考场只做 4–5 题反而比做 10 题得分更高？</div>
+    <p>10 道数量题里总有 2–3 道“5 分钟也列不出式子”的陷阱题。硬刚数量会导致后面 20 道资料分析做不完（每道资料至少丢 1 分！）。<br>
+    <strong>花生十三标准打法</strong>：留足最后 <strong>12 分钟</strong>，用 1 分钟扫一遍 10 道题干关键词——挑出下面 <strong>6 类必拿送分母题中的 4–5 题稳稳算对（拿 4–5 分）</strong>；剩下 5–6 道耗时大题<strong>全蒙 B 或 C</strong>（按随机期望拿 1.2–1.5 分），总计 12 分钟稳拿 <strong>5.5–6.5 分</strong>，超越 80% 考生的数量得分！</p>
+  </div>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>花生十三 4 把快刀</th><th>一眼识别场景</th><th>核心动手动作（考场 30 秒见效）</th></tr></thead>
+    <tbody>
+      <tr><td><strong>快刀 1｜代入排除法</strong></td><td>多位数/余数分组/选项为简单整数且文字条件多</td><td>优先代入<strong>居中数字、整十或易算项</strong>（先排明显违背奇偶/倍数的选项）。</td></tr>
+      <tr><td><strong>快刀 2｜数字特性（奇偶/整除）</strong></td><td>出现“每3人/每4组/余数/平均分/占几分之几”</td><td>$A\pm B$ 同奇同偶；含因数 $3$ 看各位数字和，含因数 $5$ 看尾数，列余数同余式。</td></tr>
+      <tr><td><strong>快刀 3｜特值法（赋1 / 最小公倍）</strong></td><td>工程不给总量、浓度不给总量、打折仅给比例</td><td>只给完工时间设<strong>工作总量为公倍数</strong>；给效率比直接设整数（$10:12$ 等）；给人数/销量比例赋份数。</td></tr>
+      <tr><td><strong>快刀 4｜硬列一次方程</strong></td><td>题干有明显等量关系（分两次方案、本金利息）</td><td>不盲目找偏门巧算，直接“问什么设什么”列线性方程 40 秒算出更稳。</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card card-trap">
+    <div class="card-title">⛔ 考场看到直接跳过的“3 条弃题红线”（全蒙同一个字母）</div>
+    <ul>
+      <li><strong>红线 1</strong>：<strong>三次以上变速/多次往返折返跑的复杂行程题</strong>（题干超过 4 行文字且带折返追及时间差，画图极易出错）。</li>
+      <li><strong>红线 2</strong>：<strong>不规则立体组合切割或含三角函数的几何动点最值</strong>。</li>
+      <li><strong>红线 3</strong>：<strong>读完题干 15 秒内毫无未知数思路</strong>（立刻止损做下一题！）。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: 6类必拿真题盲测详析 ============ -->
+<section class="day-section" id="sl-quiz">
+  <div class="day-header">
+    <span class="day-tag" style="background:#2563eb">第二篇｜6 类必拿母题真题全步盲测（默认折叠）</span>
+    <h1 class="day-title">02｜7 道真实山东母题手把手全步推演（含 2023 Q42 联网补齐）</h1>
+    <div class="day-meta">拿草稿纸先算 1 分钟，再点击展开每一步推导细节</div>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>母题 1｜工程代换赋值（40 秒送分）</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q53</span></div>
+    <div class="q-stem">某小区要安装若干电动车公共充电桩。由张师傅先施工5天，李师傅再施工9天就能全部完工。如果张师傅先施工7天，李师傅再施工6天，也能全部完工。现由张师傅和李师傅一起施工3天后，张师傅有新任务离开，剩余工作由李师傅单独完成。问李师傅还需几天能完工？</div>
+    <ul class="q-opts"><li>A. 10 &nbsp;&nbsp; B. 8 &nbsp;&nbsp; C. 7 &nbsp;&nbsp; D. 9</li></ul>
+    <details class="sol"><summary>👉 先自己算效率比再展开</summary><div class="sol-body">
+      <p><strong>推导答案：D（9 天）</strong>。</p>
+      <ol>
+        <li><strong>消元定效率比</strong>：$5\text{张}+9\text{李}=7\text{张}+6\text{李} \implies 2\text{张}=3\text{李}$；</li>
+        <li><strong>直接赋整数特值</strong>：令 $\text{张}=3,\ \text{李}=2$；</li>
+        <li><strong>算总量与剩余</strong>：工作总量 $=5\times3+9\times2=33$；两人合干 3 天完成 $3\times(3+2)=15$；剩余 $33-15=18$；</li>
+        <li><strong>算剩余时间</strong>：李师傅单干还需 $18\div2=9$ 天（选 D）。</li>
+      </ol>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>母题 2｜多队协作效率加成工程</span> <span class="src-tag">2024年山东省考《行测》.pdf | 2024 | Q54</span></div>
+    <div class="q-stem">甲、乙、丙三个工程队共同承担一项市政工程。甲队独立完成需要30天，乙队效率比甲队高20%。丙队仅提供技术支持，即能够为其他队伍提高效率，其与甲队或乙队合作时效率可提高120%，三个队伍合作时效率可提高200%。甲、乙两队合作3天后，丙队加入，最后两天乙队休息。问该工程耗时约多少天？</div>
+    <ul class="q-opts"><li>A. 7 &nbsp;&nbsp; B. 8 &nbsp;&nbsp; C. 9 &nbsp;&nbsp; D. 10</li></ul>
+    <details class="sol"><summary>👉 点击展开分段特值计算步骤</summary><div class="sol-body">
+      <p><strong>推导答案：B（约 8 天）</strong>。</p>
+      <ol>
+        <li><strong>特值避免小数</strong>：设甲效率 $=10$，因甲独做需 30 天，故总量 $=10\times30=300$；乙效率比甲高 20%，故乙 $=12$；</li>
+        <li><strong>算两头已知天数</strong>：<br>
+        • 前 3 天（甲乙合作）：$(10+12)\times3=66$；<br>
+        • 最后 2 天（乙休息，即甲丙合作，丙使甲提高 120%）：$10\times(1+120\%)\times2=22\times2=44$；</li>
+        <li><strong>算中间三队合作天数</strong>：剩余工作量 $=300-66-44=190$；三队合作效率提高 200%（即变为 3 倍）：$(10+12)\times(1+200\%)=66$，所需天数 $=190\div66\approx2.88$ 天；</li>
+        <li><strong>总耗时</strong>：$3+2.88+2=7.88\approx8$ 天（选 B）。</li>
+      </ol>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>母题 3｜金融常识×方程：等额本金（极易掉首月坑）</span> <span class="src-tag">2023年山东省考《行测》.pdf | 2023 | Q41</span></div>
+    <div class="q-stem">小张从银行贷款60万元，采取等额本金的还款方式，20年还清，贷款年利率4.1%。小张第二个月需还款多少元？</div>
+    <ul class="q-opts"><li>A. 4550.0 &nbsp;&nbsp; B. 4541.5 &nbsp;&nbsp; C. 5137.0 &nbsp;&nbsp; D. 5290.5</li></ul>
+    <details class="sol"><summary>👉 点击展开“等额本金逐月递减”精确推算</summary><div class="sol-body">
+      <p><strong>推导答案：B（4541.5 元）</strong>。</p>
+      <ul>
+        <li><strong>核心概念</strong>：“等额本金”＝每个月还的<strong>本金相等</strong>，但利息按<strong>当月剩余未还本金</strong>计算，逐月减少！</li>
+        <li><strong>第 1 步（月还本金）</strong>：总月数 $=20\times12=240$ 个月，每月固定还本金 $=600000\div240=2500$ 元；</li>
+        <li><strong>第 2 步（第二个月剩余本金与利息）</strong>：第一个月已还掉 2500 元本金，第二个月月初剩余本金 $=600000-2500=597500$ 元；月利率 $=\frac{4.1\%}{12}$；<br>
+        第二月利息 $=597500\times\frac{0.041}{12}\approx2041.46$ 元；</li>
+        <li><strong>第 3 步（合计 &amp; 排坑）</strong>：总还款 $=2500+2041.46=4541.46\approx4541.5$ 元（选 B）。注意：A 项 $4550.0=2500+600000\times\frac{0.041}{12}$ 是<strong>第一个月</strong>还款额，专坑审题漏看“第二个月”的考生！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>母题 4｜经济折扣×花生十三“盐水/十字交叉法”</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q56</span></div>
+    <div class="q-stem">某商店在母亲节前夕花费288元购进了120支康乃馨。初期按获得50%的期望利润定价出售，当售出75%之后，剩余的康乃馨按定价打折促销。已知最终获得的总利润是初期期望获得总利润的85%，问康乃馨促销时打了几折？</div>
+    <ul class="q-opts"><li>A. 7 &nbsp;&nbsp; B. 7.5 &nbsp;&nbsp; C. 8 &nbsp;&nbsp; D. 8.5</li></ul>
+    <details class="sol"><summary>👉 点击展开十字交叉“30秒免算单价法”</summary><div class="sol-body">
+      <p><strong>推导答案：C（8 折）</strong>。</p>
+      <ul>
+        <li><strong>注意“288元/120支”全是可以不管的冗余数！</strong>成本不变时，总利润比＝平均利润率比！</li>
+        <li><strong>第 1 步</strong>：原期望利润率 $=50\%$，最终总利润率 $=50\%\times85\%=42.5\%$；</li>
+        <li><strong>第 2 步（盐水线段/十字交叉）</strong>：前 $75\%$（3份）利润率 $50\%$，后 $25\%$（1份）利润率 $r$，混合平均 $42.5\%$：<br>
+        $$\frac{50\%-42.5\%}{42.5\%-r}=\frac{1}{3} \implies 7.5\%\times3 = 42.5\%-r \implies r = 20\%$$</li>
+        <li><strong>第 3 步（折后售价比原定价）</strong>：设单支成本 $1$，原定价 $=1+50\%=1.5$，折后实际售价 $=1+20\%=1.2$，折扣 $=\frac{1.2}{1.5}=0.8$（即 <strong>8 折</strong>，选 C！）。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>母题 5｜整除余数 + 和定最值构造</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q57</span></div>
+    <div class="q-stem">某社团组织40余名志愿者前往A地参与科普活动。若平均分为4组，则至少需要招募1名志愿者；若平均分为5组，则至少需要招募2名。若分为3组，要求每组有10余人且人数各不相同，问该分法中人数最多的与人数最少的组至少相差几人？</div>
+    <ul class="q-opts"><li>A. 3 &nbsp;&nbsp; B. 2 &nbsp;&nbsp; C. 4 &nbsp;&nbsp; D. 5</li></ul>
+    <details class="sol"><summary>👉 点击展开余数口诀与构造极值法</summary><div class="sol-body">
+      <p><strong>推导答案：A（3 人）</strong>。</p>
+      <ol>
+        <li><strong>余数同余定总人数 $N$</strong>：“至少需补 1 名才能均分 4 组”即 $N+1$ 是 4 的倍数；“至少补 2 名才能均分 5 组”即 $N+2$ 是 5 的倍数。试 40–49 之间的数：$43+1=44$（4的倍数）、$43+2=45$（5的倍数），秒锁 $N=43$！</li>
+        <li><strong>极值构造（要想差距最小，三组尽量靠近）</strong>：$43\div3=14\cdots1$。尽量挨近先均成 $14, 14, 15$，因互不相同不能出现两个 14，从第一个借 1 补给第三个 $\implies (13, 14, 16)$，差值 $=16-13=3$ 人（选 A）。</li>
+      </ol>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>母题 6｜独立概率与涂色公式 &amp; 联网补全“甲状腺素极限题”</span> <span class="src-tag">2025 Q59 + 2022 Q36 + 2023 Q42 [联网补全]</span></div>
+    <div class="q-stem">
+      <strong>① [2025 Q59] 独立重复概率</strong>：某图书馆古籍数字化每册成功率 $90\%$，互相独立，选 4 册至少 3 册成功的概率是？（A.65.97% B.70.74% C.94.77% D.99.63%）<br>
+      <strong>② [2022 Q36] 立方体涂色</strong>：立方体表面涂黑切为棱长 1 小立方体，若<strong>一面涂黑个数 ＝ 没有一面涂黑个数</strong>，原立方体棱长为多少？（A.4 B.6 C.16 D.8）<br>
+      <strong>③ [2023 Q42 · <span class="net-tag">联网补全缺失题干</span>] 药物代谢稳态模型</strong>：某人甲状腺机能减退，每 8 小时服用 60 毫克甲状腺素片。若肾脏 8 小时后过滤掉 $60\%$ 药量（即剩 $40\%$），问 10 天后此人体内含药量的范围？（原卷仅保留 <code>B. 40毫克</code>，A/C/D 缺失；经联网交叉查证原题干与范围推导，不杜撰具体 A/C/D 字母文字）
+    </div>
+    <details class="sol"><summary>👉 点击展开三道公式/极限模型手算推导</summary><div class="sol-body">
+      <p><strong>① [2025 Q59] 答案：C（94.77%）</strong>：“至少 3 册成功”＝ 恰 3 册成功 + 4 册全成功：$C_4^3 \times 0.9^3 \times 0.1 + 0.9^4 = 4 \times 0.729 \times 0.1 + 0.6561 = 0.2916 + 0.6561 = 94.77\%$。</p>
+      <p><strong>② [2022 Q36] 答案：D（棱长 8）</strong>：背牢涂色核心公式——设棱长 $n$：三面涂黑 $=8$（角）、两面 $=12(n-2)$（棱）、<strong>一面 $=6(n-2)^2$</strong>（面心）、<strong>无面 $=(n-2)^3$</strong>（内核）。列式 $6(n-2)^2=(n-2)^3 \implies n-2=6 \implies n=8$！</p>
+      <p><strong>③ [2023 Q42 补齐推导] 稳态区间：40 毫克 ～ 100 毫克</strong>：<br>
+      10 天共 240 小时 $=30$ 个服药周期，早已趋于动态平衡稳态。设每次服药<strong>前</strong>体内残余稳态值为 $S$，则服药 60 毫克、再过 8 小时滤掉 $60\%$（剩 $40\%$）后仍应等于 $S$：<br>
+      $$(S+60)\times0.4 = S \implies 0.4S + 24 = S \implies 0.6S = 24 \implies S = 40\text{ 毫克}$$
+      因此每次服药前瞬间最低为 <strong>40 毫克</strong>，刚吞下药片瞬间最高为 $40+60=100$ 毫克，稳态含药量始终在 <strong>40–100 毫克</strong>之间波动！</p>
+    </div></details>
+  </div>
+
+  <div class="card card-quiz">
+    <div class="card-title">🧠 数量关系睡前 3 分钟盲测公式卡</div>
+    <p>写出正方体切 $n$ 份后“一面涂色”和“零面涂色”公式；写出“10 天每 8 小时吃 $m$ 毫克药、代谢剩 $p$ 比例”的稳态最小值方程；遇到“补 1 人均分 4 组、补 2 人均分 5 组”怎么最快定总人数？</p>
+    <details class="sol"><summary>👁 点击核对</summary><div class="sol-body">
+      ① 一面 $6(n-2)^2$，无面 $(n-2)^3$；② 稳态最小值方程 $(S+m)p=S$；③ $(N+1)\equiv0(\bmod 4)$ 且 $(N+2)\equiv0(\bmod 5)$ 直接把 $N$ 锁定在 40 余里挨个验算（$N=43$）。
+    </div></details>
+  </div>
+</section>
+
+<div class="sub-footer-nav"><a href="山东省考7天冲刺精准提分讲义.html">📘 返回山东省考总纲目录</a><a class="alt" href="sd_03_言语理解详讲.html">← 上一模块：03 言语理解</a><a class="alt" href="sd_05_判断推理详讲.html">下一模块：05 判断推理 →</a></div>
+  </main>
+</div>
+
+<script defer src="assets/katex/katex/katex.min.js"></script>
+<script defer src="assets/katex/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script>
+const STORAGE_KEY = 'sd_v2_m04';
+function saveCheck() {
+  const boxes = document.querySelectorAll('.nav-item input[type="checkbox"]');
+  const state = {};
+  let done = 0;
+  boxes.forEach(b => { state[b.dataset.sec] = b.checked; if (b.checked) done++; });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  const pt = document.getElementById('progText');
+  const pf = document.getElementById('progFill');
+  if (pt) pt.textContent = done + ' / ' + boxes.length;
+  if (pf && boxes.length) pf.style.width = Math.round(done * 100 / boxes.length) + '%';
+}
+function loadCheck() {
+  try {
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('.nav-item input[type="checkbox"]').forEach(b => {
+      if (state[b.dataset.sec]) b.checked = true;
+    });
+  } catch (e) {}
+  saveCheck();
+}
+// Requirement #7: NEVER open details.sol on initial load; stay collapsed by default until user clicks!
+let allSolExpanded = false;
+function toggleAllSol() {
+  allSolExpanded = !allSolExpanded;
+  document.querySelectorAll('details.sol').forEach(d => d.open = allSolExpanded);
+  const btn = document.getElementById('toggleSolBtn');
+  if (btn) btn.textContent = allSolExpanded ? '🙈 收起全部解析' : '👁 展开全部解析';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('details.sol').forEach(d => d.open = true);
+});
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => { if (window.innerWidth <= 960) closeSidebar(); });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => { topBtn.classList.toggle('show', window.scrollY > 420); }, { passive: true });
+}
+loadCheck();
+</script>
+
+</body>
+</html>

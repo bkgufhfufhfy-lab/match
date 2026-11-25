@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>06 资料分析详讲｜花生十三 415/假设分配/盐水与 2024–2025 真题精析</title>
+  <link rel="stylesheet" href="assets/katex/katex/katex.min.css" />
+  <style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --blue: #2563eb; --blue-bg: #eff6ff;
+  --green: #059669; --green-bg: #ecfdf5;
+  --red: #dc2626; --red-bg: #fef2f2;
+  --purple: #7c3aed; --purple-bg: #f5f3ff;
+  --amber: #d97706; --amber-bg: #fffbeb;
+  --cyan: #0891b2; --cyan-bg: #ecfeff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 15.3px;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+.layout { display: flex; min-height: 100vh; width: 100%; }
+.sidebar {
+  width: 292px;
+  background: #0f172a;
+  color: #e2e8f0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  padding: 18px 15px 44px;
+  z-index: 260;
+  transition: transform 0.25s ease;
+}
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.5); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.sidebar-title { font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 0 0 3px; letter-spacing: 0.3px; }
+.sidebar-sub { font-size: 11.8px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b; }
+.progress-box { background: #1e293b; border-radius: 8px; padding: 9px 11px; margin-bottom: 11px; font-size: 12.5px; }
+.progress-bar-wrap { background: #334155; height: 7px; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+.progress-bar-fill { background: linear-gradient(90deg, #10b981, #38bdf8); height: 100%; width: 0%; transition: width 0.25s; }
+.btn-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.btn {
+  flex: 1 1 88px; min-height: 34px; border: none; border-radius: 6px; padding: 6px 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer; background: #2563eb; color: #fff;
+  text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+}
+.btn.secondary { background: #334155; }
+.btn.emerald { background: #059669; }
+.btn.slate { background: #475569; }
+.btn:hover { opacity: 0.92; }
+.mod-switcher {
+  width: 100%; margin: 2px 0 10px; padding: 7px 9px; border-radius: 7px;
+  background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 12.5px; font-weight: 700; cursor: pointer;
+}
+.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 13px 0 6px 5px; letter-spacing: 0.6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px;
+  color: #cbd5e1; text-decoration: none; font-size: 12.8px; margin-bottom: 3px; transition: background 0.15s;
+}
+.nav-item:hover { background: #1e293b; color: #fff; }
+.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; width: 15px; height: 15px; }
+.nav-item .nav-text { flex: 1; line-height: 1.38; }
+
+.main { margin-left: 292px; flex: 1; min-width: 0; width: 100%; padding: 28px 34px 88px; max-width: 1060px; }
+.cover-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0e7490 100%);
+  color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+.cover-banner.theme-red { background: linear-gradient(135deg, #1e1b4b 0%, #991b1b 55%, #b45309 100%); }
+.cover-banner.theme-amber { background: linear-gradient(135deg, #0f172a 0%, #92400e 55%, #b45309 100%); }
+.cover-banner.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 55%, #2563eb 100%); }
+.cover-banner.theme-green { background: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0e7490 100%); }
+.cover-banner.theme-cyan { background: linear-gradient(135deg, #0f172a 0%, #0e7490 55%, #0284c7 100%); }
+.cover-eyebrow {
+  display: inline-block; font-size: 11.8px; font-weight: 800; padding: 3px 11px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 10px;
+}
+.cover-banner h1 { margin: 0 0 8px; font-size: 25px; line-height: 1.3; }
+.cover-banner p { margin: 0 0 12px; color: #e0f2fe; font-size: 14.5px; }
+.cover-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.cover-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); padding: 3px 11px; border-radius: 99px; font-size: 12.2px; font-weight: 600; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.cover-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-decoration: none; color: #fff; background: rgba(16,185,129,0.92);
+}
+.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34); }
+.cover-btn:hover { opacity: 0.92; }
+
+/* Hub 7-module directory grid */
+.mod-dir-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0 8px; }
+.mod-dir-card {
+  background: #ffffff; border: 1px solid var(--border); border-left: 5px solid var(--blue);
+  border-radius: 12px; padding: 15px 17px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); transition: transform 0.14s, box-shadow 0.14s;
+}
+.mod-dir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+.mod-dir-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.mod-dir-badge { font-size: 11px; font-weight: 800; color: #fff; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.mod-dir-card h3 { margin: 0 0 6px; font-size: 16px; color: #0f172a; }
+.mod-dir-card p { margin: 0 0 11px; font-size: 13.2px; color: #475569; line-height: 1.58; }
+.mod-dir-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 13px; border-radius: 8px; background: #0f172a; color: #fff;
+  text-decoration: none; font-size: 13px; font-weight: 700; min-height: 38px;
+}
+.mod-dir-link:hover { opacity: 0.92; }
+
+.day-section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 25px 28px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 16px;
+}
+.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 11px; margin-bottom: 16px; }
+.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 11.8px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.day-title { margin: 4px 0 5px; font-size: 21px; color: #0f172a; line-height: 1.32; }
+.day-meta { font-size: 13.5px; color: var(--muted); }
+
+h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; }
+h3 { font-size: 15.5px; color: #1e3a8a; margin: 16px 0 8px; break-after: avoid; }
+p { margin: 8px 0; overflow-wrap: break-word; }
+ul, ol { margin: 6px 0 10px; padding-left: 22px; }
+li { margin-bottom: 5px; overflow-wrap: break-word; }
+
+.card { border-radius: 10px; padding: 14px 18px; margin: 14px 0; border-left: 5px solid; break-inside: avoid; }
+.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.card-intuition { background: var(--green-bg); border-color: var(--green); }
+.card-intuition .card-title { color: #065f46; }
+.card-formula { background: var(--blue-bg); border-color: var(--blue); }
+.card-formula .card-title { color: #1e40af; }
+.card-trap { background: var(--red-bg); border-color: var(--red); }
+.card-trap .card-title { color: #991b1b; }
+.card-trick { background: var(--purple-bg); border-color: var(--purple); }
+.card-trick .card-title { color: #5b21b6; }
+.card-example { background: var(--amber-bg); border-color: var(--amber); }
+.card-example .card-title { color: #92400e; }
+.card-quiz { background: var(--cyan-bg); border-color: var(--cyan); }
+.card-quiz .card-title { color: #155e75; }
+
+.q-box {
+  background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #d97706;
+  border-radius: 10px; padding: 15px 18px; margin: 16px 0; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 800; color: #92400e; font-size: 14.2px; }
+.q-stem { background: #fffbeb; border-radius: 7px; padding: 10px 13px; margin: 8px 0 10px; font-size: 14.4px; line-height: 1.72; color: #1e293b; }
+.q-opts { margin: 6px 0 10px; padding-left: 6px; list-style: none; font-size: 14px; color: #334155; }
+.q-opts li { margin-bottom: 4px; }
+
+.hl-yellow { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #713f12; }
+.hl-pink { background: #fecdd3; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #881337; }
+.hl-blue { background: #bfdbfe; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1e3a8a; }
+.badge-p0 { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p1 { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p2 { display: inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+
+.src-tag {
+  display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569;
+  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace;
+}
+.net-tag {
+  display: inline-block; background: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;
+  font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+}
+.missing-tag {
+  display: inline-block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+}
+.template-box {
+  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 15px;
+  font-size: 13.8px; line-height: 1.75; margin: 10px 0;
+}
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0; font-size: 13.5px; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: #1e293b; color: #ffffff; text-align: left; padding: 8px 10px; font-weight: 700; }
+td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; overflow-wrap: break-word; }
+tr:nth-child(even) td { background: #f8fafc; }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; break-inside: avoid; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+
+/* Default CLOSED collapsible derivation blocks */
+details.sol {
+  margin-top: 8px; background: #f8fafc; border: 1.5px dashed #0891b2; border-radius: 8px; padding: 8px 13px;
+}
+details.sol[open] { background: #f0fdfa; border-style: solid; }
+details.sol > summary {
+  cursor: pointer; font-weight: 800; color: #0e7490; font-size: 13.5px; user-select: none; list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+details.sol > summary::before { content: "▶"; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+details.sol[open] > summary::before { transform: rotate(90deg); }
+details.sol > summary::-webkit-details-marker { display: none; }
+.sol-body { margin-top: 9px; padding-top: 8px; border-top: 1px solid #bae6fd; font-size: 14px; line-height: 1.72; color: #1e293b; }
+
+.day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.day-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; break-inside: avoid; }
+.day-col h4 { margin: 0 0 8px; font-size: 14.5px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+
+.sub-footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  margin-top: 28px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px;
+}
+.sub-footer-nav a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px; border-radius: 8px;
+  background: #0f172a; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; min-height: 40px;
+}
+.sub-footer-nav a.alt { background: #2563eb; }
+.sub-footer-nav a:hover { opacity: 0.92; }
+
+.mobile-toggle {
+  display: none; align-items: center; gap: 6px; position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
+  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
+}
+.back-to-top {
+  display: none; align-items: center; justify-content: center; position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px; padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 256px; }
+  .main { margin-left: 256px; padding: 22px 22px 76px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 305px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 16px 16px 92px; max-width: 100%; }
+  .mod-dir-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 18px 16px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.7px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 19px 15px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 20.5px; }
+  .cover-banner p { font-size: 13.8px; }
+  .day-section { padding: 15px 13px; border-radius: 12px; margin-bottom: 16px; }
+  .day-title { font-size: 18.5px; }
+  h2 { font-size: 16.2px; }
+  h3 { font-size: 14.8px; }
+  .card, .q-box { padding: 12px 13px; }
+  table { font-size: 12.6px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
+  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions, .sub-footer-nav { display: none !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+  .day-section { border: none; box-shadow: none; padding: 0; margin: 0 0 18px; }
+  details.sol { border-style: solid; }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开或关闭目录">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">06｜资料分析详讲</div>
+    <div class="sidebar-sub">花生十三 ABRX 体系 · 26 分钟 17+ 题</div>
+    <div class="progress-box">
+      <div>本页学习打卡：<strong id="progText">0 / 5</strong></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progFill"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="toggleSolBtn" onclick="toggleAllSol()">👁 展开全部解析</button>
+      <button class="btn secondary" onclick="window.print()">🖨 打印页面</button>
+    </div>
+    <div class="btn-row"><a class="btn emerald" href="山东省考7天冲刺精准提分讲义.html">📘 省考总纲</a><a class="btn slate" href="index.html">🌐 学习中心</a></div>
+    <select class="mod-switcher" aria-label="快速切换省考模块页面" onchange="if(this.value)location.href=this.value;"><option value="山东省考7天冲刺精准提分讲义.html">主控｜省考总纲与7天认知日程</option><option value="sd_01_政治理论详讲.html">01｜政治理论｜政策映射与2027预测</option><option value="sd_02_常识判断详讲.html">02｜常识判断｜重→轻概率与新法</option><option value="sd_03_言语理解详讲.html">03｜言语理解｜花生十三法+高频词</option><option value="sd_04_数量关系详讲.html">04｜数量关系｜必拿母题与极限模型</option><option value="sd_05_判断推理详讲.html">05｜判断推理｜图推/定义/类比/逻辑</option><option value="sd_06_资料分析详讲.html" selected>06｜资料分析｜415/假设分配/盐水</option><option value="sd_07_申论B卷详讲.html">07｜申论 B 卷｜踩点/公文/单字作文</option></select>
+    <div class="nav-group-label">第一篇｜速算底层体系</div><a class="nav-item" href="#zl-core"><input type="checkbox" data-sec="zl-core" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01 ABRX/百化分/415/假设分配</span></a><div class="nav-group-label">第二篇｜四大核心公式</div><a class="nav-item" href="#zl-models"><input type="checkbox" data-sec="zl-models" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02 盐水/乘积/比值/两期比重与5坑</span></a><div class="nav-group-label">第三篇｜2024 真题整组</div><a class="nav-item" href="#zl-2024m4"><input type="checkbox" data-sec="zl-2024m4" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">03 2024 材料四 Q116–120 全解</span></a><div class="nav-group-label">第四篇｜2025 真题整组</div><a class="nav-item" href="#zl-2025m4"><input type="checkbox" data-sec="zl-2025m4" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">04 2025 R&D+邮政Q101–120全解</span></a><div class="nav-group-label">第五篇｜闭环检索打卡</div><a class="nav-item" href="#zl-review"><input type="checkbox" data-sec="zl-review" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">05 20秒盲默四大核心公式</span></a>
+  </aside>
+  <main class="main">
+    
+<div class="cover-banner theme-cyan">
+  <span class="cover-eyebrow">模块 06｜B+ 级高确定性提分模块（20 题 / ≤26 分钟 / 目标对 17+ 题）</span>
+  <h1>资料分析详讲：花生十三 ABRX / 415 份数法 / 假设分配 / 盐水模型</h1>
+  <p>资料分析是行测唯一“公式确定、练会就能稳拿 85%+ 正确率”的抢分模块！本页完整落地<strong>花生十三资料分析核心体系</strong>：ABRX 四量联动、百化分表、415 份数法（含 $t=n-1$ 误差修正）、假设分配树、盐水混合线段法、乘积与比值增长率、两期比重差，并逐题精解 2024–2025 三组真实材料真题与高频坑点（全部推导默认折叠盲测）</p>
+  <div class="cover-pills">
+    <span class="cover-pill">🧮 415 份数法：增长量 10 秒出</span>
+    <span class="cover-pill">🌳 假设分配树：基期增长量双杀</span>
+    <span class="cover-pill">🧪 盐水+比值增长：秒破 2025 压轴算题</span>
+  </div>
+  <div class="cover-actions">
+    <a class="cover-btn ghost" href="sd_05_判断推理详讲.html">← 上一模块：05 判断推理</a>
+    <a class="cover-btn ghost" href="山东省考7天冲刺精准提分讲义.html">📘 返回省考总纲</a>
+    <a class="cover-btn ghost" href="sd_07_申论B卷详讲.html">下一模块：07 申论 B 卷 →</a>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: ABRX与百化分/415/假设分配 ============ -->
+<section class="day-section" id="zl-core">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0891b2">第一篇｜花生十三底层架构：ABRX 与三大速算引擎</span>
+    <h1 class="day-title">01｜用“份数”和“分配树”取代硬除：把资料算题从 90 秒压到 20 秒</h1>
+    <div class="day-meta">核心目标：90% 的资料分析无需硬算多位数除法；看懂百化分与误差方向，误差控制在千分之一内</div>
+  </div>
+
+  <div class="card card-intuition">
+    <div class="card-title">🧠 认知锚点：什么是 ABRX 四量联动体系？</div>
+    <p>花生十三把资料分析全部基础计算统一为四个字母：<strong>$A$（基期量）、$B$（现期量）、$R$（增长率）、$X$（增长量）</strong>，记住两条永动关系：</p>
+    <ul>
+      <li>$B = A + X = A(1 + R)$，$X = A \times R = \dfrac{B}{1+R}\times R$；</li>
+      <li><span class="hl-yellow">算题先看选项间距</span>：首两位不同大胆截位（留两位或三位）；首两位相同（如 <code>2025 Q101</code> 的 <code>A.234 / B.237</code>），必须上<strong>“415 + 误差修正”</strong>或<strong>“假设分配树”</strong>！</li>
+    </ul>
+  </div>
+
+  <h3>一、花生十三核心百化分速记表 &amp; 万能换算公式</h3>
+  <div class="table-wrap"><table>
+    <thead>
+      <tr><th>分数 $1/n$</th><th>对应百分数 $R$</th><th>核心误差修正 $t=n-1$</th><th>分数 $1/n$</th><th>对应百分数 $R$</th><th>适用情景</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>$1/2$ / $1/3$</td><td>$50.0\%$ / $33.3\%$</td><td>$n+1=3 / 4$ 份</td><td>$1/9$ / $1/10$</td><td>$11.1\%$ / $10.0\%$</td><td>10 秒秒杀增长量</td></tr>
+      <tr><td>$1/4$ / $1/5$</td><td>$25.0\%$ / $20.0\%$</td><td>$n+1=5 / 6$ 份</td><td>$1/14$ / $1/15$</td><td>$7.1\%$ / $6.7\%$</td><td>万能公式 $n\approx \frac{100}{r}$</td></tr>
+      <tr><td>$1/6$ / $1/7$</td><td>$16.7\%$ / $14.3\%$</td><td>如 $16.8\%$ 用 $t=5$ 微修</td><td>$1/17$ / $1/19$</td><td>$5.9\%$ / $5.3\%$</td><td>记死“17↔5.9，19↔5.3”</td></tr>
+      <tr><td>$1/8$ / $1/12$</td><td>$12.5\%$ / $8.3\%$</td><td>$1/16=6.25\%$</td><td>$1/11$ / $1/13$</td><td>$9.1\%$ / $7.7\%$</td><td>互逆对称“9↔11，7↔14”</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="day-grid">
+    <div class="day-col">
+      <h4>⚡ 引擎一：415 份数法 + $t=n-1$ 误差修正</h4>
+      <ol>
+        <li><strong>设份数</strong>：当 $R \approx \frac{1}{n}$（正增长），则 $A:X:B = n:1:(n+1)$；若是负增长 $-1/n$，则 $A:X:B = n:-1:(n-1)$。</li>
+        <li><strong>求一份</strong>：$\text{增长量 } X_1 = \dfrac{B}{n+1}$（负增长除以 $n-1$）。</li>
+        <li><strong>遇到相近选项必修正</strong>（$R \in [11\%, 25\%]$）：
+          $$X_{\text{修正}} \approx X_1 \times \big(1 + R_{\text{差}} \times t\big),\quad t = n - 1$$
+          其中 $R_{\text{差}} = R_{\text{真}} - R_{\text{参考}}$（带正负号）。
+        </li>
+        <li><strong>实测示范</strong>：$B=536, R=11.6\% \approx \frac{1}{9}(11.1\%)$，$X_1 = \frac{536}{10} = 53.6$；$R_{\text{差}}=+0.5\%, t=8 \implies X_{\text{修}} = 53.6\times(1+0.04) \approx 55.74$（真值 $55.71$，精确到小数后一位！）。</li>
+      </ol>
+    </div>
+    <div class="day-col">
+      <h4>🌳 引擎二：假设分配树（通吃 $R \le 10\%$ 或非好分数）</h4>
+      <ol>
+        <li><strong>拆出干净基期 $A_1$</strong>：凭直觉挑一个比现期略小且好乘 $R$ 的整数（如现期 $1728.7$、$R=10.4\%$，拆 $A_1 = 1500$）。</li>
+        <li><strong>算第一轮 $X_1$</strong>：$X_1 = 1500 \times 10.4\% = 156$，还剩尾巴 $B_1 = 1728.7 - (1500 + 156) = 72.7$。</li>
+        <li><strong>快速切分尾巴 $B_1$</strong>：
+          <ul>
+            <li>当 $R \le 10\%$ 时：$X_2 \approx B_1 \times R$（多减一丢丢即可），如 $72.7 \times 10.4\% \approx 7.5 \to$ 直接得 $X \approx 156 + 6.8 \approx 162.8$，$A \approx 1566$！</li>
+            <li>$R \approx 20\% \Rightarrow X_2 \approx B_1/6$；$25\% \Rightarrow B_1/5$；$33\% \Rightarrow B_1/4$；$50\% \Rightarrow B_1/3$。</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: 四大高频增长与比重模型 ============ -->
+<section class="day-section" id="zl-models">
+  <div class="day-header">
+    <span class="day-tag" style="background:#2563eb">第二篇｜山东卷高杀伤力四大比重/增长公式</span>
+    <h1 class="day-title">02｜盐水混合线段 + 乘积增长 + 比值增长率 + 两期比重差</h1>
+    <div class="day-meta">实证统计：2024 Q119/120、2025 Q105/106/109/114/117/119/120 均直考以下四大模型</div>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">🧪 山东真题最爱考的四大秒杀公式（考前必须默写出）</div>
+    <ul>
+      <li><strong>1. 盐水模型（混合增长率线段法）</strong>：口诀 <span class="hl-yellow">“居中不偏中，偏向基期大者容”</span>。总体 $R_{\text{总}}$ 必严格介于部分 $r_A, r_B$ 之间，且到两端的距离与基期量成反比：
+        $$\frac{r_A - R_{\text{总}}}{R_{\text{总}} - r_B} = \frac{A_{\text{基期}}}{B_{\text{基期}}}$$
+        （实战先用现期替代基期速估；注意<code>1–5月 = 1–4月 + 5月</code>、<code>城镇 + 农村 = 总人口</code>皆属混合，如 <code>2025 Q114</code> 已知 1–5 月降 3%、5 月降 0.8%，求 1–4 月降幅必定大于 3%，直接锁定 $-3.9\%$ 级别选项！）
+      </li>
+      <li><strong>2. 乘积增长率 &amp; 间隔增长率</strong>：若总量 $C = A \times B$（如 <code>收入 = 均价 × 销量</code>）或跨两期（如 2023 比 2021），合成增速：
+        $$R = r_1 + r_2 + r_1 \cdot r_2$$
+      </li>
+      <li><strong>3. 平均数 / 比值增长率（2025 Q119 压轴反转！）</strong>：设 $\text{比值} = \dfrac{A}{B}$（分子增速 $a$，分母增速 $b$），则比值增长率：
+        $$r_{\text{比}} = \frac{1+a}{1+b} - 1 = \frac{a - b}{1 + b}$$
+        <span class="hl-pink">高阶逆用（2025 Q119）</span>：已知“投入强度 = R&amp;D ÷ 营业收入”去年到今年提高 0.47 个百分点（从 3.39% 到 3.86%，即 $r_{\text{比}} \approx \frac{0.47}{3.39} = 13.86\%$）与分子 R&amp;D 增速 $a=33.7\%$，反求分母营业收入增速：
+        $$1 + b = \frac{1 + a}{1 + r_{\text{比}}}$$
+      </li>
+      <li><strong>4. 两期比重变化 &amp; 基期和差技巧</strong>：
+        <ul>
+          <li><strong>定方向</strong>：只比较部分增速 $a$ 与整体增速 $b$，$a > b \implies$ 比重上升（现期 > 基期）；$a < b \implies$ 比重下降（现期 < 基期），可直接秒杀“饼图范围题”（如 <code>2025 Q117</code>）。</li>
+          <li><strong>算差值</strong>：$\Delta \text{比重} = \dfrac{A}{B}\times \dfrac{a-b}{1+a}$，因通常 $\frac{A}{B}<1$ 且 $1+a>1$，故**变化百分点恒小于 $|a-b|$**（排除所有 $\ge |a-b|$ 的选项；仅极少数分母大跌时注意例外）。</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card card-trap">
+    <div class="card-title">⚠ 2024–2025 山东真题五大隐蔽陷阱清单（每条都是考生丢分重灾区）</div>
+    <ol>
+      <li><strong>口径偷换陷阱（2024 Q120）</strong>：材料给出“风电、光伏发电量占比提高 2 个百分点至 13.8%”，选项却偷换成“2021 年<strong>可再生能源</strong>占比为 11.8%”——错，11.8% 是风电+光伏，可再生能源是 $31.6\%-1.7\%=29.9\%$！</li>
+      <li><strong>加减方向反转（2025 Q120 A项）</strong>：“比上年提高 0.47 个百分点至 3.86%”，上年是 $3.86\% - 0.47\% = 3.39\%$，选项故意写成相加 $4.33\%$！</li>
+      <li><strong>单位/汇率脚注坑（2025 Q107）</strong>：图表单位是亿元人民币，提问问“多少亿美元”，必须除以注释汇率 <code>1:7.0</code>（例如 1647.88 亿人民币 $\div 7 = 235.4$ 亿美元，选项故意同时放 <code>1648</code> 和 <code>235</code>！）。</li>
+      <li><strong>合并条形均值坑 &amp; 基期缺失坑（2025 Q111–113）</strong>：统计图中 <code>1–2月</code> 常合并画一个总柱子，计算日均/月均时要先除以 2（且注意 2 月闰年 29 天 vs 平年 28 天）；求某年 11 月环比增速时，若图表中最早只给到当年 11 月而没有 10 月数据（如 <code>2022年11月</code>），则该月环比无法求出，必不是答案！</li>
+      <li><strong>两期对比主语错位（2025 Q105 B项）</strong>：比较单件快递收入升/降，直接用“收入增速 14.3% vs 业务量增速 19.4%”：$14.3\% < 19.4\% \implies$ 单价必然下降！一秒排除“有所增加”。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: 2024材料四完整盲测 ============ -->
+<section class="day-section" id="zl-2024m4">
+  <div class="day-header">
+    <span class="day-tag" style="background:#059669">第三篇｜真题实操组一（2024 山东行测 · 材料四 Q116–120）</span>
+    <h1 class="day-title">03｜新能源装机与发电量：连续 5 题 6 分钟全对实战（盲测折叠）</h1>
+    <div class="day-meta">真实出处：2024年山东省公务员录用考试《行测》试题（网友回忆版）.pdf | 2024 | 材料四 Q116–Q120</div>
+  </div>
+
+  <div class="template-box">
+    <strong>📄 给定材料原文</strong>：2022年，我国风电、光伏发电新增装机达到1.25亿千瓦，再创历史新高。全年可再生能源新增装机1.52亿千瓦，占全国新增发电装机的76.2%，其中风电新增3763万千瓦，太阳能发电新增8741万千瓦，生物质发电新增334万千瓦，常规水电新增1507万千瓦，抽水蓄能新增880万千瓦。截至2022年年底，可再生能源装机达到12.13亿千瓦，占全国发电总装机的47.3%，较2021年提高2.5个百分点。其中风电3.65亿千瓦，太阳能发电3.93亿千瓦，生物质发电0.41亿千瓦，常规水电3.68亿千瓦，抽水蓄能0.45亿千瓦。<br>
+    2022年，风电、光伏年发电量首次突破1万亿千瓦时，达到1.19万亿千瓦时，较2021年增加2073亿千瓦时，同比增长21%，占全社会用电量的13.8%，同比提高2个百分点，接近全国城乡居民生活用电量。2022年，可再生能源发电量达到2.72万亿千瓦时，占全社会用电量的比重为31.6%，较2021年提高1.7个百分点。
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>Q116｜已知部分求整体（百化分修正）</span><span class="src-tag">2024 | Q116</span></div>
+    <div class="q-stem">2022年，我国新增发电装机约为：</div>
+    <ul class="q-opts"><li>A. 1.25亿千瓦</li><li>B. 15.2亿千瓦</li><li>C. 1.99亿千瓦</li><li>D. 2.33亿千瓦</li></ul>
+    <details class="sol"><summary>👆 先自己估算再点击展开（花生十三法推导）</summary><div class="sol-body">
+      <strong>答案：C</strong><br>
+      ① 定位：“可再生能源新增装机 $1.52$ 亿千瓦，占全国新增的 $76.2\%$”；<br>
+      ② 口算估值：$76.2\%$ 极其接近 $75\% = \frac{3}{4}$，先按 $\frac{3}{4}$ 算：$1.52 \div \frac{3}{4} = 1.52 \times \frac{4}{3} \approx 2.027$；由于实际分母 $76.2\%$ 比 $75\%$ 略大，商应略小于 $2.027$，直接锁定 <strong>C（1.99亿千瓦）</strong>（精确值 $1.52/0.762=1.9948$）。
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>Q117｜读数排序（防量级陷阱）</span><span class="src-tag">2024 | Q117</span></div>
+    <div class="q-stem">2022年，可再生能源新增装机规模从大到小排序正确的是：</div>
+    <ul class="q-opts"><li>A. 风电 &gt; 太阳能 &gt; 抽水蓄能</li><li>B. 太阳能 &gt; 常规水电 &gt; 生物质</li><li>C. 抽水蓄能 &gt; 风电 &gt; 生物质</li><li>D. 常规水电 &gt; 生物质 &gt; 抽水蓄能</li></ul>
+    <details class="sol"><summary>👆 点击展开推导</summary><div class="sol-body">
+      <strong>答案：B</strong><br>
+      直接读取第一段各能源<strong>新增装机</strong>（单位统一为万千瓦）：太阳能 $8741 >$ 风电 $3763 >$ 常规水电 $1507 >$ 抽水蓄能 $880 >$ 生物质 $334$。对照选项，只有 <strong>B（8741 > 1507 > 334）</strong> 完全正确。
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>Q118｜现期比重差</span><span class="src-tag">2024 | Q118</span></div>
+    <div class="q-stem">截至2022年年底，各类可再生能源发电装机中占比最大与最小的大约相差：</div>
+    <ul class="q-opts"><li>A. 27个百分点</li><li>B. 29个百分点</li><li>C. 36个百分点</li><li>D. 55个百分点</li></ul>
+    <details class="sol"><summary>👆 点击展开推导</summary><div class="sol-body">
+      <strong>答案：B</strong><br>
+      ① 分母均为 $12.13$ 亿千瓦，可直接先算量差再除：最大太阳能 $3.93$ 亿，最小生物质 $0.41$ 亿；<br>
+      ② 量差：$3.93 - 0.41 = 3.52$ 亿；<br>
+      ③ 直除首位试商：$\dfrac{3.52}{12.13}$，$12.13 \times 3 = 36.39 > 35.2$，故商略小于 $30\%$，必在 $29\%$ 附近 → 锁定 <strong>B（29个百分点）</strong>（精确值 $29.02\%$）。
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>Q119｜2021 年差值比重与增量双拼（高含金量）</span><span class="src-tag">2024 | Q119</span></div>
+    <div class="q-stem">2021年，除风电、光伏发电外的可再生能源发电量及其占全社会用电量的比重约为：</div>
+    <ul class="q-opts"><li>A. 1.36万亿千瓦时，18.1%</li><li>B. 1.36万亿千瓦时，14.2%</li><li>C. 1.51万亿千瓦时，18.1%</li><li>D. 1.51万亿千瓦时，14.2%</li></ul>
+    <details class="sol"><summary>👆 先算比重再求量！点击展开花生十三 10 秒秒杀流</summary><div class="sol-body">
+      <strong>答案：C</strong><br>
+      ① <strong>先秒杀比重（5 秒）</strong>：题目问 2021 年“除风电光伏外的可再生”占全社会用电量比重 = $2021\text{可再生占比} - 2021\text{风电光伏占比}$。<br>
+      已知 2022 可再生占比 $31.6\%$（同比提高 $1.7$ pp）$\implies 2021$ 可再生占比 $= 31.6\% - 1.7\% = 29.9\%$；<br>
+      已知 2022 风电光伏占比 $13.8\%$（同比提高 $2$ pp）$\implies 2021$ 风电光伏占比 $= 13.8\% - 2\% = 11.8\%$；<br>
+      做差：$29.9\% - 11.8\% = \mathbf{18.1\%}$，直接干掉 B、D！<br>
+      ② <strong>再定发电量</strong>：2021 风电光伏发电量 $= 1.19 - 0.2073 = 0.9827$ 万亿，对应 2021 全社会总用电量 $= \frac{0.9827}{11.8\%} \approx 8.33$ 万亿千瓦时；<br>
+      则所求部分发电量 $= 8.33 \times 18.1\% \approx \mathbf{1.51}$ 万亿千瓦时 → 锁定 <strong>C</strong>！
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>Q120｜综合分析（抓主体偷换坑）</span><span class="src-tag">2024 | Q120</span></div>
+    <div class="q-stem">不能从上述资料中推出的是：</div>
+    <ul class="q-opts">
+      <li>A. 2021年，可再生能源发电量占全社会用电量的比重为11.8%</li>
+      <li>B. 2022年，生物质发电装机规模同比增长约8.87%</li>
+      <li>C. 截至2022年年底，非可再生能源装机超过12.13亿千瓦</li>
+      <li>D. 2022年，风电、光伏发电量基本可以满足全国城乡居民生活用电需求</li>
+    </ul>
+    <details class="sol"><summary>👆 点击展开逐项核查</summary><div class="sol-body">
+      <strong>答案：A</strong><br>
+      - <strong>A（不能推出，当选）</strong>：$13.8\% - 2\% = 11.8\%$ 是“风电、光伏发电”占比，材料里可再生能源 2021 年占比明明是 $31.6\% - 1.7\% = 29.9\%$，命题人将主体偷换成“可再生能源”！<br>
+      - B 可推出：2022 生物质新增 $334$ 万 $= 0.0334$ 亿，2022 底 $0.41$ 亿，增速 $\frac{0.0334}{0.41 - 0.0334} = \frac{0.0334}{0.3766} \approx 8.87\%$；<br>
+      - C 可推出：2022 底可再生占 $47.3\% < 50\%$，故非可再生占 $52.7\% > 47.3\%$，绝对量必超 $12.13$ 亿；<br>
+      - D 可推出：原文有“达到 1.19 万亿千瓦时……接近全国城乡居民生活用电量”。
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: 2025材料四(R&D)与材料一(邮政)完整盲测 ============ -->
+<section class="day-section" id="zl-2025m4">
+  <div class="day-header">
+    <span class="day-tag" style="background:#7c3aed">第四篇｜真题实操组二（2025 山东行测 · R&amp;D 与邮政全解）</span>
+    <h1 class="day-title">04｜2025 真题完整精析：R&amp;D 比值增长率逆推 + 415 误差修正实操</h1>
+    <div class="day-meta">真实出处：2025年山东省公务员录用考试《行测》试题（网友回忆版）.pdf | 材料四 Q116–120 &amp; 材料一 Q101–105</div>
+  </div>
+
+  <div class="template-box">
+    <strong>📄 2025 材料四（R&amp;D 经费）原文关键数据</strong>：2022 年全省 R&amp;D 经费投入 $2180.4$ 亿元（$+12.1\%$），投入强度 $2.49\%$（$+0.14$ pp）。分活动类型：基础研究 $89.5$ 亿（$+21.4\%$，占 $4.1\%$）、应用研究 $163.8$ 亿（$+37.2\%$，占 $7.5\%$）、试验发展 $1927.1$ 亿（$+10.0\%$，占 $88.4\%$）。分行业：规上工业 $1728.7$ 亿（$+10.4\%$，强度 $1.59\%$，$+0.08$ pp），高技术制造业 $363.6$ 亿（$+33.7\%$，强度 $3.86\%$，$+0.47$ pp）。德州 R&amp;D $109.0$ 亿，投入强度 $3.00\%$；青岛 $400.2$ 亿、济南 $346.8$ 亿、烟台 $197.5$ 亿。
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>2025 Q116 &amp; Q117｜GDP 反推 + 2021 基期饼图范围</span><span class="src-tag">2025 | Q116–Q117</span></div>
+    <div class="q-stem">
+      <strong>116.</strong> 2022年德州市地区生产总值是多少？<code>A.3456亿元 B.3523亿元 C.3633亿元 D.3758亿元</code><br>
+      <strong>117.</strong> 以下哪个选项能够反映2021年各活动类型的比例范围？（<span class="missing-tag">注：本地 PDF 原卷饼图图片缺失，以下为精准反推真值供核对饼图区域</span>）
+    </div>
+    <details class="sol"><summary>👆 点击展开花生十三推导</summary><div class="sol-body">
+      <strong>116 答案：C</strong>。投入强度 $= \frac{\text{R\&amp;D 经费}}{\text{GDP}}$，故德州 $\text{GDP} = \frac{109.0}{3.00\%} = \frac{10900}{3} \approx \mathbf{3633.3}$ 亿元 → <strong>C</strong>。<br><br>
+      <strong>117 精算值与 5 秒定性排除法</strong>：<br>
+      - <strong>5 秒定性口诀（整体增速 $12.1\%$）</strong>：基础增速 $21.4\% > 12.1\%$，说明 2022 升 $\implies 2021$ 占比 <strong>$&lt; 4.1\%$</strong>；应用增速 $37.2\% > 12.1\% \implies 2021$ 占比 <strong>$&lt; 7.5\%$</strong>；试验增速 $10.0\% < 12.1\% \implies 2021$ 占比 <strong>$&gt; 88.4\%$</strong>（越过 90% 线！）。<br>
+      - <strong>精确基期校验</strong>：基础 $\frac{89.5}{1.214}\approx 73.72$（<strong>3.8%</strong>）；应用 $\frac{163.8}{1.372}\approx 119.39$（<strong>6.1%</strong>）；试验 $\frac{1927.1}{1.10}\approx 1751.91$（<strong>90.1%</strong>），对照真题四个圆饼图即可 1 秒看出基础 3.8%、应用 6.1%、试验 90.1% 所在区间。
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>2025 Q118｜增长量之比（假设分配 + 415 联手秒杀）</span><span class="src-tag">2025 | Q118</span></div>
+    <div class="q-stem">2022年规模以上工业企业R&amp;D经费投入的增长量是高技术制造业R&amp;D经费的多少倍？</div>
+    <ul class="q-opts"><li>A. 1.5</li><li>B. 1.8</li><li>C. 1.9</li><li>D. 2.0</li></ul>
+    <details class="sol"><summary>👆 注意选项 1.8 vs 1.9 只差 0.1！点击展开高精度解法</summary><div class="sol-body">
+      <strong>答案：B</strong><br>
+      ① <strong>分子（规上工业增长量，$B_1=1728.7, R_1=10.4\%$）用假设分配</strong>：<br>
+      先拆 $A_1 = 1500 \implies X_1 = 156$，余 $72.7$；再按 $\approx 10\%$ 分配，$72.7 \div 1.104 \times 0.104 \approx 6.8 \implies X_{\text{规上}} \approx 156 + 6.8 = \mathbf{162.8}$ 亿元；<br>
+      ② <strong>分母（高技术制造增长量，$B_2=363.6, R_2=33.7\%$）用 415 修正</strong>：<br>
+      $33.7\% \approx \frac{1}{3}(33.3\%)$，则 $X_{\text{初}} = \frac{363.6}{4} = 90.9$；$R_{\text{差}}=+0.4\%, t=3-1=2 \implies X_{\text{高技术}} \approx 90.9 \times (1 + 0.008) \approx \mathbf{91.6}$ 亿元（精确值 $91.65$）；<br>
+      ③ <strong>求倍数</strong>：$\dfrac{162.8}{91.65} \approx \mathbf{1.776} \approx \mathbf{1.8}$ → <strong>B</strong>！（如果粗算成 $173/91=1.9$ 就掉进 C 坑了！这正是必须掌握假设分配+误差修正的原因。）
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>2025 Q119 &amp; Q120｜比值增长率逆推 + 综合判断</span><span class="src-tag">2025 | Q119–Q120</span></div>
+    <div class="q-stem">
+      <strong>119.</strong> 2022年高技术制造业营业收入的同比增长率约为多少？<code>A.10% B.15% C.20% D.17%</code><br>
+      <strong>120.</strong> 以下四个选项正确的是：<code>A.2021年高技术制造业投入强度为4.33% B.青岛、济南、烟台占比40%以下 C.2022山东GDP增量4500亿元 D.试验发展占比不到90%</code>
+    </div>
+    <details class="sol"><summary>👆 点击展开推导</summary><div class="sol-body">
+      <strong>119 答案：D</strong>。<br>
+      ① 抓住强度定义：$\text{投入强度} = \dfrac{\text{高技术 R\&amp;D 经费}}{\text{高技术营业收入}}$；<br>
+      ② 算强度本身增速 $r_{\text{比}}$：2022 年 $3.86\%$，提高 $0.47$ pp $\implies 2021$ 年为 $3.86\% - 0.47\% = 3.39\%$，故 $r_{\text{比}} = \dfrac{0.47}{3.39} \approx \mathbf{13.86\%}$；<br>
+      ③ <strong>代入花生十三比值逆公式</strong>：$1 + b = \dfrac{1+a}{1+r_{\text{比}}} = \dfrac{1+33.7\%}{1+13.86\%} = \dfrac{1.337}{1.1386} \approx \mathbf{1.174} \implies \mathbf{17.4\%} \approx \mathbf{17\%}$ → <strong>D</strong>！<br><br>
+      <strong>120 答案：D</strong>。<br>
+      - D 原文直接写明“试验发展经费所占比重为 88.4%”，不到 90%，10 秒白送！<br>
+      - 顺便排查：A 加减方向错（应 $3.86-0.47=3.39\%$）；B 三市求和 $400.2+346.8+197.5=944.5$，$944.5/2180.4 \approx 43.3\% > 40\%$；C 2022 GDP $2180.4/2.49\% \approx 87566$ 亿，2021 GDP $(2180.4/1.121)/(2.35\%) \approx 82768$ 亿，增量约 $4798$ 亿而非 $4500$ 亿。
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>2025 材料一 Q101–Q105｜邮政快递整组速战（含 Q104 公报补全）</span><span class="src-tag">2025 | 材料一 Q101–Q105</span></div>
+    <div class="q-stem">
+      <strong>材料核心</strong>：2023 年邮政寄递业务量 $1624.8$ 亿件（$+16.8\%$），其中快递 $1320.7$ 亿件（$+19.4\%$）；邮政业务收入 $15293.0$ 亿元（$+13.2\%$），快递收入 $12074.0$ 亿元（$+14.3\%$）。<br>
+      <strong>Q101.</strong> 2023 年邮政寄递业务总量比 2022 年增加多少亿件？<code>A.234 B.237 C.243 D.273</code><br>
+      <strong>Q102.</strong> 2023 年快递占邮政寄递总量的比重约为？<code>A.79% B.81% C.83% D.85%</code><br>
+      <strong>Q104.</strong> 2019–2023 年，省内（山东）快递业务量占全国比重最高与最低相差？<code>A.0.1 B.0.2 C.0.4 D.0.8个百分点</code> <span class="net-tag">联网核查国家邮政局/山东统计公报数据</span><br>
+      <strong>Q105.</strong> 能从材料推出的是：<code>A.按当年增速2023全国快递翻一番约需4年 B.2023全国快递单件收入约9元，比2022有所增加 ... D.占比比2022高1个百分点</code>
+    </div>
+    <details class="sol"><summary>👆 重点练 Q101 的 234 vs 237 修正与 Q105 72法则！点击展开</summary><div class="sol-body">
+      <strong>Q101 答案：A（234）</strong><br>
+      $B=1624.8, R=16.8\% \approx \frac{1}{6}(16.67\%)$，$n=6$：<br>
+      - $X_1 = \frac{1624.8}{7} \approx 232.11$；<br>
+      - $R_{\text{差}} = 16.8\% - 16.67\% = +0.13\%$，$t = 6-1 = 5$；<br>
+      - $X_{\text{修正}} = 232.11 \times (1 + 0.0013 \times 5) \approx 232.11 \times 1.0065 \approx \mathbf{233.6} \approx \mathbf{234}$！精准避开干扰项 B（237）！<br><br>
+      <strong>Q102 答案：B（81%）</strong>。$\frac{1320.7}{1624.8} \approx 81.28\% \approx 81\%$。<br><br>
+      <strong>Q104 答案：D（0.8 个百分点）</strong><span class="net-tag">联网官方统计公报核查</span>。<br>
+      因本地 PDF 原图缺失，经核对国家邮政局及《山东省国民经济和社会发展统计公报》（2019–2023）口径：2019 年山东占全国 $28.89/635.2 \approx 4.55\%$（最低），2023 年 $70.7/1320.7 \approx 5.35\%$（最高），极差 $5.35\% - 4.55\% = \mathbf{0.80}$ 个百分点 → <strong>D</strong>（注：Q103 同理取决于缺失柱图，联网查全国快递业务量 2020–2023 同比增速分别为 <code>2020:+31.2%, 2021:+29.9%, 2022:+2.1%, 2023:+19.4%</code>，最大为 <strong>2020 年</strong>，选 D）。<br><br>
+      <strong>Q105 答案：A</strong>。<br>
+      - <strong>A 对</strong>：复利翻番使用 <strong>72 法则</strong>（或 $1.2^4 = 2.07$），$\frac{72}{19.4} \approx 3.71$ 年，即约需 <strong>4 年</strong>（验算 $1.194^3 = 1.70 < 2, 1.194^4 = 2.03 > 2$）；<br>
+      - <strong>B 错</strong>：单件收入增速看“分子 $14.3\%$ vs 分母 $19.4\%$”，分子慢于分母，单价应<strong>下降</strong>；<br>
+      - <strong>D 错</strong>：两期比重差 $= 81.3\% \times \frac{19.4\%-16.8\%}{1.194} \approx +1.77$ 个百分点，不是 1 个百分点。
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: 记忆打卡 ============ -->
+<section class="day-section" id="zl-review">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0f172a">第五篇｜资料分析考场 26 分钟自检卡</span>
+    <h1 class="day-title">05｜合上解析：20 秒盲默 4 大公式（考场 85%+ 正确率护城河）</h1>
+    <div class="day-meta">每篇材料超过 6.5 分钟立刻果断猜选第 5 题的难项（通常 D/C 不重复硬算 4 个选项），保住全篇节奏</div>
+  </div>
+
+  <div class="card card-quiz">
+    <div class="card-title">✅ 资料分析检索闭环（口述过关再切换下个模块）</div>
+    <ol>
+      <li>增长率 $R = 16.8\%$，用 415 份数法做误差修正时，$n$ 取多少？$t$ 取多少？算出来要加还是减？</li>
+      <li>已知现期比重和同比百分点变化，怎么判断基期各部分的相对大小？（提示：先看部分增速 $a$ vs 整体增速 $b$）</li>
+      <li>看到“投入强度（研发/营收）提高 0.47 pp”，求“营收增速”用哪个公式？</li>
+      <li>混合增长率（如 1–5 月 = 1–4 月 + 5 月）的口诀最后一句是什么？</li>
+    </ol>
+    <details class="sol"><summary>👆 默写完点击核对</summary><div class="sol-body">
+      1. $16.8\% \approx 1/6(16.67\%)$，故 $n=6, t=n-1=5$；$R_{\text{差}}=+0.13\%$ 为正，故 $X_1\times(1+0.65\%)$ 往上加修正。<br>
+      2. $a>b$ 现期升，说明基期更小；$a<b$ 现期降，说明基期更大！<br>
+      3. 比值增长率逆公式：$1+r_{\text{分母}} = \dfrac{1+r_{\text{分子}}}{1+r_{\text{比}}}$。<br>
+      4. “居中不偏中，偏向<strong>基期大者</strong>容”（如 1–4 月体量远大于 5 月单月，故总增速紧贴 1–4 月）。
+    </div></details>
+  </div>
+</section>
+
+<div class="sub-footer-nav"><a href="山东省考7天冲刺精准提分讲义.html">📘 返回山东省考总纲目录</a><a class="alt" href="sd_05_判断推理详讲.html">← 上一模块：05 判断推理</a><a class="alt" href="sd_07_申论B卷详讲.html">下一模块：07 申论 B 卷 →</a></div>
+  </main>
+</div>
+
+<script defer src="assets/katex/katex/katex.min.js"></script>
+<script defer src="assets/katex/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script>
+const STORAGE_KEY = 'sd_v2_m06_v1';
+function saveCheck() {
+  const boxes = document.querySelectorAll('.nav-item input[type="checkbox"]');
+  const state = {};
+  let done = 0;
+  boxes.forEach(b => { state[b.dataset.sec] = b.checked; if (b.checked) done++; });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  const pt = document.getElementById('progText');
+  const pf = document.getElementById('progFill');
+  if (pt) pt.textContent = done + ' / ' + boxes.length;
+  if (pf && boxes.length) pf.style.width = Math.round(done * 100 / boxes.length) + '%';
+}
+function loadCheck() {
+  try {
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('.nav-item input[type="checkbox"]').forEach(b => {
+      if (state[b.dataset.sec]) b.checked = true;
+    });
+  } catch (e) {}
+  saveCheck();
+}
+// Requirement #7: NEVER open details.sol on initial load; stay collapsed by default until user clicks!
+let allSolExpanded = false;
+function toggleAllSol() {
+  allSolExpanded = !allSolExpanded;
+  document.querySelectorAll('details.sol').forEach(d => d.open = allSolExpanded);
+  const btn = document.getElementById('toggleSolBtn');
+  if (btn) btn.textContent = allSolExpanded ? '🙈 收起全部解析' : '👁 展开全部解析';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('details.sol').forEach(d => d.open = true);
+});
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => { if (window.innerWidth <= 960) closeSidebar(); });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => { topBtn.classList.toggle('show', window.scrollY > 420); }, { passive: true });
+}
+loadCheck();
+</script>
+
+</body>
+</html>

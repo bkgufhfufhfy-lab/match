@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>03｜言语理解详讲：花生十三法 + 9套高频词 + 9题盲测</title>
+  <link rel="stylesheet" href="assets/katex/katex/katex.min.css" />
+  <style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --blue: #2563eb; --blue-bg: #eff6ff;
+  --green: #059669; --green-bg: #ecfdf5;
+  --red: #dc2626; --red-bg: #fef2f2;
+  --purple: #7c3aed; --purple-bg: #f5f3ff;
+  --amber: #d97706; --amber-bg: #fffbeb;
+  --cyan: #0891b2; --cyan-bg: #ecfeff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 15.3px;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+.layout { display: flex; min-height: 100vh; width: 100%; }
+.sidebar {
+  width: 292px;
+  background: #0f172a;
+  color: #e2e8f0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  padding: 18px 15px 44px;
+  z-index: 260;
+  transition: transform 0.25s ease;
+}
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.5); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.sidebar-title { font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 0 0 3px; letter-spacing: 0.3px; }
+.sidebar-sub { font-size: 11.8px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b; }
+.progress-box { background: #1e293b; border-radius: 8px; padding: 9px 11px; margin-bottom: 11px; font-size: 12.5px; }
+.progress-bar-wrap { background: #334155; height: 7px; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+.progress-bar-fill { background: linear-gradient(90deg, #10b981, #38bdf8); height: 100%; width: 0%; transition: width 0.25s; }
+.btn-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.btn {
+  flex: 1 1 88px; min-height: 34px; border: none; border-radius: 6px; padding: 6px 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer; background: #2563eb; color: #fff;
+  text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+}
+.btn.secondary { background: #334155; }
+.btn.emerald { background: #059669; }
+.btn.slate { background: #475569; }
+.btn:hover { opacity: 0.92; }
+.mod-switcher {
+  width: 100%; margin: 2px 0 10px; padding: 7px 9px; border-radius: 7px;
+  background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 12.5px; font-weight: 700; cursor: pointer;
+}
+.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 13px 0 6px 5px; letter-spacing: 0.6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px;
+  color: #cbd5e1; text-decoration: none; font-size: 12.8px; margin-bottom: 3px; transition: background 0.15s;
+}
+.nav-item:hover { background: #1e293b; color: #fff; }
+.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; width: 15px; height: 15px; }
+.nav-item .nav-text { flex: 1; line-height: 1.38; }
+
+.main { margin-left: 292px; flex: 1; min-width: 0; width: 100%; padding: 28px 34px 88px; max-width: 1060px; }
+.cover-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0e7490 100%);
+  color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+.cover-banner.theme-red { background: linear-gradient(135deg, #1e1b4b 0%, #991b1b 55%, #b45309 100%); }
+.cover-banner.theme-amber { background: linear-gradient(135deg, #0f172a 0%, #92400e 55%, #b45309 100%); }
+.cover-banner.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 55%, #2563eb 100%); }
+.cover-banner.theme-green { background: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0e7490 100%); }
+.cover-banner.theme-cyan { background: linear-gradient(135deg, #0f172a 0%, #0e7490 55%, #0284c7 100%); }
+.cover-eyebrow {
+  display: inline-block; font-size: 11.8px; font-weight: 800; padding: 3px 11px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 10px;
+}
+.cover-banner h1 { margin: 0 0 8px; font-size: 25px; line-height: 1.3; }
+.cover-banner p { margin: 0 0 12px; color: #e0f2fe; font-size: 14.5px; }
+.cover-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.cover-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); padding: 3px 11px; border-radius: 99px; font-size: 12.2px; font-weight: 600; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.cover-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-decoration: none; color: #fff; background: rgba(16,185,129,0.92);
+}
+.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34); }
+.cover-btn:hover { opacity: 0.92; }
+
+/* Hub 7-module directory grid */
+.mod-dir-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0 8px; }
+.mod-dir-card {
+  background: #ffffff; border: 1px solid var(--border); border-left: 5px solid var(--blue);
+  border-radius: 12px; padding: 15px 17px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); transition: transform 0.14s, box-shadow 0.14s;
+}
+.mod-dir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+.mod-dir-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.mod-dir-badge { font-size: 11px; font-weight: 800; color: #fff; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.mod-dir-card h3 { margin: 0 0 6px; font-size: 16px; color: #0f172a; }
+.mod-dir-card p { margin: 0 0 11px; font-size: 13.2px; color: #475569; line-height: 1.58; }
+.mod-dir-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 13px; border-radius: 8px; background: #0f172a; color: #fff;
+  text-decoration: none; font-size: 13px; font-weight: 700; min-height: 38px;
+}
+.mod-dir-link:hover { opacity: 0.92; }
+
+.day-section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 25px 28px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 16px;
+}
+.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 11px; margin-bottom: 16px; }
+.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 11.8px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.day-title { margin: 4px 0 5px; font-size: 21px; color: #0f172a; line-height: 1.32; }
+.day-meta { font-size: 13.5px; color: var(--muted); }
+
+h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; }
+h3 { font-size: 15.5px; color: #1e3a8a; margin: 16px 0 8px; break-after: avoid; }
+p { margin: 8px 0; overflow-wrap: break-word; }
+ul, ol { margin: 6px 0 10px; padding-left: 22px; }
+li { margin-bottom: 5px; overflow-wrap: break-word; }
+
+.card { border-radius: 10px; padding: 14px 18px; margin: 14px 0; border-left: 5px solid; break-inside: avoid; }
+.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.card-intuition { background: var(--green-bg); border-color: var(--green); }
+.card-intuition .card-title { color: #065f46; }
+.card-formula { background: var(--blue-bg); border-color: var(--blue); }
+.card-formula .card-title { color: #1e40af; }
+.card-trap { background: var(--red-bg); border-color: var(--red); }
+.card-trap .card-title { color: #991b1b; }
+.card-trick { background: var(--purple-bg); border-color: var(--purple); }
+.card-trick .card-title { color: #5b21b6; }
+.card-example { background: var(--amber-bg); border-color: var(--amber); }
+.card-example .card-title { color: #92400e; }
+.card-quiz { background: var(--cyan-bg); border-color: var(--cyan); }
+.card-quiz .card-title { color: #155e75; }
+
+.q-box {
+  background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #d97706;
+  border-radius: 10px; padding: 15px 18px; margin: 16px 0; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 800; color: #92400e; font-size: 14.2px; }
+.q-stem { background: #fffbeb; border-radius: 7px; padding: 10px 13px; margin: 8px 0 10px; font-size: 14.4px; line-height: 1.72; color: #1e293b; }
+.q-opts { margin: 6px 0 10px; padding-left: 6px; list-style: none; font-size: 14px; color: #334155; }
+.q-opts li { margin-bottom: 4px; }
+
+.hl-yellow { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #713f12; }
+.hl-pink { background: #fecdd3; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #881337; }
+.hl-blue { background: #bfdbfe; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1e3a8a; }
+.badge-p0 { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p1 { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p2 { display: inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+
+.src-tag {
+  display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569;
+  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace;
+}
+.net-tag {
+  display: inline-block; background: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;
+  font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+}
+.missing-tag {
+  display: inline-block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+}
+.template-box {
+  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 15px;
+  font-size: 13.8px; line-height: 1.75; margin: 10px 0;
+}
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0; font-size: 13.5px; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: #1e293b; color: #ffffff; text-align: left; padding: 8px 10px; font-weight: 700; }
+td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; overflow-wrap: break-word; }
+tr:nth-child(even) td { background: #f8fafc; }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; break-inside: avoid; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+
+/* Default CLOSED collapsible derivation blocks */
+details.sol {
+  margin-top: 8px; background: #f8fafc; border: 1.5px dashed #0891b2; border-radius: 8px; padding: 8px 13px;
+}
+details.sol[open] { background: #f0fdfa; border-style: solid; }
+details.sol > summary {
+  cursor: pointer; font-weight: 800; color: #0e7490; font-size: 13.5px; user-select: none; list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+details.sol > summary::before { content: "▶"; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+details.sol[open] > summary::before { transform: rotate(90deg); }
+details.sol > summary::-webkit-details-marker { display: none; }
+.sol-body { margin-top: 9px; padding-top: 8px; border-top: 1px solid #bae6fd; font-size: 14px; line-height: 1.72; color: #1e293b; }
+
+.day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.day-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; break-inside: avoid; }
+.day-col h4 { margin: 0 0 8px; font-size: 14.5px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+
+.sub-footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  margin-top: 28px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px;
+}
+.sub-footer-nav a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px; border-radius: 8px;
+  background: #0f172a; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; min-height: 40px;
+}
+.sub-footer-nav a.alt { background: #2563eb; }
+.sub-footer-nav a:hover { opacity: 0.92; }
+
+.mobile-toggle {
+  display: none; align-items: center; gap: 6px; position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
+  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
+}
+.back-to-top {
+  display: none; align-items: center; justify-content: center; position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px; padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 256px; }
+  .main { margin-left: 256px; padding: 22px 22px 76px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 305px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 16px 16px 92px; max-width: 100%; }
+  .mod-dir-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 18px 16px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.7px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 19px 15px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 20.5px; }
+  .cover-banner p { font-size: 13.8px; }
+  .day-section { padding: 15px 13px; border-radius: 12px; margin-bottom: 16px; }
+  .day-title { font-size: 18.5px; }
+  h2 { font-size: 16.2px; }
+  h3 { font-size: 14.8px; }
+  .card, .q-box { padding: 12px 13px; }
+  table { font-size: 12.6px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
+  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions, .sub-footer-nav { display: none !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+  .day-section { border: none; box-shadow: none; padding: 0; margin: 0 0 18px; }
+  details.sol { border-style: solid; }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开或关闭目录">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">03｜言语理解详讲</div>
+    <div class="sidebar-sub">A级精准提效 · 花生十三逻辑脉络法</div>
+    <div class="progress-box">
+      <div>本页学习打卡：<strong id="progText">0 / 3</strong></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progFill"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="toggleSolBtn" onclick="toggleAllSol()">👁 展开全部解析</button>
+      <button class="btn secondary" onclick="window.print()">🖨 打印页面</button>
+    </div>
+    <div class="btn-row"><a class="btn emerald" href="山东省考7天冲刺精准提分讲义.html">📘 省考总纲</a><a class="btn slate" href="index.html">🌐 学习中心</a></div>
+    <select class="mod-switcher" aria-label="快速切换省考模块页面" onchange="if(this.value)location.href=this.value;"><option value="山东省考7天冲刺精准提分讲义.html">主控｜省考总纲与7天认知日程</option><option value="sd_01_政治理论详讲.html">01｜政治理论｜政策映射与2027预测</option><option value="sd_02_常识判断详讲.html">02｜常识判断｜重→轻概率与新法</option><option value="sd_03_言语理解详讲.html" selected>03｜言语理解｜花生十三法+高频词</option><option value="sd_04_数量关系详讲.html">04｜数量关系｜必拿母题与极限模型</option><option value="sd_05_判断推理详讲.html">05｜判断推理｜图推/定义/类比/逻辑</option><option value="sd_06_资料分析详讲.html">06｜资料分析｜415/假设分配/盐水</option><option value="sd_07_申论B卷详讲.html">07｜申论 B 卷｜踩点/公文/单字作文</option></select>
+    <div class="nav-group-label">一 · 花生十三言语体系</div><a class="nav-item" href="#yy-method"><input type="checkbox" data-sec="yy-method" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01｜选词分组捆绑+片段五结构+高频词库</span></a><div class="nav-group-label">二 · 逻辑填空真题盲测</div><a class="nav-item" href="#yy-fill"><input type="checkbox" data-sec="yy-fill" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02｜5道高含金量选词详析（默认折叠）</span></a><div class="nav-group-label">三 · 片段与排序盲测</div><a class="nav-item" href="#yy-read"><input type="checkbox" data-sec="yy-read" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">03｜片段脉络/排序详析 + 睡前盲测</span></a>
+  </aside>
+  <main class="main">
+    
+<div class="cover-banner">
+  <span class="cover-eyebrow">模块 03｜A 级精准提效（30 题 / 考场限 26–28 分钟）</span>
+  <h1>言语理解详讲：花生十三逻辑/脉络体系 + 9 套高频词库 + 9 题盲测</h1>
+  <p>彻底戒掉“靠语感蒙题”的玄学！贯彻花生十三核心理念——言语本质上是“逻辑题 + 出题人心理题”。涵盖选词填空「选项分组捆绑排除法」、中心理解「五大行文脉络」、语句排序「捆绑与话题一致性」，每道精选真题全部给出逐词排雷详析</p>
+  <div class="cover-pills">
+    <span class="cover-pill">🔍 91.9% 选词含解释/因果标志</span>
+    <span class="cover-pill">🎯 选词“先分组捆绑，再看搭配”</span>
+    <span class="cover-pill">🧩 片段“抓主题词+对策优先”</span>
+  </div>
+  <div class="cover-actions">
+    <a class="cover-btn ghost" href="sd_02_常识判断详讲.html">← 上一模块：02 常识判断</a>
+    <a class="cover-btn ghost" href="山东省考7天冲刺精准提分讲义.html">📘 返回省考总纲</a>
+    <a class="cover-btn ghost" href="sd_04_数量关系详讲.html">下一模块：04 数量关系 →</a>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: 花生十三言语方法论 ============ -->
+<section class="day-section" id="yy-method">
+  <div class="day-header">
+    <span class="day-tag" style="background:#2563eb">第一篇｜花生十三实战方法论</span>
+    <h1 class="day-title">01｜逻辑填空 &amp; 片段阅读三大抢分铁律（告别纯靠语感）</h1>
+    <div class="day-meta">统计基于 2017–2025 共 9 套卷 269 道完整言语题（2025 Q32 缺失经核查无可靠对应原题，不编造）</div>
+  </div>
+
+  <div class="day-grid">
+    <div class="day-col">
+      <h4>🎯 一、逻辑填空：花生十三“双剑合璧”</h4>
+      <ul>
+        <li><strong>剑法 1 · 选项分组与捆绑排除法（秒杀三空题！）</strong>：面对两空/三空题，<strong>千万不要逐个代入默读</strong>！先横向看四个选项某一空，把明显分成两派的词归组（比如 2 个偏“谨小慎微”、2 个偏“积极作为”，或 2 个偏“书面庄重”、2 个偏“口语/贬义”），找到最有把握的一空先砍掉一组，剩 2 选 1 准确率暴增！</li>
+        <li><strong>剑法 2 · 语境照应“三大路标”</strong>（山东卷 99 题实测分布）：
+          <ul>
+            <li><strong>解释/因果照应（91/99题）</strong>：破折号、冒号、定语从句直接给答案写好“同义词”。</li>
+            <li><strong>并列/递进照应（75/99题）</strong>：顿号、分号、既…又…、甚至…（词义相近、程度递增）。</li>
+            <li><strong>转折/否定并列（53/99题）</strong>：却、然而、不是…而是…、既不能…也不能…（直接取反义）。</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <h4>🧩 二、片段阅读：五大脉络 &amp; 主题词剪刀</h4>
+      <ul>
+        <li><strong>1. 分—总（山东卷第一高频！）</strong>：前 70% 铺陈现象/短板，尾句用<code>必须 / 为此 / 应 / 实际上</code>引出对策或本质，答案必选<strong>概括问题+对策</strong>或<strong>主旨对策</strong>。</li>
+        <li><strong>2. 总—分</strong>：首句甩下核心论点，后面出现“例如/数据显示/比如”，<strong>举例本身（即使全真）一定是干扰项！</strong></li>
+        <li><strong>3. 并列文段</strong>：“一方面…另一方面…”“此外”，必须<strong>全部概括不能只取一半</strong>。</li>
+        <li><strong>4. 抓主题词剪刀</strong>：文段高频反复出现的名词主体，选项里若偷换成更大、更小或无中生有词（如把“中国印章”偷换成“中西印章差异”），1 秒淘汰！</li>
+        <li><strong>5. 新闻 &amp; 科普铁律</strong>：新闻导语重“新突破/创新进展”；科普文不带强烈主观倡导，重客观阐释机理。</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>三、山东 9 套真题高频复现成语 &amp; 易混词“认知对照记忆卡”（分组记，一次只攻 2 组）</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>记忆组块（人脑一次记1组）</th><th>山东高频复现词 &amp; 易混对比</th><th>核心区分锚点（不混不串）</th></tr></thead>
+    <tbody>
+      <tr><td><strong>组1｜治理态度对立</strong></td><td><code>因噎废食</code>(3次) vs <code>视而不见 / 熟视无睹</code>(4次)</td><td><strong>因噎废食</strong>＝怕出小问题就彻底停下不干；<strong>视而不见/熟视无睹</strong>＝看到了装不知/习惯性不作为（常成“既不能…也不能…”并列搭档，如 <code>2023 Q16</code>）。</td></tr>
+      <tr><td><strong>组2｜协同配合四胞胎</strong></td><td><code>相得益彰</code>(3次) vs <code>相辅相成</code>(2次) vs <code>珠联璧合</code> vs <code>并行不悖</code></td><td><strong>相得益彰</strong>：两者配合各有亮点更显风采（自然景观与人文景观 <code>2025 Q30</code>）；<strong>相辅相成</strong>：互相补充缺一不可（设计革新与技术支撑 <code>2025 Q29</code>）；<strong>并行不悖</strong>：同时推行互不冲突。</td></tr>
+      <tr><td><strong>组3｜工作节奏反照</strong></td><td><code>急功近利</code>(2次) vs <code>循序渐进</code>(2次) vs <code>精益求精</code>(3次)</td><td>遇到“深耕细作 / 久久为功 / 千年等一回”，反义选<strong>急功近利</strong>；强调分步推进不冒进用<strong>循序渐进</strong>（区别强调出效果的<strong>行之有效</strong>）。</td></tr>
+      <tr><td><strong>组4｜根基与空想</strong></td><td><code>空中楼阁</code>(2次) vs <code>纸上谈兵</code>(2次)</td><td>文段一出现<strong>“根基不稳 / 底线不牢 / 脱离基层基础”</strong>，闭眼锁死<strong>空中楼阁</strong>（<code>2020 Q13</code>、<code>2024 Q23</code>）；<strong>纸上谈兵</strong>指纯空谈脱离实战。</td></tr>
+      <tr><td><strong>组5｜传承载体主语</strong></td><td><code>口耳相传</code> vs <code>言传身教</code> vs <code>一脉相承</code> vs <code>倾囊相授</code></td><td>主语是“历史传说、民风民俗”用<strong>口耳相传</strong>；“言传身教/倾囊相授”主语<strong>必须是人（长辈/师傅）</strong>，主语不对直接斩！</td></tr>
+      <tr><td><strong>组6｜花生十三常考实词坑</strong></td><td><code>必须 / 必需</code>；<code>不力 / 不利</code>；<code>发轫 / 滥觞</code>；<code>基底 / 支撑</code>；<code>稳定性 / 牢固性</code></td><td><strong>必须</strong>(副词，一定得)+动词，<strong>必需</strong>(不可缺少之物)；措施没到位用<strong>不力</strong>；<strong>发轫</strong>(事物开端)、<strong>滥觞</strong>(事物起源)；<strong>低流动</strong>搭配<strong>稳定性</strong>（<code>2025 Q22</code>）。</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ SECTION 2: 选词填空盲测精讲 ============ -->
+<section class="day-section" id="yy-fill">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0284c7">第二篇｜选词填空真题盲测（先自己分组排错，再点开解析）</span>
+    <h1 class="day-title">02｜5 道山东高含金量逻辑填空逐项排雷示范（2022–2025）</h1>
+    <div class="day-meta">完整呈现原文+选项，彻底讲透“为什么不能选看似通顺的干扰项”</div>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 1｜角色比喻 + 搭配精准度</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q27</span></div>
+    <div class="q-stem">在科技前沿创新中，传感器是“______”。纵观科技发展史，历次世界科学中心的形成都______核心传感器技术突破以及以此为基础的重要科学仪器的诞生。有统计表明，在诺贝尔奖的获奖名单中，72%的物理学奖、81%的化学奖、95%的生理学或医学奖都是借助于尖端传感器与仪器完成的……而现代科学仪器中，高端传感器是______的，直接代表了分析、检测和表征的水平。</div>
+    <ul class="q-opts">
+      <li>A. 领航员 起源于 基础性</li>
+      <li>B. 先行官 得益于 决定性</li>
+      <li>C. 排头兵 依赖于 核心性</li>
+      <li>D. 联络员 依赖于 典型性</li>
+    </ul>
+    <details class="sol"><summary>👉 用花生十三“先抓第2/3空+搭配捆绑法”做完再点开</summary><div class="sol-body">
+      <p><strong>推导答案：B（先行官 / 得益于 / 决定性）</strong>。</p>
+      <ul>
+        <li><strong>突破第 3 空（照应最明显）</strong>：紧接后文明确解释“<strong>直接代表了</strong>分析、检测和表征的水平”——既然“直接代表水平”，就不只是“基础性”（仅打底）或“典型性”（仅代表性例子），而“核心性”语法较少说“是核心性的”（常说“是核心部件”），<strong>“是决定性的”</strong>才精确对应“直接代表最终水平”！</li>
+        <li><strong>验证第 2 空</strong>：“世界科学中心的形成”与“技术突破和仪器诞生”之间，<strong>得益于</strong>（正向促进成就）比<strong>起源于</strong>（仅谈最初起点，与后文大量诺奖统计脱节）更准确；</li>
+        <li><strong>验证第 1 空</strong>：D 项“联络员”（仅沟通）语义明显太弱淘汰；A“领航员”多指指引大方向的顶层理论/战略，B“先行官”紧贴“核心传感器打头阵→带动科学仪器和诺奖突破”的逻辑，B 全通！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 2｜多空并列主语陷阱（最经典坑题复盘）</span> <span class="src-tag">2024年山东省考《行测》.pdf | 2024 | Q29</span></div>
+    <div class="q-stem">从物质形态上看，广义的历史典籍版本包括甲骨文、金文、简帛、石刻、唐宋元明清及近代的手写本、印刷品等，可谓______。此外，还有大量的出土文物、地上地下遗址、文化遗存，以及祖祖辈辈______的历史传说、民风民俗、家风家训等，这些共同构成“广阔的文化空间”，也是一座巨大的______的文化宝藏，蕴藏着中华文明生生不息的密码。</div>
+    <ul class="q-opts">
+      <li>A. 琳琅满目 一脉相承 独一无二</li>
+      <li>B. 汗牛充栋 口耳相传 无与伦比</li>
+      <li>C. 浩如烟海 倾囊相授 包罗万象</li>
+      <li>D. 卷帙浩繁 言传身教 价值连城</li>
+    </ul>
+    <details class="sol"><summary>👉 先用“主语适配剪刀”剪第 2 空，再核第 1/3 空</summary><div class="sol-body">
+      <p><strong>推导答案：B（汗牛充栋 / 口耳相传 / 无与伦比）</strong>。</p>
+      <ul>
+        <li><strong>第一步：靠第 2 空“主体错位”直接秒杀 C、D</strong>！<br>
+        第 2 空修饰的对象是“历史传说、民风民俗、家风家训”。C 项<code>倾囊相授</code>、D 项<code>言传身教</code>在现代汉语中<strong>主语都必须是具体的人（老师/师傅/长辈对晚辈）</strong>，绝不能说“祖祖辈辈倾囊相授的历史传说”（传说本身不能作为“倾囊相授”的内容搭配偏正定语），直接斩杀 C、D！</li>
+        <li><strong>第二步：在 A 与 B 之间做花生十三精细对比</strong>：<br>
+        ① 第 1 空修饰“历史典籍版本”（从甲骨文到手写本印刷品）：<code>汗牛充栋</code>专指<strong>藏书/书籍典籍数量极多</strong>，精准度高于宽泛形容展品美好的<code>琳琅满目</code>；<br>
+        ② 第 2 空“历史传说、民风民俗”没有文字载体、靠祖祖辈辈嘴对嘴传下来，<strong><code>口耳相传</code></strong>与前文<code>手写本/印刷品（书面）</code>形成极强的“书面 vs 口头”呼应，远胜泛泛的<code>一脉相承</code>；<br>
+        ③ 第 3 空<code>无与伦比</code>的文化宝藏语义通顺自然。A 虽通顺但第 1、2 空精确贴合度明显不如 B！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 3｜成语适用对象精确切分</span> <span class="src-tag">2023年山东省考《行测》.pdf | 2023 | Q17</span></div>
+    <div class="q-stem">著名画家阎立本画的《历代帝王图》是中国历史上帝王形象的标准范本。让人______的是，阎立本在画古代帝王像时，并没有任何范本依据，完全是凭借想象，画出来的人物形象自然跟历史人物______。当时的中国绘画理论中，“神似”的要求高于“形似”，因此在阎立本笔下的帝王外形______，只在表情气质上有差异。</div>
+    <ul class="q-opts">
+      <li>A. 不解 判若两人 伯仲之间</li>
+      <li>B. 庆幸 天壤之别 丝毫不差</li>
+      <li>C. 可惜 泾渭分明 如出一辙</li>
+      <li>D. 遗憾 大相径庭 大同小异</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开“成语对象避坑法”详析</summary><div class="sol-body">
+      <p><strong>推导答案：D（遗憾 / 大相径庭 / 大同小异）</strong>。</p>
+      <ul>
+        <li><strong>A 错在哪</strong>：<code>判若两人</code>只能指<strong>同一个人前后表现变化极大</strong>（如婚前婚后），不能指“画里形象和真实历史人物”比较；<code>伯仲之间</code>指才学优劣难分高下，不形容外形；</li>
+        <li><strong>B 错在哪</strong>：<code>庆幸</code>感情色彩完全相反；<code>丝毫不差</code>与后文“只在表情气质上有差异”自相矛盾；</li>
+        <li><strong>C 错在哪</strong>：<code>泾渭分明</code>指界限清楚、是非分明，不指画得不像；</li>
+        <li><strong>D 全中</strong>：无范本故真实感稍显<code>遗憾</code>，跟本人<code>大相径庭</code>（相差极大），彼此外形<code>大同小异</code>（大致相同只有表情小差异）。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 4｜高频词“根基不稳”锁死固定答案</span> <span class="src-tag">2024年山东省考《行测》.pdf | 2024 | Q23</span></div>
+    <div class="q-stem">不筑牢药品的安全底线，安全根基不稳，再多的创新也是______。……才能有效______药品安全形势的总体稳定。</div>
+    <ul class="q-opts"><li>A. 纸上谈兵 保障 &nbsp; B. 徒劳无功 提升 &nbsp; C. 空中楼阁 维护 &nbsp; D. 本末倒置 控制</li></ul>
+    <details class="sol"><summary>👉 点击展开 5 秒锁定过程</summary><div class="sol-body">
+      <p><strong>推导答案：C（空中楼阁 / 维护）</strong>。</p>
+      <p>前文出现<strong>“安全根基不稳”</strong>——根基不稳之上的建筑即为<strong>“空中楼阁”</strong>（比喻无基础的空想/建筑坍塌，A“纸上谈兵”强调不实践，D“本末倒置”强调主次倒转，B“徒劳无功”不搭形象比喻）；第二空宾语是“总体稳定”，唯一固定搭配为<strong>“维护……稳定”</strong>（不搭“提升稳定”或“控制稳定”），C 双空秒杀！</p>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 5｜“深耕细作”反照 + 典故对应</span> <span class="src-tag">2022年山东省考《行测》.pdf | 2022 | Q12</span></div>
+    <div class="q-stem">人才工作不能______，必须深耕细作，向深处用情，既要有‘千金市马骨’的______，也要有‘千年等一回’的耐心。</div>
+    <ul class="q-opts"><li>A. 浅尝辄止 热情 &nbsp; B. 粗枝大叶 决心 &nbsp; C. 急功近利 诚意 &nbsp; D. 好高骛远 智慧</li></ul>
+    <details class="sol"><summary>👉 点击展开对立照应分析</summary><div class="sol-body">
+      <p><strong>推导答案：C（急功近利 / 诚意）</strong>。</p>
+      <p>第一空“不能…必须…”构成反义对立，后半句除了“深耕细作”还强调“要有‘千年等一回’的耐心”，没有耐心、急着拿眼前成绩即<strong>急功近利</strong>（A 浅尝辄止侧重研究不深入，B 粗枝大叶侧重不细心，D 好高骛远侧重目标不切实际）；第二空“千金市马骨”典出战国郭隗劝燕昭王求贤，展现的是礼贤下士的<strong>诚意</strong>。</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: 片段阅读与语句排序盲测 ============ -->
+<section class="day-section" id="yy-read">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0891b2">第三篇｜片段阅读 &amp; 语句排序真题盲测（4 题全步解析）</span>
+    <h1 class="day-title">03｜用“行文脉络 + 话题捆绑”撕碎干扰选项</h1>
+    <div class="day-meta">全部精选 2024–2025 真实考题原文</div>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 6｜并列分总结构（不能只取问题或只取意义）</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q39</span></div>
+    <div class="q-stem">当前，金融有效支持全生命周期科技创新仍存在一些短板，科技创新的资金需求与传统金融供给方式存在一定程度的不匹配，必须加快完善金融支持政策体系和配套机制，丰富金融支持工具，全面提升金融机构和金融市场服务科技创新能力，加快建成与高水平科技自立自强目标高度适配的金融服务体系。一方面，要充分发挥银行业金融机构作用……另一方面，要更好发挥资本市场作用……<br>这段文字主要介绍了：</div>
+    <ul class="q-opts">
+      <li>A. 金融市场的短板与提升空间</li>
+      <li>B. 金融支持科技创新大有可为</li>
+      <li>C. 提升金融体系服务科技创新能力至关重要</li>
+      <li>D. 金融服务科技创新的不足与具体应对措施</li>
+    </ul>
+    <details class="sol"><summary>👉 先划文段层次，再点击展开对比 C vs D</summary><div class="sol-body">
+      <p><strong>推导答案：D（金融服务科技创新的不足与具体应对措施）</strong>。</p>
+      <ul>
+        <li><strong>脉络分解</strong>：首句上半段摆出<strong>不足</strong>（短板、供需不匹配）→ 紧接着“必须加快完善……全面提升……”以及后文“一方面发挥银行业…另一方面发挥资本市场…”占了全段 80% 篇幅讲<strong>具体怎么做（应对措施）</strong>！</li>
+        <li><strong>避坑对比</strong>：A 漏掉主要篇幅的“具体做法”；B、C 仅停留在虚空意义判断（大有可为/至关重要），忽略了原文“短板 + 一方面/另一方面具体举措”的实质内容；D 既兜住“不足”又精准概括“具体应对措施”，最全面准确！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 7｜“例如”举例干扰识别 + 主题词剪刀</span> <span class="src-tag">2024年山东省考《行测》.pdf | 2024 | Q38</span></div>
+    <div class="q-stem">目前，我国生态环境保护法律体系已基本形成，但同党和国家发展要求……相比，相关法治建设仍有待加强。例如，新时期草原保护管理工作已由……应加快完善以草原法为核心的草原相关法律法规制度体系。建议立法机构和相关部委积极开展生态环境领域修法立法的调研和梳理工作，按照轻重缓急将相关法律法规纳入立改废释纂规划，通过科学立法增强生态环境法治的系统性、整体性、协同性、时效性，为美丽中国建设提供更严密的法治保障。<br>这段文字意在说明：</div>
+    <ul class="q-opts">
+      <li>A. 党和国家生态文明建设事业有了新的发展要求</li>
+      <li>B. 新时期草原保护工作亟须完善相关法律法规制度体系</li>
+      <li>C. 要统筹推进生态环境保护领域法律法规立改废释纂工作</li>
+      <li>D. 我国生态文明领域迫切需要环境法律体系的保障</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开“抓尾句对策 + 砍‘例如’项”秒杀</summary><div class="sol-body">
+      <p><strong>推导答案：C</strong>。</p>
+      <ul>
+        <li><code>例如，新时期草原保护…</code> 明明白白标了<strong>举例标志</strong>，所以 B 项“草原保护”直接砍掉！</li>
+        <li>首句刚说了“我国生态环境保护法律体系已基本形成”，D 说“迫切需要法律体系保障（像还没有一样）”偷换前提淘汰；A 是背景非重点；尾句“建议立法机构…纳入立改废释纂规划，增强系统性…”才是全文落脚点对策，精准对应 <strong>C</strong>！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 8｜无中生有偷换主体 &amp; 并列片面坑</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q45</span></div>
+    <div class="q-stem">中国印章形制之所以长时间以方形为主，与其所表现的主体——汉字有着密切的关系。因为汉字是方块字……方形印面匹配方形的汉字……也是中国传统美学的体现……此外，为官一任，受命一方，对应传统文化中的天圆地方，这也是历代官印取方形的原因所在。<br>本段旨在说明：</div>
+    <ul class="q-opts">
+      <li>A. 中西印章形制不同的原因</li>
+      <li>B. 中西印章形制的主要区别</li>
+      <li>C. 中国印章以方形为主的原因</li>
+      <li>D. 中国历代官印取方形的原因</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开并列标志“此外”的防偏技巧</summary><div class="sol-body">
+      <p><strong>推导答案：C</strong>。</p>
+      <p>文中压根没提“西方印章”，A/B 无中生有 1 秒淘汰；D 只说了“此外”后面的官印（并列后半截），丢了前半截主题“汉字方块与传统美学导致的中国印章以方形为主”，只有 C 完美概括全文并列两原因！</p>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>例 9｜语句排序：花生十三“话题捆绑+代词锁链”</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q48</span></div>
+    <div class="q-stem">①我们讲论中国历史上的历代制度，正该重视中国历史之特殊性<br>
+    ②推广而言，我们该重视其国别性<br>
+    ③正因制度是一种随时地而适应的，不能推之四海而皆准，正如其不能行之百世而无弊<br>
+    ④在这一国家，这一地区，该项制度获得成立而推行有利，但在另一国家与另一地区，则未必尽然<br>
+    ⑤我们讨论一项制度，固然应该重视其时代性，同时又该重视其地域性<br>
+    ⑥若我们忽视了这一点，认为外国的一切都是好，中国的一切都要不得，又哪能真切认识到自己以往历代制度之真实意义与真实效果呢</div>
+    <ul class="q-opts"><li>A. ①⑤②③④⑥ &nbsp;&nbsp; B. ⑤②④③①⑥ &nbsp;&nbsp; C. ①⑥⑤④②③ &nbsp;&nbsp; D. ⑤③①⑥②④</li></ul>
+    <details class="sol"><summary>👉 点击展开 15 秒确定捆绑链步骤</summary><div class="sol-body">
+      <p><strong>推导答案：B（⑤②④③①⑥）</strong>。</p>
+      <ol>
+        <li><strong>定逻辑大方向</strong>：一般论述规律总是<strong>先总论一般“一项制度”（⑤）→ 推广国别（②）→ 最后落回特定“中国历史”（①）</strong>，排除 ① 开头的 A/C！</li>
+        <li><strong>验 B vs D 捆绑链</strong>：② 刚说“推广而言重视<strong>国别性</strong>”，④ 紧跟举例解释“在<strong>这一国家</strong>推行有利，在<strong>另一国家</strong>未必尽然”（话题捆绑 <strong>②④</strong>！），③“正因随时地而适应，不能推之四海（地域国别）而皆准，正如不能行之百世（时代）而无弊”正好收束 ②④⑤，再引出 ① 落回中国特殊性 + ⑥“忽视了这一点”反面结尾。链条 ⑤②④③①⑥ 严丝合缝！</li>
+      </ol>
+    </div></details>
+  </div>
+
+  <div class="card card-quiz">
+    <div class="card-title">🧠 言语理解睡前 3 分钟盲测闭合</div>
+    <p><strong>自问自答</strong>：做三空逻辑填空拿不准时，花生十三建议第一步先干嘛？遇到主语是“历史传说、民俗”时，“倾囊相授/言传身教”能选吗？中心理解遇到“例如…”后面那整句讲得很精彩，能选进主旨选项吗？</p>
+    <details class="sol"><summary>👁 答完点击核对</summary><div class="sol-body">① 先横向按词义/倾向对选项<strong>分组捆绑</strong>，找最确定的一空先砍半；② <strong>不能选</strong>，必须选匹配非人主体的“口耳相传”；③ <strong>绝对不能选</strong>，“例如”后是例子非中心。</div></details>
+  </div>
+</section>
+
+<div class="sub-footer-nav"><a href="山东省考7天冲刺精准提分讲义.html">📘 返回山东省考总纲目录</a><a class="alt" href="sd_02_常识判断详讲.html">← 上一模块：02 常识判断</a><a class="alt" href="sd_04_数量关系详讲.html">下一模块：04 数量关系 →</a></div>
+  </main>
+</div>
+
+<script defer src="assets/katex/katex/katex.min.js"></script>
+<script defer src="assets/katex/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script>
+const STORAGE_KEY = 'sd_v2_m03';
+function saveCheck() {
+  const boxes = document.querySelectorAll('.nav-item input[type="checkbox"]');
+  const state = {};
+  let done = 0;
+  boxes.forEach(b => { state[b.dataset.sec] = b.checked; if (b.checked) done++; });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  const pt = document.getElementById('progText');
+  const pf = document.getElementById('progFill');
+  if (pt) pt.textContent = done + ' / ' + boxes.length;
+  if (pf && boxes.length) pf.style.width = Math.round(done * 100 / boxes.length) + '%';
+}
+function loadCheck() {
+  try {
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('.nav-item input[type="checkbox"]').forEach(b => {
+      if (state[b.dataset.sec]) b.checked = true;
+    });
+  } catch (e) {}
+  saveCheck();
+}
+// Requirement #7: NEVER open details.sol on initial load; stay collapsed by default until user clicks!
+let allSolExpanded = false;
+function toggleAllSol() {
+  allSolExpanded = !allSolExpanded;
+  document.querySelectorAll('details.sol').forEach(d => d.open = allSolExpanded);
+  const btn = document.getElementById('toggleSolBtn');
+  if (btn) btn.textContent = allSolExpanded ? '🙈 收起全部解析' : '👁 展开全部解析';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('details.sol').forEach(d => d.open = true);
+});
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => { if (window.innerWidth <= 960) closeSidebar(); });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => { topBtn.classList.toggle('show', window.scrollY > 420); }, { passive: true });
+}
+loadCheck();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>07 申论 B 卷单列详讲｜采点法则/400字公文模板/单字大作文与 2027 预测</title>
+  <link rel="stylesheet" href="assets/katex/katex/katex.min.css" />
+  <style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --blue: #2563eb; --blue-bg: #eff6ff;
+  --green: #059669; --green-bg: #ecfdf5;
+  --red: #dc2626; --red-bg: #fef2f2;
+  --purple: #7c3aed; --purple-bg: #f5f3ff;
+  --amber: #d97706; --amber-bg: #fffbeb;
+  --cyan: #0891b2; --cyan-bg: #ecfeff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 15.3px;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+.layout { display: flex; min-height: 100vh; width: 100%; }
+.sidebar {
+  width: 292px;
+  background: #0f172a;
+  color: #e2e8f0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  padding: 18px 15px 44px;
+  z-index: 260;
+  transition: transform 0.25s ease;
+}
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.5); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.sidebar-title { font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 0 0 3px; letter-spacing: 0.3px; }
+.sidebar-sub { font-size: 11.8px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b; }
+.progress-box { background: #1e293b; border-radius: 8px; padding: 9px 11px; margin-bottom: 11px; font-size: 12.5px; }
+.progress-bar-wrap { background: #334155; height: 7px; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+.progress-bar-fill { background: linear-gradient(90deg, #10b981, #38bdf8); height: 100%; width: 0%; transition: width 0.25s; }
+.btn-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.btn {
+  flex: 1 1 88px; min-height: 34px; border: none; border-radius: 6px; padding: 6px 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer; background: #2563eb; color: #fff;
+  text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+}
+.btn.secondary { background: #334155; }
+.btn.emerald { background: #059669; }
+.btn.slate { background: #475569; }
+.btn:hover { opacity: 0.92; }
+.mod-switcher {
+  width: 100%; margin: 2px 0 10px; padding: 7px 9px; border-radius: 7px;
+  background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 12.5px; font-weight: 700; cursor: pointer;
+}
+.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 13px 0 6px 5px; letter-spacing: 0.6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px;
+  color: #cbd5e1; text-decoration: none; font-size: 12.8px; margin-bottom: 3px; transition: background 0.15s;
+}
+.nav-item:hover { background: #1e293b; color: #fff; }
+.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; width: 15px; height: 15px; }
+.nav-item .nav-text { flex: 1; line-height: 1.38; }
+
+.main { margin-left: 292px; flex: 1; min-width: 0; width: 100%; padding: 28px 34px 88px; max-width: 1060px; }
+.cover-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0e7490 100%);
+  color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+.cover-banner.theme-red { background: linear-gradient(135deg, #1e1b4b 0%, #991b1b 55%, #b45309 100%); }
+.cover-banner.theme-amber { background: linear-gradient(135deg, #0f172a 0%, #92400e 55%, #b45309 100%); }
+.cover-banner.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 55%, #2563eb 100%); }
+.cover-banner.theme-green { background: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0e7490 100%); }
+.cover-banner.theme-cyan { background: linear-gradient(135deg, #0f172a 0%, #0e7490 55%, #0284c7 100%); }
+.cover-eyebrow {
+  display: inline-block; font-size: 11.8px; font-weight: 800; padding: 3px 11px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 10px;
+}
+.cover-banner h1 { margin: 0 0 8px; font-size: 25px; line-height: 1.3; }
+.cover-banner p { margin: 0 0 12px; color: #e0f2fe; font-size: 14.5px; }
+.cover-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.cover-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); padding: 3px 11px; border-radius: 99px; font-size: 12.2px; font-weight: 600; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.cover-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-decoration: none; color: #fff; background: rgba(16,185,129,0.92);
+}
+.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34); }
+.cover-btn:hover { opacity: 0.92; }
+
+/* Hub 7-module directory grid */
+.mod-dir-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0 8px; }
+.mod-dir-card {
+  background: #ffffff; border: 1px solid var(--border); border-left: 5px solid var(--blue);
+  border-radius: 12px; padding: 15px 17px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); transition: transform 0.14s, box-shadow 0.14s;
+}
+.mod-dir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+.mod-dir-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.mod-dir-badge { font-size: 11px; font-weight: 800; color: #fff; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.mod-dir-card h3 { margin: 0 0 6px; font-size: 16px; color: #0f172a; }
+.mod-dir-card p { margin: 0 0 11px; font-size: 13.2px; color: #475569; line-height: 1.58; }
+.mod-dir-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 13px; border-radius: 8px; background: #0f172a; color: #fff;
+  text-decoration: none; font-size: 13px; font-weight: 700; min-height: 38px;
+}
+.mod-dir-link:hover { opacity: 0.92; }
+
+.day-section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 25px 28px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 16px;
+}
+.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 11px; margin-bottom: 16px; }
+.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 11.8px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.day-title { margin: 4px 0 5px; font-size: 21px; color: #0f172a; line-height: 1.32; }
+.day-meta { font-size: 13.5px; color: var(--muted); }
+
+h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; }
+h3 { font-size: 15.5px; color: #1e3a8a; margin: 16px 0 8px; break-after: avoid; }
+p { margin: 8px 0; overflow-wrap: break-word; }
+ul, ol { margin: 6px 0 10px; padding-left: 22px; }
+li { margin-bottom: 5px; overflow-wrap: break-word; }
+
+.card { border-radius: 10px; padding: 14px 18px; margin: 14px 0; border-left: 5px solid; break-inside: avoid; }
+.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.card-intuition { background: var(--green-bg); border-color: var(--green); }
+.card-intuition .card-title { color: #065f46; }
+.card-formula { background: var(--blue-bg); border-color: var(--blue); }
+.card-formula .card-title { color: #1e40af; }
+.card-trap { background: var(--red-bg); border-color: var(--red); }
+.card-trap .card-title { color: #991b1b; }
+.card-trick { background: var(--purple-bg); border-color: var(--purple); }
+.card-trick .card-title { color: #5b21b6; }
+.card-example { background: var(--amber-bg); border-color: var(--amber); }
+.card-example .card-title { color: #92400e; }
+.card-quiz { background: var(--cyan-bg); border-color: var(--cyan); }
+.card-quiz .card-title { color: #155e75; }
+
+.q-box {
+  background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #d97706;
+  border-radius: 10px; padding: 15px 18px; margin: 16px 0; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 800; color: #92400e; font-size: 14.2px; }
+.q-stem { background: #fffbeb; border-radius: 7px; padding: 10px 13px; margin: 8px 0 10px; font-size: 14.4px; line-height: 1.72; color: #1e293b; }
+.q-opts { margin: 6px 0 10px; padding-left: 6px; list-style: none; font-size: 14px; color: #334155; }
+.q-opts li { margin-bottom: 4px; }
+
+.hl-yellow { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #713f12; }
+.hl-pink { background: #fecdd3; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #881337; }
+.hl-blue { background: #bfdbfe; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1e3a8a; }
+.badge-p0 { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p1 { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p2 { display: inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+
+.src-tag {
+  display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569;
+  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace;
+}
+.net-tag {
+  display: inline-block; background: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;
+  font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+}
+.missing-tag {
+  display: inline-block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+}
+.template-box {
+  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 15px;
+  font-size: 13.8px; line-height: 1.75; margin: 10px 0;
+}
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0; font-size: 13.5px; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: #1e293b; color: #ffffff; text-align: left; padding: 8px 10px; font-weight: 700; }
+td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; overflow-wrap: break-word; }
+tr:nth-child(even) td { background: #f8fafc; }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; break-inside: avoid; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+
+/* Default CLOSED collapsible derivation blocks */
+details.sol {
+  margin-top: 8px; background: #f8fafc; border: 1.5px dashed #0891b2; border-radius: 8px; padding: 8px 13px;
+}
+details.sol[open] { background: #f0fdfa; border-style: solid; }
+details.sol > summary {
+  cursor: pointer; font-weight: 800; color: #0e7490; font-size: 13.5px; user-select: none; list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+details.sol > summary::before { content: "▶"; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+details.sol[open] > summary::before { transform: rotate(90deg); }
+details.sol > summary::-webkit-details-marker { display: none; }
+.sol-body { margin-top: 9px; padding-top: 8px; border-top: 1px solid #bae6fd; font-size: 14px; line-height: 1.72; color: #1e293b; }
+
+.day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.day-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; break-inside: avoid; }
+.day-col h4 { margin: 0 0 8px; font-size: 14.5px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+
+.sub-footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  margin-top: 28px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px;
+}
+.sub-footer-nav a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px; border-radius: 8px;
+  background: #0f172a; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; min-height: 40px;
+}
+.sub-footer-nav a.alt { background: #2563eb; }
+.sub-footer-nav a:hover { opacity: 0.92; }
+
+.mobile-toggle {
+  display: none; align-items: center; gap: 6px; position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
+  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
+}
+.back-to-top {
+  display: none; align-items: center; justify-content: center; position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px; padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 256px; }
+  .main { margin-left: 256px; padding: 22px 22px 76px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 305px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 16px 16px 92px; max-width: 100%; }
+  .mod-dir-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 18px 16px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.7px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 19px 15px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 20.5px; }
+  .cover-banner p { font-size: 13.8px; }
+  .day-section { padding: 15px 13px; border-radius: 12px; margin-bottom: 16px; }
+  .day-title { font-size: 18.5px; }
+  h2 { font-size: 16.2px; }
+  h3 { font-size: 14.8px; }
+  .card, .q-box { padding: 12px 13px; }
+  table { font-size: 12.6px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
+  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions, .sub-footer-nav { display: none !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+  .day-section { border: none; box-shadow: none; padding: 0; margin: 0 0 18px; }
+  details.sol { border-style: solid; }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开或关闭目录">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">07｜申论 B 卷详讲（单列）</div>
+    <div class="sidebar-sub">占总分 50% · 零基础冲 72+ 实战</div>
+    <div class="progress-box">
+      <div>本页学习打卡：<strong id="progText">0 / 5</strong></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progFill"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="toggleSolBtn" onclick="toggleAllSol()">👁 展开全部解析</button>
+      <button class="btn secondary" onclick="window.print()">🖨 打印页面</button>
+    </div>
+    <div class="btn-row"><a class="btn emerald" href="山东省考7天冲刺精准提分讲义.html">📘 省考总纲</a><a class="btn slate" href="index.html">🌐 学习中心</a></div>
+    <select class="mod-switcher" aria-label="快速切换省考模块页面" onchange="if(this.value)location.href=this.value;"><option value="山东省考7天冲刺精准提分讲义.html">主控｜省考总纲与7天认知日程</option><option value="sd_01_政治理论详讲.html">01｜政治理论｜政策映射与2027预测</option><option value="sd_02_常识判断详讲.html">02｜常识判断｜重→轻概率与新法</option><option value="sd_03_言语理解详讲.html">03｜言语理解｜花生十三法+高频词</option><option value="sd_04_数量关系详讲.html">04｜数量关系｜必拿母题与极限模型</option><option value="sd_05_判断推理详讲.html">05｜判断推理｜图推/定义/类比/逻辑</option><option value="sd_06_资料分析详讲.html">06｜资料分析｜415/假设分配/盐水</option><option value="sd_07_申论B卷详讲.html" selected>07｜申论 B 卷｜踩点/公文/单字作文</option></select>
+    <div class="nav-group-label">第一篇｜9届演进与时间线</div><a class="nav-item" href="#sl-trend"><input type="checkbox" data-sec="sl-trend" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01 2018–2026 B卷演进+180分节奏</span></a><div class="nav-group-label">第二篇｜小题踩点实操</div><a class="nav-item" href="#sl-q12"><input type="checkbox" data-sec="sl-q12" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02 Q1概括250字+Q2理解300字示范</span></a><div class="nav-group-label">第三篇｜400字短公文杀招</div><a class="nav-item" href="#sl-q3"><input type="checkbox" data-sec="sl-q3" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">03 六类公文去落款模板+2024–2026范文</span></a><div class="nav-group-label">第四篇｜大作文借壳+预测</div><a class="nav-item" href="#sl-q4"><input type="checkbox" data-sec="sl-q4" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">04 桥/坐标借壳+2027四预测+金句库</span></a><div class="nav-group-label">第五篇｜考前5分钟检索</div><a class="nav-item" href="#sl-review"><input type="checkbox" data-sec="sl-review" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">05 上考场必查5条防丢分规则</span></a>
+  </aside>
+  <main class="main">
+    
+<div class="cover-banner theme-green">
+  <span class="cover-eyebrow">模块 07｜S 级单列最大翻盘引擎（占总分 50% · 当前 60 分 → 冲刺 72+ 分）</span>
+  <h1>申论 B 卷零基础速成详讲：采点法则、400字公文模板与单字作文借壳立意</h1>
+  <p>严格立足 2018–2026 共 9 届山东申论 B 卷真题（含联网教研核查还原的 2025 年 4 题框架）：申论最忌“用自己的话漫无边际抒情”。本专题针对“几乎未系统复习”现状，直接拆解 Q1（250字做法概括）、Q2（300字词句理解）、Q3（400字信息专报/案例摘要/提纲）及 Q4（1000–1200字单字主题作文）的一步到位采分模板，并结合 2026 年 10–11 月最新政经动态给出 2027 大作文 4 大预测与山东本土金句库</p>
+  <div class="cover-pills">
+    <span class="cover-pill">📝 180 分钟 4 题制式（15+20+25+40）</span>
+    <span class="cover-pill">🧩 Q3 专报/摘要去落款保底 20+/25</span>
+    <span class="cover-pill">🌉 Q4 偷梁换柱：从材料2/5提分论点</span>
+  </div>
+  <div class="cover-actions">
+    <a class="cover-btn ghost" href="sd_06_资料分析详讲.html">← 上一模块：06 资料分析</a>
+    <a class="cover-btn ghost" href="山东省考7天冲刺精准提分讲义.html">📘 返回省考总纲</a>
+    <a class="cover-btn ghost" href="sd_01_政治理论详讲.html">↻ 回到 01 政治理论</a>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: 9届演变与180分钟考场节奏 ============ -->
+<section class="day-section" id="sl-trend">
+  <div class="day-header">
+    <span class="day-tag" style="background:#059669">第一篇｜9 届 B 卷命题演进与零基础考场时间线</span>
+    <h1 class="day-title">01｜看懂 2018–2026 连续 9 届山东 B 卷规律：2024–2026 稳定为“4 题 180 分钟”</h1>
+    <div class="day-meta">样本口径：本地 2018–2024、2026 共 8 套完整 B 卷 PDF ＋ 联网核查 2025 B 卷 4 题回忆框架</div>
+  </div>
+
+  <div class="table-wrap"><table>
+    <thead>
+      <tr><th>考试年份</th><th>题量与时长</th><th>Q1（概括/认识）</th><th>Q2（分析/公文）</th><th>Q3（公文/对策/理解）</th><th>Q4（大作文主题 / 1000–1200字）</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>2026 B</strong></td><td>4题 / 180m</td><td>15分 ≤250字：S省县域经济特色做法</td><td>20分 ≤300字：“法与时转则治…”理解</td><td>25分 ≤400字：J市“预付宝”<strong>信息专报</strong></td><td>40分：以“<strong>坐标</strong>”为主题（东虹商业航天/W区十五五）</td></tr>
+      <tr><td><strong>2025 B</strong><span class="net-tag">联网还原</span></td><td>4题 / 180m</td><td>15分 ≤250字：山东各地海洋经济做法</td><td>20分 ≤300字：“水美则鱼肥，土沃则稻香”</td><td>25分 ≤400字：W市口袋公园联动<strong>经验交流提纲</strong></td><td>40分：围绕“<strong>把实效落到长效中</strong>”写文章（本地缺PDF，联网核查还原）</td></tr>
+      <tr><td><strong>2024 B</strong></td><td>4题 / 180m</td><td>15分 ≤250字：“好品山东”好在哪里</td><td>20分 ≤300字：东梁村“只此青绿/只有青绿”</td><td>25分 ≤400字：社会治理“滨海模式”<strong>案例摘要</strong></td><td>40分：以“<strong>桥</strong>”为主题（好品/种业/连心桥/悬索桥）</td></tr>
+      <tr><td><strong>2023 B</strong></td><td>3题 / 120m</td><td>20分 ≤300字：W市社区基金治理经验</td><td>30分 ≤600字：S市“共富公司”<strong>政务信息</strong></td><td>—</td><td>50分：“常青之道，贵在自胜”（万华化学/小岗村）</td></tr>
+      <tr><td><strong>2022 B</strong></td><td>3题 / 120m</td><td>20分 ≤300字：F市“群众最不满意10件事”</td><td>30分 ≤600字：A市非煤矿山<strong>整改方案提纲</strong></td><td>—</td><td>50分：“把准脉，开准方”</td></tr>
+      <tr><td><strong>2021 B</strong></td><td>3题 / 120m</td><td>20分 ≤350字：D县“头雁工程”举措</td><td>30分 ≤500字：L市基层党建<strong>发言提纲</strong></td><td>—</td><td>50分：“治国犹如栽树，本根不摇则枝叶茂荣”</td></tr>
+      <tr><td><strong>2020 B</strong></td><td>3题 / 120m</td><td>20分 ≤350字：Q县干部直播带货认识</td><td>30分 ≤450字：旧工业转型<strong>调研报告提纲</strong></td><td>—</td><td>50分：“凡益之道，与时偕行”</td></tr>
+      <tr><td><strong>2019 B</strong></td><td>4题 / 180m</td><td>15分 ≤250字：J市12345热线成功经验</td><td>20分 ≤300字：C市幼教主要问题</td><td>25分 ≤400字：棚户区改造“A市速度”理解</td><td>40分：“‘民生’跟着‘民声’走”</td></tr>
+      <tr><td><strong>2018 B</strong></td><td>4题 / 180m</td><td>15分 ≤200字：企业“走出去”主要问题</td><td>20分 ≤250字：吉布提自贸区成功原因</td><td>25分 ≤450字：更好“走出去”对策建议</td><td>40分：“在深海里练就游泳能力”</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card card-intuition">
+    <div class="card-title">🧠 零基础最容易多拿 12 分的认知反转：申论不是“写作文”，而是“信息摘抄＋关键词同义分类”</div>
+    <ul>
+      <li><strong>为什么之前总在 60 分徘徊？</strong> 因为用“高中语文感悟写法”去答公务员申论：废话多、形容词多、丢掉材料里的<strong>名词/动宾短语关键词</strong>（比如把“联合高校建研发中心、引进院士团队”总结成“非常重视科技创新”——丢光了“联合高校/研发中心/院士团队”三个踩分点！）。</li>
+      <li><strong>180 分钟考场黄金切分（含 2026 年 12 月 6 日下午 14:00–17:00）</strong>：
+        <ol>
+          <li><code>14:00–14:15</code>（15分钟）：通读 4 道题干圈死限定（只看哪段材料、字数≤多少、身份是谁），带着问题速览全篇标注每则材料中心主题；</li>
+          <li><code>14:15–14:40</code>（25分钟）：精读 Q1 对应材料，划出动作词直接合并抄格（≤250字）；</li>
+          <li><code>14:40–15:10</code>（30分钟）：精读 Q2 对应材料，套用“表层+镜头实证+深层指向”写出（≤300字）；</li>
+          <li><code>15:10–15:50</code>（40分钟）：精读 Q3 对应材料，先按“痛点/背景→核心举措(3–4条)→治理成效”搭好框架再下笔（≤400字）；</li>
+          <li><code>15:50–17:00</code>（70分钟）：10 分钟从全部材料定下总论点与 3 个分论点列提纲 + 55 分钟工整书写 1100 字 + 5 分钟核对错别字与标点。</li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: Q1(250字) 与 Q2(300字) 踩点实战 ============ -->
+<section class="day-section" id="sl-q12">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0284c7">第二篇｜Q1（250字归纳概括）与 Q2（300字词句理解）一步到位采分流</span>
+    <h1 class="day-title">02｜小题靠“主谓宾去水”保底 28+/35 分：2026 与 2024 真实原题手把手拆解</h1>
+    <div class="day-meta">诀窍：每个得分点控制 35–45 字，采用“<strong>①【总括短语】+ 具体做法A、做法B（尽量保留材料原词）</strong>”，绝不写冗余案例细节</div>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>实战一（2026 Q1｜15分 ≤250字）｜S 省推进县域经济高质量发展的特色做法</span><span class="src-tag">2026 B卷 | 材料1 | Q1</span></div>
+    <div class="q-stem">请结合“给定资料1”，归纳概括S省各地为推进县域经济高质量发展的特色做法。（15分）要求：全面，准确，有条理；不超过250字。<br>
+    <em>盲测训练：材料 1 共出现 5 个县区主体：<code>G县(源晟橡胶静音轮胎/联合高校院士建研发体系)</code>、<code>L市(12家上市民企/高端铝集群/上市规范补助与政务环境)</code>、<code>C县(21个淘宝镇/汉服木制品/产业+电商)</code>、<code>D市(金丝小枣300种产品+影视城沉浸街区影旅融合)</code>、<code>R市A区(强港兴产活城/三大枢纽+供应链金融+政策土地人才支持)</code>。请你先口头或草稿凝练为 5 个【核心标签】，再展开核对！</em></div>
+    <details class="sol"><summary>👆 先自己合并这 5 段主语要点，再点击展开 240 字满格参考答案</summary><div class="sol-body">
+      <strong>【采分逻辑映射】</strong> 材料按地名自然分成 5 块，正好对应 5 个独立得分点，每块保留“<strong>四字标签 + 材料核心举措原词 + 结果标志</strong>”：<br><br>
+      <div class="template-box">
+        S省坚持错位发展、串珠成链，特色做法包括：<br>
+        <strong>1. 科创赋能传统产业（G县）：</strong>聚焦前沿攻关，政府联合高校院所建研发中心、引院士团队，构建全链条研发体系推进升级。<br>
+        <strong>2. 育强民企产业集群（L市）：</strong>出台上市补助、融资支持等政策，建立梯次培育格局，优化审批与配套服务，以民企巨头引领产业集群。<br>
+        <strong>3. 电商融合乡村土产（C县）：</strong>探索“产业+电商”模式，直连产销两端，打造淘宝镇村与电商集群，带动创业增收。<br>
+        <strong>4. 延链增值与影旅联动（D市）：</strong>深加工延伸小枣产业链提升附加值，培育龙头并借博览会拓销；借热播影视实景发展沉浸式影旅新地标。<br>
+        <strong>5. 港产城协同开放（R市A区）：</strong>依托港口融入枢纽建设，开展港城招商、搭建供应链金融并强化要素保障，强港兴产活城。（约246字）
+      </div>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>实战二（2024 Q1｜15分 ≤250字）｜概述“好品山东”好在哪里</span><span class="src-tag">2024 B卷 | 材料1 | Q1</span></div>
+    <div class="q-stem">请根据“给定资料1”，概述“好品山东”好在哪里。（15分）要求：全面、准确、有条理，不超过250字。<br>
+    <em>盲测训练：材料 1 依次写到“中国瓷器与孔孟泰山黄河”“泰山体育5.8kg碳纤维车/威高手术机器人”“振超效率三不变三变与东阿阿胶”“吉尔吉斯斯坦定制新能源客车”“国舜超低排放/力诺瑞特节能”“青州13万亩花海44.9%绿化率”“2021年省政府共建共享若干措施”。请合并为 6–7 条！</em></div>
+    <details class="sol"><summary>👆 点击展开 242 字采分答案（每条对应 1 个材料段）</summary><div class="sol-body">
+      <div class="template-box">
+        “好品山东”好在质量过硬、多维发力：<br>
+        <strong>1. 文化底蕴深厚：</strong>融合儒家与泰山、黄河文化元素及先进工艺，在主场外交中彰显文化传承。<br>
+        <strong>2. 科创实力强劲：</strong>建强国家级平台激发创新活力，突破核心技术与行业标准，打破垄断并扩大市场份额。<br>
+        <strong>3. 精神品质持久：</strong>兼具几十年沉淀的工匠精神与“三不变三变”的卓越效率，守正求变实现品牌常青。<br>
+        <strong>4. 国际口碑优良：</strong>按需定制高便利性、环保型产品出口共建“一带一路”国家，创下出口新纪录。<br>
+        <strong>5. 绿色含金量高：</strong>践行双碳战略推进节能减排，治污装备指标领先，打造工业绿动力。<br>
+        <strong>6. 城市宜居宜游：</strong>古城焕新推进绿化与特色花木产业，兼顾生态与富民。<br>
+        <strong>7. 制度政策聚合：</strong>省级出台措施整合分散品牌形成聚合效应。（约243字）
+      </div>
+    </div></details>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">📐 Q2 词句理解（20 分 ≤300 字）万能“三步翻译公式”</div>
+    <ol>
+      <li><strong>第一步（表层破题，40–50字）</strong>：直接把文言文、比喻句或对立词“<strong>用白话拆成两半</strong>”（如“只此青绿”指生态好，“只有青绿”指仅有环境无产业转化；“法与时转则治”指法治随时代诉求动态调适）。</li>
+      <li><strong>第二步（材料分镜头拆解，180–200字）</strong>：逐个梳理给定资料里的<strong>做法/问题/正反对比镜头</strong>（2026 材料3恰好有三大镜头：新就业立法、AEO执法“瘦身”、恶意诉讼判决；2024 材料3恰好写东梁村先关停排污企业“只此青绿”，再发展果园/民宿“农文旅融合”跳出“只有青绿”）。</li>
+      <li><strong>第三步（深层落脚/启示，40–50字）</strong>：提炼一句话升华（“实现生态保护与富民增收协同共生 / 彰显精准、有温度的现代法治效能”）。</li>
+    </ol>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>实战三（2026 Q2 &amp; 2024 Q2 &amp; 2025 Q2 词句理解三连击）</span><span class="src-tag">2024/2025/2026 | Q2</span></div>
+    <div class="q-stem">
+      ① <strong>2026 Q2（≤300字）</strong>：谈谈对“法与时转则治，治与世宜则有功”的理解（结合材料 3：Y区全民普法三大镜头）。<br>
+      ② <strong>2024 Q2（≤300字）</strong>：谈谈对“东梁村如今可谓‘只此青绿’，但未来不能‘只有青绿’”的理解（结合材料 3）。<br>
+      ③ <strong>2025 Q2（≤300字）</strong><span class="net-tag">联网框架</span>：理解“水美则鱼肥，土沃则稻香”。
+    </div>
+    <details class="sol"><summary>👆 先用“三步公式”自己在纸上列出三层要点，再点击展开完整 20 分示范</summary><div class="sol-body">
+      <strong>① 2026 Q2 示范（285字）</strong>：<br>
+      该句意为法律制度要顺应时代变革，治理举措须贴合现实需求，才能切实取得治国安邦的实效。<strong>表现在材料三中</strong>：一是<strong>立法回应新业态关切</strong>，针对外卖员等新就业群体劳动合同、平台算法等问题出台首部地方专门法规，建起协调机制与服务站点；二是<strong>执法适配产业需求</strong>，借鉴 AEO 制度基于信用画像对中低风险重点制造企业推行“免检瘦身”，设 3 个月修复期兼顾温度与严谨；三是<strong>司法护航科技创新</strong>，严惩上市关键期的恶意专利诉讼，依法维护公平竞争秩序。<strong>归根结底</strong>，基层法治唯有坚持问题导向与精准供给，才能定分止争、激发经营主体活力。<br><br>
+      <strong>② 2024 Q2 示范（278字）</strong>：<br>
+      该句既肯定了东梁村当前生态修复的显著成效，又指明了不能止步于单纯护绿、必须推进绿色产业转化的长远方向。<strong>一方面，“只此青绿”是转型成果</strong>：该村两委算清长远账、关停高污染企业，推进复垦与污水集中处理，通过村规民约严守生态红线，重现诗画乡村；<strong>另一方面，“不能只有青绿”是破局必然</strong>：单纯守着好风景难以持续鼓起村民钱包，该村立足资源依托农科院指导种脱毒果木，探索“生态+农业+旅游”模式打造采摘园与主题民宿，使人均与村集体收入大幅跃升。<strong>由此可见</strong>，必须打通绿水青山向金山银山的转化通道，实现生态与富民双赢。<br><br>
+      <strong>③ 2025 Q2（联网教研思路点拨）</strong>：<br>
+      以自然规律喻指营商环境（水、土）与经营主体（鱼、稻）的共生关系：不能靠短期大水漫灌补贴，而要靠法治透明、精准服务、要素齐备、全周期减负打造优良沃土，才能让创新型企业如鱼得水、生生不息。
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: Q3 400字六类应用文通用模板 ============ -->
+<section class="day-section" id="sl-q3">
+  <div class="day-header">
+    <span class="day-tag" style="background:#d97706">第三篇｜Q3（400字短公文 25 分）—— 零基础最快反超 +8 分模块</span>
+    <h1 class="day-title">03｜山东 B 卷 Q3 的“去落款 + 三段式”通用铁律与 6 类公文实操</h1>
+    <div class="day-meta">实证特征：2023 政务信息、2024 案例摘要、2025 经验交流提纲、2026 信息专报——字数卡在 400 字（约 16–18 行），形式分 + 内容分双高！</div>
+  </div>
+
+  <div class="card card-trap">
+    <div class="card-title">⚠ 考场踩坑红线（做对格式白捡 4 分，做错格字白丢 4 分）</div>
+    <ul>
+      <li><strong>什么时候写落款？什么时候不写落款？</strong>
+        <ul>
+          <li><code>案例摘要 / 信息专报 / 政务信息 / 调研报告提纲 / 发言提纲 / 整改方案提纲</code> → 题目要求 <strong>≤400 字</strong>且标注“摘要/信息/提纲”，属于内部工作简报文本，<strong>只写居中的主标题（或含副标题），正文结束直接收尾，坚决不写日期与单位落款！</strong>（省下 2 行约 50 格留给得分关键词）。</li>
+          <li>只有公开信、倡议书、通知（且字数给足 500–600 字）才写称谓与落款；山东 B 卷近 7 年 Q3/公文全部是提纲/专报/摘要，不写落款！</li>
+        </ul>
+      </li>
+      <li><strong>高分通用正文结构（背死这三块）</strong>：
+        <ol>
+          <li><strong>第一段：背景痛点与破题概况（约 65–80 字）</strong>——交代“原先存在什么问题 + 当地联合谁/采取了什么总体机制 + 总结果效数字”。</li>
+          <li><strong>第二段：核心做法分条列项（约 230–250 字，占分 70%！）</strong>——按材料层次拆 <code>一、二、三、四</code>（4 条最稳），每条<code>“四字概括短语：+ 材料具体行动 + 配套数据/主体名称”</code>。</li>
+          <li><strong>第三段：落地实效与示范推广价值（约 55–70 字）</strong>——写清给群众/商家/社会带来什么多赢变化与示范意义。</li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+
+  <h3>近 7 届山东 B 卷 Q3 / 公文高频体裁对照表</h3>
+  <div class="table-wrap"><table>
+    <thead>
+      <tr><th>公文类别</th><th>代表真题</th><th>标准标题模板</th><th>核心三段权重分配</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>信息专报 / 政务信息</strong></td><td>2026 J市预付宝 / 2023 S市共富公司</td><td>关于J市创新“预付宝”监管模式的情况汇报 / 专报</td><td>痛点破局(20%) → 核心模式举措(65%) → 成效与示范(15%)</td></tr>
+      <tr><td><strong>案例摘要</strong></td><td>2024 滨海模式（社会治理创新）</td><td>以“滨海模式”架起服务管理连心桥 ——S市滨海新区社会治理案例摘要</td><td>问题与总体思路(20%) → 夜市+便民菜市两大场景具体做法(65%) → 治理成效(15%)</td></tr>
+      <tr><td><strong>经验交流 / 发言提纲</strong></td><td>2025 W市口袋公园联动<span class="net-tag">联网</span> / 2021 L市党建</td><td>关于学习借鉴W市口袋公园建设经验的交流提纲</td><td>背景总体态势(15%) → 分点凝练可复制经验(70%) → 对本地落实启示(15%)</td></tr>
+      <tr><td><strong>调研报告提纲</strong></td><td>2020 旧工业转型(如晨光1865)</td><td>关于推动老旧工业遗存转型焕新的调研提纲</td><td>调研基本情况(15%) → 典型成功经验(65%) → 下步建议或思考(20%)</td></tr>
+      <tr><td><strong>整改方案提纲</strong></td><td>2022 A市非煤矿山安全整治</td><td>A市非煤矿山安全隐患专项整改方案提纲</td><td>整改目标意义(15%) → 分领域整治举措(65%) → 保障监督机制(20%)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="q-box">
+    <div class="q-head"><span>2026 Q3 满格实战｜J 市“预付宝”信息专报（≤400 字）</span><span class="src-tag">2026 B卷 | 材料4 | Q3</span></div>
+    <div class="q-stem">假如你是J市市场监管局工作人员，请结合“给定资料4”，起草一篇关于J市创新“预付宝”监管模式的信息专报，供上级领导参阅。（25分）要求：紧扣资料，内容全面，重点突出，结构完整；不超过400字。</div>
+    <details class="sol"><summary>👆 默写提纲要点后点击展开 388 字满分专报（带采分来源对照）</summary><div class="sol-body">
+      <div class="template-box" style="white-space:pre-line"><strong>关于J市创新“预付宝”监管模式助力放心消费的信息专报</strong>
+
+【破局概况】针对预付式消费资金风险与商家跑路痛点，我市联合工行、国民信托、支付宝全国首创“信托式”监管模式，统筹“平台+法规+市场”三位一体治理，累计入驻商家1.8万余家。
+
+【主要做法】<strong>一是信托全额托管，消费透明可溯。</strong>预付资金100%进信托专户，按消费笔数结算划拨，消费者可实时查询账本并随时或关店退款。<strong>二是金融降本赋能，解除资金焦虑。</strong>工行提供优惠存款利率、最高50万即时低息提款、60万免息数字信用卡及300万低息贷款。<strong>三是市场精准激励，树立诚信标杆。</strong>出台入驻补贴并授权挂牌标识，以信用与流量红利激发商家主动合规。<strong>四是健全配套法规，筑牢制度保障。</strong>同步出台指导意见并推进地方立法，激活市场自净机制。
+
+【综合成效】实现了政府治理理念向“生态重构”升级，促成消费者敢消费、商家愿经营、市场良币驱逐劣币的多赢局面，为扩大内需增添持续动能。</div>
+      <strong>💡 考场写法提示</strong>：把真实材料里“工行 50 万/60 万/300 万、1.8 万家、100% 进信托、三位一体”保留 1–2 个高光词，不写出长串采访原话，字数严控 370–395 格之间！
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>2024 Q3 &amp; 2025 Q3 满格实战｜“滨海模式”案例摘要 &amp; 口袋公园经验提纲</span><span class="src-tag">2024 Q3 + 2025联网 Q3</span></div>
+    <div class="q-stem">
+      ① <strong>2024 Q3（≤400字）</strong>：根据“给定资料4”，撰写一篇关于“滨海模式”的案例摘要，参加全市社会治理创新典型案例评选。<br>
+      ② <strong>2025 Q3（≤400字）</strong><span class="net-tag">联网教研帧</span>：假如你是 L 市园林局干部，调研学习 W 市口袋公园建设强化部门联动的做法，写一篇经验交流提纲。
+    </div>
+    <details class="sol"><summary>👆 点击展开两篇结构与字数严控示范</summary><div class="sol-body">
+      <strong>① 2024 Q3 “滨海模式”案例摘要（386字）</strong>：<br>
+      <div class="template-box" style="white-space:pre-line"><strong>“滨海模式”：用疏堵结合把“零乱经营”打造成“活力经济”</strong>
+
+针对夜市噪乱污与菜农小区占道“两难”困局，滨海新区坚持监管有力、执法有据，通过“筑桥梁、优服务、共治理”，实现市容秩序与民生烟火双赢。
+
+<strong>一、扩容规范夜经济。</strong>择址栈桥南侧停车场扩容分区，增派执法巡查与劝导监管；增设移动厕所并动员商户开放内厕，引导艺人自觉控噪限时，留住网红城市标识。
+<strong>二、科学设置惠农点。</strong>深入摸排摊贩与居民需求，联合规划、交通等部门及街道磋商，设8处便民菜市摊点群并配设蔬菜快检，守好群众近便菜篮子与菜农生计。
+<strong>三、多方协同强秩序。</strong>社区发动党员居民志愿队疏导交通，推行摊主分组选任组长自治保洁，同时严打价格欺诈等违法行为，健全全域服务监管体系。
+
+目前，新区形成共建共治共享治理格局，周边环境卫生与经营秩序显著改善，群众幸福感、满意度大幅提升。</div><br>
+      <strong>② 2025 Q3 口袋公园经验交流提纲骨架（≤400字模板示范）</strong>：<br>
+      <ul>
+        <li><strong>标题</strong>：关于学习 W 市推进口袋公园建设强化部门联动经验的交流提纲；</li>
+        <li><strong>一、整体统筹破壁垒</strong>：建立跨部门（园林+规划+住建+交通+属地街道）联席会商机制，解决用地权属与边界推诿；</li>
+        <li><strong>二、因地制宜盘存量</strong>：协同盘活边角地、闲置绿地，打通水电配套与老旧小区微更新对接；</li>
+        <li><strong>三、共建共享保长效</strong>：联合城管/街道与社区志愿组织建立长效管护分工，问需于民优化适老化/全龄化设施；</li>
+        <li><strong>四、对 L 市借鉴（收尾）</strong>：下一步我局将梳理城区拆违腾退与微空间清单，联合各部门制定标准推行试点。</li>
+      </ul>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: Q4大作文借壳立意 + 2027预测 + 本土金句 ============ -->
+<section class="day-section" id="sl-q4">
+  <div class="day-header">
+    <span class="day-tag" style="background:#dc2626">第四篇｜Q4 大作文（40 分 · 1000–1200 字）零基础逆袭秘籍：材料“借壳立意法”</span>
+    <h1 class="day-title">04｜彻底告别考场跑题：从材料 2 与材料 5 偷出总论点与三分论点</h1>
+    <div class="day-meta">核心发现：山东 B 卷连续两年考<strong>单字哲理题</strong>（2024“桥”、2026“坐标”），几乎每则材料末尾都藏着命题人亲手写的分论点句子！</div>
+  </div>
+
+  <div class="card card-intuition">
+    <div class="card-title">🧠 为什么零基础考生大作文只能拿 22 分，而套“借壳立意法”稳拿 30+ 分？</div>
+    <p>阅卷组判断大作文是否偏题，只看你的<strong>中心论点 + 3 个分论点段首句有没有紧扣给定全部材料的共同内核</strong>！</p>
+    <ol>
+      <li><strong>材料尾段必藏题眼</strong>（不信看 2026 与 2024 真题！）：
+        <ul>
+          <li><code>2026 材料5</code> 结尾区委赵书记总结：“在全区……在中国式现代化建设的<strong>历史方位和全局坐标中</strong>，着眼<strong>‘全局之所需’观照一域</strong>，立足<strong>‘一域之所能’服务全局</strong>。”——命题人已经替你写好了总论点！</li>
+          <li><code>2024 材料5</code> 结尾：“穿越一座座横空出世的大桥，通向美好未来”；<code>材料2</code> 结尾：“铺就冲破洋种子围堵的金色桥梁”；<code>材料4</code>：“架起与群众的连心桥”。——命题人直接把“桥”的三层含义写进每则材料最后一句！</li>
+        </ul>
+      </li>
+      <li><strong>万能五段三分式结构（1100 字最标准配比）</strong>：
+        <ul>
+          <li><strong>标题</strong>：对偶式或比喻+中心（例：《锚定时代坐标 服务全局发展》《架稳民心、科创与开放之桥》）；</li>
+          <li><strong>第一段（开头亮总论点，150字）</strong>：时代背景引入 → 结合全部材料点明“单字题眼”核心内涵 → 清晰亮明总论点（一句顶三句）；</li>
+          <li><strong>第二段（分论点一 + 论据剖析，250–280字）</strong>：<strong>产业/经济维度</strong>（借用材料1特色/实体产业或本地素材 + “道理剖析为何重要”）；</li>
+          <li><strong>第三段（分论点二 + 论据剖析，250–280字）</strong>：<strong>科技/创新维度</strong>（借用材料2科创自主/航天/种业素材 + 深层分析）；</li>
+          <li><strong>第四段（分论点三 + 论据剖析，250–280字）</strong>：<strong>法治/民生/治理维度</strong>（借用材料3/4法治环境/惠民治理素材 + 对策升华）；</li>
+          <li><strong>第五段（结尾回扣，120–150字）</strong>：联系“十五五”开局与山东省情展望未来，再次点题收束。</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>真题借壳实操｜2026“坐标” &amp; 2024“桥” 三分论点现场拆装</span><span class="src-tag">2024 &amp; 2026 B卷 | Q4</span></div>
+    <div class="q-stem">请把 <code>2026年“坐标”</code> 与 <code>2024年“桥”</code> 各自的 4–5 则给定材料串联起来，分别提炼出“总论点 + 3 个互不交叉的分论点”。</div>
+    <details class="sol"><summary>👆 自己用 2 分钟先从前文材料里找分论点，再点击展开高分骨架</summary><div class="sol-body">
+      <strong>【2026 真题“坐标”高分骨架】</strong>（核心：找准“全局所需”与“一域所能”的坐标定位）<br>
+      <ul>
+        <li><strong>总论点</strong>：在时代浪潮与全局视野中找准精准坐标，以错位深耕与主动作为不断书写高质量发展新篇。</li>
+        <li><strong>分论点 1（产业协同与地域坐标）</strong>：锚定比较优势的<strong>发展坐标</strong>，以“错位深耕、串珠成链”激发县域经济内生动力（借材料1：G县轮胎院士团队、C县淘宝电商、D市小枣与影旅、R市A区强港）。</li>
+        <li><strong>分论点 2（科技突围与赛道坐标）</strong>：锚定趋势需求与自主创新的<strong>产业坐标</strong>，以“精准预判、降本破局”勇攀新赛道高峰（借材料2：东虹科技海卫一号瞄准“星多箭少”把发射降至 4 万/公斤以内）。</li>
+        <li><strong>分论点 3（治理精准与法治民心坐标）</strong>：锚定有温度、有效能的<strong>服务坐标</strong>，以法治赋能与制度重构守护安心营商生态（借材料3–4：H市新就业保护与AEO免检瘦身 + J市“预付宝”信托监管；结尾回扣材料5“着眼全局之所需观照一域”）。</li>
+      </ul><br>
+      <strong>【2024 真题“桥”高分骨架】</strong>（核心：桥的本质是“连通阻隔、汇聚合力、通向共赢”）<br>
+      <ul>
+        <li><strong>分论点 1（品牌与产业开放之桥）</strong>：架设质量过硬、绿色低碳的<strong>“融通之桥”</strong>，让中国品牌跨越山海走向世界（借材料1：好品山东“振超效率”、中通新能源客车出海、绿动力）。</li>
+        <li><strong>分论点 2（核心技术与粮食安全之桥）</strong>：架设产学研一体、自主可控的<strong>“攻关之桥”</strong>，攥紧自主种源把发展命脉抓在手中（借材料2：寿光宝禄364蔬菜种源、打破国外玉米生猪依赖）。</li>
+        <li><strong>分论点 3（生态转化与共建共治连心桥）</strong>：架设顺应民声、疏堵结合的<strong>“民生之桥”</strong>，打通绿水青山通向群众幸福感的最后一步（借材料3–4：东梁村“只此青绿→农文旅增收”与滨海模式摊点群“连心桥”）。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <h2>2027 年度山东申论 B 卷（2026.12.06 笔试）四大高概率作文主题预测与本土金句库 <span class="net-tag">结合2026年10–11月政策实证</span></h2>
+  <p>结合去年（2025 B卷“把实效落到长效中”）+ 今年最新央地大政（2026.10 二十届五中全会、2026.10.09《发展新质生产力意见》、2026 政绩观教育、山东 GDP 破 10.3 万亿与美丽中国先行区、省委十二届十二次全会 2026.11），考场最可能落入以下 4 个方向（每题默认折叠完整立意提纲）：</p>
+
+  <div class="q-box">
+    <div class="q-head"><span class="badge-p0">P0 第一预测</span> 主题一：实效与长效 / 树立正确政绩观与“久久为功” <span class="src-tag">2026.10 五中全会+政绩观教育</span></div>
+    <div class="q-stem"><strong>命题依据</strong>：2026 年开展树立和践行正确政绩观学习教育、10 月五中全会通过《关于持之以恒推进全面从严治党若干重大问题的决定》，反对“形象工程”“半拉子工程”与盲目铺摊子；上届 2025 已切中“长效”，本届极易升级为<strong>“实干与虚功 / 显绩与潜绩 / 久久为功 / 根基与枝叶”</strong>等思辨命题。</div>
+    <details class="sol"><summary>👆 点击展开考场万能分论点与山东本土素材</summary><div class="sol-body">
+      <strong>推荐标题</strong>：《涵养久久为功的定力 让发展实效沉淀为长效》<br>
+      <strong>三分论点</strong>：① 破“急功近利”求“打基础”，以正确政绩观算清长远生态账与民生账（可引寿光种业十几年研发/东梁村两代人护绿增收）；② 破“一刀切”求“钉钉子”，立足本地资源秉赋因地制宜渐进转型（可引 G 县轮胎全链条攻关/C 县十余年培育淘宝镇村）；③ 破“一阵风”求“机制化”，用长效制度托底服务与治理效能（可引 J 市“预付宝”+条例立法、H 市 AEO 动态调整）。
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span class="badge-p0">P0 第二预测</span> 主题二：因地制宜发展新质生产力与产业“先立后破 / 实与新” <span class="src-tag">2026.10.09 中办国办意见+山东实业</span></div>
+    <div class="q-stem"><strong>命题依据</strong>：2026 年 10 月《关于发展新质生产力的意见》严禁“脱实向虚、产业空心化断层、一哄而上”，加上十五五开局、山东 GDP 突破 <strong>10.3 万亿元（全国第 3、北方第 1）</strong>、青岛全国首个<strong>海洋领域 Token 工厂</strong>、商业航天东方航天港等热点，极易围绕<strong>“稳与进”“立与破”“传统与新兴的传承与跃迁”</strong>命题。</div>
+    <details class="sol"><summary>👆 点击展开考场万能分论点与山东数据卡</summary><div class="sol-body">
+      <strong>本土硬核数据</strong>：2025 年山东 GDP 达 <code>103197.5 亿元（+5.5%）</code>，成为北方首个 10 万亿级省份；农林牧渔总产值超 <code>1.3 万亿元</code>稳居全国第一；山东出台《零碳工厂建设实施方案（试行）》（鲁工信绿发〔2026〕206 号）与“AI 消费+”场景开放计划。<br>
+      <strong>三分论点</strong>：① <strong>不丢看家实业“基本盘”</strong>，用“人工智能+”与数字技术推动传统优势制造智能绿色跃迁（先稳盘再升级）；② <strong>找准差异化“新赛道”</strong>，依托区域资源培育海洋数字经济、商业航天、生物医药等未来产业（如海洋 Token 工厂/东虹商业航天逻辑）；③ <strong>筑牢产学研用生态网</strong>，强化企业创新主体与金融耐心资本支撑，防止泡沫化空心化。
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span class="badge-p1">P1 备选双雄</span> 主题三：提振消费与法治化有温度治理 ｜ 主题四：生态法典下的绿色共富</div>
+    <div class="q-stem"><strong>命题依据</strong>：2026 政府工作报告把<strong>建设强大国内市场（提振消费）</strong>摆在十大任务之首；新法方面《生态环境法典》（2026.8.15施行）、《民营经济促进法》（2025.5.20施行）密集生效，山东打造<strong>美丽中国省域先行区</strong>。</div>
+    <details class="sol"><summary>👆 点击展开两套金句结尾与开头段模板（直接考场复用）</summary><div class="sol-body">
+      <strong>万能高分开头段（套改任意 B 卷民生/经济/实效主题）</strong>：<br>
+      <div class="template-box">时代奔涌向前，改革进入深水。从齐鲁大地民营集群破浪出海的实业坚守，到市场监管一线“信任与法治并重”的制度微创，越来越多基层实践反复印证一个朴素真理：真正经得起群众检验与时间淘洗的发展，从来不是浮光掠影的表面文章，而必须【紧扣主题词精准定位 / 立足实际筑牢根基 / 架稳畅通桥梁】。唯有找准全局所需与自身所能的交汇点，将制度的温度转化为实干的力度，方能在“十五五”新征程上书写经得起历史与人民检验的时代答卷。</div>
+      <strong>万能高分结尾段（回扣山东与十五五）</strong>：<br>
+      <div class="template-box">道虽迩，不行不至；事虽小，不为不成。站在北方首个十万亿大省的新起点上，齐鲁高质量发展既需要“风起青萍”的战略洞察，更需要“一步一脚印”的踏实落实。让我们锚定正确方向、秉持务实初心、汇聚合力之光，把每件为民利企的“小事”办实，把每条行之有效的“实招”固化为长效机制，在中国式现代化建设全局中不断走出更加笃定宽广的齐鲁新路！</div>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: 申论睡前盲默检核 ============ -->
+<section class="day-section" id="sl-review">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0f172a">第五篇｜申论 B 卷考前 5 分钟盲测检查清单</span>
+    <h1 class="day-title">05｜上考场前确认这 5 条，保底稳住 68–72+ 分基本盘</h1>
+    <div class="day-meta">建议在冲刺期每天至少手写 1 道完整真题（Q1 或 Q3 抄格练速，Q4 列完 30 分钟精细提纲+开头结尾段）</div>
+  </div>
+
+  <div class="card card-quiz">
+    <div class="card-title">✅ 申论闭环自检（口述过关再切换下个页面）</div>
+    <ol>
+      <li><code>2026 Q1（250字概括做法）</code>：为什么宁可写“联合高校引院士团队建全链条研发体系”，绝不写“在政策鼓励下加大研发投入取得了显著成绩”？</li>
+      <li><code>Q2（300字词句理解）</code> 的标准三段输出顺序是什么？</li>
+      <li><code>Q3（≤400字信息专报 / 案例摘要 / 提纲）</code> 要不要写“XX局 XXXX年XX月XX日”落款？正文占分 70% 的中间核心段通常分几条？</li>
+      <li><code>Q4（1000–1200字单字主题作文）</code> 害怕写跑题，应当优先从全篇哪两则材料里“借分论点”？</li>
+      <li>山东 2025 年 GDP 最新核心数字及在全国的位次、我国生态环保最新重要法典施行日期分别是多少？（可当作论据写进大作文里提亮分数！）</li>
+    </ol>
+    <details class="sol"><summary>👆 默答完点击核对</summary><div class="sol-body">
+      1. 申论按<strong>“材料高频词 + 动作原词（动宾短语）”</strong>踩点给分，空洞虚词一分没有；<br>
+      2. <code>表层字面破题（约45字）→ 材料多镜头分步拆解/正反对比（约200字）→ 深层制度或启示落脚点（约45字）</code>；<br>
+      3. <strong>不写落款</strong>！只居中写标题，正文三段式：背景痛点 → 核心做法（通常<strong>4 条</strong>最佳） → 综合成效；<br>
+      4. <strong>材料 2 与材料 5</strong>（往往一则给高新科技/粮食种业深层支点，末尾材料给高度凝练的全局点题句）；<br>
+      5. 山东 2025 年 GDP <strong>103197.5 亿元（+5.5%）</strong>，全国第 3、北方第 1；《生态环境法典》自 <strong>2026 年 8 月 15 日</strong>起施行。
+    </div></details>
+  </div>
+</section>
+
+<div class="sub-footer-nav"><a href="山东省考7天冲刺精准提分讲义.html">📘 返回山东省考总纲目录</a><a class="alt" href="sd_06_资料分析详讲.html">← 上一模块：06 资料分析</a><a class="alt" href="sd_01_政治理论详讲.html">下一模块：01 政治理论 →</a></div>
+  </main>
+</div>
+
+<script defer src="assets/katex/katex/katex.min.js"></script>
+<script defer src="assets/katex/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script>
+const STORAGE_KEY = 'sd_v2_m07_v1';
+function saveCheck() {
+  const boxes = document.querySelectorAll('.nav-item input[type="checkbox"]');
+  const state = {};
+  let done = 0;
+  boxes.forEach(b => { state[b.dataset.sec] = b.checked; if (b.checked) done++; });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  const pt = document.getElementById('progText');
+  const pf = document.getElementById('progFill');
+  if (pt) pt.textContent = done + ' / ' + boxes.length;
+  if (pf && boxes.length) pf.style.width = Math.round(done * 100 / boxes.length) + '%';
+}
+function loadCheck() {
+  try {
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('.nav-item input[type="checkbox"]').forEach(b => {
+      if (state[b.dataset.sec]) b.checked = true;
+    });
+  } catch (e) {}
+  saveCheck();
+}
+// Requirement #7: NEVER open details.sol on initial load; stay collapsed by default until user clicks!
+let allSolExpanded = false;
+function toggleAllSol() {
+  allSolExpanded = !allSolExpanded;
+  document.querySelectorAll('details.sol').forEach(d => d.open = allSolExpanded);
+  const btn = document.getElementById('toggleSolBtn');
+  if (btn) btn.textContent = allSolExpanded ? '🙈 收起全部解析' : '👁 展开全部解析';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('details.sol').forEach(d => d.open = true);
+});
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => { if (window.innerWidth <= 960) closeSidebar(); });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => { topBtn.classList.toggle('show', window.scrollY > 420); }, { passive: true });
+}
+loadCheck();
+</script>
+
+</body>
+</html>

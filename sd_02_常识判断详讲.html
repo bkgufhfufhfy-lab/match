@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>02｜常识判断详讲：概率重→轻排序与新法热点</title>
+  <link rel="stylesheet" href="assets/katex/katex/katex.min.css" />
+  <style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --blue: #2563eb; --blue-bg: #eff6ff;
+  --green: #059669; --green-bg: #ecfdf5;
+  --red: #dc2626; --red-bg: #fef2f2;
+  --purple: #7c3aed; --purple-bg: #f5f3ff;
+  --amber: #d97706; --amber-bg: #fffbeb;
+  --cyan: #0891b2; --cyan-bg: #ecfeff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 15.3px;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+.layout { display: flex; min-height: 100vh; width: 100%; }
+.sidebar {
+  width: 292px;
+  background: #0f172a;
+  color: #e2e8f0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  padding: 18px 15px 44px;
+  z-index: 260;
+  transition: transform 0.25s ease;
+}
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.5); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.sidebar-title { font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 0 0 3px; letter-spacing: 0.3px; }
+.sidebar-sub { font-size: 11.8px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b; }
+.progress-box { background: #1e293b; border-radius: 8px; padding: 9px 11px; margin-bottom: 11px; font-size: 12.5px; }
+.progress-bar-wrap { background: #334155; height: 7px; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+.progress-bar-fill { background: linear-gradient(90deg, #10b981, #38bdf8); height: 100%; width: 0%; transition: width 0.25s; }
+.btn-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.btn {
+  flex: 1 1 88px; min-height: 34px; border: none; border-radius: 6px; padding: 6px 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer; background: #2563eb; color: #fff;
+  text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+}
+.btn.secondary { background: #334155; }
+.btn.emerald { background: #059669; }
+.btn.slate { background: #475569; }
+.btn:hover { opacity: 0.92; }
+.mod-switcher {
+  width: 100%; margin: 2px 0 10px; padding: 7px 9px; border-radius: 7px;
+  background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 12.5px; font-weight: 700; cursor: pointer;
+}
+.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 13px 0 6px 5px; letter-spacing: 0.6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px;
+  color: #cbd5e1; text-decoration: none; font-size: 12.8px; margin-bottom: 3px; transition: background 0.15s;
+}
+.nav-item:hover { background: #1e293b; color: #fff; }
+.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; width: 15px; height: 15px; }
+.nav-item .nav-text { flex: 1; line-height: 1.38; }
+
+.main { margin-left: 292px; flex: 1; min-width: 0; width: 100%; padding: 28px 34px 88px; max-width: 1060px; }
+.cover-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0e7490 100%);
+  color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+.cover-banner.theme-red { background: linear-gradient(135deg, #1e1b4b 0%, #991b1b 55%, #b45309 100%); }
+.cover-banner.theme-amber { background: linear-gradient(135deg, #0f172a 0%, #92400e 55%, #b45309 100%); }
+.cover-banner.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 55%, #2563eb 100%); }
+.cover-banner.theme-green { background: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0e7490 100%); }
+.cover-banner.theme-cyan { background: linear-gradient(135deg, #0f172a 0%, #0e7490 55%, #0284c7 100%); }
+.cover-eyebrow {
+  display: inline-block; font-size: 11.8px; font-weight: 800; padding: 3px 11px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 10px;
+}
+.cover-banner h1 { margin: 0 0 8px; font-size: 25px; line-height: 1.3; }
+.cover-banner p { margin: 0 0 12px; color: #e0f2fe; font-size: 14.5px; }
+.cover-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.cover-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); padding: 3px 11px; border-radius: 99px; font-size: 12.2px; font-weight: 600; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.cover-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-decoration: none; color: #fff; background: rgba(16,185,129,0.92);
+}
+.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34); }
+.cover-btn:hover { opacity: 0.92; }
+
+/* Hub 7-module directory grid */
+.mod-dir-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0 8px; }
+.mod-dir-card {
+  background: #ffffff; border: 1px solid var(--border); border-left: 5px solid var(--blue);
+  border-radius: 12px; padding: 15px 17px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); transition: transform 0.14s, box-shadow 0.14s;
+}
+.mod-dir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+.mod-dir-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.mod-dir-badge { font-size: 11px; font-weight: 800; color: #fff; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.mod-dir-card h3 { margin: 0 0 6px; font-size: 16px; color: #0f172a; }
+.mod-dir-card p { margin: 0 0 11px; font-size: 13.2px; color: #475569; line-height: 1.58; }
+.mod-dir-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 13px; border-radius: 8px; background: #0f172a; color: #fff;
+  text-decoration: none; font-size: 13px; font-weight: 700; min-height: 38px;
+}
+.mod-dir-link:hover { opacity: 0.92; }
+
+.day-section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 25px 28px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 16px;
+}
+.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 11px; margin-bottom: 16px; }
+.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 11.8px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.day-title { margin: 4px 0 5px; font-size: 21px; color: #0f172a; line-height: 1.32; }
+.day-meta { font-size: 13.5px; color: var(--muted); }
+
+h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; }
+h3 { font-size: 15.5px; color: #1e3a8a; margin: 16px 0 8px; break-after: avoid; }
+p { margin: 8px 0; overflow-wrap: break-word; }
+ul, ol { margin: 6px 0 10px; padding-left: 22px; }
+li { margin-bottom: 5px; overflow-wrap: break-word; }
+
+.card { border-radius: 10px; padding: 14px 18px; margin: 14px 0; border-left: 5px solid; break-inside: avoid; }
+.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.card-intuition { background: var(--green-bg); border-color: var(--green); }
+.card-intuition .card-title { color: #065f46; }
+.card-formula { background: var(--blue-bg); border-color: var(--blue); }
+.card-formula .card-title { color: #1e40af; }
+.card-trap { background: var(--red-bg); border-color: var(--red); }
+.card-trap .card-title { color: #991b1b; }
+.card-trick { background: var(--purple-bg); border-color: var(--purple); }
+.card-trick .card-title { color: #5b21b6; }
+.card-example { background: var(--amber-bg); border-color: var(--amber); }
+.card-example .card-title { color: #92400e; }
+.card-quiz { background: var(--cyan-bg); border-color: var(--cyan); }
+.card-quiz .card-title { color: #155e75; }
+
+.q-box {
+  background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #d97706;
+  border-radius: 10px; padding: 15px 18px; margin: 16px 0; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 800; color: #92400e; font-size: 14.2px; }
+.q-stem { background: #fffbeb; border-radius: 7px; padding: 10px 13px; margin: 8px 0 10px; font-size: 14.4px; line-height: 1.72; color: #1e293b; }
+.q-opts { margin: 6px 0 10px; padding-left: 6px; list-style: none; font-size: 14px; color: #334155; }
+.q-opts li { margin-bottom: 4px; }
+
+.hl-yellow { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #713f12; }
+.hl-pink { background: #fecdd3; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #881337; }
+.hl-blue { background: #bfdbfe; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1e3a8a; }
+.badge-p0 { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p1 { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p2 { display: inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+
+.src-tag {
+  display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569;
+  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace;
+}
+.net-tag {
+  display: inline-block; background: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;
+  font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+}
+.missing-tag {
+  display: inline-block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+}
+.template-box {
+  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 15px;
+  font-size: 13.8px; line-height: 1.75; margin: 10px 0;
+}
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0; font-size: 13.5px; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: #1e293b; color: #ffffff; text-align: left; padding: 8px 10px; font-weight: 700; }
+td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; overflow-wrap: break-word; }
+tr:nth-child(even) td { background: #f8fafc; }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; break-inside: avoid; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+
+/* Default CLOSED collapsible derivation blocks */
+details.sol {
+  margin-top: 8px; background: #f8fafc; border: 1.5px dashed #0891b2; border-radius: 8px; padding: 8px 13px;
+}
+details.sol[open] { background: #f0fdfa; border-style: solid; }
+details.sol > summary {
+  cursor: pointer; font-weight: 800; color: #0e7490; font-size: 13.5px; user-select: none; list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+details.sol > summary::before { content: "▶"; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+details.sol[open] > summary::before { transform: rotate(90deg); }
+details.sol > summary::-webkit-details-marker { display: none; }
+.sol-body { margin-top: 9px; padding-top: 8px; border-top: 1px solid #bae6fd; font-size: 14px; line-height: 1.72; color: #1e293b; }
+
+.day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.day-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; break-inside: avoid; }
+.day-col h4 { margin: 0 0 8px; font-size: 14.5px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+
+.sub-footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  margin-top: 28px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px;
+}
+.sub-footer-nav a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px; border-radius: 8px;
+  background: #0f172a; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; min-height: 40px;
+}
+.sub-footer-nav a.alt { background: #2563eb; }
+.sub-footer-nav a:hover { opacity: 0.92; }
+
+.mobile-toggle {
+  display: none; align-items: center; gap: 6px; position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
+  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
+}
+.back-to-top {
+  display: none; align-items: center; justify-content: center; position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px; padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 256px; }
+  .main { margin-left: 256px; padding: 22px 22px 76px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 305px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 16px 16px 92px; max-width: 100%; }
+  .mod-dir-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 18px 16px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.7px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 19px 15px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 20.5px; }
+  .cover-banner p { font-size: 13.8px; }
+  .day-section { padding: 15px 13px; border-radius: 12px; margin-bottom: 16px; }
+  .day-title { font-size: 18.5px; }
+  h2 { font-size: 16.2px; }
+  h3 { font-size: 14.8px; }
+  .card, .q-box { padding: 12px 13px; }
+  table { font-size: 12.6px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
+  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions, .sub-footer-nav { display: none !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+  .day-section { border: none; box-shadow: none; padding: 0; margin: 0 0 18px; }
+  details.sol { border-style: solid; }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开或关闭目录">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">02｜常识判断详讲</div>
+    <div class="sidebar-sub">分级止损 · 法律/医学/2026科技排序</div>
+    <div class="progress-box">
+      <div>本页学习打卡：<strong id="progText">0 / 4</strong></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progFill"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="toggleSolBtn" onclick="toggleAllSol()">👁 展开全部解析</button>
+      <button class="btn secondary" onclick="window.print()">🖨 打印页面</button>
+    </div>
+    <div class="btn-row"><a class="btn emerald" href="山东省考7天冲刺精准提分讲义.html">📘 省考总纲</a><a class="btn slate" href="index.html">🌐 学习中心</a></div>
+    <select class="mod-switcher" aria-label="快速切换省考模块页面" onchange="if(this.value)location.href=this.value;"><option value="山东省考7天冲刺精准提分讲义.html">主控｜省考总纲与7天认知日程</option><option value="sd_01_政治理论详讲.html">01｜政治理论｜政策映射与2027预测</option><option value="sd_02_常识判断详讲.html" selected>02｜常识判断｜重→轻概率与新法</option><option value="sd_03_言语理解详讲.html">03｜言语理解｜花生十三法+高频词</option><option value="sd_04_数量关系详讲.html">04｜数量关系｜必拿母题与极限模型</option><option value="sd_05_判断推理详讲.html">05｜判断推理｜图推/定义/类比/逻辑</option><option value="sd_06_资料分析详讲.html">06｜资料分析｜415/假设分配/盐水</option><option value="sd_07_申论B卷详讲.html">07｜申论 B 卷｜踩点/公文/单字作文</option></select>
+    <div class="nav-group-label">一 · 概率由重到轻排序</div><a class="nav-item" href="#ck-rank"><input type="checkbox" data-sec="ck-rank" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01｜常识重→轻10大子类排榜</span></a><div class="nav-group-label">二 · 法律与今年热点</div><a class="nav-item" href="#ck-law"><input type="checkbox" data-sec="ck-law" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02｜P0：7部新法与常青法细拆</span></a><a class="nav-item" href="#ck-hot"><input type="checkbox" data-sec="ck-hot" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">03｜P1–P2：经济/医学/2026科技诺奖</span></a><div class="nav-group-label">三 · 盲测与缺失声明</div><a class="nav-item" href="#ck-quiz"><input type="checkbox" data-sec="ck-quiz" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">04｜典型常识盲测与缺题核查</span></a>
+  </aside>
+  <main class="main">
+    
+<div class="cover-banner theme-amber">
+  <span class="cover-eyebrow">模块 02｜分级止损模块（卷首其余 10–12 题）</span>
+  <h1>常识判断详讲：按实证考试概率由重到轻排序 &amp; 2027 法律/科技/文化聚焦</h1>
+  <p>基于 2017–2025 共 9 套卷实有题全量统计（精准校对 133 题归类）+ 联网核查 2025–2026 七部新施行重点法、2026 诺贝尔自然科学三大奖与航天超算成果，明确告诉你“哪 40% 的题必须死守，哪 60% 的生僻百科看 1 分钟即止”</p>
+  <div class="cover-pills">
+    <span class="cover-pill">⚖ 法律连续5年稳占2题/年</span>
+    <span class="cover-pill">🩺 医学营养近6年命中率83%</span>
+    <span class="cover-pill">🛰 科技排序可考前21天压线</span>
+  </div>
+  <div class="cover-actions">
+    <a class="cover-btn ghost" href="sd_01_政治理论详讲.html">← 上一模块：01 政治理论</a>
+    <a class="cover-btn ghost" href="山东省考7天冲刺精准提分讲义.html">📘 返回省考总纲</a>
+    <a class="cover-btn ghost" href="sd_03_言语理解详讲.html">下一模块：03 言语理解 →</a>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: 概率由重到轻总排榜 ============ -->
+<section class="day-section" id="ck-rank">
+  <div class="day-header">
+    <span class="day-tag" style="background:#d97706">第一篇｜精准决策：重→轻实证排行</span>
+    <h1 class="day-title">01｜2017–2025 常识真题统计与“由重到轻”考试概率总排序</h1>
+    <div class="day-meta">统计口径：剔除 2022 Q8–Q9 缺失（经核实无可靠原题对照，严格留空），实际有效统计 133 题；重点聚焦近 6 年（2020–2025）非法律 34 题 + 法律 12 题演变</div>
+  </div>
+
+  <div class="card card-intuition">
+    <div class="card-title">💡 反直觉真相：常识不是“玄学大海”，70% 题出在 3 个集中区</div>
+    <p>很多考生把“常识”想象成天文地理古今中外随机抽盲盒，于是 7 天要么彻底摆烂要么瞎背常识书。真实数据恰恰相反：<br>
+    • <strong>法律模块</strong>：近 5 年（2021–2025）<strong>每年铁打不动 2 题</strong>（且 2024–2025 已转向<strong>考前 1 年内新施行法 + 《公务员法》/《民法典》</strong>）；<br>
+    • <strong>医学/急救/营养/设备</strong>：近 6 年出现了 <strong>6 道题（5/6 年份命中，概率 83%）</strong>，是纯生活常识里的绝对第一大户；<br>
+    • <strong>中国前沿科技时间轴 &amp; 经济财政四本账</strong>：在 2024–2025 两年快速升温至 <strong>100% 出现率</strong>！</p>
+  </div>
+
+  <h3>一、全部常识子类“由重到轻”综合复习优先级排序表</h3>
+  <div class="table-wrap"><table>
+    <thead>
+      <tr><th>权重排序</th><th>常识子类</th><th>近6年实证频次</th><th>2027 考前概率预判</th><th>人脑备考策略（投入时长建议）</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>第 1 位 <span class="badge-p0">必考</span></strong></td><td><strong>1 年内新施行行政/民生/生态法 +《公务员法》《民法典》</strong></td><td>近5年<strong>每年稳占2题</strong>（100%）</td><td><strong>~98%</strong>（2题/年）</td><td><strong>精学 P0（45m）</strong>：主攻《生态环境法典》《新治安管理处罚法》《检察公益诉讼法》《民营经济促进法》等 7 部新法亮眼条文 + 公务员处分/侵权倒置。</td></tr>
+      <tr><td><strong>第 2 位 <span class="badge-p0">高频</span></strong></td><td><strong>政策关联经济 / 财政四本账 / 宏观调控新词</strong></td><td>近2年 3 题（2024 Q10, 2025 Q13–14）</td><td><strong>~85%</strong></td><td><strong>精学 P0（20m）</strong>：吃透财政“四本账”划转红线、新质生产力/全国统一大市场/“两新”“两重”经济定义。</td></tr>
+      <tr><td><strong>第 3 位 <span class="badge-p1">重点</span></strong></td><td><strong>医学、急救、人体营养与医学诊断设备</strong></td><td>2020–2025 出现 <strong>6 题 / 5年</strong>（83%）</td><td><strong>~80%</strong></td><td><strong>熟读 P1（20m）</strong>：重点抓“常用急救（海姆立克/CPR/烧烫伤）”+ 维生素缺乏症 + 医疗影像物理原理（CT/MRI/B超/PET）。</td></tr>
+      <tr><td><strong>第 4 位 <span class="badge-p1">重点</span></strong></td><td><strong>中国前沿科技与航天时间排序 / 诺贝尔奖</strong></td><td>2023×1, 2025×2（极速上升）</td><td><strong>~75%</strong></td><td><strong>熟读 P1（25m）</strong>：牢记 2025–2026 节点排序（神舟二十号/二十四号中巴联合/灵晟超算/2026诺奖三大项/核聚变EAST）。</td></tr>
+      <tr><td><strong>第 5 位 <span class="badge-p1">常规</span></strong></td><td><strong>传统文化、书画排序、饮食典故与山东文脉</strong></td><td>2020–2025 出现 <strong>5 题</strong>（67%）</td><td><strong>~65%</strong></td><td><strong>巧记 P1（15m）</strong>：只背“书画朝代顺序轴（东晋王羲之→南北朝→唐→宋→元）”与曲阜儒学/尼山文化。</td></tr>
+      <tr><td><strong>第 6 位 <span class="badge-p2">周年</span></strong></td><td><strong>党史与近现代史时间排序</strong></td><td>2022–2024 连考 <strong>3 题</strong>（50%）</td><td><strong>~65%</strong>（逢90周年）</td><td><strong>锚定时间轴（15m）</strong>：2026 年逢<strong>长征胜利 90 周年（1936→2026）+ 孙中山诞辰 160 周年</strong>，必重温长征重大会议时间顺序！</td></tr>
+      <tr><td><strong>第 7 位 <span class="badge-p2">一般</span></strong></td><td><strong>文学诗词名著朝代/作者正误</strong></td><td>2020–2025 出现 <strong>4 题</strong>（67%，分散）</td><td><strong>~55%</strong></td><td><strong>不单独背书</strong>，考场靠“排除张冠李戴作者朝代”应对（如明清小说 vs 唐诗）。</td></tr>
+      <tr><td><strong>第 8 位 <span class="badge-skip">止损</span></strong></td><td>生物生态（33%）、理化水电工程（17%）、古代人物（17%）、自然地理（17%）</td><td>2025 均未考或仅极分散出现</td><td><strong>&lt;25%</strong></td><td><strong>主动止损（0m 死背）</strong>：考前不背零散百科，做题用高中基本理化直觉秒判，不会 5 秒直接猜！</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ SECTION 2: P0 法律必考清单 ============ -->
+<section class="day-section" id="ck-law">
+  <div class="day-header">
+    <span class="day-tag" style="background:#dc2626">第二篇｜第 1 顺位 P0：2025–2026 七部新法 + 常青法规</span>
+    <h1 class="day-title">02｜新法与常青法深度拆解（每一部都标清“最容易改成错项的条款”）</h1>
+    <div class="day-meta">实证依据：2024 Q13 考 3.8 月前施行的《生成式AI暂行办法》，2025 Q15/16 连考 7 个月前施行的《保守国家秘密法》与 37 天前施行的《突发事件应对法》！</div>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">⚖ 一、今年（2026.12.6 开考）7 部最热新法精确法条卡 <span class="net-tag">联网核查·新华社/人大/司法部</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>法律名称与时间线</th><th>核心立法定位与亮点</th><th>命题人极易设错点（反义对比背诵）</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>1.《生态环境法典》</strong><br>2026.3.12 通过<br><strong>2026.8.15 施行</strong></td>
+            <td>继民法典后我国<strong>第二部以“法典”命名</strong>的法律（世界首部生态环境法典），共 <strong>1242 条</strong>，采用<strong>五编体例</strong>：①总则、②污染防治（9个分编含排污许可/化学物质/电磁等）、③生态保护、④绿色低碳发展、⑤法律责任和附则。</td>
+            <td>① 设错偷换五编名称（把“绿色低碳发展”删掉或写成“资源利用编”）；② 8 月 15 日即<strong>全国生态日</strong>施行；③ 总则确立“预防为主、系统治理、生态优先、绿色发展、公众参与、损害担责”原则。</td>
+          </tr>
+          <tr>
+            <td><strong>2. 新修订《治安管理处罚法》</strong><br>2025.6.27 通过<br><strong>2026.1.1 施行</strong></td>
+            <td>20 年首次大修（119 条增至 <strong>144 条</strong>）：<br>① <strong>第 19 条新增正当防卫</strong>（为免受正在进行的不法侵害采取制止行为，造成损害<strong>不属于违法、不受处罚</strong>；明显过当造成较大损害<strong>应当减轻</strong>，情节较轻不予处罚）；<br>② <strong>未成年人拘留破冰</strong>：已满 14 不满 16 岁一年内二次以上违法，或 14–18 岁初次但情节严重恶劣的<strong>可依法执行行政拘留</strong>；将<strong>学生欺凌</strong>入法；<br>③ <strong>新增四类入法罚则</strong>：<strong>高空抛物（行为即罚，不以造成损害为前提）</strong>、<strong>无人机“黑飞”</strong>（严重可处5–10日拘留）、不拴绳遛犬伤人/长期噪声扰民、考试作弊/侵害英烈名誉。</td>
+            <td>① 正当防卫适用前提是<strong>“正在进行”</strong>的不法侵害（事后报复打回或双方相约互殴不算正当防卫！）；② 明显超过必要限度造成较大损害的是<strong>“应当减轻”</strong>不是“应当免除”或“可以减轻”；③ 高空抛物入治安处罚<strong>无需等砸伤人结果</strong>。</td>
+          </tr>
+          <tr>
+            <td><strong>3.《检察公益诉讼法》</strong><br><strong>2026.11.6 通过</strong><br>2027.1.1 施行</td>
+            <td>十四届全国人大常委会第 25 次会议表决通过，将习近平法治思想原创性成果法律化制度化（覆盖生态环境、食药安全、国财/国有土地、英烈保护等公益保护）。</td>
+            <td>注意通过日（2026.11.6，考前刚满 1 个月！）与正式施行日（<strong>2027.1.1</strong>），常考“考前尚未正式施行但刚表决通过”时间差及检察院作为法定公益诉讼起诉主体的定位。</td>
+          </tr>
+          <tr>
+            <td><strong>4.《民营经济促进法》</strong><br>2025.4.30 通过<br><strong>2025.5.20 施行</strong></td>
+            <td>我国<strong>第一部专门关于民营经济发展的基础性法律</strong>：首次将“两个毫不动摇”写入法律；实行全国统一市场准入负面清单；着力解决融资难、拖欠账款与<strong>禁止违规异地执法、趋利性执法</strong>。</td>
+            <td>防止与国有经济“主导力量”（见 <code>2019 Q33</code>）混淆——民营经济享有平等法律地位和市场机会，但<strong>国有经济</strong>才是国民经济主导力量！</td>
+          </tr>
+          <tr>
+            <td><strong>5.《民族团结进步促进法》</strong><br>2026.3.12 通过<br><strong>2026.7.1 施行</strong></td>
+            <td>把铸牢中华民族共同体意识写入专门法律，促进各民族广泛交往交流交融（直接呼应 <code>2024 Q3</code> 考点）。</td>
+            <td>警惕“坚持各民族自信和独立”之类的假政治词（见 <code>2024 Q3</code> 真题设错原型）。</td>
+          </tr>
+          <tr>
+            <td><strong>6.《增值税法》及《实施条例》</strong><br><strong>2026.1.1 施行</strong></td>
+            <td>我国<strong>第一大税种</strong>完成立法，落实<strong>税收法定</strong>原则；总体遵循“税制平移”，不新增纳税人负担，首次明确将“保护纳税人合法权益”等纳入法律规范。</td>
+            <td>增值税属<strong>流转税（间接税）</strong>且立法遵循“税制平移”，若选项说“大幅提高基准税率”或“属于直接税/所得税”直接排除！</td>
+          </tr>
+          <tr>
+            <td><strong>7. 新修订《仲裁法》</strong><br>2025.9.12 通过<br><strong>2026.3.1 施行</strong></td>
+            <td>重大突破：增设<strong>“涉外仲裁地”</strong>制度、引入涉外海事等特定领域的<strong>“特别仲裁（临时仲裁）”</strong>制度、允许境外知名仲裁机构在自由贸易试验区开展涉外仲裁业务。</td>
+            <td>注意“特别仲裁”适用涉外海事或自贸区特定涉外争议，并非所有民间普通国内纠纷都随便用临时仲裁。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card card-trap">
+    <div class="card-title">⚖ 二、历年必考两部常青老法对照避坑卡（《公务员法》 &amp; 《民法典》侵权）</div>
+    <ul>
+      <li><strong>《公务员法》核心数字与程序铁律</strong>（<code>2020 Q3</code>, <code>2023 Q6</code>, <code>2024 Q11</code> 隔年连考）：
+        <ul>
+          <li><strong>试用期</strong>：新录用公务员试用期为 <strong>1 年</strong>（不是 6 个月，<code>2020 Q3</code>）；</li>
+          <li><strong>处分影响期（不得晋升职务/职级/级别）</strong>：警告 <strong>6 个月</strong>、记过 <strong>12 个月</strong>（<code>2023 Q6</code> 考第 9 个月晋升→错）、记大过 <strong>18 个月</strong>、降级/撤职 <strong>24 个月</strong>；注意：<strong>免职、辞退、降职均不属于处分</strong>！</li>
+          <li><strong>辞退与移送</strong>：连续 <strong>两年</strong> 年度考核不称职予以辞退（<code>2023 Q6 B 对</code>）；涉嫌职务违法和职务犯罪移送<strong>监察机关</strong>（不是公安机关，<code>2023 Q6 D 错</code>）；法律职业资格考试由<strong>司法部</strong>统一组织（<code>2024 Q11 A 错</code>）。</li>
+        </ul>
+      </li>
+      <li><strong>《民法典》侵权责任四大高频案例</strong>（<code>2022 Q3</code>, <code>2023 Q4</code>）：
+        <ul>
+          <li><strong>环境污染侵权</strong>：实行<strong>无过错责任 + 因果关系倒置</strong>（排污达标也赔；污染者证明不存在因果；不可抗力经及时抢救可免责，诉讼时效 <strong>3 年</strong>）；</li>
+          <li><strong>高空抛物</strong>：经调查难以确定具体侵权人的，由可能加害的建筑物使用人补偿，但<strong>能够证明自己不是侵权人（如证明不在家）的不承担补偿责任</strong>；</li>
+          <li><strong>饲养动物致人损害</strong>：未按规定采取安全措施（如出门不牵绳）造成损害的，即使系被受害人<strong>故意挑逗</strong>，也<strong>只能减轻责任，不能完全免责</strong>！</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: 排名第2-6位非法律专题 & 2026热点 ============ -->
+<section class="day-section" id="ck-hot">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0284c7">第三篇｜Rank 2–6 高频主题与今年（2026）硬核考点库</span>
+    <h1 class="day-title">03｜经济四本账、医学影像急救、2026 诺贝尔奖/中巴航天/超算与党史时间轴</h1>
+    <div class="day-meta">按重到轻精准投喂，拒绝无关琐碎细节</div>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">💰 第 2 位：财政预算“四本账”必背逻辑（对应 <code>2024 Q10</code>，当前财政发力热点）</div>
+    <p>我国政府预算由四部分组成，各自独立又有法定划转方向：<br>
+    ① <strong>一般公共预算</strong>（主体：税收/非税收入，用于民生/国防/教育）；② <strong>政府性基金预算</strong>（专款专用如土地出让金）；③ <strong>国有资本经营预算</strong>（央企/国企利润上缴，<strong>必须调入一般公共预算</strong>反哺民生）；④ <strong>社会保险基金预算</strong>（“养命钱”专款专用，<strong>绝对不能用于平衡一般公共预算，更不能调出给其他三本账！</strong> 对应 <code>2024 Q10 D 错</code>）。</p>
+  </div>
+
+  <div class="card card-intuition">
+    <div class="card-title">🩺 第 3 位：医学急救、维生素与诊断设备“1 分钟记忆对照表”（83% 命中率）</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>高频子考点</th><th>核心结论（记对比）</th><th>易错真题坑位</th></tr></thead>
+        <tbody>
+          <tr><td><strong>医学诊断设备</strong><br>(<code>2025 Q20</code>)</td><td>• <strong>CT / X光</strong>：利用 <strong>X 射线</strong>（有电离辐射）；<br>• <strong>MRI（核磁共振）</strong>：利用<strong>强磁场 + 射频脉冲</strong>激发氢质子（<strong>无电离辐射</strong>，体内有金属起搏器禁忌）；<br>• <strong>B超</strong>：利用<strong>超声波</strong>；• <strong>伽马刀</strong>：放射性钴-60 伽马射线立体定向放疗；• <strong>ECMO</strong>：体外膜肺氧合（人工心肺）。</td><td><code>2025 Q20 D 错</code> 故意说“CT 利用超声波对人体扫描”！</td></tr>
+          <tr><td><strong>急救与传染病</strong><br>(<code>2020 Q8/10</code>, <code>2022 Q10</code>)</td><td>• <strong>海姆立克急救法</strong>：正常成人立位<strong>腹部冲击</strong>（肚脐上两指）；<strong>孕妇与极度肥胖者改用胸部冲击法</strong>；<strong>1岁以下婴儿用“拍背+压胸”5+5，严禁直接压腹！</strong>；<br>• <strong>消毒避坑</strong>：75% 酒精杀菌最佳（95% 使蛋白凝固形成保护膜反而不易进入菌体）；84 消毒液（次氯酸钠）严禁混用洁厕灵（盐酸），会生成剧毒<strong>氯气</strong>；<br>• <strong>传病途径</strong>：细菌性痢疾/甲肝/霍乱经<strong>粪口传播</strong>；乙肝血液/母婴/性；疟疾按蚊传播。</td><td><code>2022 Q10 C 错</code> 称海姆立克“必须腹部按压”！</td></tr>
+          <tr><td><strong>维生素缺乏症</strong><br>(<code>2024 Q20</code>)</td><td>• 缺 <strong>Vit A</strong> → 夜盲症/干眼症；• 缺 <strong>Vit B1</strong> → 脚气病（多发性神经炎）；• 缺 <strong>Vit C</strong> → <strong>坏血病（牙龈出血）</strong>；• 缺 <strong>Vit D</strong> → 儿童佝偻病/成人骨软化（促进钙磷吸收）。</td><td><code>2024 Q20 D 错</code> 把“牙龈出血”安给了维生素 D！</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card card-trick">
+    <div class="card-title">🛰 第 4 位：2026 年科技里程碑与诺贝尔自然科学奖必背清单 <span class="net-tag">联网核查·新华社/中科院</span></div>
+    <ul>
+      <li><strong>2026 年 10 月诺贝尔自然科学三大奖</strong>：
+        <ul>
+          <li><strong>生理学或医学奖</strong>：卡尔·戴塞罗思、彼得·黑格曼、格奥尔格·内格尔——发现<strong>“光门控离子通道和光遗传学”</strong>（用光精准调控神经元活动）。</li>
+          <li><strong>物理学奖</strong>：弗朗西斯·哈尔岑——对<strong>冰立方中微子天文台（IceCube）</strong>决定性贡献并发现天体物理起源的高能中微子。</li>
+          <li><strong>化学奖</strong>：亨利·卡根、索合宪昭——发现不对称有机合成中的<strong>非线性效应和自催化现象</strong>（理解分子手性与药物合成）。</li>
+        </ul>
+      </li>
+      <li><strong>2026 中国航天（创建 70 周年）与重大科创时间排位</strong>：
+        <ul>
+          <li><strong>2026.1</strong>：<strong>神舟二十号</strong>成功应对空间碎片撞击险情，启动中国载人航天史上首次应急发射与换乘安全返回。</li>
+          <li><strong>2026.6 / 2026.11</strong>：深圳研制国产 <strong>“灵晟”E 级超算</strong>（2.198 EFlops，全 CPU 超智融合国产架构）连续在第 67 期及 SC26 <strong>蝉联全球超算 TOP500 榜首</strong>！</li>
+          <li><strong>2026.11.24–25（考前十余天大热）</strong>：<strong>神舟二十四号</strong>载人飞行首次执行<strong>中巴航天员联合飞行</strong>，巴基斯坦载荷专家穆罕默德·齐尚·阿里进驻中国空间站，成为<strong>中国空间站首位外籍航天员</strong>！</li>
+          <li><em>复习旧坐标防排错题（参照 <code>2025 Q17</code>）</em>：神舟十号(2013) → 墨子号(2016) → 二氧化碳合成淀粉/天和核心舱(2021) → 问天/梦天/白鹤滩全投产(2022) → 嫦娥六号月背采样/梦想号大洋钻探船入列(2024.11.17) → 2026 神二十应急/神二十四中巴联合！</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card card-example">
+    <div class="card-title">📜 第 5–6 位：党史长征时间轴 &amp; 书画排序“一眼坐标卡”</div>
+    <ul>
+      <li><strong>红军长征重要节点时间先后（紧扣 2026 长征胜利 90 周年！）</strong>：1934.10 瑞金出发 → 1934.11 湘江战役 → <strong>1935.1 遵义会议</strong>（生死攸关转折点） → 四渡赤水 → 巧渡金沙江 → 强渡大渡河/飞夺泸定桥 → 爬雪山过草地 → 1935.10 中央红军吴起镇会师 → <strong>1936.10 红一/二/四方面军甘肃会宁会师</strong>（长征胜利结束）！</li>
+      <li><strong>高频书画/成语年代轴（对应 <code>2021 Q9</code>, <code>2024 Q18</code>）</strong>：顾恺之/王羲之“矫若游龙”（<strong>东晋</strong>） → 张僧繇“画龙点睛”（<strong>南北朝·梁</strong>） → 吴道子“吴带当风”（<strong>唐</strong>） → 文同“胸有成竹”（<strong>北宋</strong>） → 张择端《清明上河图》（北宋）/王希孟《千里江山图》（北宋） → 黄公望《富春山居图》（<strong>元</strong>）。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: 常识盲测与缺题核查 ============ -->
+<section class="day-section" id="ck-quiz">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0891b2">第四篇｜重点常识真题盲测（解析默认关闭）</span>
+    <h1 class="day-title">04｜常识核心母题逐项拆解与缺题诚实说明</h1>
+    <div class="day-meta">不光给答案，必须看懂 A/B/C/D 每一项的法理或科学硬伤在哪</div>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 1｜新修订法律职权边界</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q15</span></div>
+    <div class="q-stem">根据《中华人民共和国保守国家秘密法》，下列说法错误的是：</div>
+    <ul class="q-opts">
+      <li>A. 机关单位应当实行保密工作责任制，依法设置保密工作机构或者指定专人负责保密工作</li>
+      <li>B. 国家将保密教育纳入国民教育体系和公务员教育培训体系</li>
+      <li>C. 省级机关、市级机关及其授权的机关、单位可以确定绝密级、机密级和秘密级国家秘密</li>
+      <li>D. 县级以上人民政府应当将保密工作纳入本级国民经济和社会发展规划，将保密工作所需经费列入本级财政预算</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开定密权限分层解析</summary><div class="sol-body">
+      <p><strong>推导答案：C 错误</strong>。</p>
+      <p>2024 年新修订《保守国家秘密法》第 17 条严格分级授权：<strong>中央国家机关、省级机关及其授权的机关、单位</strong>可以确定“绝密级、机密级和秘密级”；<strong>设区的市级机关及其授权的机关、单位</strong>只能确定<strong>“机密级和秘密级”</strong>，绝无“绝密级”定密权！C 项把“市级机关”与省级并列拥有绝密级定密权，属典型越级扩权。</p>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 2｜刚生效行政应急法</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q16</span></div>
+    <div class="q-stem">根据《突发事件应对法》相关规定，以下哪项是错误的？</div>
+    <ul class="q-opts">
+      <li>A. 甲县某地遭强龙卷风突袭后，当地政府应立即启动应急预案，组织救援并上报上级政府</li>
+      <li>B. 乙市A县与丙市B县交界处突发严重洪涝灾害，若影响范围跨省或超出省级处置能力，需国务院统一领导应对</li>
+      <li>C. 丁县发生严重的山体滑坡事故，需要进行网络实时直播</li>
+      <li>D. 戊市政府发布的突发事件应对措施，如限制交通、征用物资等，应符合比例原则，并依法保障公民合法权益</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开新修《突发事件应对法》要点拆解</summary><div class="sol-body">
+      <p><strong>推导答案：C 错误</strong>。</p>
+      <ul>
+        <li><strong>A 对</strong>：第 17 条属地管理与分级负责，事发县级政府必须第一时间启动响应、救援并上报；</li>
+        <li><strong>B 对</strong>：第 18 条跨行政区联动及省级无力控制需国务院统一领导；</li>
+        <li><strong>D 对</strong>：2024 年新修订第 15 条首次将<strong>“比例原则”</strong>明确写入应急法律（采取措施须与危害程度相适应，有多种措施时选最大程度保护公民权益的一种）；</li>
+        <li><strong>C 错</strong>：法律要求统一、准确、及时发布信息并支持媒体采访监督，绝不要求“必须网络实时直播”，滑坡现场直播极易引发二次次生灾害与恐慌。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 3｜文学朝代人物张冠李戴</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q18</span></div>
+    <div class="q-stem">下列诗句、名言与四大名著对应错误的是（回忆核心选项对照）：<br>
+    A.“满纸荒唐言，一把辛酸泪”——《红楼梦》 &nbsp; B.“江东弟子今犹在，肯与君王卷土来”——《三国演义》 &nbsp; C.“滚滚长江东逝水……”——《三国演义》 &nbsp; D.“莫道不销魂，帘卷西风，人比黄花瘦”（或水浒诗句）</div>
+    <details class="sol"><summary>👉 点击展开名著诗句排雷</summary><div class="sol-body">
+      <p><strong>推导答案：B 错误</strong>。“胜败兵家事不期，包羞忍耻是男儿。江东子弟多才俊，卷土重来未可知”为晚唐<strong>杜牧《题乌江亭》</strong>，“江东弟子今犹在，肯与君王卷土来”为宋代<strong>王安石《乌江亭》</strong>，两者均咏<strong>楚汉争霸时期的项羽</strong>，与《三国演义》无关！</p>
+    </div></details>
+  </div>
+
+  <div class="q-box">
+    <div class="q-head"><span>题 4｜科技成就时间排序实战</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q17</span></div>
+    <div class="q-stem">下列我国重大科技成就按出现时间先后排序正确的是：<br>
+    ①人工合成淀粉技术突破 &nbsp; ②神舟十号完成首次太空授课 &nbsp; ③世界首颗量子科学实验卫星“墨子号”发射 &nbsp; ④我国首艘大洋钻探船“梦想”号正式入列</div>
+    <ul class="q-opts"><li>A. ②③①④ &nbsp;&nbsp; B. ②①③④ &nbsp;&nbsp; C. ③②①④ &nbsp;&nbsp; D. ①③②④</li></ul>
+    <details class="sol"><summary>👉 点击展开“抓头抓尾秒排序”拆解</summary><div class="sol-body">
+      <p><strong>推导答案：A（②③①④）</strong>。</p>
+      <ul>
+        <li>不用全背精确月份，抓“头尾双锚”即可：② 神舟十号王亚平首次太空授课是十多年前的 <strong>2013 年 6 月</strong>（最早）；④“梦想号”正式入列就在考前仅 21 天的 <strong>2024 年 11 月 17 日</strong>（最新！）。头 ② 尾 ④ 直接把选项压到仅剩 A/C，再确认“墨子号”发射于 <strong>2016 年 8 月</strong>，早于 2021 年中科院二氧化碳人工合成淀粉，锁定 A！</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="card card-trap">
+    <div class="card-title">📋 缺题联网核查诚实公告（2022 常识 Q8–Q9）</div>
+    <p>经本地原文检查，<code>[2022年山东省公务员录用考试《行测》试题（网友回忆版）.pdf | 2022 | Q8–Q9]</code> 为粉笔征集缺失占位；同卷相邻 <code>Q7</code> 为“植物自我保护机制（西红柿番茄碱/龙葵素、夹竹桃气味、含羞草闭合）”、<code>Q10</code> 为“海姆立克急救法”。经联网多方搜索，仍<strong>【无法一对一交叉确认 2022 山东卷缺失的第 8 题与第 9 题完整可靠原题干】</strong>，按严格防幻觉原则如实留空，绝不凭猜测拼凑两道假题填充！</p>
+  </div>
+</section>
+
+<div class="sub-footer-nav"><a href="山东省考7天冲刺精准提分讲义.html">📘 返回山东省考总纲目录</a><a class="alt" href="sd_01_政治理论详讲.html">← 上一模块：01 政治理论</a><a class="alt" href="sd_03_言语理解详讲.html">下一模块：03 言语理解 →</a></div>
+  </main>
+</div>
+
+<script defer src="assets/katex/katex/katex.min.js"></script>
+<script defer src="assets/katex/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script>
+const STORAGE_KEY = 'sd_v2_m02';
+function saveCheck() {
+  const boxes = document.querySelectorAll('.nav-item input[type="checkbox"]');
+  const state = {};
+  let done = 0;
+  boxes.forEach(b => { state[b.dataset.sec] = b.checked; if (b.checked) done++; });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  const pt = document.getElementById('progText');
+  const pf = document.getElementById('progFill');
+  if (pt) pt.textContent = done + ' / ' + boxes.length;
+  if (pf && boxes.length) pf.style.width = Math.round(done * 100 / boxes.length) + '%';
+}
+function loadCheck() {
+  try {
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('.nav-item input[type="checkbox"]').forEach(b => {
+      if (state[b.dataset.sec]) b.checked = true;
+    });
+  } catch (e) {}
+  saveCheck();
+}
+// Requirement #7: NEVER open details.sol on initial load; stay collapsed by default until user clicks!
+let allSolExpanded = false;
+function toggleAllSol() {
+  allSolExpanded = !allSolExpanded;
+  document.querySelectorAll('details.sol').forEach(d => d.open = allSolExpanded);
+  const btn = document.getElementById('toggleSolBtn');
+  if (btn) btn.textContent = allSolExpanded ? '🙈 收起全部解析' : '👁 展开全部解析';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('details.sol').forEach(d => d.open = true);
+});
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => { if (window.innerWidth <= 960) closeSidebar(); });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => { topBtn.classList.toggle('show', window.scrollY > 420); }, { passive: true });
+}
+loadCheck();
+</script>
+
+</body>
+</html>

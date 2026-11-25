@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05｜判断推理详讲：花生十三图推与逻辑矩阵</title>
+  <link rel="stylesheet" href="assets/katex/katex/katex.min.css" />
+  <style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --blue: #2563eb; --blue-bg: #eff6ff;
+  --green: #059669; --green-bg: #ecfdf5;
+  --red: #dc2626; --red-bg: #fef2f2;
+  --purple: #7c3aed; --purple-bg: #f5f3ff;
+  --amber: #d97706; --amber-bg: #fffbeb;
+  --cyan: #0891b2; --cyan-bg: #ecfeff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 15.3px;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+.layout { display: flex; min-height: 100vh; width: 100%; }
+.sidebar {
+  width: 292px;
+  background: #0f172a;
+  color: #e2e8f0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  padding: 18px 15px 44px;
+  z-index: 260;
+  transition: transform 0.25s ease;
+}
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.5); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.sidebar-title { font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 0 0 3px; letter-spacing: 0.3px; }
+.sidebar-sub { font-size: 11.8px; color: #94a3b8; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b; }
+.progress-box { background: #1e293b; border-radius: 8px; padding: 9px 11px; margin-bottom: 11px; font-size: 12.5px; }
+.progress-bar-wrap { background: #334155; height: 7px; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+.progress-bar-fill { background: linear-gradient(90deg, #10b981, #38bdf8); height: 100%; width: 0%; transition: width 0.25s; }
+.btn-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.btn {
+  flex: 1 1 88px; min-height: 34px; border: none; border-radius: 6px; padding: 6px 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer; background: #2563eb; color: #fff;
+  text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+}
+.btn.secondary { background: #334155; }
+.btn.emerald { background: #059669; }
+.btn.slate { background: #475569; }
+.btn:hover { opacity: 0.92; }
+.mod-switcher {
+  width: 100%; margin: 2px 0 10px; padding: 7px 9px; border-radius: 7px;
+  background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 12.5px; font-weight: 700; cursor: pointer;
+}
+.nav-group-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin: 13px 0 6px 5px; letter-spacing: 0.6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px;
+  color: #cbd5e1; text-decoration: none; font-size: 12.8px; margin-bottom: 3px; transition: background 0.15s;
+}
+.nav-item:hover { background: #1e293b; color: #fff; }
+.nav-item input[type="checkbox"] { accent-color: #10b981; cursor: pointer; flex-shrink: 0; width: 15px; height: 15px; }
+.nav-item .nav-text { flex: 1; line-height: 1.38; }
+
+.main { margin-left: 292px; flex: 1; min-width: 0; width: 100%; padding: 28px 34px 88px; max-width: 1060px; }
+.cover-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #0e7490 100%);
+  color: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+.cover-banner.theme-red { background: linear-gradient(135deg, #1e1b4b 0%, #991b1b 55%, #b45309 100%); }
+.cover-banner.theme-amber { background: linear-gradient(135deg, #0f172a 0%, #92400e 55%, #b45309 100%); }
+.cover-banner.theme-purple { background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 55%, #2563eb 100%); }
+.cover-banner.theme-green { background: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0e7490 100%); }
+.cover-banner.theme-cyan { background: linear-gradient(135deg, #0f172a 0%, #0e7490 55%, #0284c7 100%); }
+.cover-eyebrow {
+  display: inline-block; font-size: 11.8px; font-weight: 800; padding: 3px 11px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 10px;
+}
+.cover-banner h1 { margin: 0 0 8px; font-size: 25px; line-height: 1.3; }
+.cover-banner p { margin: 0 0 12px; color: #e0f2fe; font-size: 14.5px; }
+.cover-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.cover-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); padding: 3px 11px; border-radius: 99px; font-size: 12.2px; font-weight: 600; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.cover-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-decoration: none; color: #fff; background: rgba(16,185,129,0.92);
+}
+.cover-btn.ghost { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34); }
+.cover-btn:hover { opacity: 0.92; }
+
+/* Hub 7-module directory grid */
+.mod-dir-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0 8px; }
+.mod-dir-card {
+  background: #ffffff; border: 1px solid var(--border); border-left: 5px solid var(--blue);
+  border-radius: 12px; padding: 15px 17px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); transition: transform 0.14s, box-shadow 0.14s;
+}
+.mod-dir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+.mod-dir-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.mod-dir-badge { font-size: 11px; font-weight: 800; color: #fff; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.mod-dir-card h3 { margin: 0 0 6px; font-size: 16px; color: #0f172a; }
+.mod-dir-card p { margin: 0 0 11px; font-size: 13.2px; color: #475569; line-height: 1.58; }
+.mod-dir-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 13px; border-radius: 8px; background: #0f172a; color: #fff;
+  text-decoration: none; font-size: 13px; font-weight: 700; min-height: 38px;
+}
+.mod-dir-link:hover { opacity: 0.92; }
+
+.day-section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 25px 28px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 16px;
+}
+.day-header { border-bottom: 3px solid #0f172a; padding-bottom: 11px; margin-bottom: 16px; }
+.day-tag { display: inline-block; padding: 3px 11px; border-radius: 99px; font-size: 11.8px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.day-title { margin: 4px 0 5px; font-size: 21px; color: #0f172a; line-height: 1.32; }
+.day-meta { font-size: 13.5px; color: var(--muted); }
+
+h2 { font-size: 17.5px; color: #0f172a; margin: 22px 0 10px; padding-left: 11px; border-left: 4px solid var(--blue); break-after: avoid; }
+h3 { font-size: 15.5px; color: #1e3a8a; margin: 16px 0 8px; break-after: avoid; }
+p { margin: 8px 0; overflow-wrap: break-word; }
+ul, ol { margin: 6px 0 10px; padding-left: 22px; }
+li { margin-bottom: 5px; overflow-wrap: break-word; }
+
+.card { border-radius: 10px; padding: 14px 18px; margin: 14px 0; border-left: 5px solid; break-inside: avoid; }
+.card-title { font-weight: 800; font-size: 14.5px; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.card-intuition { background: var(--green-bg); border-color: var(--green); }
+.card-intuition .card-title { color: #065f46; }
+.card-formula { background: var(--blue-bg); border-color: var(--blue); }
+.card-formula .card-title { color: #1e40af; }
+.card-trap { background: var(--red-bg); border-color: var(--red); }
+.card-trap .card-title { color: #991b1b; }
+.card-trick { background: var(--purple-bg); border-color: var(--purple); }
+.card-trick .card-title { color: #5b21b6; }
+.card-example { background: var(--amber-bg); border-color: var(--amber); }
+.card-example .card-title { color: #92400e; }
+.card-quiz { background: var(--cyan-bg); border-color: var(--cyan); }
+.card-quiz .card-title { color: #155e75; }
+
+.q-box {
+  background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #d97706;
+  border-radius: 10px; padding: 15px 18px; margin: 16px 0; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 800; color: #92400e; font-size: 14.2px; }
+.q-stem { background: #fffbeb; border-radius: 7px; padding: 10px 13px; margin: 8px 0 10px; font-size: 14.4px; line-height: 1.72; color: #1e293b; }
+.q-opts { margin: 6px 0 10px; padding-left: 6px; list-style: none; font-size: 14px; color: #334155; }
+.q-opts li { margin-bottom: 4px; }
+
+.hl-yellow { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #713f12; }
+.hl-pink { background: #fecdd3; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #881337; }
+.hl-blue { background: #bfdbfe; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1e3a8a; }
+.badge-p0 { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p1 { display: inline-block; background: #d97706; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-p2 { display: inline-block; background: #0284c7; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-easy { display: inline-block; background: #059669; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+.badge-skip { display: inline-block; background: #64748b; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 8px; border-radius: 4px; vertical-align: middle; }
+
+.src-tag {
+  display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569;
+  font-size: 11.5px; padding: 1px 7px; border-radius: 4px; font-family: Consolas, monospace;
+}
+.net-tag {
+  display: inline-block; background: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;
+  font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+}
+.missing-tag {
+  display: inline-block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+}
+.template-box {
+  background: #f8fafc; border: 1px dashed #64748b; border-radius: 8px; padding: 12px 15px;
+  font-size: 13.8px; line-height: 1.75; margin: 10px 0;
+}
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0; font-size: 13.5px; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: #1e293b; color: #ffffff; text-align: left; padding: 8px 10px; font-weight: 700; }
+td { border: 1px solid #cbd5e1; padding: 7px 10px; vertical-align: top; overflow-wrap: break-word; }
+tr:nth-child(even) td { background: #f8fafc; }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { text-align: center; margin: 14px 0; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; break-inside: avoid; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+
+/* Default CLOSED collapsible derivation blocks */
+details.sol {
+  margin-top: 8px; background: #f8fafc; border: 1.5px dashed #0891b2; border-radius: 8px; padding: 8px 13px;
+}
+details.sol[open] { background: #f0fdfa; border-style: solid; }
+details.sol > summary {
+  cursor: pointer; font-weight: 800; color: #0e7490; font-size: 13.5px; user-select: none; list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+details.sol > summary::before { content: "▶"; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+details.sol[open] > summary::before { transform: rotate(90deg); }
+details.sol > summary::-webkit-details-marker { display: none; }
+.sol-body { margin-top: 9px; padding-top: 8px; border-top: 1px solid #bae6fd; font-size: 14px; line-height: 1.72; color: #1e293b; }
+
+.day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.day-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 15px; break-inside: avoid; }
+.day-col h4 { margin: 0 0 8px; font-size: 14.5px; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+
+.sub-footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  margin-top: 28px; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-radius: 12px;
+}
+.sub-footer-nav a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px; border-radius: 8px;
+  background: #0f172a; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; min-height: 40px;
+}
+.sub-footer-nav a.alt { background: #2563eb; }
+.sub-footer-nav a:hover { opacity: 0.92; }
+
+.mobile-toggle {
+  display: none; align-items: center; gap: 6px; position: fixed; bottom: 18px; right: 18px; z-index: 300;
+  background: #0f172a; color: #fff; border: 2px solid #38bdf8; border-radius: 99px;
+  padding: 10px 16px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,0.28); cursor: pointer;
+}
+.back-to-top {
+  display: none; align-items: center; justify-content: center; position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px; padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 256px; }
+  .main { margin-left: 256px; padding: 22px 22px 76px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 305px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 16px 16px 92px; max-width: 100%; }
+  .mod-dir-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 18px 16px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.7px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 19px 15px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 20.5px; }
+  .cover-banner p { font-size: 13.8px; }
+  .day-section { padding: 15px 13px; border-radius: 12px; margin-bottom: 16px; }
+  .day-title { font-size: 18.5px; }
+  h2 { font-size: 16.2px; }
+  h3 { font-size: 14.8px; }
+  .card, .q-box { padding: 12px 13px; }
+  table { font-size: 12.6px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm 11mm 13mm 11mm; }
+  body { background: #fff; font-size: 12.6px; line-height: 1.56; }
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions, .sub-footer-nav { display: none !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+  .day-section { border: none; box-shadow: none; padding: 0; margin: 0 0 18px; }
+  details.sol { border-style: solid; }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开或关闭目录">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">05｜判断推理详讲</div>
+    <div class="sidebar-sub">B级核心稳分 · 40题 ≤32分钟</div>
+    <div class="progress-box">
+      <div>本页学习打卡：<strong id="progText">0 / 2</strong></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progFill"></div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="toggleSolBtn" onclick="toggleAllSol()">👁 展开全部解析</button>
+      <button class="btn secondary" onclick="window.print()">🖨 打印页面</button>
+    </div>
+    <div class="btn-row"><a class="btn emerald" href="山东省考7天冲刺精准提分讲义.html">📘 省考总纲</a><a class="btn slate" href="index.html">🌐 学习中心</a></div>
+    <select class="mod-switcher" aria-label="快速切换省考模块页面" onchange="if(this.value)location.href=this.value;"><option value="山东省考7天冲刺精准提分讲义.html">主控｜省考总纲与7天认知日程</option><option value="sd_01_政治理论详讲.html">01｜政治理论｜政策映射与2027预测</option><option value="sd_02_常识判断详讲.html">02｜常识判断｜重→轻概率与新法</option><option value="sd_03_言语理解详讲.html">03｜言语理解｜花生十三法+高频词</option><option value="sd_04_数量关系详讲.html">04｜数量关系｜必拿母题与极限模型</option><option value="sd_05_判断推理详讲.html" selected>05｜判断推理｜图推/定义/类比/逻辑</option><option value="sd_06_资料分析详讲.html">06｜资料分析｜415/假设分配/盐水</option><option value="sd_07_申论B卷详讲.html">07｜申论 B 卷｜踩点/公文/单字作文</option></select>
+    <div class="nav-group-label">一 · 花生十三判断体系</div><a class="nav-item" href="#pd-method"><input type="checkbox" data-sec="pd-method" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">01｜图推/定义/类比/逻辑框架</span></a><div class="nav-group-label">二 · 10道真题全步盲测</div><a class="nav-item" href="#pd-quiz"><input type="checkbox" data-sec="pd-quiz" onclick="event.stopPropagation();saveCheck()"><span class="nav-text">02｜定义/类比/论证/翻译/矩阵精讲</span></a>
+  </aside>
+  <main class="main">
+    
+<div class="cover-banner">
+  <span class="cover-eyebrow">模块 05｜B 级核心稳分阵地（40 题：图推10 + 定义10 + 类比10 + 逻辑10）</span>
+  <h1>判断推理详讲：花生十三图推/翻译/加强削弱/矩阵全系实操</h1>
+  <p>基于 9 套 320 道判断推理真题结构 + 花生十三全模块体系：图形推理“对称5维+奇点笔画+三不沾口诀”，定义判断“提问正误+六要素”，类比推理“先横后纵二级辨析”，逻辑判断“逆否德摩根+肯德基原则+搭桥拆桥基数比例+分析矩阵”，配 10 道 2023–2025 真实母题默认折叠精析</p>
+  <div class="cover-pills">
+    <span class="cover-pill">🎨 图推：45秒不出会则先跳</span>
+    <span class="cover-pill">🔗 逻辑：加强削弱占近 60%</span>
+    <span class="cover-pill">🧮 分析推理：矩阵打勾稳破</span>
+  </div>
+  <div class="cover-actions">
+    <a class="cover-btn ghost" href="sd_04_数量关系详讲.html">← 上一模块：04 数量关系</a>
+    <a class="cover-btn ghost" href="山东省考7天冲刺精准提分讲义.html">📘 返回省考总纲</a>
+    <a class="cover-btn ghost" href="sd_06_资料分析详讲.html">下一模块：06 资料分析 →</a>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: 四大题型花生十三法总览 ============ -->
+<section class="day-section" id="pd-method">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0284c7">第一篇｜花生十三判断推理四大体系</span>
+    <h1 class="day-title">01｜图推、定义、类比、逻辑四大题型考场实战框架（32 分钟 ≤40 题）</h1>
+    <div class="day-meta">统计口径：9 套共 320 题；2024 起回归每套 40 题（四类各 10 题），2025 卷缺 Q62/Q66 图推、Q91–93/Q99–100 逻辑（经核无可靠原题，不编造）</div>
+  </div>
+
+  <div class="day-grid">
+    <div class="day-col">
+      <h4>📐 一、图形推理（10 题，图推 45 秒止损法）</h4>
+      <ul>
+        <li><strong>考情特征</strong>：平面规律约 5 题 + 分组分类 2–3 题 + 立体（六面体/截面/三视图/展开图）2–3 题。</li>
+        <li><strong>花生十三口诀：特征图先定位 → 细节定规律</strong>：
+          <ul>
+            <li><strong>对称细化（第一高频）</strong>：别只看轴对称/中心对称！要看<strong>对称轴数量（1/2/3/递增）</strong>、<strong>对称轴旋转方向（每次45°/90°）</strong>、<strong>对称轴过点还是过线</strong>、分组里两条对称轴是垂直还是平行！</li>
+            <li><strong>笔画数（必考硬招）</strong>：见“日/田字变形、五角星、圆相切相交、端点多”，立刻数<strong>奇点（发出奇数条线的点，端点也是奇点！）</strong>。公式：$\text{笔画数}=\frac{\text{奇点数}}{2}$（连通图奇点为 0 或 2 是一笔画）。</li>
+            <li><strong>“三不沾”破局</strong>：当点线面角素、对称全不沾边，立刻退回宏观：看<strong>部分数（连体/分离几部分）</strong>、<strong>黑白块移动/面积/位置叠加</strong>、<strong>曲直性交替</strong>！</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="day-col">
+      <h4>📌 二、定义判断 &amp; 类比推理（各 10 题，追求 16+/20）</h4>
+      <ul>
+        <li><strong>定义判断（花生十三“要素对比择优”）</strong>：
+          <ol>
+            <li>先看提问是“属于”还是“<strong>不属于/不符合</strong>”；</li>
+            <li>圈死“主体（行政人员/司法机关）、时间限制（<strong>在工作中</strong>）、方式、目的”；</li>
+            <li>定义很长时<strong>首句核心定义优先</strong>；多定义（如内部证成 vs 外部证成）直接比对两者边界差异；不纠结完美，<strong>对比择优</strong>！</li>
+          </ol>
+        </li>
+        <li><strong>类比推理（花生十三“先横后纵 + 精细造句”）</strong>：
+          <ul>
+            <li>先判断大关系：<strong>种属（能用“A是B”） vs 组成（能用“A是B的一部分”）</strong>、近反义、顺承、原材料/工具/功能；</li>
+            <li>出现两个选项都符合，立刻做<strong>二级辨析</strong>：看词语语法结构（动宾/偏正/主谓）、感情色彩褒贬、主动被动、物理变化 vs 化学变化！</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card card-formula">
+    <div class="card-title">🔗 三、逻辑判断（花生十三“翻译公式 + 加强削弱力度尺 + 矩阵推理”）</div>
+    <ul>
+      <li><strong>1. 翻译推理铁律</strong>：
+        <ul>
+          <li><code>只要…就… / 如果…那么…</code> → <strong>前推后</strong> ($A \to B$)；</li>
+          <li><code>只有…才… / 必备前提是…</code> → <strong>后推前</strong>（例：“必备战略思路是坚持稳中求进”即 <code>落实→坚持稳中求进</code>，见 <code>2024 Q97</code>）；</li>
+          <li><code>除非 A 否则 B</code> → 去“除非”改“否则”加否：$\neg A \to B$（或 $\neg B \to A$）；</li>
+          <li><strong>三大推理公式</strong>：① <strong>肯前必肯后，否后必否前</strong>，否前肯后无必然；② <strong>德摩根定律</strong> $\neg(A\land B)=\neg A\lor\neg B$；③ <strong>“或”命题肯德基原理</strong> $A\lor B \equiv \neg A\to B$（否定一个必得另一个）。</li>
+        </ul>
+      </li>
+      <li><strong>2. 加强与削弱（占比近 60%！）</strong>：
+        <ul>
+          <li><strong>力度天梯</strong>：直接否定论点/拆桥（或搭桥） $\gt$ 因果倒置 / 无A无B对比实验 $\gt$ 另有他因/补充论据 $\gt$ 举个体反例/类比。</li>
+          <li><strong>必防两大坑</strong>：① <strong>话题不一致/主体偷换</strong>直接斩；② <strong>忽视基数/比例谬误</strong>（见 <code>2023 Q69</code>：90%不及格者打游戏，若全校 90%人都打游戏则无因果！）。</li>
+        </ul>
+      </li>
+      <li><strong>3. 分析推理（“一拖五”及 5 人条件匹配）</strong>：优先找<strong>最大信息</strong>（出现次数最多的人/条件）或用<strong>选项代入</strong>；遇到双属性匹配直接画 2×N 计数表！</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: 真题实战盲测精讲 ============ -->
+<section class="day-section" id="pd-quiz">
+  <div class="day-header">
+    <span class="day-tag" style="background:#0891b2">第二篇｜10 道 2023–2025 判断真题实战盲测（全部默认折叠）</span>
+    <h1 class="day-title">02｜用花生十三法逐题推演定义、类比与逻辑（2023–2025）</h1>
+    <div class="day-meta">所有题干与选项均 100% 源自工作区真实真题</div>
+  </div>
+
+  <!-- 定义 1 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 1｜定义判断：抓时间与身份限定</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q75</span></div>
+    <div class="q-stem">公共责任是指国家公共管理部门的行政人员，<strong>在工作中</strong>必须对国家权力主体负责，必须提高自身职责的履行，来为国民谋利益。<br>根据上述定义，下列属于履行公共责任的是：</div>
+    <ul class="q-opts">
+      <li>A. 某市交通局小王遇到一个老人突发心脏病，协助路面的车辆将老人送到医院</li>
+      <li>B. 某市税务局小张审核纳税记录时，发现一个企业漏报了税项，随即要求企业进行补缴</li>
+      <li>C. 某市民政局小石上班途中，发现一个儿童溺水，立刻跳到水中进行营救</li>
+      <li>D. 某市检察院小李和老同学吃饭聊天，发现其受贿，劝其立刻向组织交代</li>
+    </ul>
+    <details class="sol"><summary>👉 先圈出定义关键词再展开校验</summary><div class="sol-body">
+      <p><strong>推导答案：B</strong>。</p>
+      <p>紧扣花生十三要素法两大硬要件：① <strong>“在工作中”</strong> + ② <strong>“自身职责的履行”</strong>。A（路遇急救）、C（上班途中救人）、D（私人吃饭聊天）全属于<strong>非工作履职时段或非自身岗位职权行为</strong>（且 D 主体为检察院工作人员，并非“公共管理部门行政人员”）；只有 B（税务局审核纳税记录要求补缴）100% 命中“在工作中+履行本职职责”，秒选 B！</p>
+    </div></details>
+  </div>
+
+  <!-- 定义 2 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 2｜多定义精准切割</span> <span class="src-tag">2024年山东省考《行测》.pdf | 2024 | Q75</span></div>
+    <div class="q-stem">法律证成是给一个具体法律决定提供充足理由的活动或过程，可分为内部证成和外部证成。<strong>内部证成</strong>是指法律决定必须按照一定的推理规则从相关前提中逻辑地推导出来的活动或过程。<strong>外部证成</strong>是指对法律决定所依赖的前提进行寻找、判断与论证的活动或过程。<br>根据上述定义，下列说法正确的是：</div>
+    <ul class="q-opts">
+      <li>A. 某基层人民法院法官就其裁判中所适用的公序良俗原则进行正当性论证属于外部证成</li>
+      <li>B. 某市监狱管理局执法人员就存在冲突的法律条文进行优先适用论证属于内部证成</li>
+      <li>C. 某设区的市人大常委会就新修订法规的实施情况组织专家评估属于法律证成</li>
+      <li>D. 某市公安局依据法律条文对张某散布谣言的行为处以行政拘留不涉及法律证成</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开“推导(内部) vs 论证前提(外部)”区分</summary><div class="sol-body">
+      <p><strong>推导答案：A</strong>。</p>
+      <ul>
+        <li><strong>分清边界</strong>：内部＝“从前提推结论”；外部＝“论证所依赖的<strong>前提</strong>本身合不合法/正不正当”。</li>
+        <li>A 项“公序良俗原则”就是裁判所依赖的大前提，法官证明它“正当适用”正是<strong>论证前提</strong>→外部证成（对！）；</li>
+        <li>B 项争论法律条文冲突该适用哪条，也是在<strong>寻找和判断前提</strong>，应属外部证成（不是内部）；C 项评估法规实施情况并非给“具体法律决定”提供理由；D 项依据法条作行政拘留正是用前提推决定（涉及内部证成）。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <!-- 类比 1 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 3｜类比推理：种属 vs 组成防错铁题</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q88</span></div>
+    <div class="q-stem">公共汽车：汽车：交通工具</div>
+    <ul class="q-opts">
+      <li>A. 年工资：月工资：工资</li>
+      <li>B. 实词：名词：专有名词</li>
+      <li>C. 济南市：山东省：中国</li>
+      <li>D. 单独概念：概念：思维形式</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开“造句法 + 顺序层级”秒杀</summary><div class="sol-body">
+      <p><strong>推导答案：D</strong>。</p>
+      <p>逐级用<strong>“A 是 B 的一种”</strong>造句检验：“公共汽车是汽车的一种，汽车是交通工具的一种”（逐级扩大<strong>种属关系</strong>）。<br>
+      • A 前两项是按周期并列；• B 顺序彻底倒反（专有名词才是名词的一种，名词是实词的一种）；• C 陷阱最高：济南市是山东省的<strong>组成部分</strong>（不能说“济南市是山东省”！），属组成关系而非种属；• D“单独概念是概念的一种，概念是思维形式的一种”，完全匹配！</p>
+    </div></details>
+  </div>
+
+  <!-- 类比 2 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 4｜类比二级辨析（语法结构 + 褒贬对立）</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q84</span></div>
+    <div class="q-stem">芝兰之室：鲍鱼之肆</div>
+    <ul class="q-opts">
+      <li>A. 惊弓之鸟：漏网之鱼</li>
+      <li>B. 再造之恩：犬马之劳</li>
+      <li>C. 莫逆之交：乌合之众</li>
+      <li>D. 诛心之论：绕梁之音</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开横向反义与纵向结构对比</summary><div class="sol-body">
+      <p><strong>推导答案：C（莫逆之交：乌合之众）</strong>。</p>
+      <p>题干两词皆“XX之X”偏正结构，且一褒一贬形成鲜明反义比喻（好环境 vs 坏环境）。<br>
+      • A 都是贬义；• B 偏恩情报答对应；• D 诛心之论(贬)在前，顺序反；• C <strong>莫逆之交（志同道合的朋友，褒） vs 乌合之众（无纪律的人群，贬）</strong>，既反义对立又均以人际群体成对比，结构完美契合！</p>
+    </div></details>
+  </div>
+
+  <!-- 类比 3 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 5｜填空式类比 &amp; 汉字结构类比提醒</span> <span class="src-tag">2023 Q64 &amp; 2024 Q86</span></div>
+    <div class="q-stem">
+      <strong>① [2023 Q64]</strong> 琵琶 对于 （ ） 相当于 （ ） 对于 体操项目<br>
+      A. 民族乐器；竞技体育 &nbsp; B. 长笛；艺术体操 &nbsp; C. 演奏乐器；跳高 &nbsp; D. 弦乐器；高低杠<br>
+      <strong>② [2024 Q86]</strong> 明：囦：岩 → A. 汉：囩：导（注：山东高频考左右/全包围/上下汉字结构！）
+    </div>
+    <details class="sol"><summary>👉 点击展开填空类比代入法则</summary><div class="sol-body">
+      <p><strong>① 推导答案：D</strong>。代入检验前后一致的种属方向：“<strong>琵琶</strong>是<strong>弦乐器</strong>的一种，<strong>高低杠</strong>是<strong>体操项目</strong>的一种”。（A 前半句“琵琶是民族乐器”对，但后半句“竞技体育是体操项目”顺序反了！B 长笛与琵琶并列；C 跳高属于田径不属于体操）。</p>
+    </div></details>
+  </div>
+
+  <!-- 逻辑 1: 加强 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 6｜加强论证：花生十三“无 A 无 B 对照铁律”</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q96</span></div>
+    <div class="q-stem">有研究人员发现，胰腺中有一部分细胞能先比其他细胞更敏锐地对血糖升高做出反应，称为第一细胞。他们认为，<strong>第一细胞发生血糖反应之后，其他跟随细胞才会紧接着分泌胰岛素</strong>，对血糖进行调节。<br>以下哪项能够支持研究人员的观点？</div>
+    <ul class="q-opts">
+      <li>A. 第一细胞开始反应之后，其他跟随细胞滞后发生释放胰岛素反应</li>
+      <li>B. 当血糖水平升高时，抑制第一细胞的活性会导致其他跟随细胞无法及时分泌胰岛素</li>
+      <li>C. 即使第一细胞被移除，其他跟随细胞对血糖的反应不变</li>
+      <li>D. 第一细胞的数量远少于其他跟随细胞，但对血糖变化的敏感度显著更高</li>
+    </ul>
+    <details class="sol"><summary>👉 先区分 A(仅时间先后) vs B(无A无B) 再展开</summary><div class="sol-body">
+      <p><strong>推导答案：B</strong>。</p>
+      <ul>
+        <li>题干论点认为第一细胞反应是跟随细胞分泌的<strong>因果前提（必须条件）</strong>；</li>
+        <li><strong>B 是强加强（没A就没B）</strong>：压住第一细胞活性（无 A）→ 其他细胞就无法及时分泌（无 B），直接坐实因果依赖！</li>
+        <li><strong>A/D 是弱重复现象</strong>：只是换句话重述题干已给的现象，不能证明二者存在“触发控制因果关系”；<strong>C 项是强削弱</strong>（移走 A，B 照样反应）。</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <!-- 逻辑 2: 削弱 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 7｜经典“基数比例削弱”必考模型</span> <span class="src-tag">2023年山东省考《行测》.pdf | 2023 | Q69</span></div>
+    <div class="q-stem">一项针对某高校学生的调查显示：<strong>90% 考试不及格的同学喜欢打游戏</strong>。有人据此认为，打游戏更容易导致学生考试不及格。<br>以下哪项如果为真，最能削弱上述结论？</div>
+    <ul class="q-opts">
+      <li>A. 不打游戏的学生只占全体学生的一成</li>
+      <li>B. 有研究表明，打游戏会促进智力发展</li>
+      <li>C. 小张不喜欢打游戏，但经常考试不及格</li>
+      <li>D. 题目难度大，也是考试不及格的一个原因</li>
+    </ul>
+    <details class="sol"><summary>👉 点击展开“样本基数对比法”</summary><div class="sol-body">
+      <p><strong>推导答案：A</strong>。</p>
+      <p>遇到统计百分比（$90\%$ 不及格的人干了 X）推因果，花生十三直接教你问：<strong>“那全体学生中干 X 的比例是多少？”</strong> A 项指出“不打游戏的只占一成”，也就是全校 <strong>90% 的人都打游戏</strong>，那么随便抓一群人（无论及格不及格）都会有 90% 打游戏，彻底釜底抽薪粉碎“打游戏导致不及格”的因果推论！力度远强于个体反例 C 和他因 D！</p>
+    </div></details>
+  </div>
+
+  <!-- 逻辑 3: 翻译推理 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 8｜翻译推理：“必备思路＝必要条件（后推前）”</span> <span class="src-tag">2024年山东省考《行测》.pdf | 2024 | Q97</span></div>
+    <div class="q-stem">在超大特大城市积极稳步实施城中村改造是改善民生……的重要举措。落实这一重要举措的<strong>一个必备的战略思路</strong>是要坚持稳中求进、积极稳妥，优先对群众需求迫切、城市安全和社会治理隐患多的城中村进行改造。<br>由此可以推出：</div>
+    <ul class="q-opts">
+      <li>A. 如果不在超大特大城市积极稳步实施城中村改造，就不能改善民生……</li>
+      <li>B. 如果要改善民生……，就要在超大特大城市积极稳步实施城中村改造</li>
+      <li>C. 如果坚持稳中求进……，就能够在超大特大城市积极稳步实施城中村改造</li>
+      <li>D. 如果不坚持稳中求进、积极稳妥，优先对群众需求迫切……进行改造，就不能在超大特大城市积极稳步实施城中村改造</li>
+    </ul>
+    <details class="sol"><summary>👉 先翻译箭头链，再检验 A/B/C/D</summary><div class="sol-body">
+      <p><strong>推导答案：D</strong>。</p>
+      <ol>
+        <li><strong>翻译</strong>：“实施城中村改造”只是“改善民生重要举措”之一（充分而非唯一必要）；后句“落实这一举措的一个<strong>必备的</strong>战略思路是要坚持…”即 <strong><code>落实城中村改造 → 坚持稳中求进…</code></strong>（必要条件放箭头后！）。</li>
+        <li><strong>比对逆否</strong>：肯后（C）推不出肯前，排除 C；“重要举措”不是“唯一必要举措”，排除 A、B；<strong>D 是原命题的“否后推否前”（$\neg \text{坚持稳中求进}\to \neg \text{落实城中村改造}$）</strong>，百分百等价！</li>
+      </ol>
+    </div></details>
+  </div>
+
+  <!-- 逻辑 4: 分析推理矩阵 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 9｜分析推理：5 人双属性条件矩阵秒杀</span> <span class="src-tag">2024年山东省考《行测》.pdf | 2024 | Q100</span></div>
+    <div class="q-stem">学生小赵、小钱、小孙、小李和小周选指导老师，已知：<br>
+    （1）5 名学生中有 <strong>3 名属于 20 岁以下</strong>，<strong>2 名属于 20 岁及以上</strong>；<br>
+    （2）有 <strong>2 名专业是哲学</strong>，<strong>3 名专业是文学</strong>；<br>
+    （3）小赵和小孙年龄段相同，小李和小周年龄段不同；<br>
+    （4）小钱和小周专业相同，小孙和小李专业不同；<br>
+    （5）最终老师选择了一名<strong>年龄大于 20 岁的哲学专业</strong>学生。这名学生是：</div>
+    <ul class="q-opts"><li>A. 小赵 &nbsp;&nbsp; B. 小钱 &nbsp;&nbsp; C. 小孙 &nbsp;&nbsp; D. 小李</li></ul>
+    <details class="sol"><summary>👉 用“抵消配对法” 30 秒做完再展开核对</summary><div class="sol-body">
+      <p><strong>推导答案：D（小李）</strong>。</p>
+      <ol>
+        <li><strong>破年龄（3 下 + 2 上）</strong>：条件（3）“小李 ≠ 小周”意味这俩人必然恰好占走 <strong>1个20岁以下 + 1个20岁及以上</strong>！剩下赵、孙、钱 3 人里必剩 <strong>2个以下 + 1个以上</strong>。又因“赵 ＝ 孙”，两人同段只能占那 2 个名额，故 <strong>赵&lt;20岁、孙&lt;20岁</strong>，逼出 <strong>钱 ≥ 20岁</strong>！</li>
+        <li><strong>破专业（2 哲 + 3 文）</strong>：条件（4）“小孙 ≠ 小李”必然占走 <strong>1哲学 + 1文学</strong>！剩下钱、周、赵 3 人里必剩 <strong>1哲学 + 2文学</strong>。又因“钱 ＝ 周”，两人同专业只能占那 2 个名额，故 <strong>钱=文学、周=文学</strong>，逼出 <strong>赵=哲学</strong>！</li>
+        <li><strong>汇总锁定（>20岁 且 哲学）</strong>：赵/孙都 &lt;20 岁淘汰；钱/周都是文学淘汰；<strong>只剩小李同时满足可能 &gt;20 岁且哲学！选 D！</strong></li>
+      </ol>
+    </div></details>
+  </div>
+
+  <!-- 逻辑 5: 反对者不支持 -->
+  <div class="q-box">
+    <div class="q-head"><span>题 10｜反问型加强：“不能支持反对者”＝找无关/偏离项</span> <span class="src-tag">2025年山东省考《行测》.pdf | 2025 | Q95（要点复盘）</span></div>
+    <div class="q-stem">社区讨论加装“电梯阻车器防止电动车上楼”。反对者认为阻车系统存在漏洞、不能有效防止电动车上楼。题目问以下哪项<strong>不能支持反对者</strong>？（A.可遮挡识别摄像头使系统不报警；B.小区外车棚充电桩不够用，居民只能推回家充；C.偶尔把婴儿车误判发出警报；D.系统仅能发出警报不能物理强行阻止推车进入）</div>
+    <details class="sol"><summary>👉 点击展开“主题核心偏差识别”</summary><div class="sol-body">
+      <p><strong>推导答案：B（注：实际看各选项逻辑角度差异）</strong>。</p>
+      <p>反对者的论点核心是<strong>“该阻车系统本身有缺陷，不能防止上楼”</strong>：A 指出可人为规避系统（支持无效）、D 指出只有警报无阻拦力（直接支持无效）、C 说明识别系统误报影响执行有效性；而 <strong>B 讲的是“为什么居民想推上楼（充电桩少的需求原因）”</strong>，并非质疑“阻车器能不能拦住”。（遇“不能支持/削弱”先看提问有没有“不”字！）。<br>
+      <span class="missing-tag">缺失诚实声明</span> 2025 行测 Q62/Q66(图推)、Q91–93/Q99–100(逻辑) 经查原卷及网络均无可靠对照原题，留空不编造。</p>
+    </div></details>
+  </div>
+</section>
+
+<div class="sub-footer-nav"><a href="山东省考7天冲刺精准提分讲义.html">📘 返回山东省考总纲目录</a><a class="alt" href="sd_04_数量关系详讲.html">← 上一模块：04 数量关系</a><a class="alt" href="sd_06_资料分析详讲.html">下一模块：06 资料分析 →</a></div>
+  </main>
+</div>
+
+<script defer src="assets/katex/katex/katex.min.js"></script>
+<script defer src="assets/katex/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<script>
+const STORAGE_KEY = 'sd_v2_m05';
+function saveCheck() {
+  const boxes = document.querySelectorAll('.nav-item input[type="checkbox"]');
+  const state = {};
+  let done = 0;
+  boxes.forEach(b => { state[b.dataset.sec] = b.checked; if (b.checked) done++; });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  const pt = document.getElementById('progText');
+  const pf = document.getElementById('progFill');
+  if (pt) pt.textContent = done + ' / ' + boxes.length;
+  if (pf && boxes.length) pf.style.width = Math.round(done * 100 / boxes.length) + '%';
+}
+function loadCheck() {
+  try {
+    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('.nav-item input[type="checkbox"]').forEach(b => {
+      if (state[b.dataset.sec]) b.checked = true;
+    });
+  } catch (e) {}
+  saveCheck();
+}
+// Requirement #7: NEVER open details.sol on initial load; stay collapsed by default until user clicks!
+let allSolExpanded = false;
+function toggleAllSol() {
+  allSolExpanded = !allSolExpanded;
+  document.querySelectorAll('details.sol').forEach(d => d.open = allSolExpanded);
+  const btn = document.getElementById('toggleSolBtn');
+  if (btn) btn.textContent = allSolExpanded ? '🙈 收起全部解析' : '👁 展开全部解析';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('details.sol').forEach(d => d.open = true);
+});
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => { if (window.innerWidth <= 960) closeSidebar(); });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => { topBtn.classList.toggle('show', window.scrollY > 420); }, { passive: true });
+}
+loadCheck();
+</script>
+
+</body>
+</html>
