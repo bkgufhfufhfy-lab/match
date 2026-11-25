@@ -131,10 +131,7 @@ table.compact-cheat th, table.compact-cheat td { padding: 5px 8px; line-height: 
 details.sol { margin-top: 8px; background: rgba(255,255,255,0.85); border: 1px dashed #0891b2; border-radius: 6px; padding: 6px 12px; }
 details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-size: 13.5px; }
 
-@media (max-width: 900px) {
-  .sidebar { display: none; }
-  .main { margin-left: 0; padding: 16px; }
-}
+
 @media print {
   @page { size: A4; margin: 13mm 12mm 14mm 12mm; }
   body { background: #fff; font-size: 13.2px; line-height: 1.58; }
@@ -147,9 +144,138 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
   details.sol { border-style: solid; }
   details.sol > summary { display: none; }
 }
+
+/* === Responsive Multi-Device Upgrade (Added without modifying content) === */
+html, body { max-width: 100%; overflow-x: clip; }
+.layout { width: 100%; }
+.main { min-width: 0; width: 100%; }
+section.day-section { scroll-margin-top: 16px; }
+.sidebar { z-index: 260; transition: transform 0.25s ease; }
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.48);
+  z-index: 240;
+  backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-decoration: none;
+  text-align: center;
+  min-height: 34px;
+}
+.btn-row { flex-wrap: wrap; }
+.btn.home-btn { background: #059669; color: #fff; }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.cover-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-decoration: none; color: #fff;
+  background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.34);
+  transition: background 0.15s;
+}
+.cover-btn:hover { background: rgba(255,255,255,0.25); }
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: 6px;
+}
+.table-wrap > table { margin: 0; }
+th, td { overflow-wrap: break-word; }
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 4px 2px;
+  -webkit-overflow-scrolling: touch;
+}
+.math-block { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.svg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.svg-wrap svg { max-width: 100%; height: auto; }
+.mobile-toggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 300;
+  background: #0f172a;
+  color: #fff;
+  border: 2px solid #38bdf8;
+  border-radius: 99px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+  cursor: pointer;
+}
+.back-to-top {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 66px;
+  right: 18px;
+  z-index: 290;
+  background: rgba(15, 23, 42, 0.88);
+  color: #fff;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 99px;
+  padding: 8px 13px;
+  font-size: 12.5px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+  cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 255px; }
+  .main { margin-left: 255px; padding: 24px 24px 72px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 300px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 18px 16px 92px; max-width: 100%; }
+  .cover-toc-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 20px 18px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.8px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 20px 16px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 21px; }
+  .cover-banner p { font-size: 14px; }
+  .cover-toc { padding: 16px 14px; border-radius: 12px; margin-bottom: 16px; }
+  .day-section { padding: 16px 13px; border-radius: 12px; margin-bottom: 18px; }
+  .day-title { font-size: 19px; }
+  h2 { font-size: 16.5px; margin: 18px 0 10px; }
+  h3 { font-size: 15px; }
+  .card { padding: 12px 13px; margin: 12px 0; }
+  .card-title { font-size: 14px; }
+  table { font-size: 12.8px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  .sidebar, .sidebar-backdrop, .mobile-toggle, .back-to-top, .cover-actions { display: none !important; }
+  .table-wrap, .svg-wrap, .math-block, .katex-display { overflow: visible !important; }
+}
+
 </style>
 </head>
 <body>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开目录或打卡">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
 <div class="layout">
   <aside class="sidebar">
     <div class="sidebar-title">军队文职公共科目讲义</div>
@@ -162,6 +288,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <button class="btn" onclick="toggleAllSol()">收起/展开解析</button>
       <button class="btn secondary" onclick="window.print()">打印 / 存PDF</button>
     </div>
+    <div class="btn-row"><a class="btn home-btn" href="index.html">🏠 返回学习中心</a></div>
     <div class="nav-group-label">先导篇 · 战前必看</div>
 <a class="nav-item" href="#day00"><input type="checkbox" data-day="day00" onclick="event.stopPropagation(); saveCheck()"><span class="nav-text">Day 0｜公共科目结构与高分地图</span></a>
 <div class="nav-group-label">第一部分 · 基本知识（Day 1–7）</div>
@@ -196,6 +323,8 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
         <span class="cover-pill">🟣 紫卡：秒杀口诀模板</span>
         <span class="cover-pill">🟠 橙卡：真题母题精讲</span>
       </div>
+    
+      <div class="cover-actions"><a class="cover-btn" href="index.html">← 返回学习中心首页</a></div>
     </div>
     <div class="cover-toc"><h2>本书 15 天课程地图（公共科目全模块通关目录）</h2><div class="cover-toc-grid"><div class="cover-toc-item"><strong>Day 0｜公共科目结构与高分地图</strong><br><span style="color:#64748b;font-size:12px;">考情全透视 · 2020–2026真题大数据</span></div><div class="cover-toc-item"><strong>Day 1｜马原哲学：唯物、辩证与认识论</strong><br><span style="color:#64748b;font-size:12px;">大纲第一章第一节 | 哲学核心母题</span></div><div class="cover-toc-item"><strong>Day 2｜马原政经 & 科学社会主义</strong><br><span style="color:#64748b;font-size:12px;">大纲第一章第一节（五–八） | 政治经济学核心</span></div><div class="cover-toc-item"><strong>Day 3｜毛思想、党史时间轴与中特理论</strong><br><span style="color:#64748b;font-size:12px;">大纲第一章第二、三节 | 党史会议年年考</span></div><div class="cover-toc-item"><strong>Day 4｜习近平新时代思想 & 材料单选攻略</strong><br><span style="color:#64748b;font-size:12px;">大纲第一章第四节 + 第四章 | 占比最高政治模块</span></div><div class="cover-toc-item"><strong>Day 5｜文史常识：历史、典籍与节气</strong><br><span style="color:#64748b;font-size:12px;">大纲第二章第一、二节 | 文化高频必背</span></div><div class="cover-toc-item"><strong>Day 6｜道德、宪法与国防军队法律法规</strong><br><span style="color:#64748b;font-size:12px;">大纲第二章第三、四节 | 法律与国防法规</span></div><div class="cover-toc-item"><strong>Day 7｜科技、国情与国防军队核心（拉分王）</strong><br><span style="color:#64748b;font-size:12px;">大纲第二章第五节 + 第三章 | 军队特色必背</span></div><div class="cover-toc-item"><strong>Day 8｜言语（一）：选词、病句与标点</strong><br><span style="color:#64748b;font-size:12px;">大纲第五章 | 10题语言基础稳拿8题</span></div><div class="cover-toc-item"><strong>Day 9｜言语（二）：主旨、排序与诗词对联</strong><br><span style="color:#64748b;font-size:12px;">大纲第五章 | 阅读理解拿分技巧</span></div><div class="cover-toc-item"><strong>Day 10｜数量关系（一）：数推、工程行程经济</strong><br><span style="color:#64748b;font-size:12px;">大纲第六章 | 理科生白捡分板块</span></div><div class="cover-toc-item"><strong>Day 11｜数量关系（二）：排列概率几何容斥</strong><br><span style="color:#64748b;font-size:12px;">大纲第六章 | 2024–2026真题原题实战</span></div><div class="cover-toc-item"><strong>Day 12｜判断推理（一）：图推规律与定义判断</strong><br><span style="color:#64748b;font-size:12px;">大纲第七章 | 图形推理8大口诀</span></div><div class="cover-toc-item"><strong>Day 13｜判断推理（二）：类比与逻辑判断</strong><br><span style="color:#64748b;font-size:12px;">大纲第七章 | 数学人拿满分的逻辑公式</span></div><div class="cover-toc-item"><strong>Day 14｜资料分析：公式、百化分与图表反选</strong><br><span style="color:#64748b;font-size:12px;">大纲第八章 | 10题稳拿9题的送分大户</span></div><div class="cover-toc-item"><strong>Day 15｜公共科目一页速查表与120分钟节奏</strong><br><span style="color:#64748b;font-size:12px;">终极冲刺 | 110题时间分配 + 多选题策略</span></div></div></div>
     
@@ -208,7 +337,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
     
 <h2>一、 近年试卷结构已完全固化（共 110 题，满分 100 分）</h2>
 <p>分析工作区 2020–2026 年七套公共科目真题及 2023 年 8 月版官方考试大纲，试卷固定分为两大板块：</p>
-<table>
+<div class="table-wrap"><table>
   <thead>
     <tr><th>板块</th><th>包含模块与题型（以 2024–2026 卷为例）</th><th>题量</th><th>15天战略目标</th></tr>
   </thead>
@@ -235,7 +364,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <td><span class="badge-must">Day 8–14</span><br>理工科最易拉分阵地<br>冲击 <strong>36–40 分</strong></td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <div class="card card-trick">
   <div class="card-title">🟣 理工考生（考《数学2+物理》）的独家制胜策略</div>
@@ -275,7 +404,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
 
 <div class="card card-trick">
   <div class="card-title">🟣 唯心主义 vs 唯物主义派别一眼分辨表（古诗词常考！）</div>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>哲学流派</th><th>核心口号</th><th>典型名言例句（考场看到直接配对！）</th></tr></thead>
     <tbody>
       <tr><td><strong>主观唯心主义</strong></td><td>“我自己的心/感觉决定世界”</td><td>“心外无物”（王阳明）、“存在就是被感知”、“宇宙便是吾心”</td></tr>
@@ -283,7 +412,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>古代朴素唯物</strong></td><td>把世界归结为某一种具体实物</td><td>“气者，理之依也”、五行说（金木水火土）、“水是万物的本原”</td></tr>
       <tr><td><strong>近代形而上学唯物</strong></td><td>孤立、静止、片面地看问题</td><td>“刻舟求剑”（静止看问题）、“盲人摸象”（片面）、“只见树木不见森林”</td></tr>
     </tbody>
-  </table>
+  </table></div>
 </div>
 
 <h2>二、 唯物辩证法：两大总特征 + 三大规律 <span class="badge-must">★★★ 年年考</span></h2>
@@ -446,7 +575,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
 
 <h2>二、 党史重要会议与转折点时间轴（对照记忆极快！） <span class="badge-must">★★★ 必考</span></h2>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>时间与会议</th><th>历史地位与核心关键字（考题直接抠字眼！）</th></tr></thead>
   <tbody>
     <tr><td><strong>1921 中共一大</strong></td><td>宣告中国共产党正式成立（确立党的名称和最高纲领）</td></tr>
@@ -457,7 +586,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
     <tr><td><strong>1949 七届二中全会</strong></td><td>工作重心由乡村转向城市；提出<strong>“两个务必”</strong>（务必谦虚谨慎不骄不躁、务必艰苦奋斗）</td></tr>
     <tr><td><strong>1978 十一届三中全会</strong></td><td>开启改革开放和社会主义现代化建设新时期；把党和国家工作中心转移到以经济建设为中心的<strong>社会主义现代化建设</strong>上来（2024 Q59 原题！）</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h2>三、 中国特色社会主义理论体系（邓小平理论 / 三个代表 / 科学发展观） <span class="badge-high">★★☆ 高频</span></h2>
 
@@ -495,7 +624,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
 
 <div class="card card-formula">
   <div class="card-title">🔵 考场最爱“挖空选词”的 8 组金句对应关系</div>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>核心地位 / 政治定位</th><th>唯一对应的正确提法（背死关键字！）</th></tr></thead>
     <tbody>
       <tr><td><strong>新时代十年伟大变革 / 最根本原因</strong></td><td>“两个确立”（确立习近平同志党中央的核心、全党的核心地位，确立习近平新时代中国特色社会主义思想的指导地位）</td></tr>
@@ -507,7 +636,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>全面建设社会主义现代化国家的首要任务</strong></td><td><mark class="hl-yellow">高质量发展</mark>（加快构建以国内大循环为主体、国内国际双循环相互促进的新发展格局）</td></tr>
       <tr><td><strong>发展新质生产力</strong></td><td>以<strong>科技创新</strong>为主导，具有高科技、高效能、高质量特征；特点是创新，关键在质优，本质是先进生产力</td></tr>
     </tbody>
-  </table>
+  </table></div>
 </div>
 
 <h2>二、 “十个明确”“十四个坚持”与“六个必须坚持” <span class="badge-must">★★★ 年年考</span></h2>
@@ -588,7 +717,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
 
 <div class="card card-formula">
   <div class="card-title">🔵 先秦百家核心思想 + 军事著作断代对照表</div>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>学派 / 人物</th><th>核心思想（名言配对）</th><th>代表作</th></tr></thead>
     <tbody>
       <tr><td><strong>儒家（孔子、孟子、荀子）</strong></td><td>孔子：“仁”“礼”、“有教无类”、“因材施教”（<span class="hl-pink">不是韩非子！2025 Q55坑点</span>）、“其身正，不令而行”（孔子《论语》，不是荀子！）；孟子：“仁政”“民贵君轻”；荀子：“性恶论”“制天命而用之”</td><td>《论语》《孟子》《荀子》</td></tr>
@@ -596,7 +725,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>墨家（墨子）</strong></td><td>“兼爱”（无差别爱）、“非攻”（反对侵略战争）、“尚贤”“节用”</td><td>《墨子》</td></tr>
       <tr><td><strong>法家（商鞅、韩非子）</strong></td><td>以法治国、法术势结合、强调中央集权与奖惩耕战</td><td>《商君书》《韩非子》</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <p><strong>⚠️ 古代军事名著断代（2025 多选题 Q52 原题考点！）：</strong><br>
   • <strong>春秋战国时期兵书（背熟这 5 部）：</strong><mark class="hl-yellow">《孙子兵法》（春秋·孙武，兵学圣典）、《吴子》（战国·吴起）、《司马法》、《尉缭子》（战国）、《孙膑兵法》（战国·孙膑）</mark>。<br>
@@ -816,7 +945,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
 
 <div class="card card-formula">
   <div class="card-title">🔵 看到“标志词”立刻条件反射检查</div>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>标志词 / 结构</th><th>90% 可能的病句坑</th><th>真题级典型错句示范</th></tr></thead>
     <tbody>
       <tr><td><strong>句首有“通过……使……”“由于……让……”</strong></td><td><strong>缺主语！</strong></td><td>“通过这次演练，使大家提高了战备意识。”（删去“通过”或“使”！）</td></tr>
@@ -826,7 +955,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>出现“和、与、及、或者”并列</strong></td><td><strong>搭配不当 / 语序 / 包含</strong></td><td>“商店摆满了苹果、香蕉、西瓜和水果。”（水果包含前面，不能并列！）</td></tr>
       <tr><td><strong>句尾“……的原因，是因为……”</strong></td><td><strong>句式杂糅！</strong></td><td>“失败的原因，是因为准备不足。”（只能说“……的原因是……”或“之所以……是因为……”）</td></tr>
     </tbody>
-  </table>
+  </table></div>
 </div>
 
 <h2>三、 军队文职独家特色：标点符号辨析（必看！） <span class="badge-must">★★★ 高频特色</span></h2>
@@ -1225,7 +1354,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
 
 <div class="card card-formula">
   <div class="card-title">🔵 核心公式卡（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>：今年现期量；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>：去年基期量；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>：同比增长率）</div>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>求什么？</th><th>公式</th><th>考场速算技巧</th></tr></thead>
     <tbody>
       <tr><td><strong>1. 基期量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></strong></td><td><div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>B</mi><mo>=</mo><mfrac><mi>A</mi><mrow><mn>1</mn><mo>+</mo><mi>r</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">B = \frac{A}{1 + r}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></td><td>当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>r</mi><mi mathvariant="normal">∣</mi><mo>≤</mo><mn>5</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">|r| \le 5\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">5%</span></span></span></span> 时，化除为乘近似：<br><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>≈</mo><mi>A</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B \approx A(1 - r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span>（正变负，负变正，快到飞起！）</td></tr>
@@ -1234,7 +1363,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>4. 现期比重 &amp; 两期比重差</strong><br><small>(部分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 增速 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>，总体 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 增速 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>)</small></td><td>现期比重 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mfrac><mi>A</mi><mi>B</mi></mfrac></mrow><annotation encoding="application/x-tex">= \frac{A}{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br>两期比重差 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mfrac><mi>A</mi><mi>B</mi></mfrac><mo>⋅</mo><mfrac><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{A}{B}\cdot\frac{a - b}{1 + a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2834em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">a</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td><td><strong>口诀：</strong><br>① <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mi>b</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">a &gt; b \implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7184em;vertical-align:-0.024em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 比重<strong>上升</strong>；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mi>b</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">a &lt; b \implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7184em;vertical-align:-0.024em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 比重<strong>下降</strong>；<br>② 变化百分点绝对值<strong>一定小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>a</mi><mo>−</mo><mi>b</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|a - b|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mord">∣</span></span></span></span></strong>！</td></tr>
       <tr><td><strong>5. 间隔增长率</strong><br><small>(隔一年，如2024比2022)</small></td><td><div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mo>=</mo><msub><mi>r</mi><mn>1</mn></msub><mo>+</mo><msub><mi>r</mi><mn>2</mn></msub><mo>+</mo><msub><mi>r</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R = r_1 + r_2 + r_1\cdot r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5945em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></div></td><td>今年增速 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">r_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，去年增速 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，直接相加再加乘积！</td></tr>
     </tbody>
-  </table>
+  </table></div>
 </div>
 
 <h2>二、 必背“百化分”速算表 & 截位直除法 <span class="badge-must">★★★ 必考</span></h2>
@@ -1298,7 +1427,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
 
 <h2>二、 公共科目全科救命速查总表</h2>
 
-<table class="compact-cheat">
+<div class="table-wrap"><table class="compact-cheat">
   <thead><tr><th style="width:16%">模块</th><th style="width:50%">必背核心考点 / 公式</th><th style="width:34%">考场防坑警报</th></tr></thead>
   <tbody>
     <tr>
@@ -1337,7 +1466,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <td>① 看到“增长了多少倍”比“是几倍”少 1；② 给现期 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 求增长量，<strong>千万别直接 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>×</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">A\times r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span></strong>，要用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>A</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{A}{n+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>！</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <div class="card card-trap">
   <div class="card-title">🔴 考前实战检验提醒</div>
@@ -1379,6 +1508,33 @@ window.addEventListener('beforeprint', () => {
   document.querySelectorAll('details.sol').forEach(d => d.open = true);
 });
 loadCheck();
+
+
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    if (window.innerWidth <= 960) closeSidebar();
+  });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('show', window.scrollY > 420);
+  }, { passive: true });
+}
+
 </script>
 </body>
 </html>

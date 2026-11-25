@@ -3,121 +3,438 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>公考与文职备考冲刺讲义中心｜bkgufhfufhfy-lab</title>
+  <title>备考冲刺学习中心｜军队文职 &amp; 山东省考</title>
   <style>
+    :root {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --sub: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+      --red: #dc2626;
+      --red-soft: #fef2f2;
+      --cyan: #0891b2;
+      --cyan-soft: #ecfeff;
+      --emerald: #059669;
+    }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; max-width: 100%; overflow-x: clip; }
     body {
       margin: 0;
-      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, sans-serif;
-      background: #f1f5f9; color: #1e293b; line-height: 1.65;
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      max-width: 100%;
+      overflow-x: clip;
     }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 32px 18px 64px; }
-    .hero {
+    .page-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: clamp(16px, 3vw, 34px) clamp(12px, 3vw, 24px) 56px;
+    }
+
+    /* ===== Unified Hero ===== */
+    .hub-hero {
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #0e7490 100%);
-      color: #fff; border-radius: 18px; padding: 32px 30px; margin-bottom: 26px;
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.16);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: clamp(22px, 4vw, 36px) clamp(18px, 4vw, 34px);
+      margin-bottom: 28px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
+      position: relative;
+      overflow: hidden;
     }
-    .hero-badge {
-      display: inline-block; background: #10b981; color: #fff; font-size: 12px;
-      font-weight: 800; padding: 3px 10px; border-radius: 99px; margin-bottom: 10px;
+    .hub-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #e0f2fe;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 12px;
+      letter-spacing: 0.4px;
     }
-    .hero h1 { margin: 0 0 8px; font-size: 26px; line-height: 1.3; }
-    .hero p { margin: 0 0 18px; color: #dbeafe; font-size: 14.8px; }
-    .hero-btns { display: flex; flex-wrap: wrap; gap: 10px; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px;
-      border-radius: 9px; font-size: 14px; font-weight: 700; text-decoration: none;
-      transition: transform 0.12s, opacity 0.15s;
+    .hub-hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(22px, 3.2vw, 30px);
+      line-height: 1.28;
+      letter-spacing: 0.3px;
     }
-    .btn:hover { opacity: 0.92; transform: translateY(-1px); }
-    .btn-primary { background: #10b981; color: #fff; }
-    .btn-outline { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.35); }
-    .sec-title { font-size: 16px; font-weight: 800; color: #334155; margin: 22px 0 12px; padding-left: 10px; border-left: 4px solid #2563eb; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .hub-hero p {
+      margin: 0 0 18px;
+      color: #dbeafe;
+      font-size: clamp(13.8px, 1.8vw, 15px);
+      max-width: 820px;
+    }
+    .hero-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 13.8px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: background 0.15s, transform 0.12s;
+      min-height: 40px;
+    }
+    .hero-pill:hover { background: rgba(255, 255, 255, 0.24); transform: translateY(-1px); }
+    .hero-pill.sd { background: rgba(220, 38, 38, 0.85); border-color: rgba(254, 202, 202, 0.45); }
+    .hero-pill.jw { background: rgba(16, 185, 129, 0.88); border-color: rgba(167, 243, 208, 0.45); }
+
+    /* ===== Unified Section Track Header ===== */
+    .track-section {
+      margin-bottom: 30px;
+      scroll-margin-top: 16px;
+    }
+    .track-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--blue);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+    .track-header.provincial { border-left-color: var(--red); }
+    .track-header.military { border-left-color: var(--blue); }
+    .track-title-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .track-title {
+      margin: 0;
+      font-size: clamp(16.5px, 2.2vw, 19px);
+      font-weight: 800;
+      color: var(--text);
+    }
+    .track-count {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 99px;
+      background: #f1f5f9;
+      color: var(--sub);
+    }
+    .track-desc { font-size: 13px; color: var(--muted); }
+
+    /* ===== Unified Card System ===== */
+    .track-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .track-grid.single-grid {
+      grid-template-columns: 1fr;
+    }
+    .track-grid.three-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
     .card {
-      background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px 20px 18px;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04); display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--blue);
+      border-radius: 14px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.14s ease, box-shadow 0.14s ease;
     }
-    .card.featured { border: 2px solid #2563eb; background: linear-gradient(180deg, #eff6ff 0%, #ffffff 35%); }
-    .tag { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 99px; color: #fff; margin-bottom: 8px; }
-    .t-sd { background: #dc2626; }
-    .t-gg { background: #b45309; }
-    .t-wl { background: #2563eb; }
-    .t-sx { background: #0891b2; }
-    .card h2 { margin: 0 0 8px; font-size: 17.5px; color: #0f172a; }
-    .card p { margin: 0 0 14px; font-size: 13.5px; color: #475569; }
-    .card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+    .card.theme-sd { border-top-color: var(--red); }
+    .card.theme-gg { border-top-color: #b45309; }
+    .card.theme-wl { border-top-color: var(--blue); }
+    .card.theme-sx { border-top-color: var(--cyan); }
+
+    /* Highlighted Provincial card layout on larger screens */
+    .card.wide-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(240px, 1fr);
+      gap: 18px 24px;
+      align-items: center;
+      background: linear-gradient(135deg, #fffafa 0%, #ffffff 48%, #f8fafc 100%);
+    }
+    .card-top { min-width: 0; }
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 99px;
+      color: #ffffff;
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+    .b-sd { background: var(--red); }
+    .b-gg { background: #b45309; }
+    .b-wl { background: var(--blue); }
+    .b-sx { background: var(--cyan); }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 17.5px;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .card p {
+      margin: 0 0 12px;
+      font-size: 13.8px;
+      color: var(--sub);
+      line-height: 1.65;
+    }
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .meta-pill {
+      font-size: 11.8px;
+      font-weight: 600;
+      color: var(--sub);
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 2px 9px;
+      border-radius: 6px;
+    }
+    .wide-side {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .wide-side-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
     .cbtn {
-      flex: 1; text-align: center; padding: 8px 10px; border-radius: 7px; font-size: 13px;
-      font-weight: 700; text-decoration: none; background: #0f172a; color: #fff; min-width: 105px;
+      flex: 1 1 120px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 42px;
+      padding: 9px 14px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      color: #ffffff;
+      background: #0f172a;
+      transition: opacity 0.15s, transform 0.1s;
     }
-    .cbtn.blue { background: #2563eb; }
-    .cbtn.green { background: #059669; }
-    .cbtn.light { background: #e2e8f0; color: #1e293b; }
-    .footer { margin-top: 34px; text-align: center; font-size: 12.5px; color: #64748b; }
+    .cbtn:hover { opacity: 0.92; transform: translateY(-1px); }
+    .cbtn.primary-sd { background: var(--red); }
+    .cbtn.primary-blue { background: var(--blue); }
+    .cbtn.primary-amber { background: #b45309; }
+    .cbtn.primary-cyan { background: var(--cyan); }
+    .cbtn.outline-pdf {
+      background: #ffffff;
+      color: var(--text);
+      border: 1px solid #cbd5e1;
+    }
+    .cbtn.outline-pdf:hover { background: #f1f5f9; }
+
+    /* ===== Responsive Tips & Footer ===== */
+    .device-bar {
+      margin-top: 26px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .device-item { display: flex; align-items: flex-start; gap: 8px; }
+    .device-item strong { color: var(--text); display: block; font-size: 13.2px; }
+    .footer {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    /* ===== Tablet & Mobile Breakpoints ===== */
+    @media screen and (max-width: 960px) {
+      .track-grid.three-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .card.wide-card {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media screen and (max-width: 640px) {
+      .track-grid.three-grid {
+        grid-template-columns: 1fr;
+      }
+      .device-bar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .hero-pill {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
+      .cbtn {
+        flex: 1 1 100%;
+      }
+      .card {
+        padding: 17px 15px 15px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="hero">
-      <span class="hero-badge">🔥 最新更新 · 2027 山东省考（12月6日笔试）7天冲刺上线</span>
-      <h1>山东省考 7 天精准提分冲刺复盘讲义</h1>
-      <p>基于 2017–2026 共 17 套独立真题全量数据编写 · 行测 65→75+ / 申论 B 卷 60→70+ · 含 2027 政治理论/新法/申论押题预测、高频母题精讲、公文作文骨架模板及 Day 1–7 每日复盘表</p>
-      <div class="hero-btns">
-        <a class="btn btn-primary" href="山东省考7天冲刺精准提分讲义.html">📖 立即阅读在线讲义（含打卡）</a>
-        <a class="btn btn-outline" href="山东省考7天冲刺精准提分讲义.pdf" download>⬇ 下载 A4 排版 PDF 版</a>
+  <div class="page-wrap">
+    <header class="hub-hero">
+      <div class="hub-eyebrow">📚 STUDY HUB · 双赛道全终端自适应讲义库</div>
+      <h1>公考与军队文职备考冲刺学习中心</h1>
+      <p>仓库内容统一划分为「<strong>省考专区</strong>」与「<strong>军队文职专区</strong>」两大板块。所有讲义与交互手册均已适配电脑、平板与手机自适应阅读，支持章节进度本地自动记录与一键打印导出 A4 PDF。</p>
+      <nav class="hero-nav" aria-label="板块快速导航">
+        <a class="hero-pill sd" href="#track-provincial">🎯 省考专区（山东省考）</a>
+        <a class="hero-pill jw" href="#track-military">🎖 军队文职专区（公共科目 / 数物 / 先修）</a>
+      </nav>
+    </header>
+
+    <!-- ============ 板块一：省考专区 ============ -->
+    <section class="track-section" id="track-provincial">
+      <div class="track-header provincial">
+        <div class="track-title-group">
+          <h2 class="track-title">🎯 省考专区</h2>
+          <span class="track-count">1 套在线讲义 + A4 PDF</span>
+        </div>
+        <span class="track-desc">山东省公务员录用考试 · 行测 + 申论 B 卷靶向冲刺</span>
       </div>
+
+      <div class="track-grid single-grid">
+        <article class="card wide-card theme-sd">
+          <div class="card-top">
+            <span class="badge b-sd">山东省考 · 7 天冲刺复盘</span>
+            <h3>山东省考 7 天精准提分冲刺复盘讲义</h3>
+            <p>基于 2017–2026 共 17 套独立真题全量数据编写（行测 65→75+ / 申论 B 卷 60→70+），涵盖命题白皮书、2027 考情押题预测、行测四大痛点母题、申论 400 字专报与单字作文骨架及 Day 1–7 复盘表。</p>
+            <div class="meta-pills">
+              <span class="meta-pill">📊 17 套真题大数据</span>
+              <span class="meta-pill">✅ 12 模块打卡进度</span>
+              <span class="meta-pill">📝 含 4天/5天压缩版</span>
+            </div>
+          </div>
+          <div class="wide-side">
+            <div class="wide-side-note">支持电脑分栏阅读、平板/手机底部抽屉目录，以及 23 页精排 A4 PDF 离线打印。</div>
+            <div class="card-actions">
+              <a class="cbtn primary-sd" href="山东省考7天冲刺精准提分讲义.html">📖 阅读在线讲义</a>
+              <a class="cbtn outline-pdf" href="山东省考7天冲刺精准提分讲义.pdf" download>⬇ 下载 A4 PDF</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 板块二：军队文职专区 ============ -->
+    <section class="track-section" id="track-military">
+      <div class="track-header military">
+        <div class="track-title-group">
+          <h2 class="track-title">🎖 军队文职专区</h2>
+          <span class="track-count">2 套 15 天讲义 + 1 份交互先修手册</span>
+        </div>
+        <span class="track-desc">公共科目 + 理工科专业课《数学2+物理》与数学先修体系</span>
+      </div>
+
+      <div class="track-grid three-grid">
+        <article class="card theme-gg">
+          <div class="card-top">
+            <span class="badge b-gg">军队文职 · 公共科目</span>
+            <h3>军队文职《公共科目》15天冲刺多色讲义</h3>
+            <p>依据 2020–2026 七年真题大数据与考试大纲编写，涵盖基本知识（马原/党史/习思想/国防法规）与岗位能力多色精讲及一页速查表。</p>
+          </div>
+          <div>
+            <div class="meta-pills">
+              <span class="meta-pill">✅ 16 模块打卡</span>
+              <span class="meta-pill">🎨 六色重点卡</span>
+            </div>
+            <div class="card-actions">
+              <a class="cbtn primary-amber" href="军队文职15天冲刺讲义_公共科目.html">📖 进入在线阅读</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card theme-wl">
+          <div class="card-top">
+            <span class="badge b-wl">军队文职 · 数学2 + 物理</span>
+            <h3>军队文职《数学2+物理》15天冲刺讲义</h3>
+            <p>面向零基础冲刺 60+ 分保姆级讲义，包含高数、线代与大学物理核心公式解码、真题母题精讲及全科一页速查总表。</p>
+          </div>
+          <div>
+            <div class="meta-pills">
+              <span class="meta-pill">✅ 16 模块打卡</span>
+              <span class="meta-pill">∑ 4600+ 公式精排</span>
+            </div>
+            <div class="card-actions">
+              <a class="cbtn primary-blue" href="军队文职15天冲刺讲义_数学2+物理.html">📖 进入在线阅读</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card theme-sx">
+          <div class="card-top">
+            <span class="badge b-sx">数物先修配套 · 交互图像</span>
+            <h3>高等数学先修：高中数学交互图像手册</h3>
+            <p>专为军队文职《数学2+物理》先修衔接设计，收录 13 节随用随查基础考点，内置 9 组 1:1 可手势缩放、滑块调参的交互坐标系。</p>
+          </div>
+          <div>
+            <div class="meta-pills">
+              <span class="meta-pill">📐 9 组交互画布</span>
+              <span class="meta-pill">📑 01–13 节速查</span>
+            </div>
+            <div class="card-actions">
+              <a class="cbtn primary-cyan" href="高等数学先修_高中数学交互图像手册.html">📐 打开交互手册</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="device-bar" aria-label="多设备阅读特性">
+      <div class="device-item"><span>💻</span><div><strong>桌面端双栏精读</strong>左侧目录固定定位、公式图表高清展示</div></div>
+      <div class="device-item"><span>📱</span><div><strong>手机/平板自适应</strong>抽屉式目录弹窗、表格与长公式横滑不撑破屏幕</div></div>
+      <div class="device-item"><span>🖨</span><div><strong>无障碍打印 / PDF</strong>讲义内按 <code>Ctrl+P</code> 自动展开解析并隐藏侧栏</div></div>
     </div>
 
-    <div class="sec-title">全部冲刺讲义与交互手册库</div>
-    <div class="grid">
-      <div class="card featured">
-        <div>
-          <span class="tag t-sd">山东省考 · 7天冲刺</span>
-          <h2>山东省考 7 天精准提分冲刺复盘讲义</h2>
-          <p>覆盖 2017–2026 命题白皮书、行测四大痛点母题、申论 B 卷 400 字专报与单字作文套路、2027 押题及 7 天日程。</p>
-        </div>
-        <div class="card-actions">
-          <a class="cbtn blue" href="山东省考7天冲刺精准提分讲义.html">在线网页版</a>
-          <a class="cbtn green" href="山东省考7天冲刺精准提分讲义.pdf" download>下载 PDF</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div>
-          <span class="tag t-gg">军队文职 · 公共科目</span>
-          <h2>军队文职《公共科目》15天冲刺多色讲义</h2>
-          <p>依据 2020–2026 七年真题大数据编写，涵盖基本知识（马原/党史/国防法规）与岗位能力多色精讲。</p>
-        </div>
-        <div class="card-actions">
-          <a class="cbtn" href="军队文职15天冲刺讲义_公共科目.html">进入阅读</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div>
-          <span class="tag t-wl">军队文职 · 数学2+物理</span>
-          <h2>军队文职《数学2+物理》15天冲刺讲义</h2>
-          <p>面向零基础冲刺 60+ 分保姆级讲义，包含公式解码、母题精讲与全科一页速查表。</p>
-        </div>
-        <div class="card-actions">
-          <a class="cbtn" href="军队文职15天冲刺讲义_数学2+物理.html">进入阅读</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div>
-          <span class="tag t-sx">数学先修 · 交互图像</span>
-          <h2>高等数学先修：高中数学交互图像手册</h2>
-          <p>支持手势拖动与滑块调参的可交互函数坐标系手册，帮助快速衔接微积分核心图像。</p>
-        </div>
-        <div class="card-actions">
-          <a class="cbtn light" href="高等数学先修_高中数学交互图像手册.html">打开交互手册</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">GitHub Pages Static Study Hub · 支持电脑与手机阅读，讲义页内支持 Ctrl+P 打印或一键导出 A4 PDF</div>
+    <footer class="footer">GitHub Pages Static Study Hub · 军队文职 &amp; 山东省考备考冲刺库</footer>
   </div>
 </body>
 </html>

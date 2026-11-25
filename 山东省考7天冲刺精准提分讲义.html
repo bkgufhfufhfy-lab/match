@@ -180,11 +180,73 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
   details.sol { border-style: solid; }
   details.sol > summary { display: none; }
 }
+
+/* === Responsive Multi-Device Refinement === */
+html, body { max-width: 100%; overflow-x: clip; }
+.layout { width: 100%; }
+.main { min-width: 0; width: 100%; }
+section.day-section { scroll-margin-top: 16px; }
+.sidebar { z-index: 260; }
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.48); z-index: 240; backdrop-filter: blur(1px);
+}
+.sidebar-backdrop.show { display: block; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 34px; }
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 6px; }
+.table-wrap > table { margin: 0; }
+th, td { overflow-wrap: break-word; }
+.katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 4px 2px; -webkit-overflow-scrolling: touch; }
+.svg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.mobile-toggle { align-items: center; gap: 6px; z-index: 300; }
+.back-to-top {
+  display: none; align-items: center; justify-content: center;
+  position: fixed; bottom: 66px; right: 18px; z-index: 290;
+  background: rgba(15, 23, 42, 0.88); color: #fff;
+  border: 1px solid rgba(148, 163, 184, 0.45); border-radius: 99px;
+  padding: 8px 13px; font-size: 12.5px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22); cursor: pointer;
+}
+.back-to-top.show { display: inline-flex; }
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .sidebar { width: 260px; }
+  .main { margin-left: 260px; padding: 24px 24px 72px; }
+}
+@media screen and (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); width: min(84vw, 300px); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: inline-flex; }
+  .main { margin-left: 0; padding: 18px 16px 92px; max-width: 100%; }
+  .cover-toc-grid, .day-grid { grid-template-columns: 1fr; }
+  .day-section { padding: 20px 18px; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14.6px; line-height: 1.72; }
+  .main { padding: 12px 10px 92px; }
+  .cover-banner { padding: 20px 16px; border-radius: 12px; margin-bottom: 16px; }
+  .cover-banner h1 { font-size: 21px; }
+  .cover-banner p { font-size: 14px; }
+  .cover-toc { padding: 16px 14px; border-radius: 12px; margin-bottom: 16px; }
+  .day-section { padding: 16px 13px; border-radius: 12px; margin-bottom: 18px; }
+  .day-title { font-size: 19px; }
+  .card { padding: 12px 13px; margin: 12px 0; }
+  table { font-size: 12.8px; }
+  th, td { padding: 6px 8px; }
+  .mobile-toggle { bottom: 14px; right: 14px; padding: 10px 15px; }
+  .back-to-top { bottom: 62px; right: 14px; }
+}
+@media print {
+  .sidebar-backdrop, .back-to-top { display: none !important; }
+  .table-wrap, .svg-wrap, .katex-display { overflow: visible !important; }
+}
+
 </style>
 </head>
 <body>
 
-<button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰ 目录 / 打卡</button>
+<div class="sidebar-backdrop" onclick="closeSidebar()"></div>
+<button class="mobile-toggle" onclick="toggleSidebar()" aria-label="打开目录或打卡">☰ 目录 / 打卡</button>
+<button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑ 顶部</button>
 <div class="layout">
   <aside class="sidebar">
     <div class="sidebar-title">山东省考 7 天冲刺讲义</div>
@@ -308,7 +370,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
   </div>
 
   <h2>一、 2017–2025 行测 9 套真题模块结构演进（按真题实际归属校对）</h2>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>年份</th><th>有效/总题</th><th>政治理论</th><th>常识判断</th><th>言语(选词/片段/语句)</th><th>数量</th><th>判断(图/定/类/逻)</th><th>资料分析</th></tr></thead>
     <tbody>
       <tr><td><strong>2017–2019 联考期</strong></td><td>各 120(120)</td><td>并入常识</td><td>20（Q31–50）</td><td>30（选词10–11 / 片段11–15 / 语句4–9）</td><td>10</td><td>40（10/10/10/10）</td><td>20</td></tr>
@@ -316,7 +378,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>2024 回归大卷</strong></td><td>120(120)</td><td>并入常识</td><td>20（Q1–20）</td><td>30（10 / 14 / 6）</td><td>10</td><td>40（10/10/10/10）</td><td>20</td></tr>
       <tr><td><strong>2025 最新考纲</strong></td><td>120(112)</td><td><span class="badge-must">单列 8 题</span></td><td>12（含Q9–10省情大政）</td><td>30（11 / 14 / 4 / 缺1）</td><td>10</td><td>40（含缺6题）</td><td>20（含缺1题）</td></tr>
     </tbody>
-  </table>
+  </table></div>
 </section>
 
 <!-- ======================== SECTION 02 ======================== -->
@@ -343,7 +405,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
   </div>
 
   <h2>一、 9 套真题反复考查的“山东省情密码”</h2>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>省情维度</th><th>真实真题出处</th><th>考前必熟记核心提法</th></tr></thead>
     <tbody>
       <tr><td><strong>总定位使命</strong></td><td><span class="src-tag">2019 Q32</span> <span class="src-tag">2023 Q2</span> <span class="src-tag">2025 Q9</span></td><td>2024年5月视察山东赋予 <strong>“走在前、挑大梁”</strong> 重大使命（改革开放勇争先、粮食安全、科技创新与产业创新融合、新时代文化使命）。</td></tr>
@@ -352,7 +414,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>海洋重器</strong></td><td><span class="src-tag">2024 Q7</span></td><td><strong>“国信1号”</strong>（全球首艘10万吨级智慧渔业养殖工船）、<strong>“蓝鲸1号”</strong>（半潜式钻井平台）、<strong>“深蓝1号”</strong>（深海智能养殖装备）；<em>注意：“深海1号”才属超深水大气田，非“耕海1号”。</em></td></tr>
       <tr><td><strong>政务与红色</strong></td><td><span class="src-tag">2024 Q5, Q6</span> <span class="src-tag">2019 Q39</span> <span class="src-tag">2022 Q6</span></td><td>“三大行动”（爱山东平台、96178 企业家号码、齐鲁码）；6 条红色线路（大青山、胶东乳娘等）；大汶口/龙山文化遗址。</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <div class="card card-formula">
     <div class="card-title">🔵 高频 4 部必背法律规则（9 套占 51 题的核心）</div>
@@ -458,7 +520,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
   </div>
 
   <h2>一、 9 套真题最高频复现词/成语辨析速查表（直接背诵）</h2>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>高频词组（出现频次）</th><th>真实真题出处</th><th>考场一锤定音辨析法</th></tr></thead>
     <tbody>
       <tr><td><strong>因噎废食</strong>(3) / <strong>视而不见</strong>(2) / <strong>熟视无睹</strong>(2) / <strong>一叶障目</strong>(2)</td><td><span class="src-tag">2020 Q11</span> <span class="src-tag">2021 Q11</span> <span class="src-tag">2023 Q16</span> <span class="src-tag">2019 Q10</span></td><td><strong>因噎废食</strong>＝怕出问题就彻底不干；<strong>视而不见/熟视无睹</strong>＝看到了装没看见/习以为常不管（监管失职）。</td></tr>
@@ -469,7 +531,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>屡禁不止</strong>(2) / <strong>层出不穷</strong>(2) / <strong>趋之若鹜</strong>(2)</td><td><span class="src-tag">2020 Q15</span> <span class="src-tag">2022 Q15</span> <span class="src-tag">2017 Q10</span></td><td><strong>屡禁不止</strong>专搭盗版/违法乱象；<strong>层出不穷</strong>中性指接连出现；<strong>趋之若鹜</strong>贬义指盲目追逐。</td></tr>
       <tr><td><strong>实词热词：基底/根基/支撑/托举/发轫/反馈/模糊</strong></td><td><span class="src-tag">2023 Q22</span> <span class="src-tag">2024 Q26</span> <span class="src-tag">2025 Q21,22</span></td><td><strong>发轫</strong>＝开端起源；传统制造业配<strong>基底/不可或缺</strong>；AI 提供情感<strong>反馈</strong>、底线不能<strong>模糊</strong>；耐心资本重<strong>稳定性/托举</strong>。</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <div class="card card-example">
     <div class="card-title">🟠 语境呼应实战精讲 1（解释说明 + 搭配秒杀）<span class="src-tag">2024年行测｜第23题</span></div>
@@ -582,7 +644,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
     <div class="day-meta">点到为止、守住基本盘：防止会做的题因踩坑丢失 4–6 分</div>
   </div>
 
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>模块</th><th>考前 1 分钟保底防坑铁律</th><th>真题出处与实战验证</th></tr></thead>
     <tbody>
       <tr><td><strong>片段阅读</strong></td><td>① 尾句出现“因此/关键在于/……是……的关键一招”，主旨必含该对策；<br>② 多例并列列举时，答案必选<strong>总括全覆盖项</strong>，忌只选单例子。</td><td><span class="src-tag">2024 Q50</span>（关键一招）<br><span class="src-tag">2025 Q33</span>（三例归于“变革和开放是常态”）</td></tr>
@@ -591,7 +653,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>逻辑判断</strong></td><td>① 削弱加强先圈<strong>论点</strong>（“认为/指出”后），无关背景直接杀；<br>② 真假推理优先找<strong>矛盾关系</strong>（欧洲 vs 南美必有一假，其余全真）。</td><td><span class="src-tag">2023 Q66</span>（法国冠军→非南美国家）<br><span class="src-tag">2025 Q95</span>（B 项偏离“系统能否防止”）</td></tr>
       <tr><td><strong>资料分析</strong></td><td>① 先扫表注与双轴刻度；② 区分<strong>同比增速（%）</strong>与<strong>百分点差</strong>；③ 综合分析从 D/C 倒着验证省时间；④ 善用 99% 混合增长率秒杀。</td><td><span class="src-tag">2025 Q106–107</span> <span class="src-tag">2025 Q109</span>（民营占 99%，增速≈合计 3.3%）</td></tr>
     </tbody>
-  </table>
+  </table></div>
 </section>
 
 <!-- ======================== SECTION 08 ======================== -->
@@ -603,7 +665,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
   </div>
 
   <h2>一、 8 套山东申论 B 卷命题演进全表</h2>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>年份</th><th>时限</th><th>Q1（概括/分析）</th><th>Q2 / Q3（理解与公文）</th><th>压轴大作文</th></tr></thead>
     <tbody>
       <tr><td><strong>2018</strong></td><td>180m</td><td>概括问题(15分/200字)</td><td>Q2:原因(250字) / Q3:对策(450字)</td><td>“在深海里练就游泳能力”</td></tr>
@@ -615,7 +677,7 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
       <tr><td><strong>2024</strong></td><td><strong>180m</strong></td><td>概述“好品山东”好在哪(15分/250字)</td><td>Q2:理解“只此青绿/只有青绿”(300字)<br>Q3: <strong>案例摘要“滨海模式”</strong>(400字)</td><td><strong>“桥”</strong>（1000–1200字）</td></tr>
       <tr><td><strong>2026</strong></td><td><strong>180m</strong></td><td>归纳县域经济特色做法(15分/250字)</td><td>Q2:理解“法与时转则治”(300字)<br>Q3: <strong>信息专报“预付宝”</strong>(400字)</td><td><strong>“坐标”</strong>（1000–1200字）</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <div class="card card-intuition">
     <div class="card-title">🟢 Q1（15分/250字）零基础踩点公式：原词动宾压缩法</div>
@@ -808,13 +870,13 @@ details.sol summary { cursor: pointer; font-weight: 700; color: #0e7490; font-si
     <div class="day-meta">若实际复习天数临时缩水，按本表保留 S 级不可删减动作</div>
   </div>
 
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>压缩版本</th><th>天次合并策略（保 S 级、抓 A 级、快过 B/C）</th><th>被精简/舍弃部分</th></tr></thead>
     <tbody>
       <tr><td><strong>5 天紧凑版</strong></td><td>• <strong>Day 1</strong>＝原 Day 1（政治+申论Q1）<br>• <strong>Day 2</strong>＝原 Day 2（申论Q2+Q3模板）<br>• <strong>Day 3</strong>＝原 Day 3（选词+申论大作文全手写）<br>• <strong>Day 4</strong>＝原 Day 4+5（数量4类母题+资料坑+省情新法）<br>• <strong>Day 5</strong>＝原 Day 6 行测模考 + 原 Day 7 押题背诵（申论改为 30m 拆 2024 提纲）</td><td>砍掉 2020–2023 重复刷题与第二套 180m 整套申论手写。</td></tr>
       <tr><td><strong>4 天极限版</strong></td><td>• <strong>Day 1</strong>：政治排除法 + 2026 申论 B 卷 Q1–Q3 手写复盘<br>• <strong>Day 2</strong>：选词高频词表 + 2026 申论 Q4《坐标》全手写 + 2024 案例摘要提纲<br>• <strong>Day 3</strong>：数量 4 类母题 + 2025 资料防坑 + 省情与 3 部新法<br>• <strong>Day 4</strong>：上午 2024 行测限时跑通节奏 + 下午背诵 2027 政治/申论押题金句</td><td>放弃所有 2022 以前旧题及常规常识百科，100% 押宝近两届最新结构。</td></tr>
     </tbody>
-  </table>
+  </table></div>
 </section>
 
   </main>
@@ -853,6 +915,33 @@ window.addEventListener('beforeprint', () => {
   document.querySelectorAll('details.sol').forEach(d => d.open = true);
 });
 loadCheck();
+
+
+function toggleSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (!sb) return;
+  const open = sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show', open);
+}
+function closeSidebar() {
+  const sb = document.querySelector('.sidebar');
+  const bd = document.querySelector('.sidebar-backdrop');
+  if (sb) sb.classList.remove('open');
+  if (bd) bd.classList.remove('show');
+}
+document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    if (window.innerWidth <= 960) closeSidebar();
+  });
+});
+const topBtn = document.getElementById('backToTopBtn');
+if (topBtn) {
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('show', window.scrollY > 420);
+  }, { passive: true });
+}
+
 </script>
 
 </body>
